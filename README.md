@@ -7,6 +7,20 @@
 > Instituto Geofísico Sismológico Volponi, Universidad Nacional de San Juan,
 > Argentina
 
+## Cómo citar
+
+Usando BibTeX:
+
+```
+@phdthesis{soler2021,
+  author  = "Santiago Rubén Soler",
+  title   = "TITLE",
+  school  = "Universidad Nacional de San Juan",
+  year    = "2021",
+  doi     = "xxxx/xxxxx"
+}
+```
+
 ## Licencia
 
 Esta obra está bajo una
