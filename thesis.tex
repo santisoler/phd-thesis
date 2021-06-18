@@ -1,0 +1,55 @@
+\documentclass[11pt,a4paper,twoside,openright]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage[round,authoryear,sort]{natbib}
+\usepackage{doi} % show dois as links on references
+
+% Import variables
+\input{variables.tex}
+
+\hypersetup{
+    colorlinks,
+    allcolors=blue,
+    pdftitle={\Title},
+    pdfauthor={\Soler},
+    pdftex,
+}
+\urlstyle{same}
+
+
+% =============================================================================
+
+\begin{document}
+
+\title{\Title}
+\author{\Soler}
+\date{
+    \normalsize
+    \today
+}
+
+\frontmatter
+\maketitle
+
+\chapter{Prefacio}
+
+\chapter{Agradecimientos}
+
+% Indice, lista de figuras y de tablas
+\tableofcontents
+\listoffigures
+\listoftables
+
+
+\mainmatter
+\chapter{Introducción}
+
+\bibliographystyle{apalike-doi}
+\bibliography{references}
+
+\end{document}
