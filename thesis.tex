@@ -8,7 +8,6 @@
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{datetime}
-\usepackage{fancyhdr}
 \usepackage{multicol}
 \usepackage[round,authoryear,sort]{natbib}
 \usepackage{doi} % show dois as links on references
@@ -30,6 +29,7 @@
 }
 \urlstyle{same}
 
+% Define title, author and date for pdftex (won't be used in titlepage)
 \title{\Title}
 \author{\Soler}
 \date{
@@ -62,5 +62,6 @@
 
 \bibliographystyle{apalike-doi}
 \bibliography{references}
+\addcontentsline{toc}{chapter}{Bibliografía}
 
 \end{document}
