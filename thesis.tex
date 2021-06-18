@@ -1,16 +1,19 @@
-\documentclass[11pt,a4paper,twoside,openright]{book}
+\documentclass[11pt,a4paper,oneside,openright]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish,es-tabla]{babel}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{datetime}
 \usepackage{fancyhdr}
 \usepackage[round,authoryear,sort]{natbib}
 \usepackage{doi} % show dois as links on references
 
 % Import variables
 \input{variables.tex}
+
 
 \hypersetup{
     colorlinks,
@@ -30,11 +33,72 @@
 \author{\Soler}
 \date{
     \normalsize
-    \today
+    \displaydate{publication}
 }
 
 \frontmatter
+
 \maketitle
+
+% =============================================================================
+
+\clearpage
+
+\vspace*{\fill}
+
+
+\noindent \textit{\Title{}} \\
+por \Soler{}
+
+
+\noindent doi: \href{https://doi.org/\ThesisDOI}{\ThesisDOI}
+
+\vspace{4em}
+
+
+\noindent Versión \ThesisVersion{} \\
+Última modificación el \displaydate{publication}.
+
+\vspace{5em}
+
+\noindent \includegraphics[height=2em]{figs/logos/cc-by.png}
+
+\noindent Esta Tesis se encuentra disponible bajo
+\href{
+    https://creativecommons.org/licenses/by/4.0/deed.es
+}{
+    Licencia Creative Commons Atribución 4.0 Internacional
+}.
+Usted es libre de:
+
+\begin{description}[labelindent=0.5cm]
+    \item[Compartir:]{
+        Copiar y redistribuir el material en cualquier medio o formato.
+    }
+    \item[Adaptar:]{
+        Remezclar, transformar y construir a partir del material
+        para cualquier propósito, incluso comercialmente.
+    }
+\end{description}
+
+\noindent Bajo los siguientes términos:
+
+\begin{description}[labelindent=0.5cm]
+    \item[Atribución:]{
+        Usted debe dar crédito de manera adecuada, brindar un enlace a la
+        licencia, e indicar si se han realizado cambios. Puede hacerlo en cualquier
+        forma razonable, pero no de forma tal que sugiera que usted o su uso tienen el
+        apoyo del licenciante.
+    }
+    \item[No hay restricciones adicionales:]{
+        No puede aplicar términos legales ni medidas tecnológicas que
+        restrinjan legalmente a otras a hacer cualquier uso permitido por la
+        licencia.
+    }
+\end{description}
+
+% =============================================================================
+
 
 \chapter{Prefacio}
 
