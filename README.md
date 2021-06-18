@@ -17,6 +17,7 @@ Usando BibTeX:
   title   = "TITLE",
   school  = "Universidad Nacional de San Juan",
   year    = "2021",
+  type    = "PhD Thesis",
   doi     = "xxxx/xxxxx"
 }
 ```
