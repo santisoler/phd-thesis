@@ -1,5 +1,4 @@
 latexmk
 texlive
-texlive-xetex
 texlive-science
 texlive-lang-spanish
