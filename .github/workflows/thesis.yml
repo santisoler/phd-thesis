@@ -6,7 +6,7 @@ on:
       - "thesis/**"
   push:
     branches:
-      - master
+      - main
     paths:
       - "thesis/**"
 
@@ -49,6 +49,7 @@ jobs:
       # Name of the preview branch.
       # REMEMBER: edit name in the other workflows as well.
       PREVIEW_BRANCH: preview-pr${{ github.event.number }}
+      PDF_BRANCH: pdf
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -81,6 +82,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.OUTPUT_DIR }}
+          publish_branch: ${{ env.PDF_BRANCH }}
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
           # Only keep the latest commit to avoid bloating the repository
