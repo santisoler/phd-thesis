@@ -33,6 +33,7 @@
 }
 \urlstyle{same}
 
+
 % Configure headers and footers
 % -----------------------------
 % Configure every page of the thesis with a fancy style
@@ -70,6 +71,22 @@
     }
 
 }
+
+% Clear headers and footers on blank pages before new chapter
+\makeatletter
+\def\cleardoublepage{
+    \clearpage
+    \if@twoside
+        \ifodd\c@page
+        \else\hbox{}\thispagestyle{empty}\newpage
+            \if@twocolumn\hbox{}\newpage
+            \fi
+        \fi
+    \fi
+}
+\makeatother
+
+% Source: https://tug.org/pracjourn/2008-1/mori/mori.pdf
 
 
 % =============================================================================
