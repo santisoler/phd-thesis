@@ -16,7 +16,9 @@ jobs:
           persist-credentials: false
 
       - name: Install LaTeX
-        run: sudo apt-get update; sudo apt-get install latexmk texlive texlive-xetex texlive-science texlive-lang-spanish
+        run: |
+          sudo apt-get update
+          xargs sudo apt-get install < requirements-ubuntu.txt
 
       - name: Compile PDF
         run: |
