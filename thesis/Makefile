@@ -1,7 +1,7 @@
 # The name of the main .tex file to build.
 THESIS = thesis
 # List other .tex needed files
-TEX_FILES = apalike-doi.bst introduccion.tex license.tex references.bib titlepage.tex variables.tex
+TEX_FILES = apalike-doi.bst license.tex references.bib titlepage.tex variables.tex introduccion.tex fundamentos.tex tesseroids-variable-density.tex gradient-boosted-eql.tex fatiando.tex
 # Folder where output will be placed
 OUTDIR = _output
 # Name of the output file
