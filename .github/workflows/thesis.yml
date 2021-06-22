@@ -2,9 +2,13 @@ name: thesis
 
 on:
   pull_request:
+    paths:
+      - "thesis/**"
   push:
     branches:
       - master
+    paths:
+      - "thesis/**"
 
 jobs:
   build:
@@ -18,10 +22,11 @@ jobs:
       - name: Install LaTeX
         run: |
           sudo apt-get update
-          xargs sudo apt-get install < requirements-ubuntu.txt
+          xargs sudo apt-get install < thesis/requirements-ubuntu.txt
 
       - name: Compile PDF
         run: |
+          cd thesis
           make
           cd _output
           rm -f *.aux *.log *.bbl *.blg *.out *.toc
@@ -34,13 +39,13 @@ jobs:
         with:
           name: thesis
           path: |
-            _output/thesis.pdf
+            thesis/_output/thesis.pdf
 
   publish:
     needs: [build]
     runs-on: ubuntu-latest
     env:
-      OUTPUT_DIR: ./_output/
+      OUTPUT_DIR: ./thesis/_output/
       # Name of the preview branch.
       # REMEMBER: edit name in the other workflows as well.
       PREVIEW_BRANCH: preview-pr${{ github.event.number }}
@@ -54,7 +59,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: thesis
-          path: _output
+          path: thesis/_output
 
       - name: Publish thesis to preview branch
         if: ${{ github.event_name == 'pull_request' }}
