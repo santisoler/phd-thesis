@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{fancyhdr}
 \usepackage{datetime2}
 \usepackage{multicol}
 \usepackage[round,authoryear,sort]{natbib}
@@ -33,11 +34,51 @@
 }
 \urlstyle{same}
 
+% Configure headers and footers
+% -----------------------------
+% Configure every page of the thesis with a fancy style
+\pagestyle{fancy}
+
+% Define a command for configuring headers and footers of frontmatter
+\newcommand{\fancyfront}{%
+    \fancyhf{} % clear all header and footer fields
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+
+    % Override headers and footers for chapter pages
+    \fancypagestyle{plain}{%
+        \fancyhf{} % clear all header and footer fields
+        \fancyfoot[C]{\thepage}
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrulewidth}{0pt}
+    }
+}
+
+% Define a command for configuring headers and footers of mainmatter
+\newcommand{\fancymain}{%
+    \fancyhf{} % clear all header and footer fields
+    \fancyhead[RO,LE]{\thepage}
+    \fancyhead[RE]{\nouppercase{\rightmark}}
+    \fancyhead[LO]{\nouppercase{\leftmark}}
+    \renewcommand{\headrulewidth}{0.4pt}
+
+    % Override headers and footers for chapter pages
+    \fancypagestyle{plain}{%
+        \fancyhf{} % clear all header and footer fields
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrulewidth}{0pt}
+    }
+
+}
+
+
 % =============================================================================
 
 \begin{document}
 
 \frontmatter
+\fancyfront
 
 \include{titlepage}
 
@@ -52,6 +93,7 @@
 
 
 \mainmatter
+\fancymain
 
 \include{introduccion}
 
