@@ -7,6 +7,8 @@
 > Instituto Geofísico Sismológico Volponi, Universidad Nacional de San Juan,
 > Argentina
 
+PDF de la versión en desarrollo: https://github.com/santisoler/phd-thesis/raw/pdf/thesis.pdf
+
 ## Cómo citar
 
 Usando BibTeX:
