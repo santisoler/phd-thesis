@@ -1,3 +1,95 @@
 \chapter{Introducción}
 
-\section{Organización de la Tesis}
+La observación y medición del campo gravitatorio terrestre se remonta a los
+orígenes de la Ciencia moderna. Galileo Galilei realiza las primeras
+observaciones cuantitativas sobre la caída de los objetos en el Siglo~XIV. En
+1687 Isaac Newton propone la existencia de la fuerza gravitatoria como
+interacción entre toda la materia, describiendo una Ley Universal que la
+gobierna en su famoso tratado \emph{Philosophiae Naturalis Principia
+Mathematica}.
+
+A lo largo de los Siglos venideros muchos científicos y muchas científicas
+han realizado observaciones e interpretaciones acerca de las variaciones del
+campo gravitatorio terrestre en distintas localidades. Jean Richer detecta en
+1672 que los péndulos oscilaban a frecuencias ligeramente distintas en París
+y en Guinea Francesa, dando nacimiento a la \emph{gravimetría}. Newton atribuye
+esta variación a la forma ovalada de la Tierra. Es Pierre Bouguer quien
+encabeza en 1735 una expedición para realizar cuidadosas mediciones de estas
+variaciones a diversas latitudes.
+
+Los experimentos llevados a cabo por Henry Cavendish alrededor de 1797
+permitieron no solo estimar la densidad media de la Tierra, sino también un
+valor a la constante de gravitación universal $G$, medición que se encuentra
+muy de acuerdo al valor aceptado hoy en día.
+
+Las primeras aplicaciones de mediciones gravimétricas aplicadas a la geología
+vienen de la mano de John Pratt y George Airy en la década de 1850, proponiendo
+dos hipótesis opuestas acerca de cómo las partes rígidas de la corteza y el
+manto \emph{flotan} sobre un substrato fluido, dando origen al concepto de
+\emph{isostasia}.
+
+Para finales del Siglo~XIX y durante el Siglo~XX, los avances tecnológicos
+permitieron perfeccionar los instrumentos a través de los cuales se pueden
+realizar observaciones del campo gravitatorio terrestre. Vale destacar los
+desarrollos de Vening Meinesz, Roland von Eötvös, LaCoste y Romberg
+\citep{blakely1995}.
+Estos abrieron las puertas a la aplicación de las observaciones gravimétricas
+a múltiples problemas geológicos y geofísicos. Integrando estas mediciones con
+diversas metodologías de las geociencias, permiten un amplio conocimiento sobre
+las estructuras y cuerpos debajo de la superficie terrestre.
+
+El arribo del Siglo~XXI nos recibe con misiones espaciales
+diseñadas para situar satélites especialmente dedicados a la medición del campo
+gravitatorio terrestre de manera global y a lo largo del tiempo.
+Este tipo de observaciones pueden integrarse con las obtenidas en la superficie
+terrestre, sobre la superficie marítima o desde el aire para dar mayor
+completitud a los resultados e interpretaciones.
+
+Las aplicaciones de los conocimientos que la gravimetría produce se extienden
+desde la exploración de recursos naturales, mayor comprensión sobre el origen
+de los fenómenos de nuestro planeta hasta la observación y mitigación de los
+cambios ambientales, climatológicos y biológicos.
+
+En esta Tesis presentamos los avances realizados por el autor a lo largo de su
+Doctorado, vinculados al modelado de los campos gravitatorios y al
+procesamiento de las observaciones gravimétricas.
+A lo largo del texto desarrollaremos una descripción detallada de dos nuevas
+metodologías.
+
+La primera consiste en un algoritmo para el cómputo de campos gravitatorios
+generados por geometrías definidas en coordenadas esféricas conocidas como
+\emph{tesseroides} (o prismas esféricos) cuya densidad varía a lo largo de la
+dirección radial.
+Este nuevo método es de principal interés para su aplicación al modelado de
+estructuras regionales o continentales que presenten variaciones de densidad en
+su profundidad, como pueden ser grandes cuencas sedimentarias o determinadas
+regiones del manto litosférico o astenosférico.
+Dicha metodología y sus resultados han sido publicados en \emph{Geophysical
+Journal International} bajo el título ``Gravitational field calculation in
+spherical coordinates using variable densities in depth'' \citep{soler2019}.
+
+La segunda metodología que procederemos a describir consiste en un algoritmo
+para la interpolación de datos gravimétricos basado en el concepto de fuentes
+equivalentes que incorpora elementos de aprendizaje automático (\emph{Machine
+Learning}).
+Más precisamente, presentamos las fuentes equivalentes potenciadas por el
+gradiente (\emph{gradient-boosted equivalent sources}), las cuales permiten
+realizar interpolaciones de grandes cantidades datos de cualquier campo
+potencial harmónico, reduciendo considerablemente los requerimientos
+computacionales.
+El desarrollo de esta nueva metodología ha sido enviado para su publicación
+a \emph{Geophysical Journal International} bajo el título ``Gradient-boosted
+equivalent sources'' \citep{soler2021} y aprobado con correcciones menores.
+
+Vale destacar que ambas metodologías han sido implementadas mediante software
+escrito principalmente en lenguaje de programación Python y disponibles bajo
+licencias de Software Libre en sus respectivos repositorios:
+\url{https://github.com/pinga-lab/tesseroid-variable-density} y
+\url{https://github.com/compgeolab/eql-gradient-boosted}.
+
+Por último haremos una descripción de las contribuciones del autor a Fatiando
+a Terra: un proyecto de proyecto de Sofware Libre para geofísica
+\citep{fatiando2013}.
+
+% TODO
+% Completar ultimo párrafo
