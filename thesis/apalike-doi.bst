@@ -1,5 +1,6 @@
 % Modified version of the `apalike.bst` bibliography style
 %
+% Replaces English words for their Spanish translation.
 % Adds the doi and/or the URL to every type of publication if present.
 % Adds the ISBN to books, booklet, inbook, incollection, inproceedings and
 % proceedings if present.
@@ -219,7 +220,11 @@ FUNCTION {format.names}
               if$
               t "others" =
                 { " et~al." * }
-                { " and " * t * }
+                { t #1 text.prefix$ "I" =
+                    {" e " * t * }
+                    {" y " * t * }
+                    if$
+                }
               if$
             }
           if$
@@ -251,8 +256,8 @@ FUNCTION {format.editors}
     { "" }
     { editor format.names
       editor num.names$ #1 >
-        { ", editors" * }
-        { ", editor" * }
+        { ", editores" * }
+        { ", editor/a" * }
       if$
     }
   if$
@@ -312,12 +317,12 @@ FUNCTION {either.or.check}
 FUNCTION {format.bvolume}
 { volume empty$
     { "" }
-    { "volume" volume tie.or.space.connect
+    { "volumen" volume tie.or.space.connect
       series empty$
         'skip$
-        { " of " * series emphasize * }
+        { " de " * series emphasize * }
       if$
-      "volume and number" number either.or.check
+      "volumen y n\'umero" number either.or.check
     }
   if$
 }
@@ -327,13 +332,13 @@ FUNCTION {format.number.series}
     { number empty$
         { series field.or.null }
         { output.state mid.sentence =
-            { "number" }
-            { "Number" }
+            { "n\'umero" }
+            { "N\'umero" }
           if$
           number tie.or.space.connect
           series empty$
             { "there's a number but no series in " cite$ * warning$ }
-            { " in " * series * }
+            { " en " * series * }
           if$
         }
       if$
@@ -379,8 +384,8 @@ FUNCTION {format.pages}
 { pages empty$
     { "" }
     { pages multi.page.check
-        { "pages" pages n.dashify tie.or.space.connect }
-        { "page" pages tie.or.space.connect }
+        { "p\'aginas" pages n.dashify tie.or.space.connect }
+        { "p\'agina" pages tie.or.space.connect }
       if$
     }
   if$
@@ -427,8 +432,8 @@ FUNCTION {format.in.ed.booktitle}
 { booktitle empty$
     { "" }
     { editor empty$
-        { "In " booktitle emphasize * }
-        { "In " format.editors * ", " * booktitle emphasize * }
+        { "En " booktitle emphasize * }
+        { "En " format.editors * ", " * booktitle emphasize * }
       if$
     }
   if$
@@ -455,24 +460,24 @@ FUNCTION {format.tr.number}
 }
 
 FUNCTION {format.article.crossref}
-{ "In"                                                  % this is for apalike
+{ "En"                                                  % this is for apalike
   " \cite{" * crossref * "}" *
 }
 
 FUNCTION {format.book.crossref}
 { volume empty$
     { "empty volume in " cite$ * "'s crossref of " * crossref * warning$
-      "In "
+      "En "
     }
-    { "Volume" volume tie.or.space.connect
-      " of " *
+    { "Volumen" volume tie.or.space.connect
+      " de " *
     }
   if$
   "\cite{" * crossref * "}" *                           % this is for apalike
 }
 
 FUNCTION {format.incoll.inproc.crossref}
-{ "In"                                                  % this is for apalike
+{ "En"                                                  % this is for apalike
   " \cite{" * crossref * "}" *
 }
 
@@ -801,29 +806,29 @@ FUNCTION {unpublished}
 
 FUNCTION {default.type} { misc }
 
-MACRO {jan} {"January"}
+MACRO {jan} {"Enero"}
 
-MACRO {feb} {"February"}
+MACRO {feb} {"Febrero"}
 
-MACRO {mar} {"March"}
+MACRO {mar} {"Marzo"}
 
-MACRO {apr} {"April"}
+MACRO {apr} {"Abril"}
 
-MACRO {may} {"May"}
+MACRO {may} {"Mayo"}
 
-MACRO {jun} {"June"}
+MACRO {jun} {"Junio"}
 
-MACRO {jul} {"July"}
+MACRO {jul} {"Julio"}
 
-MACRO {aug} {"August"}
+MACRO {aug} {"Agosto"}
 
-MACRO {sep} {"September"}
+MACRO {sep} {"Septiembre"}
 
-MACRO {oct} {"October"}
+MACRO {oct} {"Octubre"}
 
-MACRO {nov} {"November"}
+MACRO {nov} {"Noviembre"}
 
-MACRO {dec} {"December"}
+MACRO {dec} {"Diciembre"}
 
 MACRO {acmcs} {"ACM Computing Surveys"}
 
@@ -898,7 +903,12 @@ FUNCTION {format.lab.names}
         'skip$
         { s #2 "{ff }{vv }{ll}{ jj}" format.name$ "others" =
             { " et~al." * }
-            { " and " * s #2 "{vv~}{ll}" format.name$ * }
+            { s #2 "{vv~}{ll}" format.name$ 't :=
+              t #1 text.prefix$ "I" =
+                {" e " * t * }
+                {" y " * t * }
+              if$
+            }
           if$
         }
       if$
