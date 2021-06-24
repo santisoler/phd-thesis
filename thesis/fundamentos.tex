@@ -111,18 +111,156 @@ el potencial se puede expresar como:
 \end{equation}
 
 
+\subsection{Gradiente del potencial gravitatorio}
+
+Según la definición del potencial gravitatorio expuesta en la
+ecuación~\label{eq:potencial-gravitatorio-definicion}, es posible calcular la
+aceleración de la gravedad producida por una distribución de masa arbitraria
+en cualquier punto $\mathbf{p}$ como el gradiente del potencial
+$V(\mathbf{p})$.
+Si definimos un sistema de ejes Cartesianos en el cual el punto $\mathbf{p}
+= (x, y, z)$, las componentes de la aceleración en cada una de las direcciones
+del sistema quedan expresadas
+como:
+
+\begin{equation}
+    g_i(\mathbf{p}) = \frac{\partial V(\mathbf{p})}{\partial i}, \,\,
+        \forall i \in \{x, y, z\}.
+    \label{eq:componentes-aceleracion-gravitatoria}
+\end{equation}
+
+El vector
+$\mathbf{g}(\mathbf{p}) = (g_x(\mathbf{p}), g_y(\mathbf{p}), g_z(\mathbf{p}))$
+representa la aceleración gravitatoria en el punto
+$\mathbf{p}$ generada por la distribución de masa $\Gamma$, aunque es común
+referirse al mismo como el \emph{gradiente gravitatorio}.
+Reemplazando la ecuación~\ref{eq:potencial-gravitatorio-integral}
+en~\ref{eq:componentes-aceleracion-gravitatoria}, las componentes del gradiente
+gravitatorio pueden expresarse como:
+
+\begin{align}
+    g_x(\mathbf{p}) =&
+        - G \int\limits_\Gamma \rho(\mathbf{q})
+        \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^2} \text{d}v, \\
+    g_y(\mathbf{p}) =&
+        - G \int\limits_\Gamma \rho(\mathbf{q})
+        \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^2} \text{d}v, \\
+    g_z(\mathbf{p}) =&
+        - G \int\limits_\Gamma \rho(\mathbf{q})
+        \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^2} \text{d}v,
+\end{align}
+
+\noindent donde $\mathbf{q} = (x', y', z')$.
+
+Las segundas derivadas del potencial gravitatorio definen el \emph{tensor del
+gradiente gravitatorio}, y sus componentes pueden expresarse como:
+
+\begin{equation}
+    g_{ij}(\mathbf{p}) =
+        \frac{\partial^2 V(\mathbf{p})}{\partial i \partial j}, \,\,
+        \forall i \in \{x, y, z\}, \,\,
+        \forall j \in \{x, y, z\}.
+\end{equation}
+
+Reemplazando la ecuación \ref{eq:potencial-gravitatorio-integral}, podemos
+expresar las componentes diagonales del tensor de la siguiente manera
+\citep{grombein2013}:
+
+\begin{align}
+    g_{xx}(\mathbf{p}) =&
+        G \int\limits_\Gamma \rho(\mathbf{q})
+        \left[
+        \frac{3(x - x')^2}{|\mathbf{p} - \mathbf{q}|^5}
+        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \right]
+        \text{d}v, \\
+    g_{yy}(\mathbf{p}) =&
+        G \int\limits_\Gamma \rho(\mathbf{q})
+        \left[
+        \frac{3(y - y')^2}{|\mathbf{p} - \mathbf{q}|^5}
+        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \right]
+        \text{d}v, \\
+    g_{zz}(\mathbf{p}) =&
+        G \int\limits_\Gamma \rho(\mathbf{q})
+        \left[
+        \frac{3(z - z')^2}{|\mathbf{p} - \mathbf{q}|^5}
+        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \right]
+        \text{d}v,
+    \label{eq:componentes-diagonales-tensor}
+\end{align}
+
+\noindent mientras que las componentes no diagonales pueden expresarse como:
+
+\begin{align}
+    g_{xy}(\mathbf{p}) =
+    g_{yx}(\mathbf{p}) =&
+        G \int\limits_\Gamma \rho(\mathbf{q})
+        \frac{3(x - x')(y - y')}{|\mathbf{p} - \mathbf{q}|^5}
+        \text{d}v, \\
+    g_{xz}(\mathbf{p}) =
+    g_{zx}(\mathbf{p}) =&
+        G \int\limits_\Gamma \rho(\mathbf{q})
+        \frac{3(x - x')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
+        \text{d}v, \\
+    g_{yz}(\mathbf{p}) =
+    g_{zy}(\mathbf{p}) =&
+        G \int\limits_\Gamma \rho(\mathbf{q})
+        \frac{3(y - y')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
+        \text{d}v.
+\end{align}
+
+A partir de las ecuaciones \ref{eq:componentes-diagonales-tensor} podemos
+calcular el Laplaciano del potencial gravitatorio:
+
+\begin{equation}
+    \Delta V(\mathbf{p}) = \nabla^2 V(\mathbf{p}) =
+        \frac{\partial^2 V}{\partial x^2}
+        + \frac{\partial^2 V}{\partial y^2}
+        + \frac{\partial^2 V}{\partial z^2},
+\end{equation}
+
+\noindent Dado que las tres expresiones se cancelan mutuamente
+\citep{blakely1995}, podemos concluir que cualquier potencial gravitatorio es
+un \emph{campo harmónico}
+
+\begin{equation}
+    \Delta V(\mathbf{p}) = 0
+\end{equation}
+
+\noindent para cualquier punto de observación $\mathbf{p}$.
+
 % =============================================================================
 
-\section{Disturbio de gravedad}
-
-\subsection{Elipsoide de referencia}
-
 \section{Modelado directo}
+
+El cálculo de los efectos gravitatorios de un determinado cuerpo sobre uno
+o más puntos de observación se suele denominar modelado directo (\emph{forward
+modelling} en inglés).
+Aunque las expresiones del potencial gravitatorio y las componentes de su
+gradiente en las
+ecuaciones~\ref{eq:potencial-gravitatorio-integral} y
+\ref{eq:componentes-aceleracion-gravitatoria} aparentan ser sencillas, el
+cómputo de estas magnitudes para una geometría dada no resulta un problema
+trivial.
+Solo existen soluciones analíticas a dichas expresiones para determinadas
+geometrías sencillas o que guardan algún tipo de simetría.
+
+En el desarrollo de esta Tesis nos resultan de principal interés trabajar con
+tres tipos de geometrías: masas puntuales, prismas rectangulares y prismas
+esféricos o \emph{tesseroides}.
 
 \subsection{Masas puntuales}
 
 \subsection{Prismas rectangulares}
 
 \subsection{Tesseroides}
+
+% =============================================================================
+
+\section{Disturbio de gravedad}
+
+\subsection{Elipsoide de referencia}
 
 \section{Fuentes equivalentes}
