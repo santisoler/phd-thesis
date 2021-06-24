@@ -11,11 +11,13 @@ fuerza puede expresarse como:
     \mathbf{F} = - G \frac{m_p m}{r^2} \mathbf{\hat{r}},
 \end{equation}
 
-\noindent donde $\mathbf{r} = \mathbf{p} - \mathbf{q}$ es el vector que va
-desde la posición $\mathbf{q}$ a $\mathbf{p}$, y $G = 6.67430 \times
-10^{-11} \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$ es la constante de
-gravitación universal (Fig.~\ref{fig:potencial-gravitatorio}a).
-De esto se deduce que la masa $m_p$ siente una aceleración gravitatoria
+\noindent donde $G = 6.67430 \times 10^{-11} \text{m}^3 \text{kg}^{-1}
+\text{s}^{-2}$ es la constante de gravitación universal,
+$\mathbf{r} = \mathbf{p} - \mathbf{q}$ es el vector que une $\mathbf{q}$ con
+$\mathbf{p}$, y $\mathbf{\hat{r}}$ es el versor asociado a $\mathbf{r}$
+(Fig.~\ref{fig:potencial-gravitatorio}a).
+Aplicando la segunda Ley de Newton, se deduce que la masa $m_p$ siente una
+aceleración gravitatoria $\mathbf{g}$:
 
 \begin{equation}
     \mathbf{g} = - \frac{G m}{r^2} \mathbf{\hat{r}}.
@@ -33,13 +35,13 @@ partícula $m$:
 \end{equation}
 
 Se puede demostrar que la atracción gravitatoria $\mathbf{g}$ define un campo
-irrotacional, es decir
+irrotacional, es decir:
 
 \begin{equation}
-    \nabla \times \mathbf{g} = 0,
+    \nabla \times \mathbf{g} = 0.
 \end{equation}
 
-\noindent por ende es posible definir un potencial escalar $V$ al que
+\noindent Por ende es posible definir un potencial escalar $V$ al que
 denominaremos \emph{potencial gravitatorio}:
 
 \begin{equation}
@@ -54,9 +56,10 @@ denominaremos \emph{potencial gravitatorio}:
 \end{equation}
 
 \noindent Vale la pena notar que en la ecuación
-\ref{eq:potencial-gravitatorio-definicion} se ha utilizado la convención de
+\ref{eq:potencial-gravitatorio-definicion} se ha aplicado la convención de
 signo positivo para definir el potencial $V$, mayormente utilizada en la
-bibliografía geofísica.
+literatura sobre Geofísica y Geodesia
+\citep{heiskanen1967,blakely1995,hinze2009}.
 
 \begin{figure}
     \centering
@@ -70,6 +73,7 @@ bibliografía geofísica.
     }
     \label{fig:potencial-gravitatorio}
 \end{figure}
+
 
 \subsection{Potencial gravitatorio producido por una distribución de masa}
 
@@ -85,7 +89,8 @@ genera un potencial gravitatorio $\text{d}V$ en cualquier punto $\mathbf{p}$
 $\Gamma$ puede calcularse integrando los diferenciales de masa que lo componen:
 
 \begin{equation}
-    V(\mathbf{p}) = G \int\limits_\Gamma \frac{\text{d}m}{|\mathbf{p} - \mathbf{q}|} .
+    V(\mathbf{p}) =
+        G \int\limits_\Gamma \frac{\text{d}m}{|\mathbf{p} - \mathbf{q}|} .
 \end{equation}
 
 Si reescribimos los diferenciales de masa como
