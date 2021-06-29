@@ -2,7 +2,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[spanish,es-tabla]{babel}
-\usepackage[vmargin=2.5cm,includehead,includefoot]{geometry}
+\usepackage[
+    vmargin=2.5cm,
+    headheight=15.5pt, % as per the warning by fancyhdr,
+    % heightrounded, % to avoid spurious underfull messages
+    includehead,
+    includefoot
+]{geometry}
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{amsmath}
