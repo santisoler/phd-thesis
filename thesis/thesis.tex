@@ -15,6 +15,11 @@
 \usepackage{doi} % show dois as links on references
 \usepackage{mathpazo} % Use the Palatino font by default
 
+% Use custom apalike bibliography style:
+%   - translated to Spanish
+%   - adds dois as links
+\bibliographystyle{apalike-doi}
+
 % Change margins at each side of the page
 \addtolength{\oddsidemargin}{1cm}
 \addtolength{\evensidemargin}{-1cm}
@@ -123,7 +128,9 @@
 
 \include{fatiando}
 
-\bibliographystyle{apalike-doi}
+\backmatter
+
+\phantomsection
 \bibliography{references}
 \addcontentsline{toc}{chapter}{Bibliografía}
 
