@@ -53,6 +53,7 @@ denominaremos \emph{potencial gravitatorio}:
 
 \begin{equation}
     V(\mathbf{p}) = G \frac{m}{r}.
+    \label{eq:potencial-gravitatorio-particula}
 \end{equation}
 
 \noindent Vale la pena notar que en la ecuación
@@ -141,13 +142,18 @@ gravitatorio pueden expresarse como:
 \begin{align}
     g_x(\mathbf{p}) =&
         - G \int\limits_\Gamma \rho(\mathbf{q})
-        \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^2} \text{d}v, \\
+        \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
+    \label{eq:gx-integral}
+    \\
     g_y(\mathbf{p}) =&
         - G \int\limits_\Gamma \rho(\mathbf{q})
-        \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^2} \text{d}v, \\
+        \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
+    \label{eq:gy-integral}
+    \\
     g_z(\mathbf{p}) =&
         - G \int\limits_\Gamma \rho(\mathbf{q})
-        \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^2} \text{d}v,
+        \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
+    \label{eq:gz-integral}
 \end{align}
 
 \noindent donde $\mathbf{q} = (x', y', z')$.
@@ -173,14 +179,18 @@ expresar las componentes diagonales del tensor de la siguiente manera
         \frac{3(x - x')^2}{|\mathbf{p} - \mathbf{q}|^5}
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
         \right]
-        \text{d}v, \\
+        \text{d}v,
+    \label{eq:gxx-integral}
+    \\
     g_{yy}(\mathbf{p}) =&
         G \int\limits_\Gamma \rho(\mathbf{q})
         \left[
         \frac{3(y - y')^2}{|\mathbf{p} - \mathbf{q}|^5}
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
         \right]
-        \text{d}v, \\
+        \text{d}v,
+    \label{eq:gyy-integral}
+    \\
     g_{zz}(\mathbf{p}) =&
         G \int\limits_\Gamma \rho(\mathbf{q})
         \left[
@@ -188,7 +198,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
         \right]
         \text{d}v,
-    \label{eq:componentes-diagonales-tensor}
+    \label{eq:gzz-integral}
 \end{align}
 
 \noindent mientras que las componentes no diagonales pueden expresarse como:
@@ -198,20 +208,25 @@ expresar las componentes diagonales del tensor de la siguiente manera
     g_{yx}(\mathbf{p}) =&
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(x - x')(y - y')}{|\mathbf{p} - \mathbf{q}|^5}
-        \text{d}v, \\
+        \text{d}v,
+    \label{eq:gxy-integral}
+    \\
     g_{xz}(\mathbf{p}) =
     g_{zx}(\mathbf{p}) =&
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(x - x')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
-        \text{d}v, \\
+        \text{d}v,
+    \label{eq:gxz-integral}
+    \\
     g_{yz}(\mathbf{p}) =
     g_{zy}(\mathbf{p}) =&
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(y - y')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
         \text{d}v.
+    \label{eq:gyz-integral}
 \end{align}
 
-A partir de las ecuaciones \ref{eq:componentes-diagonales-tensor} podemos
+A partir de las ecuaciones~\ref{eq:gxx-integral}--\ref{eq:gzz-integral} podemos
 calcular el Laplaciano del potencial gravitatorio:
 
 \begin{equation}
@@ -238,12 +253,13 @@ un \emph{campo harmónico}
 El cálculo de los efectos gravitatorios de un determinado cuerpo sobre uno
 o más puntos de observación se suele denominar modelado directo (\emph{forward
 modelling} en inglés).
-Aunque las expresiones del potencial gravitatorio y las componentes de su
-gradiente en las
-ecuaciones~\ref{eq:potencial-gravitatorio-integral} y
-\ref{eq:componentes-aceleracion-gravitatoria} aparentan ser sencillas, el
-cómputo de estas magnitudes para una geometría dada no resulta un problema
-trivial.
+Aunque las expresiones del potencial gravitatorio
+(ec.~\ref{eq:potencial-gravitatorio-integral}),
+las componentes de su gradiente
+(ecs.~\ref{eq:gx-integral}--\ref{eq:gz-integral})
+y de su tensor (ecs.~\ref{eq:gxx-integral}--\ref{eq:gzz-integral}
+aparentan ser sencillas, el cómputo de estas magnitudes para una geometría dada
+no resulta un problema trivial.
 Solo existen soluciones analíticas a dichas expresiones para determinadas
 geometrías sencillas o que guardan algún tipo de simetría.
 
@@ -252,6 +268,83 @@ tres tipos de geometrías: masas puntuales, prismas rectangulares y prismas
 esféricos o \emph{tesseroides}.
 
 \subsection{Masas puntuales}
+
+La distribución de densidades de una masa puntual puede expresarse
+sencillamente mediante una Delta de Dirac \citep{vladimirov1979}:
+
+\begin{equation}
+    \rho(\mathbf{q}) = m \, \delta(\mathbf{q} - \mathbf{q'}),
+\end{equation}
+
+\noindent donde $\mathbf{q}$ y $m$ son la posición y la masa de la partícula,
+respectivamente.
+Reemplazando esta expresión en la
+ecuación~\ref{eq:potencial-gravitatorio-integral}, obtenemos el potencial
+gravitatorio generado por una partícula:
+
+\begin{equation}
+    V(\mathbf{p}) =
+        G \int\limits_\Gamma
+        m \frac{\delta(\mathbf{q} - \mathbf{q'})}{|\mathbf{p} - \mathbf{q'}|}
+        \text{d}v =
+        \frac{G m}{|\mathbf{p} - \mathbf{q}|},
+    \label{eq:potencial-masa-puntual}
+\end{equation}
+
+\noindent de acuerdo con la expresión del potencial de la
+ecuación~\ref{eq:potencial-gravitatorio-particula}.
+
+Realizando el mismo reemplazos en las ecuaciones correspondientes a las
+componentes del gradiente (ecs.~\ref{eq:gx-integral}--\ref{eq:gz-integral})
+arribamos a las siguientes expresiones:
+
+\begin{align}
+    g_x(\mathbf{p}) =&
+        - G m
+        \frac{x - x'}{|\mathbf{p} - \mathbf{q}|^3},
+    \label{eq:gx-particula}
+    \\
+    g_y(\mathbf{p}) =&
+        - G m
+        \frac{y - y'}{|\mathbf{p} - \mathbf{q}|^3},
+    \label{eq:gy-particula}
+    \\
+    g_z(\mathbf{p}) =&
+        - G m
+        \frac{z - z'}{|\mathbf{p} - \mathbf{q}|^3}.
+    \label{eq:gz-particula}
+\end{align}
+
+A la hora de realizar el cómputo de los campos gravitatorios de masas
+puntuales, las posiciones de las partículas como de los puntos de observación
+pueden venir dados en diferentes sistemas de coordenadas.
+
+\subsubsection{Coordenadas Cartesianas}
+
+En el caso de que la posición de la partícula venga dada por el vector
+$\mathbf{q} = (x', y', z')$ y el punto de observación por el vector
+$\mathbf{p} = (x, y, z)$ definidos en el mismo sistema de ejes Cartesianos, el
+módulo de
+$\mathbf{p} - \mathbf{q}$ se calcula sencillamente bajo la norma L$_2$:
+
+\begin{equation}
+    | \mathbf{p} - \mathbf{q} | = \sqrt{
+        (x - x')^2 + (y - y')^2 + (z - z')^2
+    }.
+\end{equation}
+
+Dado que los numeradores en las
+ecuaciones~\ref{eq:gx-particula}--\ref{eq:gz-particula} resultan triviales en
+coordenadas Cartesianas, el cómputo del potencial y las componentes de su
+gradiente se puede realizar de manera sencilla.
+
+\subsubsection{Coordenadas esféricas}
+
+Consideremos que las posiciones del punto de observación y de la partícula
+vienen dados en un sistema de coordenadas esféricas definido por las
+direcciones radial ($r$), longitudinal ($\lambda$) y latitudinal ($\phi$).
+
+
 
 \subsection{Prismas rectangulares}
 
