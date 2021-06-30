@@ -8,19 +8,19 @@ a la presencia de otra masa $m$ situada en la posición $\mathbf{q}$. Esta
 fuerza puede expresarse como:
 
 \begin{equation}
-    \mathbf{F} = - G \frac{m_p m}{r^2} \mathbf{\hat{r}},
+    \mathbf{F} =
+        - G \frac{m_p m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}),
 \end{equation}
 
 \noindent donde $G = 6.67430 \times 10^{-11} \text{m}^3 \text{kg}^{-1}
-\text{s}^{-2}$ es la constante de gravitación universal,
-$\mathbf{r} = \mathbf{p} - \mathbf{q}$ es el vector que une $\mathbf{q}$ con
-$\mathbf{p}$, y $\mathbf{\hat{r}}$ es el versor asociado a $\mathbf{r}$
+\text{s}^{-2}$ es la constante de gravitación universal
 (Fig.~\ref{fig:potencial-gravitatorio}a).
 Aplicando la segunda Ley de Newton, se deduce que la masa $m_p$ siente una
 aceleración gravitatoria $\mathbf{g}$:
 
 \begin{equation}
-    \mathbf{g} = - \frac{G m}{r^2} \mathbf{\hat{r}}.
+    \mathbf{g} =
+        - \frac{G m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}).
     \label{eq:aceleracion-newton}
 \end{equation}
 
@@ -31,7 +31,8 @@ partícula localizada en un punto $\mathbf{p}$ debido a la presencia de la
 partícula $m$:
 
 \begin{equation}
-    \mathbf{g}(\mathbf{p}) = - \frac{G m}{r^2} \mathbf{\hat{r}}.
+    \mathbf{g}(\mathbf{p}) =
+        - \frac{G m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}).
 \end{equation}
 
 Se puede demostrar que la atracción gravitatoria $\mathbf{g}$ define un campo
@@ -52,7 +53,7 @@ denominaremos \emph{potencial gravitatorio}:
 \noindent donde
 
 \begin{equation}
-    V(\mathbf{p}) = G \frac{m}{r}.
+    V(\mathbf{p}) = G \frac{m}{|\mathbf{p} - \mathbf{q}|}.
     \label{eq:potencial-gravitatorio-particula}
 \end{equation}
 
@@ -67,8 +68,7 @@ literatura sobre Geofísica y Geodesia
     \includegraphics[width=\linewidth]{figs/gravity-potentials.pdf}
     \caption{
         (a)~Masas puntuales $m_p$ y $m$ localizadas en $\mathbf{p}$
-        y $\mathbf{q}$, respectivamente. El vector $\mathbf{r}$ se define como
-        $\mathbf{p} - \mathbf{q}$.
+        y $\mathbf{q}$, respectivamente.
         (b)~Distribución de masa $\Gamma$, diferencial de masa $\text{d}m$
         ubicado en el punto $\mathbf{q}$.
     }
