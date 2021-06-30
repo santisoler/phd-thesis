@@ -318,6 +318,12 @@ arribamos a las siguientes expresiones:
 A la hora de realizar el cómputo de los campos gravitatorios de masas
 puntuales, las posiciones de las partículas como de los puntos de observación
 pueden venir dados en diferentes sistemas de coordenadas.
+En el caso de necesitar modelar cualquier conjunto de masas situadas bajo la
+superficie terrestre, resulta natural utilizar coordenadas esféricas tanto para
+las posiciones de las partículas como para los puntos de observación.
+Sin embargo, es muy común trabajar sobre zonas de estudio con dimensiones
+acotadas, bajo las cuales la aproximación de tierra plana es suficiente. En
+estos casos es posible trabajar en coordenadas Cartesianas.
 
 \subsubsection{Coordenadas Cartesianas}
 
@@ -341,9 +347,143 @@ gradiente se puede realizar de manera sencilla.
 \subsubsection{Coordenadas esféricas}
 
 Consideremos que las posiciones del punto de observación y de la partícula
-vienen dados en un sistema de coordenadas esféricas definido por las
-direcciones radial ($r$), longitudinal ($\lambda$) y latitudinal ($\phi$).
+vienen dados en un sistema de coordenadas esféricas. Para ello vamos a definir
+un sistema de referencia \emph{geocéntrico} $\{X, Y, Z\}$ y a partir del mismo
+un sistema de coordenadas esféricas $\{r, \lambda, \phi\}$, donde $r$ es la
+posición \emph{radial}, $\lambda$ la posición \emph{longitudinal} y $\phi$ la
+posición \emph{latitudinal} (Fig.~\ref{fig:spherical-coordinates}).
+Cualquier punto dado por las coordenadas esféricas $(r, \lambda, \phi)$ se
+puede expresar en coordenadas Cartesianas geocéntricas bajo las siguientes
+relaciones:
 
+\begin{equation}
+    \begin{cases}
+        X = r \cos\lambda \cos{\phi} \\
+        Y = r \sin\lambda \cos{\phi} \\
+        Z = r \sin{\phi},
+    \end{cases}
+\end{equation}
+
+\noindent donde $r \in [0, \infty)$, $\lambda \in (-\pi, \pi]$ y
+$\phi \in [-\pi/2, \pi/2]$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/spherical-coordinates.pdf}
+    \caption{
+        Masa puntual $m$ ubicada en la posición $\mathbf{q}$ y punto de
+        observación situado en $\mathbf{p}$.
+        Se define un sistema de referencia Cartesiano \emph{geocéntrico} $X, Y,
+        Z$ bajo el cual se considera un sistema de coordenadas esféricas dadas
+        por la distancia radial ($r$), ángulo longitudinal ($\lambda$) y ángulo
+        latitudinal ($\phi$).
+        En el punto $\mathbf{p}$ se define un sistema \emph{local} de
+        coordenadas Cartesiano: el eje $x$ apunta hacia el Este,
+        el eje $y$ hacia el Norte geométrico y el eje $z$ en la dirección
+        radial.
+        Se define a $\psi$ como el ángulo descripto por los vectores
+        $\mathbf{p}$ y $\mathbf{q}$, y $\alpha$ al ángulo azimutal de
+        $-(\mathbf{p} - \mathbf{q})$ sobre el sistema \emph{local}.
+    }
+    \label{fig:spherical-coordinates}
+\end{figure}
+
+El potencial gravitatorio que genera la partícula $m$ sobre el punto de
+observación $\mathbf{p}$ puede calcularse mediante la
+ecuación~\ref{eq:potencial-gravitatorio-particula}.
+Considerando que los vectores $\mathbf{p}$ y $\mathbf{q}$ vienen definidos por
+las coordenadas esféricas $(r, \lambda, \phi)$ y $(r', \lambda', \phi')$,
+respectivamente, la distancia Euclidiana entre ellos puede expresarse como
+\citep{grombein2013}:
+
+\begin{equation}
+    |\mathbf{p} - \mathbf{q}| = \sqrt{
+        r^2 + r'^2 - 2rr'\cos\psi
+    },
+    \label{eq:distance-spherical}
+\end{equation}
+
+\noindent donde $\psi$ es el ángulo que describen los vectores $\mathbf{p}$
+y $\mathbf{q}$:
+
+\begin{equation}
+    \cos \psi =
+        \sin \phi \sin \phi' + \cos \phi \cos \phi' \cos(\lambda - \lambda').
+    \label{eq:cosphi}
+\end{equation}
+
+La determinación de las componentes del gradiente del potencial gravitatorio
+hace necesario que definamos las direcciones ortogonales $x$, $y$ y $z$ a lo
+largo de las cuales se calculan las derivadas parciales de $V(\mathbf{p})$.
+La elección más natural es obtener el gradiente con respecto a un sistema de
+coordenadas \emph{local} $\{x, y, z\}$ \citep{grombein2013,uieda2016} donde $x$
+se orienta en la dirección longitudinal (Este), $y$ en la dirección latitudinal
+(Norte) y $z$ en la dirección radial.
+
+Los numeradores de las ecuaciones~\ref{eq:gx-particula}--\ref{eq:gz-particula}
+pueden expresarse en términos de las coordenadas esféricas como:
+
+\begin{align}
+    \Delta x =& - (x - x') = r' \sin\psi \cos\alpha
+    \label{eq:delta-x-raw}
+    \\
+    \Delta y =& - (y - y') = r' \sin\psi \sin\alpha
+    \label{eq:delta-y-raw}
+    \\
+    \Delta z =& - (z - z') = r'\cos\psi - r,
+    \label{eq:delta-z-raw}
+\end{align}
+
+\noindent donde $\alpha$ es el ángulo azimutal del vector
+$-(\mathbf{p} - \mathbf{q})$ sobre el sistema de coordenadas \emph{locales}.
+Haciendo uso de las siguientes relaciones de trigonometría esférica
+\citep[][p.~113]{heiskanen1967}:
+
+\begin{align}
+    \sin\psi \cos\alpha =&
+        \cos\phi \sin\phi' - \sin\phi \cos\phi' \cos(\lambda - \lambda') \\
+    \sin\psi \sin\alpha =&
+        \cos\phi' \sin(\lambda - \lambda'),
+\end{align}
+
+\noindent podemos expresar las ecuaciones~\ref{eq:delta-x-raw},
+\ref{eq:delta-y-raw} y \ref{eq:delta-z-raw} como \citep{grombein2013}:
+
+\begin{align}
+    \Delta x =& r' \sin\psi \left[
+        \cos\phi \sin\phi' - \sin\phi \cos\phi' \cos(\lambda - \lambda')
+        \right]
+    \label{eq:delta-x}
+    \\
+    \Delta y =& r' \cos\phi' \sin(\lambda - \lambda')
+    \label{eq:delta-y}
+    \\
+    \Delta z =& r'\cos\psi - r.
+    \label{eq:delta-z}
+\end{align}
+
+De esta forma podemos expresar las componentes del gradiente del potencial
+gravitatorio generado por una masa puntual en coordenadas esféricas como:
+
+\begin{align}
+    g_x(\mathbf{p}) =&
+        G m
+        \frac{\Delta x}{|\mathbf{p} - \mathbf{q}|^3},
+    \label{eq:gx-particula-spherical}
+    \\
+    g_y(\mathbf{p}) =&
+        G m
+        \frac{\Delta y}{|\mathbf{p} - \mathbf{q}|^3},
+    \label{eq:gy-particula-spherical}
+    \\
+    g_z(\mathbf{p}) =&
+        G m
+        \frac{\Delta z}{|\mathbf{p} - \mathbf{q}|^3},
+    \label{eq:gz-particula-spherical}
+\end{align}
+
+\noindent haciendo uso de las ecuaciones~\ref{eq:distance-spherical},
+\ref{eq:cosphi}, \ref{eq:delta-x}, \ref{eq:delta-y} y \ref{eq:delta-z}.
 
 
 \subsection{Prismas rectangulares}
