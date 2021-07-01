@@ -140,17 +140,17 @@ en~\ref{eq:componentes-aceleracion-gravitatoria}, las componentes del gradiente
 gravitatorio pueden expresarse como:
 
 \begin{align}
-    g_x(\mathbf{p}) =&
+    g_x(\mathbf{p}) &=
         - G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
     \label{eq:gx-integral}
     \\
-    g_y(\mathbf{p}) =&
+    g_y(\mathbf{p}) &=
         - G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
     \label{eq:gy-integral}
     \\
-    g_z(\mathbf{p}) =&
+    g_z(\mathbf{p}) &=
         - G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
     \label{eq:gz-integral}
@@ -173,7 +173,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
 \citep{grombein2013}:
 
 \begin{align}
-    g_{xx}(\mathbf{p}) =&
+    g_{xx}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \left[
         \frac{3(x - x')^2}{|\mathbf{p} - \mathbf{q}|^5}
@@ -182,7 +182,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
         \text{d}v,
     \label{eq:gxx-integral}
     \\
-    g_{yy}(\mathbf{p}) =&
+    g_{yy}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \left[
         \frac{3(y - y')^2}{|\mathbf{p} - \mathbf{q}|^5}
@@ -191,7 +191,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
         \text{d}v,
     \label{eq:gyy-integral}
     \\
-    g_{zz}(\mathbf{p}) =&
+    g_{zz}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \left[
         \frac{3(z - z')^2}{|\mathbf{p} - \mathbf{q}|^5}
@@ -205,21 +205,21 @@ expresar las componentes diagonales del tensor de la siguiente manera
 
 \begin{align}
     g_{xy}(\mathbf{p}) =
-    g_{yx}(\mathbf{p}) =&
+    g_{yx}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(x - x')(y - y')}{|\mathbf{p} - \mathbf{q}|^5}
         \text{d}v,
     \label{eq:gxy-integral}
     \\
     g_{xz}(\mathbf{p}) =
-    g_{zx}(\mathbf{p}) =&
+    g_{zx}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(x - x')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
         \text{d}v,
     \label{eq:gxz-integral}
     \\
     g_{yz}(\mathbf{p}) =
-    g_{zy}(\mathbf{p}) =&
+    g_{zy}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(y - y')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
         \text{d}v.
@@ -299,17 +299,17 @@ componentes del gradiente (ecs.~\ref{eq:gx-integral}--\ref{eq:gz-integral})
 arribamos a las siguientes expresiones:
 
 \begin{align}
-    g_x(\mathbf{p}) =&
+    g_x(\mathbf{p}) &=
         - G m
         \frac{x - x'}{|\mathbf{p} - \mathbf{q}|^3},
     \label{eq:gx-particula}
     \\
-    g_y(\mathbf{p}) =&
+    g_y(\mathbf{p}) &=
         - G m
         \frac{y - y'}{|\mathbf{p} - \mathbf{q}|^3},
     \label{eq:gy-particula}
     \\
-    g_z(\mathbf{p}) =&
+    g_z(\mathbf{p}) &=
         - G m
         \frac{z - z'}{|\mathbf{p} - \mathbf{q}|^3}.
     \label{eq:gz-particula}
@@ -424,13 +424,13 @@ Los numeradores de las ecuaciones~\ref{eq:gx-particula}--\ref{eq:gz-particula}
 pueden expresarse en términos de las coordenadas esféricas como:
 
 \begin{align}
-    \Delta x =& - (x - x') = r' \sin\psi \cos\alpha
+    \Delta x &= - (x - x') = r' \sin\psi \cos\alpha
     \label{eq:delta-x-raw}
     \\
-    \Delta y =& - (y - y') = r' \sin\psi \sin\alpha
+    \Delta y &= - (y - y') = r' \sin\psi \sin\alpha
     \label{eq:delta-y-raw}
     \\
-    \Delta z =& - (z - z') = r'\cos\psi - r,
+    \Delta z &= - (z - z') = r'\cos\psi - r,
     \label{eq:delta-z-raw}
 \end{align}
 
@@ -440,9 +440,9 @@ Haciendo uso de las siguientes relaciones de trigonometría esférica
 \citep[][p.~113]{heiskanen1967}:
 
 \begin{align}
-    \sin\psi \cos\alpha =&
+    \sin\psi \cos\alpha &=
         \cos\phi \sin\phi' - \sin\phi \cos\phi' \cos(\lambda - \lambda') \\
-    \sin\psi \sin\alpha =&
+    \sin\psi \sin\alpha &=
         \cos\phi' \sin(\lambda - \lambda'),
 \end{align}
 
@@ -450,15 +450,15 @@ Haciendo uso de las siguientes relaciones de trigonometría esférica
 \ref{eq:delta-y-raw} y \ref{eq:delta-z-raw} como \citep{grombein2013}:
 
 \begin{align}
-    \Delta x =& r' \sin\psi \left[
+    \Delta x &= r' \sin\psi \left[
         \cos\phi \sin\phi' - \sin\phi \cos\phi' \cos(\lambda - \lambda')
         \right]
     \label{eq:delta-x}
     \\
-    \Delta y =& r' \cos\phi' \sin(\lambda - \lambda')
+    \Delta y &= r' \cos\phi' \sin(\lambda - \lambda')
     \label{eq:delta-y}
     \\
-    \Delta z =& r'\cos\psi - r.
+    \Delta z &= r'\cos\psi - r.
     \label{eq:delta-z}
 \end{align}
 
@@ -466,17 +466,17 @@ Las componentes del gradiente del potencial gravitatorio generado por una masa
 puntual en coordenadas esféricas quedan determinadas de la siguiente manera:
 
 \begin{align}
-    g_x(\mathbf{p}) =&
+    g_x(\mathbf{p}) &=
         G m
         \frac{\Delta x}{|\mathbf{p} - \mathbf{q}|^3},
     \label{eq:gx-particula-spherical}
     \\
-    g_y(\mathbf{p}) =&
+    g_y(\mathbf{p}) &=
         G m
         \frac{\Delta y}{|\mathbf{p} - \mathbf{q}|^3},
     \label{eq:gy-particula-spherical}
     \\
-    g_z(\mathbf{p}) =&
+    g_z(\mathbf{p}) &=
         G m
         \frac{\Delta z}{|\mathbf{p} - \mathbf{q}|^3},
     \label{eq:gz-particula-spherical}
