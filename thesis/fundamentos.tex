@@ -501,6 +501,214 @@ puntual en coordenadas esféricas quedan determinadas de la siguiente manera:
 
 \subsection{Prismas rectangulares}
 
+A la hora de modelar estructuras tridimensionales subyacentes a la superficie
+terrestre, los primas rectangulares se presentan como la geometría a elección
+por parte de muchos autores y muchas autoras \citep{}.
+Una de las razones recae en la simpleza de la geometría, aunque una que no
+debemos obviar es el hecho de que existen soluciones analíticas a las
+ecuaciones de los campos gravitatorios generados por prismas rectangulares
+\citep{nagy2000,nagy2002}.
+
+Consideremos un prisma rectangular de densidad homogénea $\rho$ cuyos vértices
+se encuentran determinados por las coordenadas $X_1, X_2, Y_1, Y_2, Z_1, Z_2$
+definidas en un sistema de ejes Cartesianos ${X, Y, Z}$
+(Fig.~\ref{fig:rectangular-prism}).
+El potencial gravitatorio que genera el prisma sobre un punto de observación
+$\mathbf{p} = (X, Y, Z)$ definido en el sistema ${X, Y, Z}$ se puede
+calcular mediante la ecuación~\ref{eq:potencial-gravitatorio-integral},
+reemplazando el dominio de integración:
+
+\begin{equation}
+    V(\mathbf{p}) =
+    G \rho
+    \int\limits_{X_1}^{X_2}
+    \int\limits_{Y_1}^{Y_2}
+    \int\limits_{Z_1}^{Z_2}
+    \frac{\text{d}X' \text{d}Y' \text{d}Z'}{|\mathbf{p} - \mathbf{q}|},
+\end{equation}
+
+\noindent donde
+
+\begin{equation}
+    |\mathbf{p} - \mathbf{q}| = \sqrt{
+        (X - X')^2 + (Y - Y')^2 + (Z - Z')^2
+    }.
+\end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figs/rectangular-prism.pdf}
+    \caption{
+        Prisma rectangular y punto de observación $\mathbf{p}$ definidos en un
+        sistema de coordenadas Cartesianas $\{X, Y, Z\}$. Se define un sistema
+        de coordenadas Cartesianas $\{x, y, z\}$ con origen en el punto de
+        observación $\mathbf{p}$ y con ejes paralelos a $X, Y, Z$,
+        respectivamente.
+    }
+    \label{fig:rectangular-prism}
+\end{figure}
+
+Con el objetivo de simplificar los cálculos, definimos un sistema de
+coordenadas Cartesianas $\{x, y, z\}$ cuyo origen se encuentra en el punto de
+observación $\mathbf{p}$ y sus ejes son paralelos a los del sistema $\{X, Y,
+Z\}$, respectivamente (Fig.~\ref{fig:rectangular-prism}).
+Los vértices del prisma vendrán dados por las coordenadas
+$x_1, x_2, y_1, y_2, z_1, z_2$ en el nuevo sistema de referencia, es decir:
+
+\begin{equation}
+    \begin{aligned}
+        x_1 &= X_1 - X, & x_2 &= X_2 - X, \\
+        y_1 &= Y_1 - Y, & y_2 &= Y_2 - Y, \\
+        z_1 &= Z_1 - Z, & z_2 &= Z_2 - Z.
+    \end{aligned}
+\end{equation}
+
+Bajo este nuevo sistema de referencia, el potencial gravitatorio se puede
+expresar como:
+
+\begin{equation}
+    V(\mathbf{p}) =
+    G \rho
+    \int\limits_{x_1}^{x_2}
+    \int\limits_{y_1}^{y_2}
+    \int\limits_{z_1}^{z_2}
+    \frac{\text{d}x' \text{d}y' \text{d}z'}{\sqrt{{x'}^2 + {y'}^2 + {z'}^2}}.
+\end{equation}
+
+El resultado de esta integración posee la siguiente forma
+\citep{nagy2000,nagy2002}:
+
+\begin{equation}
+    \begin{split}
+        V(\mathbf{p}) =
+        G \rho
+        \Bigg[ &
+            xy \ln (z + l) + yz \ln(x + l) + zx \ln(y + l) \\
+               &
+            - \frac{x^2}{2} \arctan \frac{yz}{xl}
+            - \frac{y^2}{2} \arctan \frac{zx}{yl}
+            - \frac{z^2}{2} \arctan \frac{xy}{zl}
+        \Bigg]
+        \Bigg|_{x_1}^{x_2}
+        \Bigg|_{y_1}^{y_2}
+        \Bigg|_{z_1}^{z_2},
+    \end{split}
+    \label{eq:potencial-prismas-analitico}
+\end{equation}
+
+\noindent donde
+
+\begin{equation}
+    l = \sqrt{x^2 + y^2 + z^2}.
+\end{equation}
+
+Reemplazando todos los límites del dominio de integración, obtenemos un total
+de 48 términos.
+A la hora de evaluarlos numéricamente hay que tener en cuenta que la solución
+analítica de la ecuación~\ref{eq:potencial-prismas-analitico} no es
+continua en todo $\mathbb{R}^3$, particularmente en los casos en los que el
+punto de observación se encuentra sobre alguno de los vértices, aristas o caras
+del prisma ($x_{1,2}=0$, $y_{1,2}=0$ ó $z_{1,2}=0$). Sin embargo el potencial
+$V(\mathbf{p})$ sí lo es.
+Para solucionar esto, es necesario reemplazar aquellos términos que no pueden
+ser evaluados por sus límites cuando $(x, y, z) \rightarrow (0, 0, 0)$
+\citep{nagy2000}.
+Por ejemplo:
+
+\begin{equation}
+    \lim_{(x, y, z)\rightarrow (0, 0, 0)} xz \ln(z + r) = 0.
+\end{equation}
+
+Una solución es definir una nueva función $\safelog(x)$ de la siguiente
+manera:
+
+\begin{equation}
+    \safelog(x) =
+    \begin{cases}
+        \ln(x) & \quad x \ge x_\text{umbral} \\
+        0      & \quad x < x_\text{umbral}
+    \end{cases}
+    \label{eq:safe_log}
+\end{equation}
+
+\noindent donde $x_\text{umbral}$ es un valor muy pequeño del argumento de
+$\safelog$ a partir del cual consideramos que la función debe ser evaluada en
+su límite en cero.
+La elección de este valor dependerá de las dimensiones del problema que estamos
+resolviendo.
+En el caso de un modelado directo geofísico, en el cual las dimensiones de los
+primas vienen dadas por varios metros, podemos asumir un valor de
+$x_\text{umbral} = 10^{-10}$m \citep{harmonica2021}.
+
+Por otro lado, la evaluación de la función $\arctan$ requiere ciertos cuidados.
+Para que el potencial $V(\mathbf{p})$ satisfaga la ecuación de Poisson
+(ec.~\ref{eq:potencial-poisson}), es necesario utilizar la siguiente forma de
+la función $\safearctan(y, x)$ \citep{fukushima2020}:
+
+\begin{equation}
+    \safearctan(y, x) =
+    \begin{cases}
+        \arctan(y / x) & \quad x \ne 0 \\
+        \pi / 2        & \quad x = 0,\, y > 0 \\
+        -\pi / 2       & \quad x = 0,\, y < 0 \\
+        0              & \quad x = 0,\, y = 0.
+    \end{cases}
+    \label{eq:safe_arctan}
+\end{equation}
+
+Haciendo uso de las funciones $\safelog$ y $\safearctan$ definidas en las
+ecuaciones~\ref{eq:safe_log} y \ref{eq:safe_arctan}, respectivamente, el
+potencial gravitatorio generado por un prisma rectangular en cualquier punto de
+observación $\mathbf{p}$ puede ser numéricamente calculado mediante:
+
+\begin{equation}
+    \begin{split}
+        V(\mathbf{p}) =
+        G \rho
+        \Bigg[ &
+            xy \safelog (z + l)
+            + yz \safelog(x + l)
+            + zx \safelog(y + l)
+           - \frac{x^2}{2} \safearctan(yz, xl)
+                \\&
+           - \frac{y^2}{2} \safearctan(zx, yl)
+           - \frac{z^2}{2} \safearctan(xy, zl)
+        \Bigg]
+        \Bigg|_{x_1}^{x_2}
+        \Bigg|_{y_1}^{y_2}
+        \Bigg|_{z_1}^{z_2}.
+    \end{split}
+    \label{eq:potencial-prismas-numerico}
+\end{equation}
+
+De manera análoga, podemos calcular las componentes del gradiente del potencial
+gravitatorio generado por un prisma rectangular haciendo uso de las siguientes
+expresiones \citep{nagy2000,nagy2002}:
+
+\begin{align}
+    g_x(\mathbf{p}) =&
+        \Big[
+            y \safelog(z + l) + z \safelog(y + l)  - x \safearctan(yz, xl)
+        \Big]
+        \Big|_{x_1}^{x_2}
+        \Big|_{y_1}^{y_2}
+        \Big|_{z_1}^{z_2} \\
+    g_y(\mathbf{p}) =&
+        \Big[
+            z \safelog(x + l) + x \safelog(z + l)  - y \safearctan(zx, yl)
+        \Big]
+        \Big|_{x_1}^{x_2}
+        \Big|_{y_1}^{y_2}
+        \Big|_{z_1}^{z_2} \\
+    g_z(\mathbf{p}) =&
+        \Big[
+            x \safelog(y + l) + y \safelog(x + l) - z \safearctan(xy, zl)
+        \Big]
+        \Big|_{x_1}^{x_2}
+        \Big|_{y_1}^{y_2}
+        \Big|_{z_1}^{z_2}.
+\end{align}
+
 \subsection{Tesseroides}
 
 % =============================================================================
