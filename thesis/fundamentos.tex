@@ -69,7 +69,7 @@ literatura sobre Geofísica y Geodesia
     \caption{
         (a)~Masas puntuales $m_p$ y $m$ localizadas en $\mathbf{p}$
         y $\mathbf{q}$, respectivamente.
-        (b)~Distribución de masa $\Gamma$, diferencial de masa $\text{d}m$
+        (b)~Distribución de masa $\Gamma$, diferencial de masa $\diff m$
         ubicado en el punto $\mathbf{q}$.
     }
     \label{fig:potencial-gravitatorio}
@@ -78,12 +78,12 @@ literatura sobre Geofísica y Geodesia
 
 \subsection{Potencial gravitatorio producido por una distribución de masa}
 
-Partiendo de que un diferencial de masa $\text{d}m$ ubicado en $\mathbf{q}$
-genera un potencial gravitatorio $\text{d}V$ en cualquier punto $\mathbf{p}$
+Partiendo de que un diferencial de masa $\diff m$ ubicado en $\mathbf{q}$
+genera un potencial gravitatorio $\diff V$ en cualquier punto $\mathbf{p}$
 (Fig.~\ref{fig:potencial-gravitatorio}b):
 
 \begin{equation}
-    \text{d}V(\mathbf{p}) = \frac{G}{|\mathbf{p} - \mathbf{q}|} \text{d}m,
+    \diff V(\mathbf{p}) = \frac{G}{|\mathbf{p} - \mathbf{q}|} \diff m,
 \end{equation}
 
 \noindent el potencial gravitatorio generado por una distribución de masa
@@ -91,23 +91,23 @@ $\Gamma$ puede calcularse integrando los diferenciales de masa que lo componen:
 
 \begin{equation}
     V(\mathbf{p}) =
-        G \int\limits_\Gamma \frac{\text{d}m}{|\mathbf{p} - \mathbf{q}|} .
+        G \int\limits_\Gamma \frac{\diff m}{|\mathbf{p} - \mathbf{q}|} .
 \end{equation}
 
 Si reescribimos los diferenciales de masa como
 
 \begin{equation}
-    \text{d}m = \rho(\mathbf{q}) \text{d}v,
+    \diff m = \rho(\mathbf{q}) \diff v,
 \end{equation}
 
 \noindent donde $\rho(\mathbf{q})$ es la densidad de masa de la distribución
-$\Gamma$ en el punto $\mathbf{q}$ y $\text{d}v$ es el diferencial de volumen,
+$\Gamma$ en el punto $\mathbf{q}$ y $\diff v$ es el diferencial de volumen,
 el potencial se puede expresar como:
 
 \begin{equation}
     V(\mathbf{p}) =
         G \int\limits_\Gamma
-        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|} \text{d}v.
+        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|} \diff v.
     \label{eq:potencial-gravitatorio-integral}
 \end{equation}
 
@@ -142,17 +142,17 @@ gravitatorio pueden expresarse como:
 \begin{align}
     g_x(\mathbf{p}) &=
         - G \int\limits_\Gamma \rho(\mathbf{q})
-        \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
+        \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
     \label{eq:gx-integral}
     \\
     g_y(\mathbf{p}) &=
         - G \int\limits_\Gamma \rho(\mathbf{q})
-        \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
+        \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
     \label{eq:gy-integral}
     \\
     g_z(\mathbf{p}) &=
         - G \int\limits_\Gamma \rho(\mathbf{q})
-        \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^3} \text{d}v,
+        \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
     \label{eq:gz-integral}
 \end{align}
 
@@ -179,7 +179,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
         \frac{3(x - x')^2}{|\mathbf{p} - \mathbf{q}|^5}
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
         \right]
-        \text{d}v,
+        \diff v,
     \label{eq:gxx-integral}
     \\
     g_{yy}(\mathbf{p}) &=
@@ -188,7 +188,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
         \frac{3(y - y')^2}{|\mathbf{p} - \mathbf{q}|^5}
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
         \right]
-        \text{d}v,
+        \diff v,
     \label{eq:gyy-integral}
     \\
     g_{zz}(\mathbf{p}) &=
@@ -197,7 +197,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
         \frac{3(z - z')^2}{|\mathbf{p} - \mathbf{q}|^5}
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
         \right]
-        \text{d}v,
+        \diff v,
     \label{eq:gzz-integral}
 \end{align}
 
@@ -208,21 +208,21 @@ expresar las componentes diagonales del tensor de la siguiente manera
     g_{yx}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(x - x')(y - y')}{|\mathbf{p} - \mathbf{q}|^5}
-        \text{d}v,
+        \diff v,
     \label{eq:gxy-integral}
     \\
     g_{xz}(\mathbf{p}) =
     g_{zx}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(x - x')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
-        \text{d}v,
+        \diff v,
     \label{eq:gxz-integral}
     \\
     g_{yz}(\mathbf{p}) =
     g_{zy}(\mathbf{p}) &=
         G \int\limits_\Gamma \rho(\mathbf{q})
         \frac{3(y - y')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
-        \text{d}v.
+        \diff v.
     \label{eq:gyz-integral}
 \end{align}
 
@@ -299,7 +299,7 @@ gravitatorio generado por una partícula:
     V(\mathbf{p}) =
         G \int\limits_\Gamma
         m \frac{\delta(\mathbf{q} - \mathbf{q'})}{|\mathbf{p} - \mathbf{q'}|}
-        \text{d}v =
+        \diff v =
         \frac{G m}{|\mathbf{p} - \mathbf{q}|},
     \label{eq:potencial-masa-puntual}
 \end{equation}
@@ -524,7 +524,7 @@ reemplazando el dominio de integración:
     \int\limits_{X_1}^{X_2}
     \int\limits_{Y_1}^{Y_2}
     \int\limits_{Z_1}^{Z_2}
-    \frac{\text{d}X' \text{d}Y' \text{d}Z'}{|\mathbf{p} - \mathbf{q}|},
+    \frac{\diff X' \diff Y' \diff Z'}{|\mathbf{p} - \mathbf{q}|},
 \end{equation}
 
 \noindent donde
@@ -572,7 +572,7 @@ expresar como:
     \int\limits_{x_1}^{x_2}
     \int\limits_{y_1}^{y_2}
     \int\limits_{z_1}^{z_2}
-    \frac{\text{d}x' \text{d}y' \text{d}z'}{\sqrt{{x'}^2 + {y'}^2 + {z'}^2}}.
+    \frac{\diff x' \diff y' \diff z'}{\sqrt{{x'}^2 + {y'}^2 + {z'}^2}}.
 \end{equation}
 
 El resultado de esta integración posee la siguiente forma
@@ -750,7 +750,7 @@ expresado como la siguiente integral volumétrica
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
         \frac{\kappa}{|\mathbf{p} - \mathbf{q}|}
-        \text{d}r' \text{d}\lambda' \text{d}\phi',
+        \diff r' \diff \lambda' \diff \phi',
     \label{eq:potencial-tesseroide}
 \end{equation}
 
@@ -781,7 +781,7 @@ parciales con respecto al sistema de coordenadas \emph{local}:
         \int\limits_{\phi_1}^{\phi_2}
         \frac{\Delta x}{|\mathbf{p} - \mathbf{q}|^3}
         \kappa
-        \text{d}r' \text{d}\lambda' \text{d}\phi',
+        \diff r' \diff \lambda' \diff \phi',
     \label{eq:gx-tesseroide}
     \\
     g_y(\mathbf{p}) &=
@@ -791,7 +791,7 @@ parciales con respecto al sistema de coordenadas \emph{local}:
         \int\limits_{\phi_1}^{\phi_2}
         \frac{\Delta y}{|\mathbf{p} - \mathbf{q}|^3}
         \kappa
-        \text{d}r' \text{d}\lambda' \text{d}\phi',
+        \diff r' \diff \lambda' \diff \phi',
     \label{eq:gy-tesseroide}
     \\
     g_z(\mathbf{p}) &=
@@ -801,7 +801,7 @@ parciales con respecto al sistema de coordenadas \emph{local}:
         \int\limits_{\phi_1}^{\phi_2}
         \frac{\Delta z}{|\mathbf{p} - \mathbf{q}|^3}
         \kappa
-        \text{d}r' \text{d}\lambda' \text{d}\phi',
+        \diff r' \diff \lambda' \diff \phi',
     \label{eq:gz-tesseroide}
 \end{align}
 
