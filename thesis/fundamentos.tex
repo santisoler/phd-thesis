@@ -709,7 +709,180 @@ expresiones \citep{nagy2000,nagy2002}:
         \Big|_{z_1}^{z_2}.
 \end{align}
 
+
 \subsection{Tesseroides}
+
+En caso de querer realizar modelos directos de estructuras regionales,
+continentales o globales,
+El uso de prismas rectangulares en coordenadas Cartesianas no resulta la mejor
+opción, ya que no tienen en cuenta la curvatura del planeta Tierra.
+La mayoría de los modelos directos que sí lo hacen se definen en coordenadas
+esféricas geocéntricas y consisten en discretizar la Tierra en geometrías
+simples.
+Este es el caso de los tesseroides \citep{anderson1976}, también conocidos como
+prismas esféricos, los cuales se definen como el volumen comprendido entre dos
+esferas de radios distintos, dos meridianos de longitudes distintas y dos
+paralelos de distintas latitudes (Fig.~\ref{fig:tesseroid}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/tesseroid-coord-sys.pdf}
+    \caption{
+        Tesseroide (prisma esférico) en un sistema de coordenadas esféricas
+        geocéntricas, junto a un punto de cómputo situado en $\mathbf{p}$ y su
+        correspondiente sistema \emph{local} de coordenadas Cartesianas.
+        Obtenida de \citet{uieda2015}.
+    }
+    \label{fig:tesseroid}
+\end{figure}
+
+El potencial gravitatorio que genera un tesseroide de densidad uniforme $\rho$,
+definido por las coordenadas $r_1$, $r_2$, $\lambda_1$, $\lambda_2$, $\phi_1$
+y $\phi_2$, sobre un punto de observación $\mathbf{p}$ dado por las coordenadas
+esféricas $r$, $\lambda$ y $\phi$ se puede obtener aplicando estos límites de
+integración a la ecuación~\ref{eq:potencial-gravitatorio-integral}, quedando
+expresado como la siguiente integral volumétrica
+\citep{grombein2013,uieda2016}:
+
+\begin{equation}
+    V(\mathbf{p}) = G \rho
+        \int\limits_{r_1}^{r_2}
+        \int\limits_{\lambda_1}^{\lambda_2}
+        \int\limits_{\phi_1}^{\phi_2}
+        \frac{\kappa}{|\mathbf{p} - \mathbf{q}|}
+        \text{d}r' \text{d}\lambda' \text{d}\phi',
+    \label{eq:potencial-tesseroide}
+\end{equation}
+
+\noindent donde
+
+\begin{equation}
+    \kappa = {r'}^2 \cos \phi',
+    \label{eq:kappa}
+\end{equation}
+
+\noindent la distancia $|\mathbf{p} - \mathbf{q}|$ viene dada por la
+ecuación~\ref{eq:distance-spherical} y las coordenadas de integración $r'$,
+$\lambda'$ y $\phi'$ representan la posición $\mathbf{q}$ de cada volumen
+infinitesimal del tesseroide.
+
+Reemplazando los límites de integración del tesseroide en las ecuaciones
+\ref{eq:gx-integral}, \ref{eq:gy-integral} y \ref{eq:gz-integral} podemos
+obtener las componentes del gradiente del potencial gravitatorio generado por
+el tesseroide en el punto de observación $\mathbf{p}$ tomando las derivadas
+parciales con respecto al sistema de coordenadas \emph{local}:
+
+
+\begin{align}
+    g_x(\mathbf{p}) &=
+        G \rho
+        \int\limits_{r_1}^{r_2}
+        \int\limits_{\lambda_1}^{\lambda_2}
+        \int\limits_{\phi_1}^{\phi_2}
+        \frac{\Delta x}{|\mathbf{p} - \mathbf{q}|^3}
+        \kappa
+        \text{d}r' \text{d}\lambda' \text{d}\phi',
+    \label{eq:gx-tesseroide}
+    \\
+    g_y(\mathbf{p}) &=
+        G \rho
+        \int\limits_{r_1}^{r_2}
+        \int\limits_{\lambda_1}^{\lambda_2}
+        \int\limits_{\phi_1}^{\phi_2}
+        \frac{\Delta y}{|\mathbf{p} - \mathbf{q}|^3}
+        \kappa
+        \text{d}r' \text{d}\lambda' \text{d}\phi',
+    \label{eq:gy-tesseroide}
+    \\
+    g_z(\mathbf{p}) &=
+        G \rho
+        \int\limits_{r_1}^{r_2}
+        \int\limits_{\lambda_1}^{\lambda_2}
+        \int\limits_{\phi_1}^{\phi_2}
+        \frac{\Delta z}{|\mathbf{p} - \mathbf{q}|^3}
+        \kappa
+        \text{d}r' \text{d}\lambda' \text{d}\phi',
+    \label{eq:gz-tesseroide}
+\end{align}
+
+\noindent donde $\Delta x$, $\Delta y$ y $\Delta z$ vienen dadas por las
+ecuaciones~\ref{eq:delta-x}, \ref{eq:delta-y} y \ref{eq:delta-z},
+respectivamente.
+
+Las ecuaciones~\ref{eq:potencial-tesseroide}, \ref{eq:gx-tesseroide},
+\ref{eq:gy-tesseroide} y \ref{eq:gz-tesseroide} contienen integrales elípticas
+que no poseen solución analítica y deben ser aproximadas numéricamente.
+Existen dos principales métodos en la literatura para aproximar estas
+integrales: uno involucra expansiones en serie de Taylor
+\citep{heck2006,grombein2013} mientras que los otros hacen uso de la \ac{GLQ}
+\citep{asgharzadeh2007,wildpfeiffer2008,li2011,uieda2016,lin2018}.
+En el Capítulo~\ref{cha:tesseroids-variable-density} se detalla las razones por
+las cuales a lo largo de esta Tesis abordaremos la estrategia de \ac{GLQ}.
+
+La \Ac{GLQ} consiste en la aproximación de una integral por una suma ponderada
+del kernel de integración \citep[][p.~390]{hildebrand1987}:
+
+\begin{equation}
+    \int\limits_{-1}^1 f(x) \diff x \approx
+        \sum\limits_{i=1}^{N} W_i f(x_i),
+\end{equation}
+
+\noindent donde $N$ es el orden de la cuadratura,
+$x_i$ corresponden a las raíces del polinomio de Legendre $P_N(x)$ de grado $N$
+y $W_i$ son los pesos ponderados de cada término:
+
+\begin{equation}
+    W_i = \frac{2}{(1 - x_i^2) \Big[ P'_N(x_i) \Big]^2}.
+\end{equation}
+
+\noindent El polinomio de Legendre $P_N(x)$ y su primera derivada $P'_N(x)$ se
+pueden obtener mediante relaciones de recurrencia \citep[][p.~330]{hildebrand1987}:
+
+\begin{align}
+    &P_0(x) = 1 \\
+    &P_1(x) = x \\
+    &P_{m + 1}(x) = \frac{2m + 1}{m + 1} x P_m(x) - \frac{m}{m + 1}P_{m-1}(x).
+\end{align}
+
+La Tabla~\ref{tab:legendre-roots} muestra las raíces de los primeros polinomios
+de Legendre y sus respectivos pesos ponderados.
+
+\begin{table}
+    \centering
+    \caption{
+        Raíces de algunos polinomios de Legendre junto con los correspondientes
+        pesos ponderados a ser utilizados en la \ac{GLQ}
+        \citep[][p.~392]{hildebrand1987}.
+    }
+    \begin{tabular}{ccc}
+        \hline
+        Orden ($N$) & Raíces ($x_i$)                                     & Pesos ponderados ($W_i$)    \\
+        \hline
+        1     & 0                                                        & 2                           \\
+        2     & $\pm \frac{1}{\sqrt{3}}$                                 & 1                           \\
+        3     & 0                                                        & $\frac{8}{9}$               \\
+              & $\pm \sqrt{\frac{3}{5}}$                                 & $\frac{5}{9}$               \\
+        4     & $\pm \sqrt{\frac{3}{7} - \frac{2}{7}\sqrt{\frac{6}{5}}}$ & $\frac{18 + \sqrt{30}}{36}$ \\
+              & $\pm \sqrt{\frac{3}{7} + \frac{2}{7}\sqrt{\frac{6}{5}}}$ & $\frac{18 - \sqrt{30}}{36}$
+    \end{tabular}
+    \label{tab:legendre-roots}
+\end{table}
+
+En el caso de que la integral posea límites de integración distintos a
+$[-1, 1]$, podemos escalar los nodos y aplicar la \ac{GLQ} de la siguiente
+forma:
+
+\begin{equation}
+    \int\limits_a^b f(x) \diff x \approx
+        \frac{b - a}{2} \sum\limits_{i=1}^{N}
+        W_i f(x_i^s),
+\end{equation}
+
+\noindent donde
+
+\begin{equation}
+    x_i^s = \frac{b - a}{2} x_i + \frac{b + a}{2}.
+\end{equation}
 
 % =============================================================================
 

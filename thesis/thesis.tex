@@ -21,6 +21,8 @@
 \usepackage[round,authoryear,sort]{natbib}
 \usepackage{doi} % show dois as links on references
 \usepackage{mathpazo} % Use the Palatino font by default
+\usepackage{acronym}
+\usepackage[labelfont=bf]{caption}
 
 % Use custom apalike bibliography style:
 %   - translated to Spanish
@@ -31,9 +33,11 @@
 \addtolength{\oddsidemargin}{1cm}
 \addtolength{\evensidemargin}{-1cm}
 
+% Change spacing between rows in tables
+\renewcommand{\arraystretch}{1.4}
+
 % Import variables
 \input{variables.tex}
-
 
 % Configure hyperref and add PDF metadata
 \hypersetup{
@@ -116,10 +120,13 @@
 
 \chapter{Agradecimientos}
 
-% Indice, lista de figuras y de tablas
+% Indice y lista de abreviaturas
 \tableofcontents
-\listoffigures
-\listoftables
+
+\chapter*{Lista de Abreviaturas}
+\begin{acronym}
+   \acro{GLQ}{Cuadratura de Gauss-Legendre}
+\end{acronym}
 
 
 \mainmatter
