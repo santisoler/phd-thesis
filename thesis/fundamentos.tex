@@ -945,10 +945,191 @@ pero manteniendo una buena precisión.
 En el Capítulo \ref{cha:tesseroids-variable-density} describiremos en detalle
 la \emph{discretización adaptativa}.
 
+
 % =============================================================================
 
-\section{Disturbio de gravedad}
+\section{Gravedad terrestre}
 
-\subsection{Elipsoide de referencia}
+Un cuerpo en reposo situado sobre la superficie de la Tierra siente una fuerza
+resultante de la suma de la fuerza de atracción gravitatoria, debida a la masa
+del planeta; y la fuerza centrífuga, debida a la rotación del planeta sobre su
+eje y al sistema de referencia no inercial donde se encuentra dicho
+cuerpo.
+Esta fuerza genera sobre el cuerpo una aceleración $\mathbf{g}_\text{obs}$ que
+llamaremos \emph{gravedad}, a partir de la cual podemos definir un
+\emph{campo de gravedad} $W$:
+
+\begin{equation}
+    \nabla W(\mathbf{p}) = +\mathbf{g}_\text{obs}(\mathbf{p}).
+\end{equation}
+
+El \emph{campo de gravedad} $W$ puede ser expresado como:
+
+\begin{equation}
+    W(\mathbf{p}) = V(\mathbf{p}) + \Phi(\mathbf{p}),
+\end{equation}
+
+\noindent donde $V(\mathbf{p})$ es el \emph{potencial gravitatorio} que genera
+la Tierra sobre el punto $\mathbf{p}$
+(ecuación~\ref{eq:potencial-gravitatorio-integral}), y $\Phi(\mathbf{p})$ el
+\emph{potencial centrífugo} que siente el cuerpo situado en el punto
+$\mathbf{p}$ debido a la rotación del planeta.
+Este último puede expresarse como:
+
+\begin{equation}
+    \Phi(\mathbf{p}) = \frac{1}{2} \omega^2 (X^2 + Y^2),
+    \label{eq:potencial-centrifugo}
+\end{equation}
+
+\noindent donde $\omega$ es el módulo de la velocidad angular de rotación de la
+Tierra y $X$ e $Y$ son las coordenadas horizontales del punto $\mathbf{p}$ en
+un sistema de referencia Cartesiano geocéntrico
+(Fig.~\ref{fig:spherical-coordinates}).
+
+Vale notar que el potencial $W$ no es un campo harmónico, ya que no satisface
+la ecuación de Poisson (ec.~\ref{eq:potencial-poisson}). En cambio, se rige
+acorde a una \emph{ecuación de Poisson generalizada}:
+
+\begin{equation}
+    \nabla^2 W(\mathbf{p}) = - 4\pi G \rho(\mathbf{p}) + 2 \omega^2.
+\end{equation}
+
+\subsection{Gravedad normal}
+
+Las mediciones del campo gravitatorio terrestre nos permite obtener información
+acerca de las masas que componen nuestro planeta. Sin embargo los valores de
+este campo presentan ligeras variaciones a lo largo de la Tierra, las cuales se
+pueden asociar a cuerpos o densidades anómalas debajo de la superficie.
+Para poder identificarlos es necesario definir primero el concepto de
+\emph{Tierra normal}.
+
+En una primera aproximación podemos considerar la geometría de la Tierra como
+un elipsoide de revolución.
+Si bien esta aproximación no es lo suficientemente apropiada para muchas
+aplicaciones, nos provee de una descripción matemática sencilla cuyas
+derivaciones poseen soluciones analíticas y son relativamente fácil de obtener.
+De esta manera definiremos a la \emph{Tierra normal} como un \emph{elipsoide de
+referencia}, es decir, un elipsoide de revolución que a su vez es una
+superficie equipotencial del campo de gravedad que este genera.
+Llamaremos $U(\mathbf{p})$ al \emph{campo de gravedad normal}, es decir, el
+potencial de gravedad generado por el elipsoide de referencia y definimos al
+elipsoide de referencia como la superficie equipotencial
+
+\begin{equation}
+    U(\mathbf{p}) = U_0 = \text{cte}.
+\end{equation}
+
+El campo de gravedad normal puede ser escrito como
+
+\begin{equation}
+    U(\mathbf{p}) = V(\mathbf{p}) + \Phi(\mathbf{p}),
+\end{equation}
+
+\noindent donde $\Phi(\mathbf{p})$ es el potencial centrífugo debido a la
+rotación del elipsoide de revolución (ec.~\ref{eq:potencial-centrifugo})
+y $V(\mathbf{p})$ es el potencial gravitatorio que produce el mismo elipsoide.
+
+Vale notar que no es fundamental definir la distribución de densidad del
+elipsoide \citep[][p.~64]{heiskanen1967}. El elipsoide de referencia vendrá
+definido mediante:
+
+\begin{enumerate}
+    \item{la forma del elipsoide, dada por los dos semiejes $a$ y $b$,}
+    \item{la masa total $M$ del elipsoide, y}
+    \item{la velocidad angular $\omega$.}
+\end{enumerate}
+
+La superficie del elipsoide se describe como
+
+\begin{equation}
+    \frac{X^2 + Y^2}{a^2} + \frac{Z^2}{b^2} = 1
+\end{equation}
+
+\noindent donde $X$, $Y$ y $Z$ son coordenadas Cartesianas geocéntricas.
+
+El elipsoide de referencia no solo nos permite tener un modelo de \emph{Tierra
+normal}, sino que además nos permite definir un nuevo sistema de coordenadas:
+las \emph{coordenadas geodésicas} o \emph{geográficas}.
+Dado un punto arbitrario $\mathbf{p}$ podemos especificar su ubicación mediante
+su \emph{longitud} $\lambda$, su
+\emph{latitud geodésica} \footnote{
+    Se notará a la \emph{latitud geodésica} con $\varphi$ y a la \emph{latitud
+    esférica} con $\phi$.
+}
+$\varphi$ y su \emph{altitud geométrica} $h$.
+El ángulo longitudinal $\lambda$ coincide con la longitud del punto
+$\mathbf{p}$ desde un sistema de coordenadas esféricas.
+La altura geométrica $h$ corresponde a la distancia entre el punto $\mathbf{p}$
+y la superficie del elipsoide largo de la dirección normal a esta.
+La latitud geodésica corresponde al ángulo comprendido entre el plano
+ecuatorial y la prolongación de una recta normal al la superficie del elipsoide
+que pasa por el punto $\mathbf{p}$ (Fig.~\ref{fig:coordenadas-geodesicas}).
+
+Definiremos el \emph{vector gravedad normal} $\boldsymbol\gamma$ como el
+gradiente del campo de gravedad normal:
+
+\begin{equation}
+    \boldsymbol\gamma(\mathbf{p}) = \nabla U(\mathbf{p}).
+\end{equation}
+
+Vale notar que el gradiente de un campo en un punto $\mathbf{p}$ consiste en un
+vector normal a la superficie equipotencial a la cual pertenece el punto
+$\mathbf{p}$.
+De esta manera, al calcular el gradiente del campo de gravedad normal desde el
+sistema de coordenadas geodésicas podemos deducir que sólo la componente
+normal es no nula \citep[][p.~68]{heiskanen1967}, es decir:
+
+\begin{equation}
+    \gamma_\lambda =
+        \frac{\partial U}{\partial \lambda} = 0  \quad
+    \gamma_\varphi =
+        \frac{\partial U}{\partial \varphi} = 0.
+\end{equation}
+
+Definimos la \emph{gravedad normal} como el módulo del vector de gravedad
+normal:
+
+\begin{equation}
+    \gamma(\mathbf{p}) = | \gamma_h(\mathbf{p}) | =
+        \frac{\partial U(\mathbf{p})}{\partial h}.
+\end{equation}
+
+Dada la simetría de rotación del elipsoide y del hecho que el potencial
+centrífugo no depende de la posición longitudinal, la gravedad normal depende
+únicamente de la altitud geométrica y la latitud geodésica del punto
+$\mathbf{p}$:
+Existe una expresión analítica para la gravedad normal en cualquier punto
+externo al elipsoide de referencia dada por la \emph{closed-form formula} de
+\citet{li2001}.
+
+La gravedad normal en cualquier punto situado sobre la superficie del elipsoide
+de referencia ($h=0$) se puede calcular de manera sencilla a través de la
+ecuación de Somigliana \citep{heiskanen1967}:
+
+\begin{equation}
+    \gamma(\varphi, h=0) =
+        \gamma_e
+        \frac{1 + k \sin^2\varphi}{\sqrt{1 - e^2 \sin^2\varphi}};
+    \label{eq:somigliana}
+\end{equation}
+
+\noindent donde
+
+\begin{equation}
+    k = \frac{b}{a} \frac{\gamma_p}{\gamma_e} - 1;
+\end{equation}
+
+\noindent $e$ es la \emph{primera excentricidad}
+
+\begin{equation}
+    e = \sqrt{\frac{a^2 - b^2}{a^2}};
+\end{equation}
+
+\noindent y $\gamma_e$ y $\gamma_p$ son los valores de la gravedad normal en
+cualquier punto del ecuador y en los polos, respectivamente
+(ver~\citet[][p.~68--69]{heiskanen1967} para más detalles).
+
+
+% =============================================================================
 
 \section{Fuentes equivalentes}
