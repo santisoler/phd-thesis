@@ -1,9 +1,18 @@
 # The name of the main .tex file to build.
 THESIS = thesis
 # List other .tex needed files
-TEX_FILES = apalike-doi.bst license.tex references.bib titlepage.tex variables.tex introduccion.tex fundamentos.tex tesseroids-variable-density.tex gradient-boosted-eql.tex fatiando.tex
+TEX_FILES = apalike-doi.bst \
+			references.bib \
+		   	variables.tex \
+			chapters/license.tex \
+			chapters/titlepage.tex \
+			chapters/introduccion.tex chapters/fundamentos.tex \
+			chapters/tesseroids-variable-density.tex \
+			chapters/gradient-boosted-eql.tex \
+			chapters/fatiando.tex
 # Folder where output will be placed
 OUTDIR = _output
+CHAPTERS_DIR = $(OUTDIR)/chapters
 # Name of the output file
 PDF = $(OUTDIR)/$(THESIS).pdf
 
@@ -17,11 +26,17 @@ all: $(PDF)
 clean:
 	rm -rf $(OUTDIR)
 
-word-count:
-	texcount -merge $(THESIS).tex
+word-count: $(THESIS).tex
+	texcount -merge $<
 
 show: all
 	@( $(PDFVIEWER) $(PDF) 2> /dev/null; )
 
-$(PDF): $(THESIS).tex $(TEX_FILES)
+$(PDF): $(THESIS).tex $(TEX_FILES) | $(OUTDIR) $(CHAPTERS_DIR)
 	$(LATEX_COMPILER) $(LATEX_FLAGS) $<
+
+$(OUTDIR):
+	mkdir -p $@
+
+$(CHAPTERS_DIR):
+	mkdir -p $@
