@@ -518,8 +518,10 @@ FUNCTION {article}
       format.pages output
     }
   if$
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -555,8 +557,10 @@ FUNCTION {book}
   if$
   format.edition output
   format.isbn output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output}
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -573,8 +577,10 @@ FUNCTION {booklet}
   howpublished output
   address output
   format.isbn output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -612,8 +618,10 @@ FUNCTION {inbook}
   if$
   format.edition output
   format.isbn output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -642,8 +650,10 @@ FUNCTION {incollection}
     }
   if$
   format.isbn output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -672,8 +682,10 @@ FUNCTION {inproceedings}
     }
   if$
   format.isbn output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -692,8 +704,10 @@ FUNCTION {manual}
   organization output
   address output
   format.edition output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -710,8 +724,10 @@ FUNCTION {mastersthesis}
   "Master's thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -726,8 +742,10 @@ FUNCTION {misc}
   format.title output
   new.block
   howpublished output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -744,8 +762,10 @@ FUNCTION {phdthesis}
   "PhD thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -765,8 +785,10 @@ FUNCTION {proceedings}
   organization output                           % a nonempty organization
   publisher output                              % here
   format.isbn output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -783,8 +805,10 @@ FUNCTION {techreport}
   format.tr.number output.nonnull
   institution "institution" output.check
   address output
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note output
   fin.entry
@@ -797,8 +821,10 @@ FUNCTION {unpublished}
   output.year.check                                     % apalike
   new.block
   format.title "title" output.check
-  format.doi output
-  format.url output
+  doi missing$
+      { format.url output }
+      { format.doi output }
+  if$
   new.block
   note "note" output.check
   fin.entry
