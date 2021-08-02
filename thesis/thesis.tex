@@ -37,7 +37,7 @@
 \renewcommand{\arraystretch}{1.4}
 
 % Import variables
-\input{variables.tex}
+\input{variables}
 
 % Configure hyperref and add PDF metadata
 \hypersetup{
@@ -114,9 +114,9 @@
 \frontmatter
 \fancyfront
 
-\include{titlepage}
+\include{chapters/titlepage}
 
-\include{license}
+\include{chapters/license}
 
 \chapter{Agradecimientos}
 
@@ -132,15 +132,15 @@
 \mainmatter
 \fancymain
 
-\include{introduccion}
+\include{chapters/introduccion}
 
-\include{fundamentos}
+\include{chapters/fundamentos}
 
-\include{tesseroids-variable-density}
+\include{chapters/tesseroids-variable-density}
 
-\include{gradient-boosted-eql}
+\include{chapters/gradient-boosted-eql}
 
-\include{fatiando}
+\include{chapters/fatiando}
 
 \backmatter
 
