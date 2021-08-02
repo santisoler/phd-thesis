@@ -997,23 +997,24 @@ acorde a una \emph{ecuación de Poisson generalizada}:
 \subsection{Gravedad normal}
 
 Las mediciones del campo gravitatorio terrestre nos permite obtener información
-acerca de las masas que componen nuestro planeta. Sin embargo los valores de
-este campo presentan ligeras variaciones a lo largo de la Tierra, las cuales se
-pueden asociar a cuerpos o densidades anómalas debajo de la superficie.
-Para poder identificarlos es necesario definir primero el concepto de
-\emph{Tierra normal}.
+acerca de las masas que componen nuestro planeta. Los valores de este campo
+presentan ligeras variaciones a lo largo de la Tierra, originadas por la
+diferentes densidades de las masas del interior del planeta. Debido a que estas
+variaciones suelen ser lo suficientemente pequeñas, es posible asociarlas a la
+presencia de \emph{cuerpos anómalos} bajo la superficie terrestre. Para poder
+identificarlos es necesario definir primero el concepto de \emph{Tierra
+normal}.
 
 En una primera aproximación podemos considerar la geometría de la Tierra como
-un elipsoide de revolución.
-Si bien esta aproximación no es lo suficientemente apropiada para muchas
-aplicaciones, nos provee de una descripción matemática sencilla cuyas
-derivaciones poseen soluciones analíticas y son relativamente fácil de obtener.
+un elipsoide de revolución. Si bien esta aproximación no es lo suficientemente
+apropiada para muchas aplicaciones, nos provee de una descripción matemática
+sencilla, cuyas derivaciones poseen soluciones analíticas.
 De esta manera definiremos a la \emph{Tierra normal} como un \emph{elipsoide de
-referencia}, es decir, un elipsoide de revolución que a su vez es una
-superficie equipotencial del campo de gravedad que este genera.
-Llamaremos $U(\mathbf{p})$ al \emph{campo de gravedad normal}, es decir, el
-potencial de gravedad generado por el elipsoide de referencia y definimos al
-elipsoide de referencia como la superficie equipotencial
+referencia}, es decir, un elipsoide de revolución que representa una superficie
+equipotencial del campo de gravedad que este genera. Llamaremos $U(\mathbf{p})$
+al \emph{campo de gravedad normal}, es decir, el potencial de gravedad generado
+por el elipsoide de referencia y definimos al elipsoide de referencia como la
+siguiente superficie equipotencial:
 
 \begin{equation}
     U(\mathbf{p}) = U_0 = \text{cte}.
@@ -1029,9 +1030,7 @@ El campo de gravedad normal puede ser escrito como
 rotación del elipsoide de revolución (ec.~\ref{eq:potencial-centrifugo})
 y $V(\mathbf{p})$ es el potencial gravitatorio que produce el mismo elipsoide.
 
-Vale notar que no es fundamental definir la distribución de densidad del
-elipsoide \citep[][p.~64]{heiskanen1967}. El elipsoide de referencia vendrá
-definido mediante:
+El elipsoide de referencia vendrá definido mediante los siguientes parámetros:
 
 \begin{enumerate}
     \item{la forma del elipsoide, dada por los dos semiejes $a$ y $b$,}
@@ -1039,13 +1038,16 @@ definido mediante:
     \item{la velocidad angular $\omega$.}
 \end{enumerate}
 
-La superficie del elipsoide se describe como
+\noindent A partir de ellos podemos describir la superficie del elipsoide como:
 
 \begin{equation}
     \frac{X^2 + Y^2}{a^2} + \frac{Z^2}{b^2} = 1
 \end{equation}
 
 \noindent donde $X$, $Y$ y $Z$ son coordenadas Cartesianas geocéntricas.
+
+Vale notar que no resulta indispensable definir la distribución de densidad del
+elipsoide \citep[][p.~64]{heiskanen1967}.
 
 El elipsoide de referencia no solo nos permite tener un modelo de \emph{Tierra
 normal}, sino que además nos permite definir un nuevo sistema de coordenadas:
@@ -1060,10 +1062,17 @@ $\varphi$ y su \emph{altitud geométrica} $h$.
 El ángulo longitudinal $\lambda$ coincide con la longitud del punto
 $\mathbf{p}$ desde un sistema de coordenadas esféricas.
 La altura geométrica $h$ corresponde a la distancia entre el punto $\mathbf{p}$
-y la superficie del elipsoide largo de la dirección normal a esta.
+y la superficie del elipsoide a lo largo de la dirección normal a esta.
 La latitud geodésica corresponde al ángulo comprendido entre el plano
 ecuatorial y la prolongación de una recta normal al la superficie del elipsoide
 que pasa por el punto $\mathbf{p}$ (Fig.~\ref{fig:coordenadas-geodesicas}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/cartesian-geodetic-systems.pdf}
+    \caption{\citep{oliveira2021}}
+    \label{fig:coordenadas-geodesicas}
+\end{figure}
 
 Definiremos el \emph{vector gravedad normal} $\boldsymbol\gamma$ como el
 gradiente del campo de gravedad normal:
@@ -1094,17 +1103,77 @@ normal:
         \frac{\partial U(\mathbf{p})}{\partial h}.
 \end{equation}
 
-Dada la simetría de rotación del elipsoide y del hecho que el potencial
+Dada la simetría de rotación del elipsoide y el hecho que el potencial
 centrífugo no depende de la posición longitudinal, la gravedad normal depende
 únicamente de la altitud geométrica y la latitud geodésica del punto
-$\mathbf{p}$:
+$\mathbf{p}$.
 Existe una expresión analítica para la gravedad normal en cualquier punto
-externo al elipsoide de referencia dada por la \emph{closed-form formula} de
-\citet{li2001}.
+externo al elipsoide de referencia dada por la \emph{fórmula cerrada} (del
+inglés \emph{closed-form formula}) de \citet{li2001}:
 
-La gravedad normal en cualquier punto situado sobre la superficie del elipsoide
-de referencia ($h=0$) se puede calcular de manera sencilla a través de la
-ecuación de Somigliana \citep{heiskanen1967}:
+
+\begin{equation}
+    \gamma(\varphi, h) =
+    \frac{1}{\Omega}
+    \Bigg\{
+        \frac{G M}{{b'}^2 + E^2}
+        + \frac{\omega^2 a^2 E q'}{({b'}^2 + E^2) q_0}
+        \Bigg(
+            \frac{1}{2}
+            \sin^2 \beta' - \frac{1}{6}
+        \Bigg)
+        - \omega^2 b' \cos^2 \beta'
+    \Bigg\},
+    \label{eq:normal-gravity-closed-form}
+\end{equation}
+
+\noindent donde
+
+\begin{align}
+    E &= \sqrt{a^2 - b^2}
+        \quad \text{es la \emph{excentricidad lineal}}, \\
+    \Omega &= \sqrt{\frac{{b'}^2 + E^2 \sin^2 \phi'}{{b'}^2 + E^2}}, \\
+    q' &= 3
+        \left(1 + \frac{{b'}^2}{E^2} \right)
+        \left(1 - \frac{b'}{E} \arctan \frac{E}{b'} \right)
+        - 1, \\
+    q_0 &= \frac{1}{2}
+        \left[
+            \left(
+                1 + \frac{3b^2}{E^2}
+            \right)
+            \arctan \frac{E}{b} - \frac{3b}{E}
+        \right], \\
+    b' &= \sqrt{{r''}^2 - E^2 \cos^2 \phi'}, \\
+    \cos \phi' &= \sqrt{
+        \frac{1}{2}
+        + \frac{R}{2}
+        - \sqrt{
+            \frac{1}{4} + \frac{R^2}{4}  - \frac{D}{2}
+        }
+    },
+\end{align}
+
+\noindent y
+
+\begin{align}
+    R &= \frac{{r''}^2}{E^2}, \\
+    D &= \frac{{d''}^2}{E^2}, \\
+    {r''}^2 &= {r'}^2 + {z'}^2, \\
+    {d''}^2 &= {r'}^2 - {z'}^2, \\
+    r' &= a\cos\phi + h\cos\varphi, \\
+    z' &= b\sin\phi + h\sin\varphi, \\
+    \tan\phi &= \frac{b}{a}\tan\varphi.
+\end{align}
+
+La \emph{fórmula cerrada} para la gravedad normal de la
+ecuación~\ref{eq:normal-gravity-closed-form} nos permite calcular
+analíticamente la gravedad normal generada por el elipsoide de revolución sobre
+cualquier punto exterior al mismo.
+
+Como caso particular, la gravedad normal en cualquier punto situado sobre la
+superficie del elipsoide de referencia ($h=0$) se puede calcular de manera
+sencilla a través de la ecuación de Somigliana \citep{heiskanen1967}:
 
 \begin{equation}
     \gamma(\varphi, h=0) =
