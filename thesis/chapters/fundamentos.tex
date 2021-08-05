@@ -1092,7 +1092,13 @@ $\varphi$ y su \emph{altitud geométrica} $h$.
 El ángulo longitudinal $\lambda$ coincide con la longitud del punto
 $\mathbf{p}$ desde un sistema de coordenadas esféricas.
 La altura geométrica $h$ corresponde a la distancia entre el punto $\mathbf{p}$
-y la superficie del elipsoide a lo largo de la dirección normal a esta.
+y la superficie del elipsoide a lo largo de línea de fuerza del potencial $U$
+que pasa por el punto $\mathbf{p}$ (Fig.~\ref{fig:coordenadas-geodesicas}).
+Debido a las propiedades del potencial $U$ sus líneas de fuerza todas
+rectas que cortan normalmente a cada una de sus superficies equipotenciales.
+Por ende, la altitud geométrica $h$ equivale a la longitud del segmento de
+recta que une el punto $\mathbf{p}$ con la superficie del elipsoide a lo largo
+de la dirección normal al mismo.
 La latitud geodésica corresponde al ángulo comprendido entre el plano
 ecuatorial y la prolongación de una recta normal al la superficie del elipsoide
 que pasa por el punto $\mathbf{p}$ (Fig.~\ref{fig:coordenadas-geodesicas}).
@@ -1100,7 +1106,22 @@ que pasa por el punto $\mathbf{p}$ (Fig.~\ref{fig:coordenadas-geodesicas}).
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{figs/cartesian-geodetic-systems.pdf}
-    \caption{\citep{oliveira2021}}
+    \caption{
+        Elipsoide de referencia y coordenadas geodésicas del punto
+        $\mathbf{p}$.
+        (a)~Elipsoide de referencia definido por los
+        semiejes $a$ y $b$, junto con un sistema
+        Cartesiano geocéntrico $\{X, Y, Z\}$. Se observan los ángulos
+        longitudinal $\lambda$ y latitudinal $\varphi$ del punto
+        $\mathbf{p}$.
+        (b)~Sección del elipsoide por el plano que contiene al punto
+        $\mathbf{p}$. Se destaca el punto $\mathbf{q}$ correspondiente
+        a la intersección de la superficie del elipsoide con la línea de
+        fuerza que pasa por el punto $\mathbf{p}$.
+        Se observan la latitud geodésica $\varphi$, la latitud esférica
+        $\phi$ y la altitud geométrica $h$ del punto $\mathbf{p}$.
+        Esta figura es una versión modificada de \citet{oliveira2021}.
+    }
     \label{fig:coordenadas-geodesicas}
 \end{figure}
 
@@ -1276,6 +1297,32 @@ Sin embargo, se puede asumir que el \emph{disturbio de gravedad} se aproxima lo
 suficiente al módulo del \emph{vector del disturbio de gravedad} si
 consideramos que la desviación del vector $\mathbf{g}(\mathbf{p})$ de la recta
 normal al elipsoide en el punto $\mathbf{p}$ es lo suficientemente pequeña.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/surfaces.pdf}
+    \caption{
+        Elipsoide de referencia, geoide y vector del disturbio de gravedad.
+        Se identifica un punto $\mathbf{p}$ situado a una altitud geométrica
+        $h$ indicada por el segmento de recta que une el punto $\mathbf{q}$
+        sobre el elipsoide de referencia.
+        Se observa el vector de gravedad $\mathbf{g}(\mathbf{p})$ sobre el
+        punto $\mathbf{p}$ normal a la superficie equipotencial del campo de
+        gravedad $W$ que pasa por el mismo punto $\mathbf{p}$.
+        Se identifica además el vector de gravedad normal
+        $\boldsymbol\gamma(\mathbf{p})$ y el vector de disturbio de gravedad
+        $\boldsymbol\delta \mathbf{g}(\mathbf{p})$.
+        La altitud ortométrica $H$ se determina por la longitud del segmento de
+        la línea de fuerza del potencial $W$ que une el punto $\mathbf{q'}$
+        sobre el geoide con el punto $\mathbf{p}$, aunque puede puede
+        aproximarse por el segmento de recta que une el punto $\mathbf{q''}$
+        y el punto $\mathbf{p}$.
+        Las curvaturas de las superficies equipotenciales han sido exageradas
+        para mejorar la visualización.
+        Esta figura es una versión modificada de \citet{oliveira2021b}.
+    }
+    \label{fig:superficies-equipotenciales}
+\end{figure}
 
 
 % =============================================================================
