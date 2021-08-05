@@ -1239,14 +1239,14 @@ cualquier punto del ecuador y en los polos, respectivamente
 Con el objeto de poder identificar y caracterizar la distribución de densidades
 en el interior de la Tierra, es necesario remover la \emph{gravedad normal} de
 la gravedad terrestre.
-Definiremos entonces al \emph{vector del disturbio de gravedad} $\delta
-\mathbf{g}$ (\emph{gravity disturbance vector} en ingles) como la diferencia
-entre el vector \emph{gravedad} en el punto $\mathbf{p}$ y el vector
-\emph{gravedad normal} calculado en el mismo punto $\mathbf{p}$:
+Definiremos entonces al \emph{vector del disturbio de gravedad}
+$\boldsymbol\delta \mathbf{g}$ (\emph{gravity disturbance vector} en ingles)
+como la diferencia entre el vector \emph{gravedad} en el punto $\mathbf{p}$
+y el vector \emph{gravedad normal} calculado en el mismo punto $\mathbf{p}$:
 
 \begin{equation}
-    \delta \mathbf{g}(\mathbf{p}) =
-        \mathbf{g}(\mathbf{p}) - \mathbf{\gamma}(\mathbf{p}).
+    \boldsymbol\delta \mathbf{g}(\mathbf{p}) =
+        \mathbf{g}(\mathbf{p}) - \boldsymbol\gamma(\mathbf{p}).
     \label{eq:gravity-disturbance-vector}
 \end{equation}
 
@@ -1258,8 +1258,9 @@ Medir la dirección del vector $\mathbf{g}$ resulta un problema de mayor
 complejidad, dificultando el cálculo del \emph{vector del disturbio de
 gravedad}.
 Es por ello que introducimos el concepto del \emph{disturbio de gravedad}
-$\delta g$, definido como la diferencia entre el módulo del vector gravedad
-y el módulo del vector gravedad normal en el mismo punto $\mathbf{p}$
+$\delta g$ (\emph{gravity disturbance} en inglés), definido como la diferencia
+entre el módulo del vector gravedad y el módulo del vector gravedad normal en
+el mismo punto $\mathbf{p}$
 \citep{heiskanen1967,hofmannwellenhof2005,oliveira2018}:
 
 \begin{equation}
@@ -1269,8 +1270,12 @@ y el módulo del vector gravedad normal en el mismo punto $\mathbf{p}$
 \end{equation}
 
 Vale notar que el \emph{disturbio de gravedad} $\delta g$ no coincide con el
-módulo del \emph{vector disturbio de gravedad} $\delta g$
+módulo del \emph{vector disturbio de gravedad} $\boldsymbol\delta \mathbf{g}$
 \citep{barthelmes2013,sanso2013,oliveira2018}.
+Sin embargo, se puede asumir que el \emph{disturbio de gravedad} se aproxima lo
+suficiente al módulo del \emph{vector del disturbio de gravedad} si
+consideramos que la desviación del vector $\mathbf{g}(\mathbf{p})$ de la recta
+normal al elipsoide en el punto $\mathbf{p}$ es lo suficientemente pequeña.
 
 
 % =============================================================================
