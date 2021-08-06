@@ -1328,3 +1328,135 @@ normal al elipsoide en el punto $\mathbf{p}$ es lo suficientemente pequeña.
 % =============================================================================
 
 \section{Fuentes equivalentes}
+
+Consideremos una distribución de masa arbitraria limitada a una región $\Omega$
+con una densidad $\rho$ y un punto de observación $\mathbf{p}$ exterior a la
+región $\Omega$.
+El potencial gravitatorio $V$ que genera la distribución de masa en el punto
+$\mathbf{p}$ puede calcularse a través de
+\ref{eq:potencial-gravitatorio-integral}.
+
+Consideremos además una superficie equipotencial arbitraria $\partial S$ de
+forma tal que el punto $\mathbf{p}$ se encuentra fuera de la región $S$
+interior a $\partial S$.
+Vamos a asumir que el potencial $V$ toma un valor $V_S = \text{const}$ en
+$\partial S$.
+Aplicando la segunda identidad de Green \citep[][p.~23]{blakely1995} podemos
+obtener:
+
+\begin{equation}
+    \begin{split}
+    \int\limits_S
+        \Bigg[
+            V(\mathbf{q}) \,
+            \nabla^2 \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
+            - \frac{1}{|\mathbf{p} - \mathbf{q}|}  \nabla^2 V(\mathbf{q})
+        \Bigg]
+    \diff v
+    = \\
+    \oint\limits_{\partial S}
+        \Bigg[
+            V(\mathbf{q}) \,
+            \frac{\partial}{\partial n}
+            \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
+            -
+            \frac{1}{|\mathbf{p} - \mathbf{q}|}
+            &\frac{\partial V(\mathbf{q})}{\partial n}
+        \Bigg]
+    \diff s,
+    \end{split}
+\end{equation}
+
+\noindent donde $\mathbf{q}$ es la variable de integración en ambos miembros
+y $n$ indica la dirección normal a la superficie $\partial S$.
+
+El primer término de la integral volumétrica es nulo, ya que la inversa de
+$|\mathbf{p} - \mathbf{q}|$ es un campo harmónico.
+Por otro lado, el valor de $V(\mathbf{q})$ en el primer término de la integral
+de superficie es constante, ya que el dominio de integración $\partial S$ es
+una superficie equipotencial de $V$.
+Por lo tanto, la ecuación anterior puede expresarse de forma más sencilla como:
+
+\begin{equation}
+    - \int\limits_S
+        \frac{\nabla^2 V(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+    \diff v
+    =
+    V_S
+    \oint\limits_{\partial S}
+        \frac{\partial}{\partial n}
+        \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
+    \diff s
+    - \oint\limits_{\partial S}
+        \frac{1}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\partial V(\mathbf{q})}{\partial n}
+    \diff s.
+\end{equation}
+
+Una de los corolarios de la primera identidad de Green establece que la
+integral de la derivada normal de una función harmónica  sobre una superficie
+cerrada es nula \citep[][p.~20]{blakely1995}, por ende la primera integral de
+superficie de la ecuación anterior se anula:
+
+\begin{equation}
+    - \int\limits_S
+        \frac{\nabla^2 V(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+    \diff v
+    =
+    - \oint\limits_{\partial S}
+        \frac{1}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\partial V(\mathbf{q})}{\partial n}
+    \diff s,
+\end{equation}
+
+Si aplicamos la ecuación de Poisson (ec.~\ref{eq:potencial-poisson})
+y definimos una densidad superficial $\sigma$:
+
+\begin{equation}
+    \sigma(\mathbf{q}) =
+    \frac{-1}{4\pi G} \frac{\partial V(\mathbf{q})}{\partial n},
+\end{equation}
+
+\noindent podemos expresar la ecuación anterior como:
+
+\begin{equation}
+    G \int\limits_S
+        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+    \diff v
+    =
+    G \oint\limits_{\partial S}
+        \frac{\sigma(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+    \diff s.
+\end{equation}
+
+Considerando que la densidad $\rho$ es nula fuera de la región $\Omega$,
+podemos simplificar el dominio de integración de la integral volumétrica.
+De esta manera, ambos términos equivalen al valor que asume el potencial $V$ en
+el punto $\mathbf{p}$ (ec.~\ref{eq:potencial-gravitatorio-integral}):
+
+\begin{equation}
+    V(\mathbf{p}) =
+    G \int\limits_\Omega
+        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+    \diff v
+    =
+    G \oint\limits_{\partial S}
+        \frac{\sigma(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+    \diff s.
+\end{equation}
+
+Esta relación se conoce como \emph{fuentes equivalentes de Green}
+(\emph{Green's equivalent layer} en inglés) y de la cual se deduce que el
+potencial que genera una distribución de densidad tridimensional es
+indistinguible del que genera una distribución superficial de masa (o una capa
+delgada) distribuida sobre una superficie equipotencial
+\citep[][p.~62]{blakely1995}.
+
+Esta propiedad de los campos gravitatorios nos permite desarrollar metodologías
+de interpolación de campos harmónicos basados en el modelado de distribuciones
+de masas arbitrarias, sin necesidad de que guarden relación con las geometrías
+y densidades de los cuerpos que generan los campos observados.
+Además, las fuentes equivalentes de Green dejan en evidencia la no unicidad de
+los campos gravitatorios: existen una infinita cantidad de distribuciones de
+masas que pueden generar el mismo campo gravitatorio, o en una aproximación
+suficiente para resultar indistinguible a efectos prácticos.
