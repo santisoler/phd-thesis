@@ -69,7 +69,7 @@ literatura sobre Geofísica y Geodesia
     \caption{
         (a)~Masas puntuales $m_p$ y $m$ localizadas en $\mathbf{p}$
         y $\mathbf{q}$, respectivamente.
-        (b)~Distribución de masa $\Gamma$, diferencial de masa $\diff m$
+        (b)~Distribución de masa $\Omega$, diferencial de masa $\diff m$
         ubicado en el punto $\mathbf{q}$.
     }
     \label{fig:potencial-gravitatorio}
@@ -87,11 +87,11 @@ genera un potencial gravitatorio $\diff V$ en cualquier punto $\mathbf{p}$
 \end{equation}
 
 \noindent el potencial gravitatorio generado por una distribución de masa
-$\Gamma$ puede calcularse integrando los diferenciales de masa que lo componen:
+$\Omega$ puede calcularse integrando los diferenciales de masa que lo componen:
 
 \begin{equation}
     V(\mathbf{p}) =
-        G \int\limits_\Gamma \frac{\diff m}{|\mathbf{p} - \mathbf{q}|} .
+        G \int\limits_\Omega \frac{\diff m}{|\mathbf{p} - \mathbf{q}|} .
 \end{equation}
 
 Si reescribimos los diferenciales de masa como
@@ -101,12 +101,12 @@ Si reescribimos los diferenciales de masa como
 \end{equation}
 
 \noindent donde $\rho(\mathbf{q})$ es la densidad de masa de la distribución
-$\Gamma$ en el punto $\mathbf{q}$ y $\diff v$ es el diferencial de volumen,
+$\Omega$ en el punto $\mathbf{q}$ y $\diff v$ es el diferencial de volumen,
 el potencial se puede expresar como:
 
 \begin{equation}
     V(\mathbf{p}) =
-        G \int\limits_\Gamma
+        G \int\limits_\Omega
         \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|} \diff v.
     \label{eq:potencial-gravitatorio-integral}
 \end{equation}
@@ -133,7 +133,7 @@ como:
 El vector
 $\mathbf{g}(\mathbf{p}) = (g_x(\mathbf{p}), g_y(\mathbf{p}), g_z(\mathbf{p}))$
 representa la aceleración gravitatoria en el punto
-$\mathbf{p}$ generada por la distribución de masa $\Gamma$, aunque es común
+$\mathbf{p}$ generada por la distribución de masa $\Omega$, aunque es común
 referirse al mismo como el \emph{gradiente gravitatorio}.
 Reemplazando la ecuación~\ref{eq:potencial-gravitatorio-integral}
 en~\ref{eq:componentes-aceleracion-gravitatoria}, las componentes del gradiente
@@ -141,17 +141,17 @@ gravitatorio pueden expresarse como:
 
 \begin{align}
     g_x(\mathbf{p}) &=
-        - G \int\limits_\Gamma \rho(\mathbf{q})
+        - G \int\limits_\Omega \rho(\mathbf{q})
         \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
     \label{eq:gx-integral}
     \\
     g_y(\mathbf{p}) &=
-        - G \int\limits_\Gamma \rho(\mathbf{q})
+        - G \int\limits_\Omega \rho(\mathbf{q})
         \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
     \label{eq:gy-integral}
     \\
     g_z(\mathbf{p}) &=
-        - G \int\limits_\Gamma \rho(\mathbf{q})
+        - G \int\limits_\Omega \rho(\mathbf{q})
         \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
     \label{eq:gz-integral}
 \end{align}
@@ -174,7 +174,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
 
 \begin{align}
     g_{xx}(\mathbf{p}) &=
-        G \int\limits_\Gamma \rho(\mathbf{q})
+        G \int\limits_\Omega \rho(\mathbf{q})
         \left[
         \frac{3(x - x')^2}{|\mathbf{p} - \mathbf{q}|^5}
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
@@ -183,7 +183,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
     \label{eq:gxx-integral}
     \\
     g_{yy}(\mathbf{p}) &=
-        G \int\limits_\Gamma \rho(\mathbf{q})
+        G \int\limits_\Omega \rho(\mathbf{q})
         \left[
         \frac{3(y - y')^2}{|\mathbf{p} - \mathbf{q}|^5}
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
@@ -192,7 +192,7 @@ expresar las componentes diagonales del tensor de la siguiente manera
     \label{eq:gyy-integral}
     \\
     g_{zz}(\mathbf{p}) &=
-        G \int\limits_\Gamma \rho(\mathbf{q})
+        G \int\limits_\Omega \rho(\mathbf{q})
         \left[
         \frac{3(z - z')^2}{|\mathbf{p} - \mathbf{q}|^5}
         - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
@@ -206,21 +206,21 @@ expresar las componentes diagonales del tensor de la siguiente manera
 \begin{align}
     g_{xy}(\mathbf{p}) =
     g_{yx}(\mathbf{p}) &=
-        G \int\limits_\Gamma \rho(\mathbf{q})
+        G \int\limits_\Omega \rho(\mathbf{q})
         \frac{3(x - x')(y - y')}{|\mathbf{p} - \mathbf{q}|^5}
         \diff v,
     \label{eq:gxy-integral}
     \\
     g_{xz}(\mathbf{p}) =
     g_{zx}(\mathbf{p}) &=
-        G \int\limits_\Gamma \rho(\mathbf{q})
+        G \int\limits_\Omega \rho(\mathbf{q})
         \frac{3(x - x')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
         \diff v,
     \label{eq:gxz-integral}
     \\
     g_{yz}(\mathbf{p}) =
     g_{zy}(\mathbf{p}) &=
-        G \int\limits_\Gamma \rho(\mathbf{q})
+        G \int\limits_\Omega \rho(\mathbf{q})
         \frac{3(y - y')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
         \diff v.
     \label{eq:gyz-integral}
@@ -246,7 +246,7 @@ un \emph{campo harmónico}
 \end{equation}
 
 \noindent para cualquier punto de observación $\mathbf{p}$ fuera de la
-distribución de masa $\Gamma$.
+distribución de masa $\Omega$.
 
 Vale notar que la ecuación de Laplace \ref{eq:potencial-laplace} es válida
 solo para regiones libres de masas, y representa un caso particular de la
@@ -297,7 +297,7 @@ gravitatorio generado por una partícula:
 
 \begin{equation}
     V(\mathbf{p}) =
-        G \int\limits_\Gamma
+        G \int\limits_\Omega
         m \frac{\delta(\mathbf{q} - \mathbf{q'})}{|\mathbf{p} - \mathbf{q'}|}
         \diff v =
         \frac{G m}{|\mathbf{p} - \mathbf{q}|},
