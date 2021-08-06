@@ -1331,14 +1331,14 @@ normal al elipsoide en el punto $\mathbf{p}$ es lo suficientemente pequeña.
 
 Consideremos una distribución de masa arbitraria limitada a una región $\Omega$
 con una densidad $\rho$ y un punto de observación $\mathbf{p}$ exterior a la
-región $\Omega$.
+región $\Omega$ (Fig.~\ref{fig:fuentes-equivalentes}).
 El potencial gravitatorio $V$ que genera la distribución de masa en el punto
 $\mathbf{p}$ puede calcularse a través de
 \ref{eq:potencial-gravitatorio-integral}.
 
 Consideremos además una superficie equipotencial arbitraria $\partial S$ de
 forma tal que el punto $\mathbf{p}$ se encuentra fuera de la región $S$
-interior a $\partial S$.
+interior a $\partial S$ (Fig.~\ref{fig:fuentes-equivalentes}).
 Vamos a asumir que el potencial $V$ toma un valor $V_S = \text{const}$ en
 $\partial S$.
 Aplicando la segunda identidad de Green \citep[][p.~23]{blakely1995} podemos
@@ -1429,6 +1429,18 @@ y definimos una densidad superficial $\sigma$:
     \diff s.
 \end{equation}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\linewidth]{figs/fuentes-equivalentes.pdf}
+    \caption{
+        Distribución de masa tridimensional con densidad $\rho$ dentro de una
+        región $\Omega$, junto con superficie equipotencial $\partial S$ del
+        campo gravitatorio generado por la misma y un punto de observación
+        $\mathbf{p}$ exterior a la región $S$ interior a $\partial S$.
+    }
+    \label{fig:fuentes-equivalentes}
+\end{figure}
+
 Considerando que la densidad $\rho$ es nula fuera de la región $\Omega$,
 podemos simplificar el dominio de integración de la integral volumétrica.
 De esta manera, ambos términos equivalen al valor que asume el potencial $V$ en
@@ -1448,9 +1460,8 @@ el punto $\mathbf{p}$ (ec.~\ref{eq:potencial-gravitatorio-integral}):
 Esta relación se conoce como \emph{fuentes equivalentes de Green}
 (\emph{Green's equivalent layer} en inglés) y de la cual se deduce que el
 potencial que genera una distribución de densidad tridimensional es
-indistinguible del que genera una distribución superficial de masa (o una capa
-delgada) distribuida sobre una superficie equipotencial
-\citep[][p.~62]{blakely1995}.
+indistinguible del que genera una masa superficial (o una capa delgada)
+distribuida sobre una superficie equipotencial \citep[][p.~62]{blakely1995}.
 
 Esta propiedad de los campos gravitatorios nos permite desarrollar metodologías
 de interpolación de campos harmónicos basados en el modelado de distribuciones
