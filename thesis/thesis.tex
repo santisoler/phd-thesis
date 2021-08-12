@@ -24,6 +24,12 @@
 \usepackage{acronym}
 \usepackage[labelfont=bf]{caption}
 
+% Use the appendix package and translate it
+\usepackage[toc,page,title]{appendix}
+\renewcommand{\appendixname}{Apéndice}
+\renewcommand{\appendixtocname}{Apéndices}
+\renewcommand{\appendixpagename}{Apéndices}
+
 % Use custom apalike bibliography style:
 %   - translated to Spanish
 %   - adds dois as links
@@ -141,6 +147,10 @@
 \include{chapters/gradient-boosted-eql}
 
 \include{chapters/fatiando}
+
+\begin{appendices}
+    \include{chapters/appendix}
+\end{appendices}
 
 \backmatter
 
