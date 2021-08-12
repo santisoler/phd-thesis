@@ -24,6 +24,16 @@ PDFVIEWER = xdg-open
 
 all: $(PDF)
 
+help:
+	@echo "Commands:"
+	@echo ""
+	@echo "  all         build a PDF version of the thesis"
+	@echo "  show        opens the PDF with your favourite reader"
+	@echo "  bibsort     autosort the BibTeX file alphabetically"
+	@echo "  word-count  counts the number of words, figures, etc."
+	@echo "  clean       clean up build and generated files"
+	@echo ""
+
 clean:
 	rm -rf $(OUTDIR)
 
