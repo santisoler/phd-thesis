@@ -1,8 +1,9 @@
 # The name of the main .tex file to build.
 THESIS = thesis
 # List other .tex needed files
+REFERENCES = references.bib
 TEX_FILES = apalike-doi.bst \
-			references.bib \
+			$(REFERENCES) \
 		   	variables.tex \
 			chapters/license.tex \
 			chapters/titlepage.tex \
@@ -31,6 +32,9 @@ word-count: $(THESIS).tex
 
 show: all
 	@( $(PDFVIEWER) $(PDF) 2> /dev/null; )
+
+bibsort: $(REFERENCES)
+	bibtool -s -i $< -o $<
 
 $(PDF): $(THESIS).tex $(TEX_FILES) | $(OUTDIR) $(CHAPTERS_DIR)
 	$(LATEX_COMPILER) $(LATEX_FLAGS) $<
