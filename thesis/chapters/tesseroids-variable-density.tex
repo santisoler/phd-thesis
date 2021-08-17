@@ -156,12 +156,12 @@ densidad es altamente variable en profundidad.
 Presentamos un nuevo algoritmo para el cálculo del potencial gravitatorio y su
 gradiente generado por un tesseroide con una función continua de densidad sobre
 cualquier punto de cómputo externo.
-Esta metodología está basada en una integración \ac{GQL} tridimensional, una
+Esta metodología está basada en una integración \ac{GLQ} tridimensional, una
 versión bidimensional del algoritmo de discretización adaptativa de
-\citet{uiedauieda2016} (de acuerdo con \citet{lin2019}), y un nuevo algoritmo
+\citet{uieda2016} \citep[de acuerdo con~][]{lin2019}, y un nuevo algoritmo
 de discretización basado en la densidad.
 Para garantizar la precisión de la aproximación numérica, hemos determinado
-empiricamente valores óptimos para los parámetros que controlan las
+empíricamente valores óptimos para los parámetros que controlan las
 discretizaciones, comparando los resultados numéricos con las soluciones
 analíticas de cascarones esféricos.
 Finalmente, hemos aplicado la nueva metodología para modelar la Cuenca
@@ -179,23 +179,14 @@ Definimos un punto de computo externo $\mathbf{p}$ localizado en un radio $r$,
 una latitud $\phi$ y una longitud $\lambda$.
 \citet{grombein2013} proveen formulaciones eficientes para las integrales de
 volumen del potencial gravitatorio generado por un tesseroide de densidad
-homogénea, junto con sus primeras y segundas derivadas (ec.~\ref{eq:}).
-
-Consider a tesseroid in a geocentric spherical coordinate system defined by
-pairs of geocentric latitudinal ($\phi_1$, $\phi_2$), longitudinal ($\lambda_1$,
-$\lambda_2$), and radial ($r_1$, $r_2$) boundaries.
-We define an external computation point $P(r, \phi, \lambda)$ located at radius $r$,
-geocentric latitude $\phi$, and longitude $\lambda$.
-\citet{grombein2013} provide efficient formulations for the volume integrals of the
-gravitational potential and its first- and second-order derivatives of a tesseroid with
-homogeneous density.
-The derivatives of the gravitational potential are taken with
-respect to the local north-oriented Cartesian coordinate system with origin at $P$
-(Fig.~\ref{fig:tesseroid}).
-Here, we will assume that the tesseroid has a density varying with $r$ according to an
-arbitrary continuous function $\rho(r)$.
-Thus, the integrals for the gravitational potential and its first-order derivatives are
-slightly modified to
+homogénea, junto con las componentes de su gradiente
+(ecs.~\ref{eq:potencial-tesseroide}, \ref{eq:gx-tesseroide},
+\ref{eq:gy-tesseroide}, \ref{eq:gz-tesseroide}).
+Aquí vamos a considerar los casos en los cuales el tesseroide posee una
+densidad variable con respecto a la coordenada radial $r$ según una función
+continua arbitraria $\rho(r)$.
+Por lo tanto, las integrales del potencial gravitatorio y las componentes de su
+gradiente se ven ligeramente modificadas:
 
 \begin{equation}
     V(r,\phi,\lambda) = G
@@ -206,144 +197,94 @@ slightly modified to
 \label{eq:tesseroid-pot}
 \end{equation}
 
-\noindent and
-
 \begin{equation}
     g_{\alpha}(r,\phi,\lambda) = G
     \int\limits_{\lambda_1}^{\lambda_2}
     \int\limits_{\phi_1}^{\phi_2}
     \int\limits_{r_1}^{r_2}
-    \rho(r') \frac{\Delta_\alpha}{\ell^3}
+    \rho(r') \frac{\Delta\alpha}{\ell^3}
     \kappa \, dr' d\phi' d\lambda',
 \label{eq:tesseroid-grav}
 \end{equation}
 
-\noindent in which $\alpha \in \{x, y, z\}$,
-$G = 6.674\times10^{-11}\, \text{m$^3$kg$^{-1}$s$^{-1}$}$ is the gravitational constant
-and
+\noindent donde $\alpha \in \{x, y, z\}$, y $\Delta \alpha$ vienen dados por
+las ecuaciones~\ref{eq:delta-x}, \ref{eq:delta-y} y \ref{eq:delta-z}.
+
+\subsection{Integración por Cuadratura de Gauss-Legendre}
+
+Aplicando una \ac{GLQ} de orden $N$ podemos aproximar a cada integral definida
+por las ecuaciones~\ref{eq:tesseroid-pot} and~\ref{eq:tesseroid-grav} por una
+suma ponderada de los kernel de integración evaluados en las raíces de un
+polinomio de orden $N$ \citep[p.~390]{hildebrand1987}, conocidos como los nodos
+de la cuadratura.
+A diferencia de los tesseroides con densidad constante, la función de densidad
+$\rho(r)$ debe ser incluida dentro del integrando y evaluada en los nodos de la
+cuadratura:
 
 \begin{equation}
-    \Delta_x = r'[\cos\phi\sin\phi' - \sin\phi\cos\phi'
-               \cos(\lambda' - \lambda)],
-\end{equation}
-\begin{equation}
-    \Delta_y = r' \cos \phi' \sin(\lambda' - \lambda),
-\end{equation}
-\begin{equation}
-    \Delta_z = r' \cos \psi - r,
-\end{equation}
-\begin{equation}
-    \kappa = {r'}^2 \cos \phi',
-\end{equation}
-\begin{equation}
-    \ell = \sqrt{{r'}^2 + r^2 - 2 r r' \cos \psi},
-\label{eq:ell}
-\end{equation}
-\begin{equation}
-    \cos\psi = \sin\phi\sin\phi' + \cos\phi\cos\phi'
-                 \cos(\lambda' - \lambda).
-\label{eq:cospsi}
-\end{equation}
-
-
-\subsection{Gauss-Legendre Quadrature integration}
-
-Applying a $N$th order GLQ, we can approximate each integral in
-equations~\ref{eq:tesseroid-pot} and~\ref{eq:tesseroid-grav} by a weighted sum of the
-integration kernel evaluated on the roots of an $N$th order Legendre polynomial
-\citep[p.~390]{hildebrand1987}.
-Unlike the homogeneous density case, the radial density function $\rho(r)$ must also be
-included in the integration and evaluated on the Legendre polynomial roots
-(i.e.~quadrature nodes).
-
-%\iftwocol{
-\begin{equation}
-    \begin{split}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
         \int\limits_{r_1}^{r_2}
         \rho(r') f(r', \phi', \lambda')
-        dr' d\phi' d\lambda' \approx& \\
+        dr' d\phi' d\lambda' \approx
         A
         \sum\limits_{i=1}^{N^r}
         \sum\limits_{j=1}^{N^\phi}
         \sum\limits_{k=1}^{N^\lambda}
         W_i^r W_j^\phi W_k^\lambda
-        &\rho(r_i) f(r_i, \phi_j, \lambda_k),
-    \end{split}
+        \rho(r_i) f(r_i, \phi_j, \lambda_k),
 \label{eq:glq-var-dens}
 \end{equation}
-%}{
-%\begin{equation}
-    %\int\limits_{\lambda_1}^{\lambda_2}
-    %\int\limits_{\phi_1}^{\phi_2}
-    %\int\limits_{r_1}^{r_2}
-    %\rho(r') f(r', \phi', \lambda')
-    %dr' d\phi' d\lambda' \approx
-    %A
-    %\sum\limits_{i=1}^{N^r}
-    %\sum\limits_{j=1}^{N^\phi}
-    %\sum\limits_{k=1}^{N^\lambda}
-    %W_i^r W_j^\phi W_k^\lambda \rho(r_i) f(r_i, \phi_j, \lambda_k),
-%\label{eq:glq-var-dens}
-%\end{equation}
-%}
 
-\noindent where
-
-\begin{equation}
-    A = \frac{(\lambda_2 - \lambda_1)(\phi_2 - \phi_1)(r_2 - r_1)}{8},
-\end{equation}
-
-\noindent $f(r', \phi', \lambda')$ is an integral kernel for a homogeneous tesseroid
-\citep{grombein2013},
-$(r_i, \phi_j, \lambda_k)$ are the coordinates of the quadrature nodes,
-$N^r$, $N^\phi$, $M^\lambda$ are the quadrature orders and $W_i^r$, $W_j^\phi$,
-$W_k^\lambda$ are the quadrature weights in the radial, latitudinal, and longitudinal
-directions, respectively.
-\citet[p.~391]{hildebrand1987} provides the formulas for calculating the GLQ weights and
-pre-computed values of the Legendre polynomial roots for low orders.
-See \citet{uieda2016} for a more detailed description using a similar notation to the
-one used here.
-It is worth noting that a GLQ is equivalent to approximating the tesseroid by $N^r
-\times N^\phi \times N^\lambda$ point masses located on the quadrature nodes
-\citep{ku1977, asgharzadeh2007}.
+\noindent donde $A$ es una constante definida en la
+ecuación~\ref{eq:glq-resize-factor}, $f(r', \phi', \lambda')$ es el kernel
+correspondiente a un tesseroide con densidad homogénea \citep{grombein2013},
+$(r_i, \phi_j, \lambda_k)$ son las coordenadas de los nodos de la cuadratura,
+$N^r$, $N^\phi$, $M^\lambda$ son los órdenes de la cuadratura y $W_i^r$,
+$W_j^\phi$, $W_k^\lambda$ son los pesos ponderados en la dirección radial,
+latitudinal y longitudinal, respectivamente.
+Vale la pena notar que aplicar la \ac{GLQ} es equivalente a aproximar el
+tesseroide por $N^r \times N^\phi \times N^\lambda$ masas puntuales localizadas
+en los nodos de la cuadratura. \citep{ku1977, asgharzadeh2007}.
 
 
-\subsection{Two Dimensional Adaptive Discretization}
+\subsection{Discretización adaptativa bidimensional}
 
-\citet{ku1977} noticed that the GLQ integration
-becomes less accurate when the computation point is closer to the
-mass element.
-One way to prevent this from happening would be to increase the GLQ order.
-Doing so would uniformly increase the number of point masses inside the
-tesseroid volume.
-However, an increase in the point mass concentration is only required close to the
-computation point \citep{uieda2016}.
-Alternatively, \citet{li2011} proposed an adaptive
-discretization algorithm which keeps the GLQ order fixed and divides the
-tesseroid based on a ratio between the distance to the computation
-point and its dimensions.
-This algorithm produces a more efficient computation because an increased concentration
-of point masses is produced where it is needed more.
-\citet{uieda2016} developed a modified version of this algorithm along with an efficient
-computational implementation.
-Both algorithms perform tesseroid subdivisions in the latitudinal,
-longitudinal and radial directions, thus we can define them as three-dimensional
-adaptive discretization algorithms.
-On the other hand, \citet{lin2019} proposed a two dimensional discretization algorithm
-that subdivides the tesseroid only on the latitudinal and longitudinal directions.
-Removing a dimension from the discretization makes the computation more efficient by
-reducing the number of tesseroids in the model, while
-retaining an acceptable accuracy \citep{lin2019}.
+\citet{ku1977} dio cuenta de que la integración por \ac{GLQ} se vuelve menos
+precisa a medida que el punto de cómputo se acerca al tesseroide.
+Una manera de prevenir que esto suceda sería incrementar el orden de la
+cuadratura.
+Al hacer esto, incrementaríamos uniformemente la cantidad de masas puntuales
+utilizadas para aproximar el tesseroide.
+Sin embargo, sólo es necesario incrementar la concentración de masas puntuales
+en cercanías del punto de cómputo \citep{uieda2016}.
+Alternativamente,  \citet{li2011} han propuesto un algoritmo de discretización
+adaptativa que mantiene fijo el orden de la cuadratura y divide el tesseroide
+según una relación entre la distancia al punto de cómputo y las dimensiones
+del tesseroide.
+Este algoritmo produce un cómputo más eficiente, ya que produce un aumento en
+la concentración de masas puntuales sólo en las regiones donde es más
+necesario. \citet{uieda2016} han desarrollado una versión modificada de este
+algoritmo junto con una implementación computacional eficiente.
+Ambas versiones del algoritmo subdividen el tesseroide en las direcciones
+latitudinal, longitudinal y radial, por ende podemos definirlos como
+\emph{algoritmos de discretización adaptativa tridimensionales}.
+Por otro lado, \citet{lin2019} han propuesto un \emph{algoritmo de
+discretización adaptativa bidimensional} que subdivide al tesseroide solo en
+las direcciones latitudinal y longitudinal.
+Remover una dimensión de la discretización produce un cómputo más eficiente ya
+que reduce la cantidad de subdivisiones en el modelo, aunque manteniendo una
+precisión aceptable \citep{lin2019}.
 
-Here we will follow \citet{lin2019} and use a two dimensional version of the adaptive
-discretization of \citet{uieda2016}.
-What follows is a summary of the algorithm and the reader is referred to
-\citet{uieda2016} for a detailed description.
+A lo largo de este capítulo nos guiaremos con los resultados de \citet{lin2019}
+y haremos uso de una versión bidimensional del algoritmo de discretización
+adaptativa de \citet{uieda2016}.
+Lo que sigue a continuación es un resumen del algoritmo. El lector o la lectora
+puede referirse a \citet{uieda2016} para una descripción más detallada.
 
-\textit{Step 1}: Check that the tesseroid satisfies the following inequality for its
-latitudinal and longitudinal dimensions $L_i\ (i \in \{\lambda, \phi\})$:
+\textit{Paso 1}: Corroboramos que el tesseroide satisface la siguiente
+desigualdad para sus dimensiones longitudinales y latitudinales
+$L_i\ (i \in \{\lambda, \phi\})$:
 
 \begin{equation}
     \frac{d}{L_i} \geq D,
@@ -351,8 +292,9 @@ latitudinal and longitudinal dimensions $L_i\ (i \in \{\lambda, \phi\})$:
 \end{equation}
 
 \noindent
-in which $D$ is a positive scalar called the distance-size ratio, $d$ is the distance
-between the computation point and the geometric centre of the tesseroid
+donde $D$ es un escalar positivo denominado \emph{ratio de distancia-tamaño},
+$d$ es la distancia entre el punto de cómputo y el centro geométrico del
+tesseroide:
 
 \begin{equation}
     d = \left[
@@ -373,7 +315,7 @@ between the computation point and the geometric centre of the tesseroid
 \end{equation}
 
 \noindent
-and the dimensions of the tesseroid are defined as
+y las dimensiones del tesseroide se definen como:
 
 \begin{equation}
     L_\lambda = r_2 \arccos(\sin^2\phi_t +
@@ -381,105 +323,121 @@ and the dimensions of the tesseroid are defined as
     \label{eq:sizelon}
 \end{equation}
 
-\noindent and
+\noindent y
 
 \begin{equation}
     L_\phi = r_2 \arccos(\sin\phi_2\sin\phi_1 + \cos\phi_2\cos\phi_1).
 \end{equation}
 
-\textit{Step 2}:
-If none of the dimensions of the tesseroid fail inequality~\ref{eq:condition}, then
-compute the gravitational effect of the tesseroid using a second-order GLQ
-(Eq.~\ref{eq:glq-var-dens}).
-Add the computed effect to a running total.
+\textit{Paso 2}:
+Si todas de las dimensiones del tesseroide satisfacen la desigualdad~\ref{eq:condition},
+entonces calculamos el efecto gravitatorio del tesseroide usando una \ac{GLQ}
+de segundo orden (Eq.~\ref{eq:glq-var-dens}).
+Agregamos el efecto a un total acumulado.
 
-\textit{Step 3}:
-If inequality~\ref{eq:condition} does not hold for one of the dimensions
-(longitudinal or latitudinal), split the tesseroid in half along that dimension.
-Repeat steps 1-3 for all smaller tesseroids until none are left that violate
-inequality~\ref{eq:condition}.
+\textit{Paso 3}:
+Si la desigualdad~\ref{eq:condition} no es satisfecha por una o ambas
+dimensiones (longitudinal o latitudinal), dividimos el tesseroide al medio a lo
+largo de esa dimensión o dimensiones.
+Repetimos los pasos 1~a~3 para todos los tesseroides más pequeños hasta que
+ninguno de ellos viole la desigualdad~\ref{eq:condition}.
 
-\textit{Final step}:
-By the end of the algorithm, a second-order GLQ will have been applied to each smaller
-tesseroid and the running total gathered in step 2 will be the gravitational effect of
-the original tesseroid.
+\textit{Último paso}:
+Al finalizar el algoritmo, una \ac{GLQ} de segundo orden habrá sido aplicada
+a cada tesseroide más pequeño y el total acumulado del paso 2 será equivalente
+al efecto gravitatorio del tesseroide original.
 
-The distance-size ratio $D$ determines how many times the tesseroids will be divided.
-Therefore, it effectively regulates both the accuracy of the algorithm and its
-computation time.
-An optimal value for $D$ cannot be directly calculated from the desired accuracy level.
-Instead, it is empirically determined by comparing the numerical results with the
-analytical solution for a spherical shell.
-\citet{uieda2016} used a shell with homogeneous density to determine optimal values of
-$D$.
-Here, we will repeat the numerical experiment using analytical expressions for shells
-with density varying according to functions of $r$.
-This experiment will also test whether the same values of $D$ determined by
-\citet{uieda2016} can be used for the two dimensional adaptive discretization.
+El ratio densidad-tamaño $D$ determina cuántas veces el tesseroide será
+dividido.
+Por lo tanto, su valor regula tanto la precisión del algoritmo como su tiempo
+de cómputo.
+Un valor óptimo de $D$ no puede ser calculado directamente a partir del nivel
+de precisión deseado.
+En cambio, es posible determinarlo empíricamente comparando los resultados
+numéricos con la solución analítica para un cascarón esférico.
+\citet{uieda2016} han utilizado un cascarón de densidad homogénea para
+determinar los valores óptimos de $D$ para su algoritmo aplicado a tesseroides
+de densidad constante.
+Aquí repetiremos dicho experimento numérico utilizando las expresiones
+analíticas de los campos gravitatorios generados por cascarones con densidad
+variable según funciones continuas de $r$.
+Estos experimentos también corroborarán si los mismos valores de $D$
+determinados por \citet{uieda2016} pueden ser utilizados en conjunto con un
+algoritmo de discretización adaptativa bidimensional.
 
 
-\subsection{Density-based Discretization Algorithm}
+\subsection{Algoritmo de discretización basado en densidad}
 
-\begin{figure*}
-\centering
-\includegraphics[width=\linewidth]
-    {figs/tesseroids-variable-density/density-based-discretization-algorithm.pdf}
-\caption{
-    Example application of the density-based discretization algorithm to a non-linear
-    density function.
-    (a)~The normalised density function $\rho_n(r')$ (blue), current boundaries of the
-    tesseroid (orange dots), and the straight line $\rho_l(r')$ (orange line).
-    The dashed red line represents the maximum density difference $\Delta \rho (r')$ at
-    which the tesseroid would be divided (assuming that the
-    inequality~\ref{eq:delta-density} is not satisfied).
-    (b)~Second iteration of the algorithm with a new straight line and maximum
-    density difference. The tesseroid would be divided at the depth indicated by the
-    dashed red line.
-    (c)~Third iteration of the algorithm.
-    (d)~Final output of the density-based discretization, assuming that all four new
-    tesseroids satisfy inequality~\ref{eq:delta-density}.
-}
-\label{fig:density-discretization-algorithm}
-\end{figure*}
+La integración numérica considerando una función continua de densidad introduce
+un nuevo tipo de problema: el error de integración que surge de utilizar solo
+unos pocos nodos de cuadratura para considerar la variación de la densidad del
+tesseroide.
+El algoritmo de discretización adaptativa tridimensional puede ayudar a reducir
+este tipo de error agregando más masas puntuales en la dirección radial.
+Sin embargo, este no tiene en cuenta la función de densidad en sí misma a la
+hora de decidir cómo subdividir al tesseroide, y por lo tanto no es el método
+más adecuado para realizar esta tarea.
 
-The numerical integration of an arbitrary continuous density function introduces a new
-type of problem: the integration error from using only a few quadrature nodes to account
-for the variation of the density function.
-The three dimensional adaptive discretization may help to reduce this kind of error by
-adding more point masses in the radial direction.
-However, it does not take into account the density function itself when dividing the
-tesseroid and hence it is not well suited to fully perform this task.
+En este trabajo hemos desarrollado un algoritmo de discretización
+complementario que subdivide al tesseroide en la dirección radial tomando en
+consideración las variaciones de la función densidad.
+Este \emph{algoritmo de discretización basado en la densidad} se aplica antes
+del \emph{algoritmo de discretización adaptativa bidimensional} descripto en la
+sección anterior.
+En resumen, el algoritmo divide al tesseroide a lo largo de la dirección radial
+en las profundidades a las cuales ocurre la "máxima variación de densidad".
 
-We have developed a complementary discretization algorithm in the radial direction that
-takes into account the variations of the density function.
-This density-based discretization is applied prior to the two dimensional adaptive
-discretization described in the previous section.
-In short, the algorithm divides the tesseroid along the radial dimension at the
-depths at which the \emph{maximum density variations} take place.
-
-Consider an \emph{original} tesseroid with a density given by the continuous function
-$\rho(r')$.
-Before the density-based discretization starts,
-we normalise the density function to the range $[0, 1]$ as follows
+Consideremos un tesseroide, que llamaremos \emph{original}, con una función de
+densidad dada por $\rho(r')$.
+Antes de comenzar a aplicar el algoritmo de discretización basado en la
+densidad, normalizamos la función densidad al intervalo $[0, 1]$ de la
+siguiente manera:
 
 \begin{equation}
     \rho_n(r') =
     \frac{\rho(r') - \rho_\text{min}}{\rho_\text{max} - \rho_\text{min}},
 \end{equation}
 
-\noindent in which $\rho_\text{min}$ and $\rho_\text{max}$ are the minimum and maximum
-density values inside the tesseroid boundaries.
-We emphasize that this normalised density function will not be modified throughout the
-algorithm.
-In case the density function is constant, both maximum and minimum densities will be
-equal and the density-based discretization algorithm will not be applied.
+\noindent donde $\rho_\text{min}$ y $\rho_\text{max}$ son el mínimo y el máximo
+valor de densidad dentro de los límites de tesseroide.
+Hacemos hincapié en que esta función densidad normalizada no se verá modificada
+a lo largo del algoritmo.
+En caso de que la función densidad sea constante, los mínimos y máximos serán
+iguales y por ende el algoritmo de discretización basado en densidad no será
+aplicado.
 
-The algorithm is comprised of the following steps
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]
+    {figs/tesseroids-variable-density/density-based-discretization-algorithm.pdf}
+\caption{
+    Ejemplo de la aplicación del algoritmo de discretización basado en densidad
+    a una función densidad no lineal.
+    (a)~La función densidad normalizada $\rho_n(r')$ (azul), los límites
+    actuales del tesseroide (puntos naranja), y la \emph{línea recta}
+    $\rho_l(r')$ (línea naranja).
+    Las líneas de a trazos rojas representan la máxima diferencia de densidad
+    $\Delta \rho (r')$ a la cual el tesseroide será subdividido (asumiendo que
+    la desigualdad~\ref{eq:delta-density} no se satisface).
+    (b)~Segunda iteración del algoritmo con una nueva \emph{línea recta} y máxima
+    diferencia de densidad. El tesseroide será dividido a la profundidad
+    indicada por la linea roja de a trazos.
+    (c)~Tercera iteración del algoritmo.
+    (d)~ Salida final del algoritmo de discretización basado en densidad,
+    asumiendo que los cuatro tesseroides nuevos satisfacen la
+    desigualdad~\ref{eq:delta-density}.
+}
+\label{fig:density-discretization-algorithm}
+\end{figure}
+
+
+El algoritmo puede comprenderse a través de los siguientes pasos
 (Fig.~\ref{fig:density-discretization-algorithm}):
 
-\textit{Step 1}:
-Define a straight line $\rho_l(r')$ that assumes the same values as the normalised
-density function $\rho_n(r')$ at the boundaries of the tesseroid ($r_1$ and $r_2$):
+\textit{Paso 1}:
+Definimos una \emph{línea recta} $\rho_l(r')$ que toma los mismos valores que
+la función densidad normalizada $\rho_n(r')$ en los extremos del tesseroide
+($r_1$ and $r_2$):
 
 \begin{equation}
     \rho_l(r') =
@@ -487,23 +445,22 @@ density function $\rho_n(r')$ at the boundaries of the tesseroid ($r_1$ and $r_2
     \label{eq:density-reference-line}
 \end{equation}
 
-\textit{Step 2}:
-Evaluate the normalised density function and the straight line on a range of $N$ radii
-between $r_1$ and $r_2$.
-We have opted for $N = 101$ but the specific value of $N$ is not critical to the
-algorithm.
+\textit{Paso 2}:
+Evaluamos la función de densidad normalizada y la \emph{línea recta} en un
+rango de $N$ radios entre $r_1$ y $r_2$. Hemos optado por un $N = 101$, pero el
+valor específico de $N$ no es crítico para el funcionamiento del algoritmo.
 
-\textit{Step 3}:
-Compute the absolute difference between the values of the straight line and the
-normalised density function:
+\textit{Paso 3}:
+Calculamos la diferencia absoluta entre los valores de la \emph{línea recta}
+y la función densidad normalizada:
 
 \begin{equation}
     \Delta \rho (r') = | \rho_n(r') - \rho_l(r') |.
     \label{eq:density-abs-diff}
 \end{equation}
 
-\textit{Step 4}:
-If the following inequality holds, the tesseroid will not be divided:
+\textit{Paso 4}:
+Si la siguiente desigualdad se satisface, el tesseroide no será subdividido:
 
 \begin{equation}
     \text{max}\{ \Delta \rho(r') \} \frac{L_r}{L_r^\text{orig}} \le \delta,
@@ -511,91 +468,97 @@ If the following inequality holds, the tesseroid will not be divided:
 \end{equation}
 
 \noindent
-in which $L_r$ is the radial dimension of the tesseroid being considered for division,
+donde $L_r$ es la dimensión radial del tesseroide considerado para ser
+subdividido,
 
 \begin{equation}
     L_r = r_2 - r_1,
 \end{equation}
 
-\noindent $L_r^\text{orig}$ is the radial dimension of the original tesseroid, and
-$\delta$ is a positive constant henceforth called the \textit{delta ratio}.
+\noindent $L_r^\text{orig}$ es la dimensión radial del tesseroide
+\emph{original}, y $\delta$ es una constante positiva que denominaremos
+\emph{ratio delta}.
 
-\textit{Step 5}:
-If inequality~\ref{eq:delta-density} is not satisfied, then the tesseroid is split in
-two parts at the radius $r_\text{max}$ at which the maximum absolute difference
-(Eq.~\ref{eq:density-abs-diff}) takes place.
-Repeat steps 1-5 for each smaller tesseroid produced in this step.
+\textit{Paso 5}:
+Si la desigualdad~\ref{eq:delta-density} no se satisface, entonces dividimos el
+tesseroide en dos a una profundidad dada por el radio $r_\text{max}$ a la cual
+la máxima diferencia absoluta (Eq.~\ref{eq:density-abs-diff}) tiene lugar.
+Repetimos los pasos 1~a~5 para cada tesseroide pequeño producido por este paso.
 
-\textit{Final step}:
-Once all smaller tesseroids satisfy inequality.~\ref{eq:delta-density}, each one is
-subjected to the two dimensional adaptive discretization algorithm described earlier to
-calculate their gravitational effects.
+\textit{Paso final}:
+Una vez que todos los pequeños tesseroides satisfacen la
+desigualdad~\ref{eq:delta-density}, cada uno es sometido al algoritmo de
+discretización adaptativa bidimensional descripto anteriormente con el objeto
+de calcular sus efectos gravitatorios.
 
-On the first iteration, the ratio $L_r/L_r^\text{orig}$ equals one because the tesseroid
-being divided is the original one.
-For further iterations, the ratio will be progressively smaller than one as the
-tesseroids get smaller.
-This is intended to limit the number of divisions to the ones that will
-significantly reduce the numerical error:
-dividing a large tesseroid with a small $\text{max}\{ \Delta \rho(r') \}$ would
-improve the integration accuracy more than dividing a small tesseroid with a
-higher $\text{max}\{ \Delta \rho(r') \}$.
+En la primer iteración, la relación $L_r/L_r^\text{orig}$ es igual a 1, ya que
+el tesseroide que se considera para subdividir corresponde al \emph{original}.
+En las subsiguientes iteraciones, esta relación sera progresivamente menor que
+1 a medida que los tesseroides son cada vez más pequeños.
+La intención de este comportamiento es limitar la cantidad de divisiones a un
+numero que reduzca significativamente el error numérico:
+dividir un tesseroide grande con un $\text{max}\{ \Delta \rho(r') \}$ bajo
+mejoraría la precisión de la integración en mayor medida que dividiendo un
+tesseroide pequeño con un $\text{max}\{ \Delta \rho(r') \}$ mayor.
 
-The higher $\delta$ is, the fewer divisions will be made, and vice-versa.
-Thus, it controls how many times the tesseroids will be divided based on the density
-function and, indirectly, determines the accuracy and computation time of
-numerical integration.
-This raises the need to determine a maximum value of $\delta$ that
-ensures an acceptable accuracy while minimising the computation time.
-
-
-\subsection{Algorithm summary}
-
-In summary, given a tesseroid with density varying in depth according to an arbitrary
-continuous function, we propose the following steps to numerically compute its
-gravitational fields on an external point:
-
-\textit{Step 1:}
-Apply the density-based discretization algorithm to discretize the tesseroid in the
-radial dimension, producing a set of tesseroids with the same longitudinal and
-latitudinal dimensions as the original one but with different radial boundaries.
-
-\textit{Step 2:}
-Apply the two dimensional adaptive discretization algorithm for each tesseroid obtained
-in the previous step.
-If needed, the algorithm will divide each tesseroid in the latitudinal and longitudinal
-direction, generating a set of smaller tesseroids.
-
-\textit{Step 3:}
-Apply a second-order GLQ to numerically compute the gravitational fields
-(Eq.~\ref{eq:glq-var-dens}) generated by each tesseroid obtained in the
-previous step.
-The numerical integration includes the density function and can be applied
-without modification to any continuous function.
-The sum of these results is the gravitational field of the original tesseroid.
+A mayor valor de $\delta$, se llevarán a cabo menor cantidad de divisiones,
+y viceversa.
+Por ende, el valor de $\delta$ controla cuántas veces los tesseroides serán
+divididos basados en la función densidad, e indirectamente, determina la
+precisión y el tiempo de cómputo de la integración numérica.
+Esto hace surgir la necesidad de determinar un valor máximo de $\delta$ que
+garantice una precisión aceptable mientras minimiza el tiempo de cómputo.
 
 
-\subsection{Software implementation}
+\subsection{Resumen del algoritmo}
 
-We have implemented the algorithms described in the previous sections in the Python
-programming language.
-The software is based on the Python implementation of \citet{uieda2016} that is included
-in the Fatiando a Terra library v0.5 \citep{uieda2013}.
-The more time consuming parts of the algorithm are written in the Cython language to
-achieve higher performance.
-We leverage the dynamic nature of the Python language to allow user-defined radial
-density functions as inputs to the software.
-Thus, our code can evaluate linear, exponential, polynomial, sinusoidal, cubic splines,
-or any other continuous density function without modification.
-This new code is freely available under the BSD 3-clause open-source license.
-All source code, Python scripts, data, and model results are made available through
-an online repository
+En resumen, dado un tesseroide con densidad variable en profundidad segun una
+función continua arbitraria, proponemos seguir los siguientes pasos para
+calcular numéricamente sus campos gravitatorios en cualquier punto exterior:
+
+\textit{Paso 1:}
+Aplicar el \emph{algoritmo de discretización basado en densidad} para
+subdividir al tesseroide a lo largo de la dirección radial, produciendo un
+conjunto de tesseroides con las mismas dimensiones longitudinales
+y latitudinales que el original, pero con diferentes límites radiales.
+
+\textit{Paso 2:}
+Aplicar el \emph{algoritmo de discretización adaptativa bidimensional} a cada
+tesseroide obtenido en el paso anterior.
+Si es necesario, el algoritmo subdividirá cada tesseroide en las direcciones
+longitudinal y latitudinal, generando un conjunto de tesseroides más pequeños.
+
+\textit{Paso 3:}
+Aplicar una \ac{GLQ} de segundo orden para calcular numéricamente los campos
+gravitatorios (Eq.~\ref{eq:glq-var-dens}) generados por cada tesseroide
+obtenido en el paso anterior. La integración numérica incluye la función
+densidad y puede ser aplicada sin modificaciones a cualquier función continua.
+La suma de todos estos resultas corresponde al campo gravitatorio generado por
+el tesseroide original.
+
+
+\subsection{Implementación por Software}
+
+Hemos implementado los algoritmos descriptos en las secciones anteriores
+mediante el uso del lenguaje de programación Python.
+El software está basado en la implementación en Python de \citet{uieda2016}
+incluida en la librería Fatiando a Terra v0.5 \citep{uieda2013}.
+Los pasos que involucran un mayor tiempo de cómputo han sido escritos en
+lenguaje Cython para alcanzar un mejor desempeño.
+Aprovechamos la naturaleza dinámica del lenguaje Python para permitir funciones
+de densidades definidas por el usuario o la usuaria como entradas del software.
+Por ende, nuestro código puede evaluar sin modificaciones funciones lineales,
+exponenciales, polinomiales, sinusoidales, splines cúbicas o cualquier otra
+función de densidad continua.
+Esta implementación se encuentra disponible libremente bajo la licencia
+open-source BSD 3-clause.
+Todo el código fuente, los scripts de Python, los datos y resultados se
+encuentran disponibles a través del siguiente repositorio
 \href{https://doi.org/10.6084/m9.figshare.8239622}{doi.org/10.6084/m9.figshare.8239622}
 \citep{soler2019b} or
 \href{https://github.com/pinga-lab/tesseroid-variable-density}{github.com/pinga-lab/tesseroid-variable-density}.
-The repository also contains instructions for replicating all results
-presented here.
-
+El repositorio también contiene instrucciones para replicar los resultados
+presentados en este capítulo.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
