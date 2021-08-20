@@ -437,7 +437,7 @@ El algoritmo puede comprenderse a través de los siguientes pasos
 \textit{Paso 1}:
 Definimos una \emph{línea recta} $\rho_l(r')$ que toma los mismos valores que
 la función densidad normalizada $\rho_n(r')$ en los extremos del tesseroide
-($r_1$ and $r_2$):
+($r_1$ y $r_2$):
 
 \begin{equation}
     \rho_l(r') =
@@ -881,7 +881,7 @@ exponencial.
 Habiendo fijado valores de $D$ iguales a los obtenidos para el caso de
 densidad lineal, nos encontramos en condiciones de explorar los errores de
 integración como función de $\delta$ en mayor detalle.
-Calcularemos la difrencia entre el error numérico y las soluciones analítica
+Calcularemos la diferencia entre el error numérico y las soluciones analítica
 para todas las combinaciones de grillas de cómputo (Tabla~\ref{tab:grids})
 y modelos de cascarón esférico (Tabla~\ref{tab:shell-models}),
 variando los valores de $\delta$ entre $10^{-3}$ y $10^{1}$.
@@ -897,9 +897,9 @@ Por brevedad, cada curva corresponde a la diferencia máxima entre todos los
 modelos de cascarón esférico.
 Las curvas correspondientes a $b=1$ y $b=2$ se encuentran por debajo del umbral
 0.1\% para todos los valores de $\delta$ y no se ven modificadas para valores
-  de $\delta > 0.8$, indicando que esas funciones de densidad son los
-  suficientemente suaves como para poder prescindir de discretizaciones en la
-  dirección radial.
+de $\delta > 0.8$, indicando que esas funciones de densidad son los
+suficientemente suaves como para poder prescindir de discretizaciones en la
+dirección radial.
 Para todos los otros valores de $b$, las diferencias caen debajo del umbral si
 $\delta=0.1$.
 Estos resultados indican que no hay una relación significativa entre la
@@ -978,151 +978,167 @@ a 1650 kg/m$^3$.
 \label{fig:sine-densities}
 \end{figure}
 
-\begin{figure*}
+\begin{figure}
 \centering
 \includegraphics[width=\linewidth]{figs/tesseroids-variable-density/sine-density-diffs.pdf}
 \caption{
-    Difference between the numerical and analytical solutions as a function of $\delta$
-    ratio for different sinusoidal density functions.
-    These comparisons were carried out for every shell model
-    (Table~\ref{tab:shell-models}) and computation grid (Table~\ref{tab:grids})
-    using a fixed value of $D$.
-    Each curve corresponds to the maximum difference out of all shell models
-    for a particular value of $b$ (Eq.~\ref{eq:density-sine}).
-    Differences are reported as a percentage of the analytical solutions.
-    The horizontal dashed black line represents a target difference of 0.1\%.
+    Diferencias entre los resultados numéricos y las soluciones analíticas como
+    función de $\delta$ para diferentes funciones de densidad sinusoidales.
+    Las comparaciones fueron llevadas a cabo para cada modelo de cascarón
+    (Tabla~\ref{tab:shell-models}) y cada grilla de cómputo
+    (Tabla~\ref{tab:grids}) haciendo uso de un valor fijo de $D$.
+    Cada curva corresponde a la diferencia máxima obtenida para cada modelo de
+    cascarón para un valor particular de $b$ (ec.~\ref{eq:density-sine}).
+    Las diferencias están reportadas como un porcentaje de las soluciones
+    analíticas. Las líneas horizontales de a trazos y color negro representan
+    el umbral de precisión de 0.1\%.
     }
 \label{fig:delta-sine}
-\end{figure*}
+\end{figure}
 
-Fig.~\ref{fig:delta-sine} shows the relative differences between the analytical
-and the numerical solutions for sinusoidal density case.
-Once again, each curve corresponds to the maximum difference between all shell models.
-For all values of $b$ except for $b=10$,
-the differences fall below the 0.1\% threshold for $\delta = 0.1$.
-In the case of $b=10$, a lower value of $\delta = 0.01$ is required to achieve 0.1\%
-difference.
-We note that, even for the case of $b=10$, the differences for $\delta = 0.1$ are below
-1\%.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Algorithm performance}
-
-Because the density-based discretization algorithm introduces more divisions along the
-radial dimension, it is reasonable that the computation time for variable densities will
-be higher than the homogeneous density case.
-Directly comparing the computation time of both cases cannot be done in a meaningful
-way because it is highly dependent on the implementation of the algorithm,
-the choice of programming language, and the particular density function used.
-In order to obtain an indicator of the increase in the computation time,
-we chose the number of tesseroid divisions in the density-based discretization as a
-proxy measure.
-
-We analyse exponential density functions (Eq.~\ref{eq:density-exp}) with values of $b$
-equal to 1, 2, 5, 10, 30 and 100, and sinusoidal density functions
-(Eq.~\ref{eq:density-sine}) with values of $b$ equal to 1, 2, 5, and 10.
-We then apply the density-based discretization algorithm on each function and record the
-number divisions carried out.
-Figs.~\ref{fig:number-of-tesseroids}a and~\ref{fig:number-of-tesseroids}b show the
-exponential and sinusoidal density functions and the resulting discretization points as
-orange dots.
-
-For the exponential density functions, the algorithm performs a single division
-independently of the value of $b$.
-Therefore, the computation time would likely be at least twice that of the homogeneous
-density case (assuming equal implementations).
-On the other hand, Fig.~\ref{fig:number-of-tesseroids}c shows an almost linear relation
-between the number of divisions in the sinusoidal density case and the value of $b$.
-Thus, the computation time is likely to be dependent on the number of wavelengths
-of the sinusoidal function that are contained within the tesseroid.
-
-\begin{figure*}
-\centering
-\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/number-of-tesseroids.pdf}
-\caption{
-    Number of divisions performed by the density-based discretization algorithm
-    (with $\delta = 0.1$) in case of
-    (a)~exponential density functions with the same values of $b$ shown in
-    Fig.~\ref{fig:exp-densities},
-    (b)~sinusoidal density functions with the same values of $b$ shown in
-    Fig.~\ref{fig:sine-densities}.
-    On both figures, the locations of the tesseroid divisions are are marked with orange
-    dots.
-    (c) shows the number of discretized tesseroids for the sinusoidal density functions
-    as a function of $b$.
-}
-\label{fig:number-of-tesseroids}
-\end{figure*}
+La Figura~\ref{fig:delta-sine}
+muestra las diferencias relativas entre los resultados numéricos y las
+soluciones analíticas para casos de densidades sinusoidales.
+Nuevamente, cada curva corresponde a la diferencia máxima para cada modelo de
+cascarón.
+Para todos los valores de $b$, a excepción de $b=10$, las diferencias caen
+debajo del umbral 0.1\% para $\delta = 0.1$.
+En el caso de $b=10$, un menor valor de $\delta = 0.01$ es necesario para
+alcanzar dicho umbral.
+Vale notar que incluso para el caso de $b=10$, las diferencias obtenidas
+utilizando $\delta = 0.1$ se encuentran debajo del 1\%.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Application to the Neuquén Basin}
+\section{Desempeño del algoritmo}
 
-We applied the new algorithms and optimal values of $D$ and $\delta$ determined
-previously to calculate the gravitational effects of the Neuquén Basin,
-a sedimentary basin located to the east of the Andes, between 32$^\circ$S and
-40$^\circ$S latitude (Fig.~\ref{fig:neuquen-basin}a).
-The basin includes continental and marine siliciclastics, carbonates, and evaporites
-accumulated over the Jurassic and the Cretaceous constituting a stratigraphic record up
-to 5000m of depth \citep{howell2005}.
+Dado que el algoritmo de discretización basada en densidad introduce
+subdivisiones a lo largo de la dirección radial, es razonable suponer que el
+tiempo de cómputo para el caso de densidades variables será más alto que en el
+caso de densidades homogéneas.
+Comparar directamente el tiempo de cómputo en ambos casos no podría ser
+realizado de forma significativa, ya que dependería fuertemente en la
+implementación del algoritmo, la elección del lenguaje de programación y la
+función densidad en particular.
+Con el objetivo de obtener un indicador sobre cuánto aumenta el costo
+computacional, elegimos la cantidad de subdivisiones al tesseroides en la
+discretización basada en densidad como una variable proxy.
 
-\begin{figure*}
-\centering
-\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/neuquen-basin.pdf}
-\caption{
-    Gravitational effects of the Neuquén sedimentary basin modelled
-    using tesseroids with an exponential density function of depth.
-    (a)~Topography of the Neuquén Basin (in km) and its location in South America,
-    (b)~thickness of the sedimentary basin \citep[in meters;][]{heine2007},
-    (c)~resulting gravitational potential $V$,
-    (d)~resulting vertical component of the gradient ($g_z$),
-    calculated at 10km of height over the mean Earth radius.
-}
-\label{fig:neuquen-basin}
-\end{figure*}
+Analizamos densidades exponenciales (ec.~\ref{eq:density-exp}) con valores de
+$b$ iguales a 1, 2, 5, 10, 30 y 100, y densidades sinusoidales
+(ec.~\ref{eq:density-sine}) con valores de $b$ iguales a 1, 2, 5, y 10.
+Aplicamos el algoritmo de discretización basado en densidad sobre cada una de
+esas funciones y registramos la cantidad de divisiones que produce en cada
+caso.
+Las Figuras.~\ref{fig:number-of-tesseroids}a y~\ref{fig:number-of-tesseroids}b
+muestran las densidades exponenciales y sinusoidales junto con sus
+correspondientes puntos de discretización como círculos naranja.
+
+En el caso de densidad exponencial, el algoritmo realiza una única subdivisión
+independientemente del valor de $b$.
+Por lo tanto, el tiempo de cómputo podría estimarse como el doble del caso de
+una densidad homogénea (asumiendo implementaciones idénticas).
+Por otro lado, la Figura~\ref{fig:number-of-tesseroids}c muestra una relación
+casi lineal entre el número de divisiones para el caso de densidad sinusoidal
+y los valores de $b$.
+Por lo tanto, el tiempo de cómputo en estos casos parece depender de la
+cantidad de períodos de la función sinusoidal contenidos dentro de los límites
+del tesseroide.
 
 \begin{figure}
 \centering
-%\iftwocol{
-\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/neuquen-basin-densities.pdf}
-%}{
-%\includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/neuquen-basin-densities.pdf}
-%}
+\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/number-of-tesseroids.pdf}
 \caption{
-    Linear and exponential densities used to compute the gravitational fields generated
-    by a tesseroid model of the Neuquén sedimentary basin.
-    The height is defined above the mean Earth radius, and its axis is spanned between
-    the deepest and the highest point of the basin.
+    Cantidad de subdivisiones realizadas por el algoritmo de discretización
+    basada en densidad (con $\delta = 0.1$) en caso de
+    (a)~funciones de densidad exponencial con los mismos valores de $b$
+    presentes en la Fig.~\ref{fig:exp-densities},
+    (b)~funciones de densidad sinusoidal con los mismos valores de $b$
+    presentes en la Fig.~\ref{fig:sine-densities}.
+    En ambas figuras, las ubicaciones de las discretizaciones están marcadas
+    con círculos naranja.
+    (c)~Muestra la cantidad de tesseroides obtenidos en el caso de densidad
+    sinusoidal como función de $b$.
+}
+\label{fig:number-of-tesseroids}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Aplicación a la Cuenca Neuquina}
+
+Hemos aplicado los nuevos algoritmos y los valores óptimos para $D$
+y $\delta$ determinados previamente para calcular los efectos gravitatorios de
+la Cuenca Neuquina, una cuenca sedimentaria localizada al este de los Andes,
+entre las latitudes 32$^\circ$S y 40$^\circ$S (Fig.~\ref{fig:neuquen-basin}a).
+La cuenca incluye siliciclástos marinos y sedimentarios, carbonatos
+y evaporitas acumuladas durante el Jurásico y el Cretácito constituyendo un
+registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{
+    figs/tesseroids-variable-density/neuquen-basin.pdf
+}
+\caption{
+    Efectos gravitatorios de la Cuenca Neuquina modelada utilizando tesseroides
+    con una densidad exponencial como función de la profundidad.
+    (a)~Topografía de la Cuenca Neuquina (en km) y su ubicación geográfica en
+    Sudamérica,
+    (b)~espesor de la cuenca sedimentaria \citep[in meters;][]{heine2007}
+    (c)~potencial gravitatorio resultante $V$,
+    (d)~componente vertical del gradiente ($g_z$),
+    calculadas a 10km de altitud sobre el radio medio de la Tierra.
+}
+\label{fig:neuquen-basin}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{
+    figs/tesseroids-variable-density/neuquen-basin-densities.pdf
+}
+\caption{
+    Densidades lineales y exponenciales utilizadas para el cálculo de los
+    campos gravitacionales generados por un modelo de la Cuenca Neuquina
+    compuesto por tesseroides.
+    La altitud se define por encima del radio medio de la Tierra, y sus eje se
+    extiende entre el puntos más profundo hasta el punto más alto de la cuenca.
 }
 \label{fig:neuquen-basin-densities}
 \end{figure}
 
 
-\begin{figure*}
+\begin{figure}
 \centering
-\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/neuquen-basin-diffs.pdf}
+\includegraphics[width=\linewidth]{
+    figs/tesseroids-variable-density/neuquen-basin-diffs.pdf
+}
 \caption{
-    Differences between the gravitational fields generated by the tesseroid model of the
-    Neuquén basin with an exponential density contrast and with a homogeneous and
-    linear density variation.
-    \mbox{(a)-(b)}~Differences on $V$ and $g_z$ between the exponential density model
-    and the homogeneous density one,
-    \mbox{(c)-(f)}~differences on $V$ and $g_z$ between the exponential density model
-    and the linear density one, calculated at 10km of height over the mean Earth radius.
+    Diferencias entre los campos gravitatorios generados por el modelo de
+    tesseroides de la Cuenca Neuquina con una densidad exponencial y con el
+    mismo modelo pero con densidades homogéneas y lineales.
+    \mbox{(a)-(b)}~Diferencias de $V$ y $g_z$ entre el modelo con densidad
+    exponencial y el modelo con densidad homogénea,
+    \mbox{(c)-(f)}~diferencias de $V$ y $g_z$ entre el modelo con densidad
+    exponencial y el modelo con densidad lineal,
+    calculadas a 10km de altitud sobre el radio medio de la Tierra.
 }
 \label{fig:neuquen-basin-diffs}
-\end{figure*}
+\end{figure}
 
-The thickness of the sediment pack was digitized from \citet{heine2007} on a regular
-grid with a resolution of 0.05$^\circ$ on both longitude and latitude directions
-(Fig.~\ref{fig:neuquen-basin}b).
-We created a tesseroid model of the sediment pack by placing a
-$0.05^\circ \times 0.05^\circ$ tesseroid on each node of the grid.
-The top of each tesseroid was fixed at the median of the topography of the basin
-(845~m above mean Earth radius) and the bottom at corresponding thickness of the basin.
+El espesor del paquete sedimentario fue digitalizado a partir de \citet{heine2007}
+sobre una grilla regular con una resolución de 0.05$^\circ$ en las direcciones
+longitudinal y latitudinal (Fig.~\ref{fig:neuquen-basin}b).
+Creamos un modelo del paquete sedimentario a partir de tesseroides de
+$0.05^\circ \times 0.05^\circ$ ubicados sobre cada nodo de la grilla.
+El límite superior de cada tesseroide fue fijado a al altitud media de la
+topografía de la cuenca (845~m sobre el radio medio de la Tierra) y el límite
+inferior es seleccionado de forma tal que cada tesseroide posea la misma
+dimensión que el espesor de la cuenca sobre el correspondiente punto de la
+grilla.
 
 We must also define a density function for the tesseroid model.
 \citet{sigismondi2012} measured a minimum and maximum density contrast for
