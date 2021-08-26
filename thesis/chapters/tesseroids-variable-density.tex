@@ -408,8 +408,9 @@ aplicado.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]
-    {figs/tesseroids-variable-density/density-based-discretization-algorithm.pdf}
+\includegraphics[width=\linewidth]{
+    figs/tesseroids-variable-density/density-based-discretization-algorithm.pdf
+}
 \caption{
     Ejemplo de la aplicación del algoritmo de discretización basado en densidad
     a una función densidad no lineal.
@@ -554,9 +555,17 @@ Esta implementación se encuentra disponible libremente bajo la licencia
 open-source BSD 3-clause.
 Todo el código fuente, los scripts de Python, los datos y resultados se
 encuentran disponibles a través del siguiente repositorio
-\href{https://doi.org/10.6084/m9.figshare.8239622}{doi.org/10.6084/m9.figshare.8239622}
-\citep{soler2019b} or
-\href{https://github.com/pinga-lab/tesseroid-variable-density}{github.com/pinga-lab/tesseroid-variable-density}.
+\href{
+    https://doi.org/10.6084/m9.figshare.8239622
+}{
+    doi.org/10.6084/m9.figshare.8239622
+}
+\citep{soler2019b} o
+\href{
+    https://github.com/pinga-lab/tesseroid-variable-density
+}{
+    github.com/pinga-lab/tesseroid-variable-density
+}.
 El repositorio también contiene instrucciones para replicar los resultados
 presentados en este capítulo.
 
@@ -704,7 +713,9 @@ y externo ($R_\text{out}$) del cascarón, respectivamente:
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/linear-density-diffs.pdf}
+\includegraphics[width=\linewidth]{
+    figs/tesseroids-variable-density/linear-density-diffs.pdf
+}
 \caption{
     Diferencias entre los campos gravitatorios generados por cada modelo de
     cascarón hecho con tesseroides y sus respectivas soluciones analíticas en
@@ -797,7 +808,9 @@ de la función densidad (Fig.~\ref{fig:exp-densities}).
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/exponential-densities.pdf}
+\includegraphics[width=0.5\linewidth]{
+    figs/tesseroids-variable-density/exponential-densities.pdf
+}
 \caption{
     Funciones de densidad exponencial asignadas a los modelos de cascarón
     esférico para la determinación del ratio $\delta$.
@@ -810,7 +823,7 @@ de la función densidad (Fig.~\ref{fig:exp-densities}).
 
 \subsubsection{Exploración del espacio $D$-$\delta$}
 
-Nuestro obejtivo es hallar una combinmación de valores para $D$ y $\delta$ que
+Nuestro objetivo es hallar una combinación de valores para $D$ y $\delta$ que
 produzcan un error numérico menor al umbral de 0.1\% mientras minimicen el
 tiempo de cómputo.
 Para ello hacemos uso del método de búsqueda en grilla (\emph{grid search} en
@@ -854,17 +867,19 @@ exponencial.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\linewidth]
-    {figs/tesseroids-variable-density/grid-search.pdf}
+\includegraphics[width=0.5\linewidth]{
+    figs/tesseroids-variable-density/grid-search.pdf
+}
 \caption{
     Exploración del error numérico en el espacio $D$-$\delta$.
     Los valores porcentuales de diferencia fueron obtenidos a partir de la
     comparación entre las soluciones analíticas y las aproximaciones numéricas
-    de los campos gravitatorios ($V$ and $g_z$) generados por un cascarón
+    de los campos gravitatorios ($V$ y $g_z$) generados por un cascarón
     esférico con una densidad exponencial
     (ec.~\ref{eq:density-exp}) con $b=30$.
-    Estas comparaciones fueron realizadas sobre la grilla de cómputo \emph{Global} (Tabla~\ref{tab:grids}),
-    con los modelos de cascarón esféricos detallados en la Tabla~\ref{tab:shell-models},
+    Estas comparaciones fueron realizadas sobre la grilla de cómputo
+    \emph{Global} (Tabla~\ref{tab:grids}), con los modelos de cascarón
+    esféricos detallados en la Tabla~\ref{tab:shell-models}.
     Los valores de diferencias porcentuales fueron obtenidos como la máxima
     diferencia de entre todos los modelos de cascarón.
     Los puntos interiores a la región delimitada por las lineas de a trazos son
@@ -907,7 +922,9 @@ suavidad de la densidad exponencial y el error numérico.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/exponential-density-diffs.pdf}
+\includegraphics[width=\linewidth]{
+    figs/tesseroids-variable-density/exponential-density-diffs.pdf
+}
 \caption{
     Diferencias entre el error numérico y las soluciones analíticas como
     función del ratio $\delta$ para varias funciones de densidad exponenciales.
@@ -969,7 +986,9 @@ a 1650 kg/m$^3$.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/sine-densities.pdf}
+\includegraphics[width=0.5\linewidth]{
+    figs/tesseroids-variable-density/sine-densities.pdf
+}
 \caption{
     Densidades sinusoidales asignadas a los cascarones esféricos durante la
     determinación del ratio $\delta$. Cada función de densidad corresponde a un
@@ -980,7 +999,9 @@ a 1650 kg/m$^3$.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/sine-density-diffs.pdf}
+\includegraphics[width=\linewidth]{
+    figs/tesseroids-variable-density/sine-density-diffs.pdf
+}
 \caption{
     Diferencias entre los resultados numéricos y las soluciones analíticas como
     función de $\delta$ para diferentes funciones de densidad sinusoidales.
@@ -1048,7 +1069,9 @@ del tesseroide.
 
 \begin{figure}
 \centering
-\includegraphics[width=\linewidth]{figs/tesseroids-variable-density/number-of-tesseroids.pdf}
+\includegraphics[width=\linewidth]{
+    figs/tesseroids-variable-density/number-of-tesseroids.pdf
+}
 \caption{
     Cantidad de subdivisiones realizadas por el algoritmo de discretización
     basada en densidad (con $\delta = 0.1$) en caso de
@@ -1087,7 +1110,7 @@ registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
     con una densidad exponencial como función de la profundidad.
     (a)~Topografía de la Cuenca Neuquina (en km) y su ubicación geográfica en
     Sudamérica,
-    (b)~espesor de la cuenca sedimentaria \citep[in meters;][]{heine2007}
+    (b)~espesor de la cuenca sedimentaria \citep[en metros;][]{heine2007}
     (c)~potencial gravitatorio resultante $V$,
     (d)~componente vertical del gradiente ($g_z$),
     calculadas a 10km de altitud sobre el radio medio de la Tierra.
