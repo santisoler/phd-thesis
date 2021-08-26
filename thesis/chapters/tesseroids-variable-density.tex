@@ -1201,152 +1201,181 @@ de los relevamientos gravimétricos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Discussion}
+\section{Discusión}
 
-By including the density function into the GLQ integration, the method described here
-can be applied without modification to tesseroids with density following any continuous
-function of radius.
-A density-based discretization algorithm divides the tesseroid in the radial dimension
-to ensure accurate integration of the density function.
-This algorithm is independent of the GLQ integration and could potentially be used to
-determine an optimal discretization when approximating a density function by piecewise
-linear \citep{lin2019} or piecewise polynomial \citep{fukushima2018} functions.
+Al incluir la función densidad dentro de la \ac{GLQ}, el método aquí descripto
+puede ser aplicado sin ninguna modificación a cualquier tesseroide cuya
+densidad puede representarse por una función continua en la dirección radial.
+El algoritmo de discretización basado en la densidad divide el tesseroide a lo
+largo de la dirección radial con el objetivo de garantizar una precisa
+integración.
+Este algoritmo es independiente de la integración \ac{GLQ} y puede
+potencialmente ser aplicado para determinar una óptima discretización a la hora
+de aproximar una función mediante funciones lineales de a pasos \citep{lin2019}
+o funciones polinomiales de a paso \citep{fukushima2018}.
 
-Our numerical experiments show that the two dimensional adaptive discretization is
-enough to achieve 0.1\% accuracy with a second-order GLQ in the case of a linear density
-function (Fig.~\ref{fig:D-linear}).
-Values of the distance-size ratio determined here for the gravitational potential
-($D=1$) and its vertical derivative ($D=2.5$) are compatible with \citet{uieda2016}.
-These results also show that there is no significant relationship between the accuracy
-of the method and the thickness of the tesseroid model.
+Nuestros resultados experimentales muestran que la discretización adaptativa
+bidimensional es suficiente para alcanzar errores debajo del 0.1\% en conjunto
+con una \ac{GLQ} de segundo orden en caso de densidades lineales
+(Fig.~\ref{fig:D-linear}).
+Los valores del ratio distancia-tamaño determinados para el
+potencial gravitatorio
+($D=1$)
+y para su derivada vertical ($D=2.5$) son compatibles por los valores
+determinados por \citet{uieda2016}.
+Estos resultados muestran además que no existe una relación significativa entre
+la precisión del método y el espesor del modelo de tesseroides.
 
-The $D$-$\delta$ space exploration for the exponential density function
-(Fig.~\ref{fig:grid-search}) showed that values of $D$ determined for the linear density
-case are equally applicable to the exponential density case.
-Furthermore, the difference with respect to the analytical solution only falls below
-0.1\% for values of $\delta$ lower than 0.1.
-It follows that the density-based discretization is required to achieve the desired
-accuracy level for non-linear density functions.
+La exploración del espacio $D$-$\delta$ para el caso de una densidad
+exponencial (Fig.~\ref{fig:grid-search}) muestra que los valores de $D$
+determinados para el caso lineal son igualmente válidos para ser aplicados al
+caso exponencial.
+Además, las diferencias con respecto a las soluciones analíticas caen por
+debajo del umbral de 0.1\% solo para valores de $\delta$ menores a 0.1.
+Por lo tanto, la aplicación de la discretización basada en la densidad es
+necesaria para alcanzar el nivel de precisión deseada para el caso de
+densidades no lineales.
 
-More detailed error analyses showed that $\delta = 0.1$ is sufficient to guarantee an
-accuracy of 0.1\% for all exponential density functions tested
-(Fig.~\ref{fig:delta-exponential})
-and most of the sinusoidal functions tested (Fig.~\ref{fig:delta-sine}).
-The exception is the case of a sinusoidal function with $b = 10$
-(Eq.~\ref{eq:density-sine}), for which $\delta = 0.01$ is required to achieve 0.1\%
-accuracy.
-Nevertheless, using $\delta = 0.1$ in this case would still produce results with an
-error of less than 1\%.
+Un análisis de errores más detallados muestra que el valor de $\delta = 0.1$ es
+suficiente para garantizar errores por debajo del 0.1\% para cualquiera de las
+funciones exponenciales (Fig.~\ref{fig:delta-exponential}) y para la mayoría de
+las funciones sinusoidales (Fig.~\ref{fig:delta-sine}) que aquí se han probado.
+La excepción se presenta en el caso de una función sinusoidal con $b = 10$
+(ec.~\ref{eq:density-sine}),
+para la cual un valor de $\delta = 0.01$ es necesario para alcanzar el umbral
+0.1\%.
+Sin embargo, utilizar un valor de $\delta = 0.1$ en este caso produce
+resultados con errores por debajo del 1\%.
 
-While the algorithms proposed here can be applied to any continuous density function,
-the optimal values for $D$ and $\delta$ are empirically determined only for linear,
-exponential, and sinusoidal density functions.
-Thus, we can only say with certainty that these values will produce results with 0.1\%
-accuracy for these functions.
-However, all of our numerical tests include worse-case scenarios (zero computation
-heights, large tesseroids, highly variable density functions, etc).
-For this reason, these optimal values of $D$ and $\delta$ can plausibly be
-extrapolated to any realistic continuous density function.
-Notwithstanding, we encourage users of the algorithms and software to perform similar
-tests in order evaluate the accuracy when using density functions more complex than the
-ones tested here.
+Aunque los algoritmos aquí propuesto pueden ser aplicados a cualquier función
+de densidad continua, los valores óptimos de $D$ y $\delta$ fueron
+empíricamente determinados solo para funciones lineales, exponenciales
+y sinusoidales.
+Por lo tanto, solo podemos afirmar con certeza que estos valores producen
+resultados con errores por debajo de 0.1\% para los tipos de funciones
+nombradas.
+Sin embargo, todas las experiencias numéricas incluyen los escenarios menos
+favorables (puntos de cómputo sobre la superficie de los tesseroides,
+tesseroides de gran tamaño, funciones densidad altamente variables, etc.).
+Por esta razón, es plausible extrapolar los valores óptimos de $D$ y $\delta$
+a cualquier densidad continua que represente variaciones realistas de
+estructuras geológicas.
+A pesar de esto, alentamos a los usuarios y usuarias de estos algoritmos
+a llevar a cabo experimentaciones similares con el objetivo de evaluar su
+precisión en caso de utilizar funciones de densidades más complejas que las
+probadas aquí.
 
-The algorithm performance analysis shows that the computation time using variable
-densities is likely to be at least two times larger than the homogeneous density case.
-It is also likely to increase proportionally to the number of inflection points of the
-density function.
-As is the case for most numerical methods, there is a trade-off between computation time
-and accuracy.
-Nevertheless, density profiles will have few inflection points for most geophysical
-applications.
-Therefore, the computation time would be in the same order of
-magnitude as the one for the homogeneous density in most real world applications.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Conclusions}
-
-We have developed a new methodology to compute the gravitational potential and its
-gradient for a tesseroid with a density given by a continuous function of radius.
-It numerically solves the volume integrals through Gauss-Legendre Quadrature (GLQ) by
-including the density function in the numerical integration.
-By implementing the algorithm in the dynamic Python programming language, users can
-define their own density function to supply to the software.
-This allows the use of any arbitrary continuous function without modification to the
-method or software.
-The accuracy of the numerical integration is automatically controlled by a two
-dimensional adaptive discretization algorithm and a new density-based discretization
-algorithm.
-The former divides the tesseroid in half if the ratios of the distance to the
-computation point and the latitudinal or the longitudinal size of the tesseroid are
-smaller than a predefined distance-size ratio $D$.
-This algorithm minimises the integration error when the computation point is close to
-the tesseroid.
-Nevertheless, the adaptive discretization alone is not sufficient to guarantee the
-accuracy of the method in case of tesseroids with non-linear density functions.
-To overcome this challenge, the density-based discretization algorithm
-divides the tesseroid along the radial dimension on the points at which the maximum
-variations of the density function take place.
-The number of radial divisions performed, and thus the accuracy of the computation, is
-controlled by the $\delta$ parameter.
-This new algorithm is intended to minimise the error due to the inability of
-the GLQ to produce precise approximations of density functions with sharp variations.
-
-We empirically determined optimal values for $D$ and $\delta$ by comparing the numerical
-results with analytical solutions.
-Our analysis included a range of tesseroid models and computation grids as well as
-common density functions.
-These values minimize the computational load while maintaining the numerical error below
-0.1\% of an analytical solution.
-The density functions used to establish the optimal values were a linear, an
-exponential, and a sinusoidal function.
-The linear function represents the smoothest variation of density and does not require
-density-based discretization at all.
-Through this analysis, we have obtained optimal values for the distance-size ratio $D$
-of 1 and 2.5 for the potential and its gradient, respectively.
-We analysed the error for exponential functions ranging from smooth to sharp and
-sinusoidal function of different wavelengths to test the accuracy of the density-based
-discretization.
-It worth noting that the sinusoidal density tests were carried out in order to test the
-algorithm to the extreme and not to emulate a real world scenario.
-Values of $\delta$ equal to 0.1 are sufficient to guarantee a 0.1\% accuracy for most
-realist cases tested.
-These results could be extrapolated to other continuous density functions that are
-sufficiently smooth, as is the case for most common geophysical applications.
-Smaller values of $\delta$ can be used for more highly variable density functions to
-increase the accuracy of the integration accordingly.
-
-Some computational performance is sacrificed in order to obtain an accurate and general
-purpose method.
-The density-based discretization adds to the computation time by increasing
-the number of GLQ integrations.
-Likewise, allowing users to supply custom density functions incurs an overhead cost
-because of the added function evaluations.
-It is also impossible to optimize the source code and formulas without knowledge of the
-specific density function.
-Nonetheless, the density-based discretization is independent of the adaptive
-discretization and GLQ integration.
-It can be viewed as a type of pre-processing step that can be combined with other more
-specialized integration methods.
-
-An application to modelling the Neuquén Basin, Argentina, demonstrates that the
-effects of sediment compaction cannot be ignored.
-When compared to an exponential density function, a homogeneous density with depth would
-result in an error of up to -8 mGal, while a linear density function would result in up
-to -6 mGal error.
-Accurate and robust forward modelling is a key component to any gravity inversion
-method.
-Errors of this magnitude could result in significant overestimation of sedimentary
-basin thickness, for example.
-
-
+El análisis del desempeño del algoritmo muestra que el tiempo de cómputo
+en los casos de densidades variables es como mínimo el doble del
+necesario para el caso de densidad homogénea o lineal.
+Esta proporcionalidad puede aumentar con la cantidad de puntos de inflexión de
+la función densidad.
+Como en la mayoría de los métodos numéricos, existe un compromiso entre tiempo
+de cómputo y precisión.
+Sin embargo, los perfiles de densidad suelen tener pocos puntos de inflexión en
+la mayoría de las aplicaciones geofísicas.
+Por lo tanto, el tiempo de cómputo se encontrará en el mismo orden de magnitud
+que el caso de densidad homogénea para la mayoría de las aplicaciones en el
+mundo real.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Acknowledgments}
+\section{Conclusiones}
 
-We are indebted to the developers and maintainers of the open-source software without
-which this work would not have been possible.
-We would also like to thank editor Kosuke Heki and two anonymous reviewers for their
-comments and contributions.
-This is SOEST contribution 10717.
+Hemos desarrollado una nueva metodología para calcular el potencial
+gravitatorio y su gradiente generados por un tesseroide con una densidad dada
+por una función continua de la coordenada radial.
+Este método resuelve numéricamente integrales volumétricas mediante la \ac{GLQ}
+incluyendo la función densidad dentro de la integración numérica.
+Mediante una implementación del algoritmo en un lenguaje dinámico como Python,
+los usuarios y las usuarias pueden definir su propia función densidad
+y servirla como entrada al algoritmo.
+Esto permite el uso de funciones continuas arbitrarias sin necesidad de
+realizar modificaciones sobre el método o el software.
+La precisión de la integración numérica es controlada automáticamente por un
+algoritmo de discretización adaptativa bidimensional y un nuevo algoritmo de
+discretización basado en densidad.
+El primero subdivide iterativamente al tesseroide en caso de que las relaciones
+entre la distancia al punto de cómputo y las dimensiones longitudinal
+y latitudinal del tesseroide son menores que un ratio distancia-tamaño $D$
+predefinido.
+Este algoritmo minimiza los errores de integración a cuando el punto de
+cómputo se encuentra cerca del tesseroide.
+Sin embargo, la discretización adaptativa por sí sola no es suficiente para
+garantizar una precisión aceptable en caso de tesseroides con densidades no
+lineales.
+Para solucionar esto, el algoritmo de discretización basada en densidad divide
+al tesseroide a lo largo de la dirección radial en los lugares donde la
+\emph{máxima variación} de la función densidad ocurre.
+La cantidad de subdivisiones a lo largo del radio, y por ende la precisión del
+cómputo, están controladas por el parámetro delta $\delta$.
+Este nuevo algoritmo está diseñado para minimizar el error debido a la
+incapacidad de la \ac{GLQ} de producir aproximaciones precisas en caso de
+funciones de densidad con variaciones pronunciadas.
+
+Hemos determinado de manera empírica valores óptimos para los parámetros $D$
+y $\delta$ comparando los resultados numéricos con soluciones analíticas para
+cascarones esféricos.
+Nuestro análisis incluye un rango de modelos de tesseroides y grillas de
+cómputo así como funciones de densidades de las más utilizadas.
+Estos valores minimizan el tiempo de cómputo mientras mantienen el error
+numérico por debajo de un umbral de 0.1\%.
+Las funciones de densidad utilizadas para establecer estos valores óptimos
+fueron lineales, exponenciales y sinusoidales.
+La función lineal representa la variación más sencilla de densidad y no
+requiere la aplicación de una discretización basada en densidad.
+Mediante este análisis hemos obtenido valores óptimos para el ratio
+distancia-tamaño $D$ de 1 y 2.5 para el potencial gravitatorio y para su
+gradiente, respectivamente.
+Con el objetivo de analizar la precisión de la discretización basada en
+densidad, hemos calculado el error numérico para casos de densidades
+exponenciales, desde funciones suaves hasta funciones con fuertes pendientes,
+e incluso para funciones sinusoidales de diferentes longitudes de onda.
+Vale notar que la densidad sinusoidal fue tomada en cuenta con la intención de
+someter al algoritmo a sus extremos y no para emular escenarios de la vida
+real.
+Valores de $\delta$ iguales a 0.1 son suficientes para garantizar errores
+numéricos por debajo del umbral de 0.1\% para la mayoría de los casos
+examinados.
+Estos resultados podrían ser extrapolados a otras funciones continuas de
+densidad que sean lo suficientemente suaves. Tal y como es el caso de la
+mayoría de las aplicaciones geofísicas.
+Menores valores de $\delta$ pueden ser utilizados para densidades altamente
+variables con el objetivo de incrementar la precisión de la integración.
+
+Una parte del desempeño y eficiencia computacional es sacrificada con el objeto
+de obtener un método preciso y de propósito general.
+La discretización basada en densidad aumenta el tiempo de cómputo al
+incrementar el número de integraciones según la \ac{GLQ}.
+De la misma manera, permitiendo a los usuarios y las usuarias elegir sus
+propias funciones de densidad incurrimos en un aumento del costo computacional
+debido a las subsecuentes evaluaciones de dichas funciones.
+Además, resulta imposible optimizar el código fuente y la formulación
+matemática para el caso general donde no conocemos las especificidades de la
+función densidad.
+Sin embargo, la discretización basada en densidad es independiente de la
+discretización adaptativa y de la \ac{GLQ}.
+Es decir, podemos tomar a este algoritmo como un preprocesado que luego puede
+ser combinado con métodos de integración más específicos.
+
+La aplicación de este algoritmo al modelado de la Cuenca Neuquina, Argentina,
+demuestra que los efectos de la compactación sedimentaria no deben ser
+ignorados.
+Los resultados producidos por una densidad exponencial muestran un error de
+8\mGal{} con respecto al caso de una densidad homogénea, y un error de 6\mGal{}
+con respecto a una función lineal.
+Los modelos directos robustos son una componente clave para cualquier método de
+inversión de datos gravimétricos.
+Y errores de esta magnitud pueden resultar en una significativa sobrestimación
+del espesor del paquete sedimentario, por poner un ejemplo.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Agradecimientos}
+
+Nos encontramos eternamente agradecidos con los y las desarrolladores del
+software open-source, sin el cual este trabajo no hubiera sido posible.
+Agradecemos también al editor Kosuke Heki y a dos reviewers anónimos por sus
+comentarios y contribuciones.
