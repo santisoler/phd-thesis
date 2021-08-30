@@ -49,7 +49,7 @@ usuario para aumentar la precisión de los resultados a expensas de un aumento
 en el tiempo de cómputo.
 Por último, hemos aplicado esta nueva metodología para modelar la Cuenca
 Neuquina, una cuenca de antepaís en Argentina, con una profundidad máxima de
-5000~m y utilizando una densidad exponencial.
+5000\m{} y utilizando una densidad exponencial.
 
 
 \section{Introducción}
@@ -213,7 +213,7 @@ las ecuaciones~\ref{eq:delta-x}, \ref{eq:delta-y} y \ref{eq:delta-z}.
 \subsection{Integración por Cuadratura de Gauss-Legendre}
 
 Aplicando una \ac{GLQ} de orden $N$ podemos aproximar a cada integral definida
-por las ecuaciones~\ref{eq:tesseroid-pot} and~\ref{eq:tesseroid-grav} por una
+por las ecuaciones~\ref{eq:tesseroid-pot} y~\ref{eq:tesseroid-grav} por una
 suma ponderada de los kernel de integración evaluados en las raíces de un
 polinomio de orden $N$ \citep[p.~390]{hildebrand1987}, conocidos como los nodos
 de la cuadratura.
@@ -332,7 +332,7 @@ y las dimensiones del tesseroide se definen como:
 \textit{Paso 2}:
 Si todas de las dimensiones del tesseroide satisfacen la desigualdad~\ref{eq:condition},
 entonces calculamos el efecto gravitatorio del tesseroide usando una \ac{GLQ}
-de segundo orden (Eq.~\ref{eq:glq-var-dens}).
+de segundo orden (ec.~\ref{eq:glq-var-dens}).
 Agregamos el efecto a un total acumulado.
 
 \textit{Paso 3}:
@@ -483,7 +483,7 @@ subdividido,
 \textit{Paso 5}:
 Si la desigualdad~\ref{eq:delta-density} no se satisface, entonces dividimos el
 tesseroide en dos a una profundidad dada por el radio $r_\text{max}$ a la cual
-la máxima diferencia absoluta (Eq.~\ref{eq:density-abs-diff}) tiene lugar.
+la máxima diferencia absoluta (ec.~\ref{eq:density-abs-diff}) tiene lugar.
 Repetimos los pasos 1~a~5 para cada tesseroide pequeño producido por este paso.
 
 \textit{Paso final}:
@@ -513,7 +513,7 @@ garantice una precisión aceptable mientras minimiza el tiempo de cómputo.
 
 \subsection{Resumen del algoritmo}
 
-En resumen, dado un tesseroide con densidad variable en profundidad segun una
+En resumen, dado un tesseroide con densidad variable en profundidad según una
 función continua arbitraria, proponemos seguir los siguientes pasos para
 calcular numéricamente sus campos gravitatorios en cualquier punto exterior:
 
@@ -531,7 +531,7 @@ longitudinal y latitudinal, generando un conjunto de tesseroides más pequeños.
 
 \textit{Paso 3:}
 Aplicar una \ac{GLQ} de segundo orden para calcular numéricamente los campos
-gravitatorios (Eq.~\ref{eq:glq-var-dens}) generados por cada tesseroide
+gravitatorios (ec.~\ref{eq:glq-var-dens}) generados por cada tesseroide
 obtenido en el paso anterior. La integración numérica incluye la función
 densidad y puede ser aplicada sin modificaciones a cualquier función continua.
 La suma de todos estos resultas corresponde al campo gravitatorio generado por
@@ -697,8 +697,8 @@ esférico con una función de densidad lineal dada por
 \noindent posee soluciones analíticas dadas por las
 ecuaciones~\ref{eq:shell-pot-linear} y~\ref{eq:shell-gz}. Los valores de los
 coeficientes $a$ y $b$ pueden ser elegidos de forma tal que la densidad asuma
-valores valores iguales a  $\rho_\text{in} = 3300$~kg/m$^3$ y
-$\rho_\text{out} = 2670$~kg/m$^3$ en los radios interno ($R_\text{in}$)
+valores valores iguales a  $\rho_\text{in} = 3300$~\kgpercubicm{} y
+$\rho_\text{out} = 2670$~\kgpercubicm{} en los radios interno ($R_\text{in}$)
 y externo ($R_\text{out}$) del cascarón, respectivamente:
 
 \begin{equation}
@@ -783,7 +783,7 @@ Para ello llevamos a cabo un análisis de error similar al que aplicamos en el
 caso de densidad lineal.
 Ahora el cascarón esférico poseerá una densidad según una función exponencial
 que asume los valores de
-$\rho_\text{out} = 2670$~kg/m$^3$ y $\rho_\text{in} = 3300$~kg/m$^3$
+$\rho_\text{out} = 2670$~\kgpercubicm{} y $\rho_\text{in} = 3300$~\kgpercubicm{}
 en las superficies externas e internas, respectivamente, y que se define de la
 siguiente manera:
 
@@ -982,7 +982,7 @@ Hemos fijado el ratio distancia-tamaño $D$ a los valores obtenidos para el caso
 de densidad lineal y exploramos valores de $\delta$ entre $10^{-4}$ y $1$. Los
 cálculos fueron repetidos para valores de $b$ iguales a 1, 2, 5 y 10.
 (Fig.~\ref{fig:sine-densities}). En todos los casos el valor de $A$ fue fijado
-a 1650 kg/m$^3$.
+a 1650 \kgpercubicm{}.
 
 \begin{figure}
 \centering
@@ -1165,7 +1165,8 @@ grilla.
 
 Además debemos definir una función densidad para el modelo de tesseroides.
 \citet{sigismondi2012} determinó valores mínimos y máximos para el contraste de
-densidad de la Cuenca Neuquina de -412kg/m$^3$ y -275kg/m$^3$, respectivamente.
+densidad de la Cuenca Neuquina de -412\kgpercubicm{} y -275\kgpercubicm{},
+respectivamente.
 Hemos elegido una variación de densidad exponencial (ec.~\ref{eq:density-exp})
 que asume el valor mínimo en la superficie superior y un valor máximo a una
 profundidad de 5014m (la región más profunda de la cuenca), con un valor de $b$
@@ -1185,13 +1186,13 @@ Figuras~\ref{fig:neuquen-basin}c-d.
 
 Calculamos las diferencias entre los resultados para la densidad exponencial
 y para aquellos generados por el mismo modelo pero con una densidad constante
-dada por el valor medio entre -412kg/m$^3$ y -275kg/m$^3$.
+dada por el valor medio entre -412\kgpercubicm{} y -275\kgpercubicm{}.
 Además calculamos las diferencias entre el modelo de densidad exponencial y uno
 con densidad lineal que asume estos dos valores en los puntos más altos y más
 profundos de la cuenca (Fig.~\ref{fig:neuquen-basin-densities}).
-Las Figuras~\ref{fig:neuquen-basin-diffs}a-b y ~\ref{fig:neuquen-basin-diffs}c-d
-muestran las diferencias con las densidad constante y con la densidad lineal,
-respectivamente.
+Las Figuras~\ref{fig:neuquen-basin-diffs}a-b
+y ~\ref{fig:neuquen-basin-diffs}c-d muestran las diferencias con las densidad
+constante y con la densidad lineal, respectivamente.
 La diferencia máxima absoluta en los campos $g_z$ es aproximadamente de
 8\mGal{} para el caso de densidad homogénea y aproximadamente de 6\mGal{} para
 el caso lineal.
