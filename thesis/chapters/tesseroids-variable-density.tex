@@ -330,9 +330,9 @@ y las dimensiones del tesseroide se definen como:
 \end{equation}
 
 \textit{Paso 2}:
-Si todas de las dimensiones del tesseroide satisfacen la desigualdad~\ref{eq:condition},
-entonces calculamos el efecto gravitatorio del tesseroide usando una \ac{GLQ}
-de segundo orden (ec.~\ref{eq:glq-var-dens}).
+Si todas de las dimensiones del tesseroide satisfacen la
+desigualdad~\ref{eq:condition}, entonces calculamos el efecto gravitatorio del
+tesseroide usando una \ac{GLQ} de segundo orden (ec.~\ref{eq:glq-var-dens}).
 Agregamos el efecto a un total acumulado.
 
 \textit{Paso 3}:
@@ -420,9 +420,9 @@ aplicado.
     Las líneas de a trazos rojas representan la máxima diferencia de densidad
     $\Delta \rho (r')$ a la cual el tesseroide será subdividido (asumiendo que
     la desigualdad~\ref{eq:delta-density} no se satisface).
-    (b)~Segunda iteración del algoritmo con una nueva \emph{línea recta} y máxima
-    diferencia de densidad. El tesseroide será dividido a la profundidad
-    indicada por la linea roja de a trazos.
+    (b)~Segunda iteración del algoritmo con una nueva \emph{línea recta}
+    y máxima diferencia de densidad. El tesseroide será dividido a la
+    profundidad indicada por la linea roja de a trazos.
     (c)~Tercera iteración del algoritmo.
     (d)~ Salida final del algoritmo de discretización basado en densidad,
     asumiendo que los cuatro tesseroides nuevos satisfacen la
@@ -707,7 +707,11 @@ y externo ($R_\text{out}$) del cascarón, respectivamente:
 
 \begin{equation}
     b = \rho_\text{out} -
-    \frac{\rho_\text{out} - \rho_\text{in}}{R_\text{out} - R_\text{in}} R_\text{out}.
+    \frac{
+        \rho_\text{out} - \rho_\text{in}
+    }{
+        R_\text{out} - R_\text{in}
+    } R_\text{out}.
 \end{equation}
 
 
@@ -782,10 +786,9 @@ simultáneamente.
 Para ello llevamos a cabo un análisis de error similar al que aplicamos en el
 caso de densidad lineal.
 Ahora el cascarón esférico poseerá una densidad según una función exponencial
-que asume los valores de
-$\rho_\text{out} = 2670$~\kgpercubicm{} y $\rho_\text{in} = 3300$~\kgpercubicm{}
-en las superficies externas e internas, respectivamente, y que se define de la
-siguiente manera:
+que asume los valores de $\rho_\text{out} = 2670$~\kgpercubicm{}
+y $\rho_\text{in} = 3300$~\kgpercubicm{} en las superficies externas
+e internas, respectivamente, y que se define de la siguiente manera:
 
 \begin{equation}
     \rho(r') = A e^{- b \frac{r' - R_1}{R_2 - R_1}} + C,
@@ -1152,13 +1155,13 @@ registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
 \label{fig:neuquen-basin-diffs}
 \end{figure}
 
-El espesor del paquete sedimentario fue digitalizado a partir de \citet{heine2007}
-sobre una grilla regular con una resolución de 0.05$^\circ$ en las direcciones
-longitudinal y latitudinal (Fig.~\ref{fig:neuquen-basin}b).
+El espesor del paquete sedimentario fue digitalizado a partir de
+\citet{heine2007} sobre una grilla regular con una resolución de 0.05$^\circ$
+en las direcciones longitudinal y latitudinal (Fig.~\ref{fig:neuquen-basin}b).
 Creamos un modelo del paquete sedimentario a partir de tesseroides de
 $0.05^\circ \times 0.05^\circ$ ubicados sobre cada nodo de la grilla.
 El límite superior de cada tesseroide fue fijado a al altitud media de la
-topografía de la cuenca (845~m sobre el radio medio de la Tierra) y el límite
+topografía de la cuenca (845\m{} sobre el radio medio de la Tierra) y el límite
 inferior es seleccionado de forma tal que cada tesseroide posea la misma
 dimensión que el espesor de la cuenca sobre el correspondiente punto de la
 grilla.
@@ -1169,8 +1172,8 @@ densidad de la Cuenca Neuquina de -412\kgpercubicm{} y -275\kgpercubicm{},
 respectivamente.
 Hemos elegido una variación de densidad exponencial (ec.~\ref{eq:density-exp})
 que asume el valor mínimo en la superficie superior y un valor máximo a una
-profundidad de 5014m (la región más profunda de la cuenca), con un valor de $b$
-igual a 3.
+profundidad de 5014\m{} (la región más profunda de la cuenca), con un valor de
+$b$ igual a 3.
 Esta variación de densidad se encuentran dentro de los ordenes de magnitud
 utilizados por \citet{cowie1990} y \citet{cordell1973}.
 La función de densidad se muestra en la
@@ -1378,5 +1381,5 @@ del espesor del paquete sedimentario, por poner un ejemplo.
 
 Nos encontramos eternamente agradecidos con los y las desarrolladores del
 software open-source, sin el cual este trabajo no hubiera sido posible.
-Agradecemos también al editor Kosuke Heki y a dos reviewers anónimos por sus
+Agradecemos también al editor Kosuke Heki y a dos revisores anónimos por sus
 comentarios y contribuciones.
