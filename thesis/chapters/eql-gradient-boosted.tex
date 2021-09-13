@@ -4,7 +4,7 @@
 \chaptermark{Fuentes equiv. potenciadas con gradiente}
 \label{cha:eql-gradient-boosted}
 
-Este capítulo es una traducción al Español del artículo titulado
+Este capítulo es una traducción al español del artículo titulado
 \emph{Gradient-boosted equivalent sources} escrito por Santiago R. Soler
 y Leonardo Uieda, y publicado en \emph{Geophysical Journal
 International} en Agosto de 2021 \citep{soler2021}.
@@ -18,107 +18,123 @@ Commons Atribución 4.0 Internacional en
 \input{chapters/eql-gradient-boosted-results.tex}
 
 
-\section{Introduction}
+\section{Introducción}
 
-Measurements of anomalies in potential fields, like gravity disturbances and
-total-field magnetic anomalies, are widely used in geophysical exploration for
-their low cost of acquisition.
-These data can be surveyed using ground, airborne, shipborne, or satellite
-systems.
-During ground surveys, the data are often gathered following irregular paths or
-networks along the surface of the terrain, leading to highly variable
-elevations in mountainous regions.
-Airborne and satellite surveys gather data along flight lines, producing
-closely spaced measurements along almost straight lines but with larger spacing
-between adjacent lines.
-Measurement height can also change because of the vertical movement of the
-aircraft.
-Processing of the data often involves interpolation onto a regular grid at
-constant height, both to improve visualization for interpretation purposes as
-well as to prepare the data for further processing and modelling (e.g.,
-reduction-to-the-pole, derivative calculations, upward continuation, Euler
-deconvolution).
+Las mediciones de las anomalías en los campos potenciales, como el disturbio de
+gravedad o anomalías magnéticas, son ampliamente utilizadas en la exploración
+geofísica debido a su bajo costo de adquisición.
+Estos datos pueden ser recolectados utilizando sistemas terrestres, aéreos,
+marítimos o satelitales.
+Durante las mediciones terrestres, los datos son recabados siguiendo
+trayectorias irregulares a lo largo de la superficie del terreno, produciendo
+altas variaciones en la altitud de los puntos de observación en zonas
+montañosas.
+Las metodologías aéreas y satelitales obtienen los datos a lo largo de líneas
+de vuelo, produciendo mediciones muy próximas espacialmente a lo largo de
+trayectorias casi rectas, pero con espaciados mucho mayores entre líneas
+adyacentes.
+La altitud de observación también puede variar en estos casos debido al
+movimiento vertical de la aeronave.
+El procesado de estos datos suele incluir interpolaciones sobre grillas
+regulares a altitudes constante, tanto para mejorar la visualización con el
+objetivo de realizar interpretaciones, así como para preparar los datos para
+posteriores procesados y/o modelado (por ejemplo, reducción al polo, cálculo de
+derivadas, continuación ascendente, deconvolución de Euler).
 
-Several methods exist in the literature for interpolation in two dimensions,
-for example continuous curvature splines in tension \citep{smith1990},
-bi-harmonic (thin-plate) splines \citep{sandwell1987}, and kriging
-\citep{hansen1993}.
-These general-purpose methods have limitations when it comes to interpolating
-potential field data, namely
-(i)~they are not able to take into account the variable height of the
-observation points and
-(ii)~the interpolating functions are not necessarily harmonic, which
-is the underlying assumption behind many processing techniques
-(e.g., upward continuation and vertical derivatives).
+Existen muchos métodos en la literatura para realizar interpolaciones en dos
+dimensiones, por ejemplo splines de curvatura continua en tensión
+\citep{smith1990}, splines biharmónicas (placa delgada) \citep{sandwell1987},
+y kriging \citep{hansen1993}.
+Estos métodos de propósito general poseen limitaciones a la hora de interpolar
+datos provenientes de campos potenciales:
+(i)~no son capaces de tomar en cuenta las altitudes de los puntos de
+observación,
+(ii)~las funciones interpoladoras no son necesariamente harmónicas, siendo esta
+la principal presuposición de muchas técnicas de procesado (por ejemplo,
+continuación ascendente y derivadas verticales).
 
-A widely used method for interpolating gravity and magnetic data
-is the equivalent sources technique (also known as equivalent layer, radial
-basis functions, or Green's functions interpolation).
-First introduced by \citet{dampney1969}, the method consists in fitting a model
-of finite elementary sources to the data and using this model to predict new
-data values.
-Besides interpolation, equivalent sources have been used for
-reduction-to-the-pole of magnetic data
-\citep{silva1986, nakatsuka2006, guspi2009}, upward
-continuation \citep{emilia1973, li2010}, joint processing of gravity gradient
-data \citep{barnes2011}, modelling the lithospheric magnetic field
-\citep{kother2015}, recovering the magnetic induction vector from
-total-field magnetic anomalies \citep{li2020}, and more.
+Un método ampliamente utilizado para interpolar datos gravitatorios
+y magnéticos es la técnica de fuentes equivalentes (también conocida como capa
+equivalente -\emph{equivalent layer} en inglés-, funciones de bases radiales
+-\emph{radial basis functions} en inglés-, o interpolaciones con funciones de
+Green).
+Inicialmente introducida por \citet{dampney1969}, el método consiste en ajustar
+un modelo de finitas fuentes elementales a los datos observados, y luego usar
+ese modelo para predecir nuevos valores.
+Además de las interpolaciones, las fuentes equivalentes han sido utilizadas
+para realizar reducciones al polo de datos magnéticos \citep{silva1986,
+nakatsuka2006, guspi2009}, continuación ascendente \citep{emilia1973, li2010},
+procesado conjunto de datos del gradiente gravimétrico \citet{barnes2011},
+modelado del campo magnético litosférico \citep{kother2015}, recuperación del
+vector de inducción magnética a partir de anomalías magnéticas de campo total
+\citep{li2020}, entre otras.
 
-It is also worth mentioning the least-squares collocation method
-(LSC), which is widely used in geodesy
-\citep[][and references therein]{tscherning2015}.
-LCS is often applied to combine and interpolate different linear functionals of
-the disturbing gravity potential (gravity anomalies, gravity disturbances,
-deflections of the vertical, geoid height, et cetera).
-Like equivalent sources, collocation also requires the solution of a large
-linear system of the order of the number of observed data.
-As such, it's practical application suffers from the same computational
-challenges.
+Vale nombrar también el método de colocación por mínimos cuadrados
+(\emph{least-squares collocation method} en inglés), ampliamente utilizado en
+geodesia.
+\citep[][y referencias allí citadas]{tscherning2015}.
+Esta metodología se suele aplicar para combinar e interpolar diferentes
+funciones lineales de anomalías derivadas del potencial gravitatorio (anomalías de gravedad,
+disturbio de gravedad, deflexiones de la vertical, altitud del geoide, etc.).
+Al igual que las fuentes equivalentes, el método de colocación requiere
+resolver un sistema lineal grande, cuyo orden equivale a la cantidad de datos
+observados.
+De esta manera, la aplicación práctica de ambos métodos sufren de los mismos
+desafíos computacionales.
 
-Many variants of the equivalent sources technique have been proposed, often
-attempting to obtain faster or more accurate solutions.
-The key factors that vary between them are: (i) the type of source, (ii)
-the location of the sources, and (iii) the solution strategy.
 
-The most commonly used type of source is a point mass for gravity or dipole for
-magnetics \citep[e.g.,~][]{vonfrese1981, silva1986, mendonca1994,
-siqueira2017}.
-However, right-rectangular prisms \citep[e.g.,][]{barnes2011, jirigalatu2019,
-li2020} and tesseroids \citep{bouman2016} have also been used successfully.
-In fact, even point sources with a simple inverse distance function, instead of
-actual gravity or magnetic fields, can be used as
-equivalent sources \citep{cordell1992}.
+Muchas variantes de la técnica de fuentes equivalentes han sido propuestas,
+usualmente intentando obtener soluciones más precisas o en menor tiempo.
+Los factores claves que varían entre ellos son: (i) el tipo de fuente, (ii) la
+ubicación de las fuentes, y (iii) la estrategia de solución.
 
-The location of sources often follows one of two strategies.
-The most common approach is to distribute sources on a regular grid at a
-constant depth \citep[e.g.,~][]{leao1989, barnes2011, oliveira2013}.
-Alternatively, sources can be placed beneath each data point
-\citep[e.g.,~][]{cordell1992, siqueira2017}.
-Some recent work by \citet{li2020} places the sources in two overlapping layers
-at different depths.
+Los tipos de fuentes más utilizados son masas puntuales para datos
+gravitatorios o dipolos para datos magnéticos \citep[e.g.,~][]{vonfrese1981,
+silva1986, mendonca1994, siqueira2017}.
+Sin embargo, también se han utilizado exitosamente prismas rectangulares
+\citep[por~ej.,][]{barnes2011, jirigalatu2019, li2020} y tesseroides
+\citep{bouman2016}.
+De hecho, incluso fuentes puntuales en conjunto con funciones simple como la
+inversa de la distancia, en vez del campo gravitatorio o magnético, pueden ser
+utilizadas como fuentes equivalentes \citep{cordell1992}.
 
-The coefficients of the equivalent source model are often estimated through
-damped least-squares.
-This imposes a heavy computational load when the number of data points is
-large (e.g., airborne and satellite surveys).
-To reduce the computational load, \citet{mendonca1994} built the solution
-iteratively by incorporating one data point at a time using the ``equivalent
-data concept''.
-\citet{leao1989} processed the input data using a moving window, only fitting the
-data inside the window and predicting observations at its center.
-\citet{li2010} and \citet{barnes2011} apply different operations to generate a
-sparse representation of the sensitive matrix (respectively, wavelet
-compression and quadtree discretization), which significantly improves the
-speed of the least-squares solution.
-\citet{oliveira2013} parametrized the equivalent layer as a piecewise bivariate
-polynomial function, reducing the number of parameters in the solution.
-\citet{siqueira2017} developed an iterative solution in which the sensitivity
-matrix is transformed into a diagonal matrix with constant terms through the
-``excess mass criterion''.
-\citet{jirigalatu2019} applied the Gauss-FFT method to speed up the forward
-modelling operations and solved the least-squares problem using steepest
-descent to avoid calculating the Hessian matrix and solving linear systems.
+La ubicación de las fuentes suele elegirse de acuerdo a alguno de las
+siguientes estrategias.
+El método más común es distribuir las fuentes en una grilla regular a una
+profundad constante \citep[por~ej.,~][]{leao1989, barnes2011, oliveira2013}.
+Alternativamente, podemos ubicar una fuente debajo de cada punto de observación
+\citep[por~ej.,~][]{cordell1992, siqueira2017}.
+Algunos trabajos recientes de \citet{li2020} ubican las fuentes en dos capas
+superpuestas a profundidades diferentes.
+
+Los coeficientes de las fuentes equivalentes suelen ser estimados mediante
+mínimos cuadrados ponderados.
+Esto implica una carga computacional alta cuando la cantidad de datos es grande
+(por ej. campañas aéreas o satelitales).
+Para reducir la carga computacional, \citet{mendonca1994} construyen la
+solución iterativamente al tratar un solo dato al mismo tiempo utilizando el
+concepto de \emph{dato equivalente}.
+
+\citet{leao1989} procesan los datos de entrada mediante una ventana móvil, solo
+ajustando los datos dentro de la ventan y prediciendo las observaciones en su
+centro.
+\citet{li2010} y \citet{barnes2011} aplican diferentes operaciones para generar
+una representación dispersa de la matriz de sensibilidades (\emph{wavelet
+compression} y \emph{quadtree discretization}, respectivamente), lo cual mejora
+significativamente la velocidad de ejecución del algoritmo de mínimos
+cuadrados.
+\citet{oliveira2013} parametrizan las fuentes equivalentes como una función
+polinomial bivariada a trazos, reduciendo el número de parámetros en la
+solución.
+\citet{siqueira2017} desarrollaron una solución iterativa en la cual la matriz
+de sensibilidades es transformada en una matriz diagonal con términos
+constantes a través del concepto de \emph{exceso de masa}.
+\citet{jirigalatu2019} aplican el método Gauss-FFT para acelerar las
+operaciones vinculadas al modelado directo y resuelven el problema de mínimos
+cuadrados utilizando el descenso del gradiente con el objetivo de evitar
+calcular las matrices Hessianas y resolver sistemas lineales.
+
+
 
 Many of the existing methods solve under-determined problems, requiring a much
 larger number of equivalent sources than the number of data points.
