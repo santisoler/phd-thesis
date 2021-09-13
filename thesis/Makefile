@@ -11,7 +11,8 @@ TEX_FILES = apalike-doi.bst \
 			chapters/tesseroids-variable-density.tex \
 			chapters/eql-gradient-boosted.tex \
 			chapters/eql-gradient-boosted-results.tex \
-			chapters/fatiando.tex
+			chapters/fatiando.tex \
+			chapters/appendix.tex
 # Folder where output will be placed
 OUTDIR = _output
 CHAPTERS_DIR = $(OUTDIR)/chapters
