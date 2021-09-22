@@ -1,7 +1,7 @@
-\chapter[Fuentes equivalentes potenciadas con gradiente]{
-    Fuentes equivalentes potenciadas con gradiente
+\chapter[Fuentes equivalentes potenciadas por el gradiente]{
+    Fuentes equivalentes potenciadas por el gradiente
 }
-\chaptermark{Fuentes equiv. potenciadas con gradiente}
+\chaptermark{Fuentes equiv. potenciadas por el gradiente}
 \label{cha:eql-gradient-boosted}
 
 Este capítulo es una traducción al español del artículo titulado
@@ -110,7 +110,7 @@ superpuestas a profundidades diferentes.
 Los coeficientes de las fuentes equivalentes suelen ser estimados mediante
 mínimos cuadrados ponderados.
 Esto implica una carga computacional alta cuando la cantidad de datos es grande
-(por ej. campañas aéreas o satelitales).
+(por ej. muestras aéreas o satelitales).
 Para reducir la carga computacional, \citet{mendonca1994} construyen la
 solución iterativamente al tratar un solo dato al mismo tiempo utilizando el
 concepto de \emph{dato equivalente}.
@@ -149,24 +149,24 @@ En el presente trabajo, proponemos dos estrategias para reducir el costo
 computacional de la técnica de fuentes equivalentes:
 
 \begin{enumerate}
-    \item Reducir el número de fuentes equivalentes para campañas con
+    \item Reducir el número de fuentes equivalentes para muestras con
         sobremuestreo mediante una estrategia de \emph{promedio en
         bloques} (\emph{block-averaging} en inglés), manteniendo la calidad de
         la solución.
     \item Ajustar el modelo de fuentes equivalentes iterativamente sobre
-        ventanas solapadas utilizando un algoritmo \emph{potenciado por
+        ventanas solapadas utilizando un algoritmo de \emph{potenciación del
         gradiente} (\emph{gradient-boosting} en inglés) \citep{friedman2001}.
 \end{enumerate}
 
 La primera estrategia consiste en dividir el área de estudio en bloques
 y asignar una única fuente a cada bloque, localizada en la ubicación media de
 los puntos de datos.
-Para campañas aéreas, navales y satelitales, las cuales presentan sobremuestreo
+Para muestras aéreas, navales y satelitales, las cuales presentan sobremuestreo
 a lo largo de la trayectoria del vehículo, esto puede reducir considerablemente
 el tamaño del problema inverso manteniendo a su vez la misma calidad en la
 interpolación.
 
-El algoritmo de \emph{potenciado por gradiente} permite ajustar el modelo de
+El algoritmo de \emph{potenciación del gradiente} permite ajustar el modelo de
 fuentes equivalentes de manera iterativa, operando de manera individual sobre
 cada una de las ventanas con solapamiento.
 Como resultado, nuestro método resuelve muchos problemas de mínimos cuadrados
@@ -179,7 +179,7 @@ Mediantes pruebas sobre datos sintéticos, mostramos que:
 (i)~las fuentes \emph{promediadas en bloque} son capaces de alcanzar el mismo
 nivel de precisión que otras disposiciones de fuentes equivalentes más
 tradicionales, utilizando una fracción del número de fuentes; y
-(ii)~el algoritmo \emph{potenciado por gradiente} reduce significativamente la
+(ii)~el algoritmo \emph{potenciación del gradiente} reduce significativamente la
 memoria necesaria para ajustar grandes cantidades de datos, sin sacrificar
 precisión en las predicciones.
 Finalmente, una combinación de ambas estrategias es utilizada para procesar una
@@ -188,79 +188,80 @@ superficie de Australia.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Methodology}
+\section{Metodología}
 
-\subsection{The equivalent sources technique}
+\subsection{La técnica de fuentes equivalentes}
 
-We will follow the ``generalized equivalent sources'' of \citet{cordell1992}
-and assume that any harmonic function $d(\mathbf{p})$ can be approximated by a
-sum of $M$ discrete point source effects
+De aquí en más seguiremos las \emph{fuentes equivalentes generalizadas}
+propuestas por \citet{cordell1992}
+y asumiremos que cualquier función harmónica $d(\mathbf{p})$
+puede ser aproximada por la suma de los efectos de $M$ fuentes puntuales
 
 \begin{equation}
     d(\mathbf{p})
     =
-    \sum\limits_{j=1}^{M} \frac{c_j}{\left\lVert \mathbf{p} - \mathbf{q}_j
-    \right\rVert} \ ,
+    \sum\limits_{j=1}^{M} \frac{c_j}{| \mathbf{p} - \mathbf{q}_j
+    |} \ ,
     \label{eq:eql-forward}
 \end{equation}
 
-\noindent in which
-$\mathbf{p}$ and $\mathbf{q}_j$ are, respectively, the position vectors in a 3D
-Cartesian space of data and sources,
-$c_j$ is a scalar coefficient related to the point source located at
-$\mathbf{q}_j$,
-and $\lVert \cdot \rVert$ represents the $\text{L}_2$ norm.
-The horizontal and vertical distribution of sources is discussed in
-section~\ref{sec:source_distribution}.
+\noindent donde $\mathbf{p}$ y $\mathbf{q}_j$ son, respectivamente, los
+vectores posición de datos y fuentes en un espacio cartesiano tridimensional,
+y $c_j$ es un coeficiente escalar relacionado con la masa puntual localizada en
+$\mathbf{q}_j$.
+En la sección~\ref{sec:source_distribution} realizamos una discusión acerca de
+la distribución horizontal y vertical de las fuentes.
 
-In case we have values of the harmonic function at $N$ discrete points
+En caso de que poseamos mediciones de nuestra función harmónica en $N$ puntos
+de observación
 $\{\mathbf{p}_1\ \mathbf{p}_2\ \ldots\ \mathbf{p}_N\}$,
-we can write a set of $N$ equations of the form
+podemos escribir un sistema de $N$ ecuaciones de la forma:
 
 \begin{equation}
     d_i
     =
-    \sum\limits_{j=1}^{M} \frac{c_j}{\left\lVert \mathbf{p}_i - \mathbf{q}_j
-    \right\rVert}
+    \sum\limits_{j=1}^{M} \frac{c_j}{| \mathbf{p}_i - \mathbf{q}_j
+    |}
     \quad \forall i=1,2,\ldots,N
     \ ,
     \label{eq:forward-sum}
 \end{equation}
 
-\noindent where $d_i$ is the calculated value at point $\mathbf{p}_i$.
-These equations can also be expressed in matrix form as
+\noindent donde $d_i$ es el efecto de las fuentes sobre el punto $\mathbf{p}_i$.
+Estas ecuaciones pueden ser expresadas de forma matricial como:
 
 \begin{equation}
     \mathbf{d} = \mathbf{A} \mathbf{c} \ ,
     \label{eq:linear-problem}
 \end{equation}
 
-\noindent where $\mathbf{d}$ is a column vector containing the $N$ predicted
-values at the observation points,
-$\mathbf{c}$ is a column vector containing the $M$ coefficients $c_j$,
-and $\mathbf{A}$ is the $N \times M$ Jacobian matrix,
-whose elements are
+\noindent donde $\mathbf{d}$ es un vector columna que contiene los $N$ valores
+predichos sobre cada punto de observación,
+$\mathbf{c}$ es un vector columna formado por los $M$ coeficientes $c_j$ y
+$\mathbf{A}$ es la matriz Jacobiana de $N \times M$ elementos,
+los cuales se definen como:
 
 \begin{equation}
-    a_{ij} = \frac{1}{\left\lVert\mathbf{p}_i - \mathbf{q}_j\right\rVert}
+    a_{ij} = \frac{1}{|\mathbf{p}_i - \mathbf{q}_j|}
 \end{equation}
 
-For a given set of $N$ observed data $\mathbf{d}^o$,
-we can find a least-squares solution to
-Eq.~\ref{eq:linear-problem} and obtain the values of
-$\mathbf{c}$ that best fit the observations.
-These coefficients can, in turn, be used to predict the value of the harmonic
-function at any other point outside of the sources by evaluating
-Eq.~\ref{eq:eql-forward}.
-Gridding and upward continuation can thus be achieved by predicting values on
-points that fall on a regular grid or at different heights, respectively.
+Para un conjunto de $N$ observaciones $\mathbf{d}^o$, podemos hallar la
+solución de la ecuación~\ref{eq:linear-problem} mediante mínimos cuadrados y de
+esa manera obtener los valores de
+$\mathbf{c}$ que mejor ajustan a las observaciones.
+Estos coeficientes pueden ser, a su vez, utilizados para predecir los valores
+de la función harmónica en cualquier otro punto externo a las fuentes,
+evaluando la ecuación~\ref{eq:eql-forward}.
+El grillado o la continuación ascendente puede entonces ser realizados mediante
+predicciones sobre puntos de una grilla regular o sobre puntos a diferentes
+altitudes, respectivamente.
 
 
-\subsection{Damped least-squares solution}
+\subsection{Solución por mínimos cuadrados amortiguados}
 \label{sec:eql_inversion}
 
-We can obtain the values of the source coefficients $\mathbf{c}$ that best
-fit the observed field values $\mathbf{d}^o$ by minimizing the goal function
+Es posible obtener los valores de los coeficientes $\mathbf{c}$ que mejor
+ajustan a los valores observados $\mathbf{d}^o$ minimizando la función objetivo
 
 \begin{equation}
     \phi(\mathbf{c}) =
@@ -272,28 +273,35 @@ fit the observed field values $\mathbf{d}^o$ by minimizing the goal function
     \label{eq:misfit-unscaled}
 \end{equation}
 
-\noindent where
-$\mathbf{W}$ is a $N \times N$ diagonal matrix of data weights and
-$\lambda_d$ is a positive \emph{damping} parameter with the same units as the
-Jacobian matrix elements.
-The second term on the right-hand side of Eq.~\ref{eq:misfit-unscaled} is the
-zeroth-order Tikhonov regularization \citep{tikhonov1977}, also known as a
-damping regularization, that is used to stabilize the solution.
+\noindent donde
+$\mathbf{W}$ es una matriz diagonal de $N \times N$ elementos que contiene los
+pesos ponderados de los datos observados, y
+$\lambda_d$ es el parámetro de \emph{amortiguamiento} (\emph{damping} en
+inglés), mayor que cero y con las mismas unidades que los elementos de la
+matriz Jacobiana.
 
-The damping parameter controls the amount of regularization that will be
-applied.
-An overly large value would generate a smooth solution that fails to reproduce
-the high frequency components of the data, while an overly small value would
-result in over-fitting, thus failing to produce realistic interpolation results
+El segundo término del miembro derecho de la ecuación~\ref{eq:misfit-unscaled}
+consiste en una regularización Thikhonov de orden cero \citep{tikhonov1977},
+también conocida como regularización de amortiguamiento (\emph{damping
+regularization}), que se utiliza para estabilizar la solución.
+
+El parámetro de amortiguamiento controla cuánta regularización será aplicada.
+Un valor muy grande generaría soluciones muy suaves que fallarían en reproducir
+las componentes de altas frecuencias presente en los datos, mientras que un
+valor muy pequeño resultaría en un sobreajuste, produciendo resultados de
+interpolación irreales
 \citep{martinez2016}.
-The range of acceptable values for the damping parameter $\lambda_d$ will
-depend on the values of the Jacobian matrix $\mathbf{A}$ and the coefficients.
-Consequently, this range will vary (often dramatically) between datasets,
-making it difficult to choose an appropriate value in practice.
+El rango de valores aceptables para el parámetro de amortiguamiento
+$\lambda_d$ dependerá de los valores de la matriz Jacobiana $\mathbf{A}$
+y de los coeficientes.
+Por lo tanto, este rango puede variar (considerablemente en muchas ocasiones)
+entre diferentes conjuntos de datos, haciendo difícil una apropiada elección en
+la práctica.
 
-To solve this issue, we first scale the Jacobian matrix so that its elements
-are dimensionless and each column has unit variance.
-We define a diagonal matrix $\mathbf{S}$
+Para resolver esta problema, primero escalaremos la matriz Jacobiana de forma
+tal que sus elementos sean adimensionales y que cada columna posea varianza
+unitaria.
+Definimos la matriz diagonal $\mathbf{S}$ como:
 
 \begin{equation}
     \mathbf{S} =
@@ -306,32 +314,33 @@ We define a diagonal matrix $\mathbf{S}$
     ,
 \end{equation}
 
-\noindent in which $\sigma_j$ is the standard deviation of the $j$-th column of
-$\mathbf{A}$.
-We then write the forward problem in Eq.~\ref{eq:linear-problem} as
+\noindent donde $\sigma_j$ es la desviación estándar de la columna $j$-ésima
+de la matriz $\mathbf{A}$.
+Luego reescribimos el problema directo de la ecuación~\ref{eq:linear-problem}
+como:
 
 \begin{equation}
     \mathbf{d}
     =
     \mathbf{A} \mathbf{S}\inv \mathbf{S} \mathbf{c}
     =
-    \left[
+    \Big[
         \mathbf{A} \mathbf{S}\inv
-    \right]
-    \left[
+    \Big]
+    \Big[
         \mathbf{S} \mathbf{c}
-    \right]
+    \Big]
     =
     \mathbf{B} \mathbf{m}
 \end{equation}
 
-\noindent where $\mathbf{B} = \mathbf{A} \mathbf{S}\inv$ is the scaled and
-dimensionless Jacobian matrix
-and $\mathbf{m} = \mathbf{S} \mathbf{c}$ is a vector containing scaled
-coefficients with the same units as the data.
+\noindent donde $\mathbf{B} = \mathbf{A} \mathbf{S}\inv$ es la matriz Jacobiana
+escalda y adimensional, y
+$\mathbf{m} = \mathbf{S} \mathbf{c}$ es el vector que contiene los coeficientes
+escalados cuyas unidades son las mismas que la de los datos.
 
-The goal function defined in Eq.~\ref{eq:misfit-unscaled} can be
-rewritten as
+La función objetivo definida en la ecuación~\ref{eq:misfit-unscaled} puede ser
+reescrita como:
 
 \begin{equation}
     \phi(\mathbf{m}) =
@@ -343,21 +352,21 @@ rewritten as
     \label{eq:misfit}
 \end{equation}
 
-\noindent where $\lambda$ is a \emph{dimensionless} damping parameter and
-regularization is applied on the scaled coefficients $\mathbf{m}$ instead of
-$\mathbf{c}$.
-Using a dimensionless damping parameter allows us to narrow the range of values
-of $\lambda$ that would generate the most accurate predictions, irrespective
-of the dataset and its units.
-From experience, we recommend searching for suitable $\lambda$ values between
-$10^{-6}$ and $10^{4}$ varying by order-of-magnitude.
-The choice of the damping and other hyper-parameters, like the source depth,
-could be done through well-established statistical methods, such as
-cross-validation.
+\noindent donde $\lambda$ es un parámetro de \emph{amortiguamiento
+adimensional} y la regularización es aplicada a los coeficientes escalados
+$\mathbf{m}$ en vez de al vector $\mathbf{c}$.
+Utilizando un parámetro de amortiguamiento adimensional nos permite limitar el
+rango de valores de $\lambda$ que generan las predicciones más precisas,
+independientemente del set de datos y sus unidades.
+A partir de nuestra experiencia, recomendamos buscar valores de $\lambda$ entre
+$10^{-6}$ y $10^{4}$ variando por orden de magnitud.
+La elección del amortiguamiento y de otros hiperparámetros, como la profundidad
+de las fuentes, puede realizarse a través de métodos estadísticos conocidos,
+como la validación cruzada.
 
-The vector of scaled coefficients $\hat{\mathbf{m}}$ that minimizes the goal
-function can be found by solving the \emph{normal equation system}
-\citep{menke1989}
+El vector de coeficientes escalados $\hat{\mathbf{m}}$ que minimiza la función
+objetivo puede hallarse resolviendo el \emph{sistema de ecuaciones normales}
+\citep{menke1989}:
 
 \begin{equation}
     \left[
@@ -369,271 +378,289 @@ function can be found by solving the \emph{normal equation system}
     \label{eq:least_squares_solution}
 \end{equation}
 
-Once the scaled coefficients are obtained, the estimated unscaled coefficients
-$\hat{\mathbf{c}}$ can be calculated by removing the scaling factor
+Una vez que los coeficientes escalados son obtenidos, los coeficientes sin
+escalar
+$\hat{\mathbf{c}}$ pueden ser calculados quitando el factor de escalado:
 
 \begin{equation}
     \hat{\mathbf{c}} = \mathbf{S}\inv \hat{\mathbf{m}} \ .
 \end{equation}
 
-\noindent The forward modeling operations used to perform predictions
-(e.g., for interpolation and upward continuation) are left unchanged by
-using vector $\hat{\mathbf{c}}$ instead of $\hat{\mathbf{m}}$.
+\noindent Las operaciones relacionadas al modelado directo que se utilizan para
+realizar predicciones (por ejemplo, interpolaciones seguidas de continuaciones
+ascendentes) permanecen sin variaciones al utilizar el vector
+$\hat{\mathbf{c}}$ en vez de $\hat{\mathbf{m}}$.
 
 
-\subsection{Gradient boosting}
+\subsection{Potenciación del gradiente}
 
-Gradient boosting was first introduced by \citet{friedman2001, friedman2002} as
-a method for fitting additive parametric models of the form
+La potenciación del gradiente fue inicialmente introducida por
+\citet{friedman2001, friedman2002} como un método para ajustar modelos
+paramétricos de manera aditiva de la siguiente forma:
 
 \begin{equation}
     d = \sum_{k=1}^K \alpha_k f(\mathbf{c}_k),
 \end{equation}
 
-\noindent where $\alpha_k$ is a scalar coefficient called the \emph{step-size}
-and $f$ is a function of the parameter vector $\mathbf{c}_k$.
-For linear problems, these additive models can be written as the matrix
-equation
+\noindent donde $\alpha_k$ es un coeficiente llamado \emph{tamaño de paso}
+y $f$ es una función del vector de parámetros $\mathbf{c}_k$.
+Para problemas lineales, estos modelos aditivos pueden expresarse según la
+siguiente ecuación matricial:
 
 \begin{equation}
     \mathbf{d} = \sum_{k=1}^K \mathbf{A}_k \mathbf{c}_k \ .
     \label{eq:gb-linear-model}
 \end{equation}
 
-\noindent Because of the linearity of the $f(\mathbf{c}_k)$ functions, the
-$\alpha_k$ step-size parameters can be incorporated into the parameter vector
+\noindent Dada la linealidad de la funciones $f(\mathbf{c}_k)$, los parámetros
+de tamaño de paso $\alpha_k$ pueden ser incluidos en el vector de parámetros
 $\mathbf{c}_k$.
 
-We can transform our equivalent source problem in
-Eq.~\ref{eq:linear-problem} into an additive model by following these
-steps:
+Aplicando esta técnica al problema de fuentes equivalentes, podemos transformar
+la ecuación~\ref{eq:linear-problem} en un modelo aditivo siguiendo estos
+pasos:
 
 \begin{enumerate}
-  \item Define a set of $M$ equivalent sources distributed throughout the
-    survey area (see section \ref{sec:source_distribution} for details).
-  \item Define a set of $K$ overlapping windows of equal size that cover the
-    survey area.
-  \item Create $K$ separate sets of equivalent sources, one for each window.
-    Each set will be formed by the portion of the original $M$ sources that
-    fall inside the respective window.
-    Since the windows overlap, the total number of sources from all sets will
-    be greater than $M$.
-  \item Define vector $\mathbf{c}_k$ as the $M_k$ coefficients of the
-    equivalent sources of the $k$-th window.
-  \item Define matrix $\mathbf{A}_k$ as the $N \times M_k$ Jacobian matrix
-    between the sources in the $k$-th window and all $N$ data points of the
-    survey.
-  \item Model the predicted data as a superposition of the effects of the $K$
-    separate sets of equivalent sources (i.e., Eq.~\ref{eq:gb-linear-model}).
+  \item Definir un conjunto de $M$ fuentes equivalentes distribuidas a lo
+      largo de la zona de estudio (ver sección~\ref{sec:source_distribution}
+      para más detalles).
+  \item Definir un conjunto de $K$ ventanas solapadas de igual tamaño que
+      cubren toda la zona de estudio.
+  \item Crear $K$ conjuntos distintos de fuentes equivalentes, uno por cada
+      ventana.
+      Cada conjunto estará conformado por la proción de las $M$ fuentes
+      originales que caen dentro de la respectiva ventana.
+      Dado que las ventanas se solapan, el número total de fuentes considerando
+      cada uno de los conjuntos será mayor que $M$.
+  \item Definir el vector $\mathbf{c}_k$ como los $M_k$ coeficientes
+      correspondientes a las fuentes equivalentes de la ventana $k$-ésima.
+  \item Definir la matriz $\mathbf{A}_k$ como la matriz Jacobiana de $N \times
+      M_k$ elementos entre las fuentes de la ventana $k$-ésima y todos los $N$
+      puntos de datos de la muestra.
+  \item Modelar los datos predichos por las fuentes como una superposición de
+      los efectos de los $K$ conjuntos de fuentes equivalentes
+      (ec.~\ref{eq:gb-linear-model}).
 \end{enumerate}
 
-The gradient boosting algorithm works by fitting each component of the
-additive model, one at a time, to the residuals of the previous component.
-\citet{friedman2001} demonstrates that this corresponds to a steepest-descent
-optimization in the so-called ``function space''.
-The adaptation of the gradient boosting method to find the damped least-squares
-solutions for the $K$ parameter vectors $\mathbf{c}_k$ in
-Eq.~\ref{eq:gb-linear-model} is presented in
-Algorithm~\ref{alg:gradient_boosting}.
+El algoritmo de potenciación del gradiente funciona ajustando cada componente
+del modelo aditivo, una a la vez, a los residuos de la componente anterior.
+\citet{friedman2001} demuestra que esto corresponde a una optimización por
+descenso del gradiente en el \emph{espacio funcional}.
+El Algoritmo~\ref{alg:gradient_boosting} presenta nuestra adaptación del
+algoritmo de potenciación del gradiente para hallar las soluciones  de los $K$
+vectores de parámetros $\mathbf{c}_k$ de la ec~\ref{eq:gb-linear-model}
+mediante mínimos cuadrados amortiguados.
 
 \begin{algorithm}[!h]
   \DontPrintSemicolon
   \setstretch{1.5}
-  Define the residual vector $\mathbf{r}_{0} = \mathbf{d}^o$ \;
+  Definir el vector residual $\mathbf{r}_{0} = \mathbf{d}^o$ \;
   \For{ $k = 1$ \KwTo $K$ }{
 
 
-    Calculate the $N \times M_k$ Jacobian matrix $\mathbf{A}_k$
-    \;
+      Calcular la matriz Jacobiana $\mathbf{A}_k$ de $N \times M_k$ elementos
+      \;
 
-    $\mathbf{B}_k = \mathbf{A}_k \mathbf{S}_k\inv$
-    \nllabel{alg:scale}
-    \;
+      $\mathbf{B}_k = \mathbf{A}_k \mathbf{S}_k\inv$
+      \nllabel{alg:scale}
+      \;
 
-    $
-     \hat{\mathbf{m}}_k = \left[\mathbf{B}_k\trans \mathbf{W}_k \mathbf{B}_k +
-     \lambda \mathbf{I} \right]\inv \mathbf{B}_k\trans \mathbf{W}_k
-     \mathbf{r}_{k-1}
-    $
-    \nllabel{alg:fit}
-    \;
+      $
+       \hat{\mathbf{m}}_k = \left[\mathbf{B}_k\trans \mathbf{W}_k \mathbf{B}_k +
+       \lambda \mathbf{I} \right]\inv \mathbf{B}_k\trans \mathbf{W}_k
+       \mathbf{r}_{k-1}
+      $
+      \nllabel{alg:fit}
+      \;
 
-    $\hat{\mathbf{c}}_k = \mathbf{S}_k\inv \hat{\mathbf{m}}_k$
-    \nllabel{alg:unscale}
-    \;
+      $\hat{\mathbf{c}}_k = \mathbf{S}_k\inv \hat{\mathbf{m}}_k$
+      \nllabel{alg:unscale}
+      \;
 
-    $\mathbf{d}_k = \mathbf{A}_k \hat{\mathbf{c}}_k$
-    \nllabel{alg:predicted}
-    \;
+      $\mathbf{d}_k = \mathbf{A}_k \hat{\mathbf{c}}_k$
+      \nllabel{alg:predicted}
+      \;
 
-    $\mathbf{r}_k = \mathbf{r}_{k - 1} - \mathbf{d}_k$
-    \nllabel{alg:residual}
-    \;
+      $\mathbf{r}_k = \mathbf{r}_{k - 1} - \mathbf{d}_k$
+      \nllabel{alg:residual}
+      \;
   }
   \BlankLine
   \setstretch{1}
-  \caption{Gradient boosting solution for damped least-squares regression.}
+  \caption{
+      Solución mediante potenciación del gradiente de una regresión por mínimos
+      cuadrados amortiguados.
+  }
   \label{alg:gradient_boosting}
 \end{algorithm}
 
-After all $\mathbf{c}_k$ coefficients vectors are estimated, we can predict the
-effect of the additive equivalent source model on any point through the
-summation
+Luego de que todo los vectores de coeficientes $\mathbf{c}_k$ fueron estimados,
+podemos predecir el efecto del modelo aditivo de fuentes equivalentes mediante
+la suma
 
 \begin{equation}
     d(\mathbf{p}) =
     \sum\limits_{k=1}^K \sum\limits_{j=1}^{M_k}
-    \frac{{c_k}_j}{\left\lVert \mathbf{p} - {\mathbf{q}_k}_j \right\rVert}
+    \frac{{c_k}_j}{| \mathbf{p} - {\mathbf{q}_k}_j |}
     \ ,
     \label{eq:eql-forward-gb}
 \end{equation}
 
-\noindent
-in which ${c_k}_j$ is the $j$-th element of the $\mathbf{c}_k$ vector and the
-${\mathbf{q}_k}_j$ is the position vector of the $j$-th source of the $k$-th
-window.
+\noindent donde ${c_k}_j$ es el $j$-ésimo elemento del vector $\mathbf{c}_k$
+y ${\mathbf{q}_k}_j$ es el vector posición de la $j$-ésima fuente de la
+$k$-ésima ventana.
 
-To improve the convergence of the algorithm, \citet{friedman2002} suggests
-introducing randomness into the fitting process. We achieve this by randomizing
-the order in which the $K$ windows are used in the gradient boosting algorithm.
-Section~\ref{sec:gb_interpolation} explores the effect of randomization in the
-convergence rate of the algorithm and the accuracy of the interpolation.
+Para mejorar la convergencia del algoritmo, \citet{friedman2002} sugiere
+introducir aleatoriedad en el proceso de ajuste.
+En nuestra adaptación logramos esto aleatorizando el orden en el cual las $K$
+ventanas son utilizadas durante el algoritmo de potenciación de gradiente.
+La sección~\ref{sec:gb_interpolation} explora los efectos de la aleatorización
+sobre la velocidad de convergencia del algoritmo y sobre la precisión de la
+interpolación.
 
-The $\mathbf{A}_k$ matrices have only $N \times M_k$ elements
-(where $M_k$ is the number sources on the $k-$th window), which can be
-considerably smaller than the $N \times M$ elements of $\mathbf{A}$.
-Therefore, the gradient boosting method allows us to fit
-equivalent source models that would produce Jacobian matrices that are larger
-than the available computer memory.
-Furthermore, we can increase or decrease the size of the overlapping windows as
-needed depending on the number of sources in the model and the available
-computer memory.
+Las matrices $\mathbf{A}_k$ poseen solo $N \times M_k$ elementos (donde $M_k$
+es la cantidad de fuentes dentro de la ventana $k$-ésima), las cuales pueden
+ser considerablemente más pequeñas que la matriz $\mathbf{A}$ con $N \times M$
+elementos.
+Por lo tanto, el algoritmo de potenciación del gradiente permite ajustar
+modelos de fuentes equivalentes cuyas matrices Jacobianas fueran más grandes
+que la memoria computacional disponible.
+Además, podemos incrementar o disminuir el tamaño de las ventanas según lo
+necesario, dependiendo de la cantidad de fuentes en el modelo y de la memoria
+disponible.
 
-We can improve the efficiency of the algorithm further by:
+Podemos mejorar la eficiencia del algoritmo aún más mediante:
 
 \begin{enumerate}
-  \item Using only the $N_k$ data points that fall within the $k$-th window for
-    fitting the sources (steps \ref{alg:scale} and \ref{alg:fit} of
-    algorithm~\ref{alg:gradient_boosting}).
-    By doing so, we can replace the $N \times M_k$ Jacobian matrix $\mathbf{A}_k$
-    with the smaller $N_k \times M_k$ matrix $\tilde{\mathbf{A}}_k$.
-    We still use all $N$ data points when calculating the predicted data and
-    residuals (steps \ref{alg:predicted} and \ref{alg:residual} of
-    algorithm~\ref{alg:gradient_boosting}).
-  \item The forward modeling operation performed in step \ref{alg:predicted}
-    can be done by a summation (Eq.~\ref{eq:forward-sum}) instead of a
-    matrix-vector product, which allows us to avoid computing and storing the
-    larger $N \times M_k$ matrix $\mathbf{A}_k$ at any point.
+  \item La utilización de solo los $N_k$ puntos de datos que caen dentro de la
+      ventana $k$-ésima a la hora de ajustar los coeficientes de las fuentes
+      (pasos \ref{alg:scale} y \ref{alg:fit} del
+      algoritmo~\ref{alg:gradient_boosting}).
+      De esta manera, podemos reemplazar las matrices Jacobianas $\mathbf{A}_k$
+      de $N \times M_k$ elementos por matrices $\tilde{\mathbf{A}}_k$ más
+      pequeñas de $N_k \times M_k$ elementos.
+      Seguiremos utilizando todos los $N$ puntos de datos cuando calculamos los
+      valores predichos y los residuos (pasos \ref{alg:predicted}
+      y \ref{alg:residual} del algoritmo~\ref{alg:gradient_boosting}).
+  \item La operación de modelado directo que se realiza en el paso \ref{alg:predicted}
+      puede ser llevada a cabo mediante una suma (Eq.~\ref{eq:forward-sum}),
+      en vez de un producto matricial, lo cual permite evitar almacenar en
+      memoria la matriz $\mathbf{A}_k$ de $N \times M_k$ elementos.
 \end{enumerate}
 
-Algorithm~\ref{alg:gradient_boosting_window} is the final
-\textit{gradient-boosted equivalent sources algorithm} which incorporates these
-changes.
-Figure~\ref{fig:gradient-boosting-schematics} shows a sketch of the algorithm
-steps applied a set of observation points that simulate a ground survey and
-locating one source below each data point.
+El Algoritmo~\ref{alg:gradient_boosting_window} sintetiza el definitivo
+\textit{algoritmo de fuentes equivalentes potenciadas por el gradiente},
+incorporando estas últimas modificaciones.
+La Figura~\ref{fig:gradient-boosting-schematics} muestra un bosquejo de los
+pasos del algoritmo aplicado a un conjunto de puntos de observación que simulan
+una muestra sobre el terreno y ubicando una fuente debajo de cada punto de
+observación.
 
 \begin{algorithm}[!h]
   \DontPrintSemicolon
   \setstretch{1.5}
-  Define the residual vector $\mathbf{r}_{0} = \mathbf{d}^o$ \;
+  Definir el vector residual $\mathbf{r}_{0} = \mathbf{d}^o$ \;
   \For{ $k = 1$ \KwTo $K$ }{
 
-    Select weights $\tilde{\mathbf{W}}_k$ and residuals
-    $\tilde{\mathbf{r}}_{k - 1}$ for data points inside the $k$-th window
-    \;
+      Seleccionar los pesos ponderados $\tilde{\mathbf{W}}_k$ y residuos
+      $\tilde{\mathbf{r}}_{k - 1}$ correspondientes a los puntos de datos que
+      caen dentro de la $k$-ésima ventana
+      \;
 
-    Calculate Jacobian matrix $\tilde{\mathbf{A}}_k$ with data points and
-    sources inside the $k$-th window
-    \;
+      Calcular la matriz Jacobiana $\tilde{\mathbf{A}}_k$ considerando puntos
+      de datos y fuentes dentro de la $k$-ésima ventana
+      \;
 
-    $\mathbf{B}_k = \tilde{\mathbf{A}}_k \mathbf{S}_k\inv$
-    \;
+      $\mathbf{B}_k = \tilde{\mathbf{A}}_k \mathbf{S}_k\inv$
+      \;
 
-    $
-     \hat{\mathbf{m}}_k = \left[
-     \mathbf{B}_k\trans \tilde{\mathbf{W}}_k \mathbf{B}_k +
-     \lambda \mathbf{I} \right]\inv \mathbf{B}_k\trans \tilde{\mathbf{W}}_k
-     \tilde{\mathbf{r}}_{k-1}
-    $
-    \;
+      $
+       \hat{\mathbf{m}}_k = \left[
+       \mathbf{B}_k\trans \tilde{\mathbf{W}}_k \mathbf{B}_k +
+       \lambda \mathbf{I} \right]\inv \mathbf{B}_k\trans \tilde{\mathbf{W}}_k
+       \tilde{\mathbf{r}}_{k-1}
+      $
+      \;
 
-    $\hat{\mathbf{c}}_k = \mathbf{S}_k\inv \hat{\mathbf{m}}_k$
-    \;
+      $\hat{\mathbf{c}}_k = \mathbf{S}_k\inv \hat{\mathbf{m}}_k$
+      \;
 
-    Calculate $ \mathbf{d}_k $, where
-    $
-    {d_k}_i
-    =
-    \sum\limits_{j=1}^{M_k} \dfrac{{c_k}_j}{\left\lVert \mathbf{p}_i -
-        {\mathbf{q}_k}_j
-    \right\rVert}
-    \quad \forall\ i=1\ \text{to}\ N
-    $
-    \;
+      Calcular $ \mathbf{d}_k $, donde
+      $
+      {d_k}_i
+      =
+      \sum\limits_{j=1}^{M_k} \dfrac{{c_k}_j}{| \mathbf{p}_i -
+          {\mathbf{q}_k}_j
+      |}
+      \quad \forall\ i=1\ \text{to}\ N
+      $
+      \;
 
-    $\mathbf{r}_k = \mathbf{r}_{k - 1} - \mathbf{d}_k$
-    \;
+      $\mathbf{r}_k = \mathbf{r}_{k - 1} - \mathbf{d}_k$
+      \;
   }
   \BlankLine
   \setstretch{1}
-  \caption{Gradient-boosted equivalent sources algorithm.}
+  \caption{Algoritmo de fuentes equivalentes potenciadas por el gradiente.}
   \label{alg:gradient_boosting_window}
 \end{algorithm}
 
-\begin{figure*}[tb]
+\begin{figure}[tb]
     \centering
     \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/gradient-boosting-schematics.pdf}
     \caption{
-        Sketch of the gradient-boosted equivalent source algorithm.
-        Data points are represented by blue upwards-facing triangles,
-        equivalent sources by orange dots, data residuals by red downwards-facing
-        triangles, and the current window by black dashed lines.
-        The algorithm starts by selecting the data and sources
-        inside the first window and estimating the source coefficients
-        using the selected data points.
-        Then, the effect of the estimated sources is predicted on all data
-        points and used to calculate the residuals.
-        Another window is used to select residuals and sources and
-        estimate the coefficients using the selected residuals instead of the
-        original data.
-        Again, the effect of the estimated sources is predicted on all data points
-        and the residuals are updated.
-        These steps are repeated for every window in a randomized order.
+        Bosquejo del algoritmo de fuentes equivalentes potenciadas por el
+        gradiente.
+        Los puntos de datos están representados por triángulos azules
+        (orientados hacia arriba), las fuentes equivalentes por puntos naranja,
+        los residuos por triángulos rojos (orientados hacia abajo), y los
+        límites de la ventana actual por líneas negras de a trazos.
+        El algoritmo comienza seleccionado los datos y las fuentes que caen
+        dentro de la primer ventana y continua estimando los coeficientes de
+        estas fuentes utilizando los puntos de datos seleccionados.
+        Luego, se calcula el efecto de las fuentes ajustadas sobre todos los
+        puntos de observación y usamos los datos para calcular los residuos.
+        Se utiliza otra ventana para seleccionar otro conjunto de residuos
+        y fuentes, se estiman sus coeficientes utilizando los residuos
+        seleccionados en vez de los datos originales.
+        Nuevamente, el efecto de las fuentes estimadas es calculado sobre todos
+        los puntos de observación y se actualizan los residuos.
+        Estos pasos son repetidos para cada ventana en orden aleatorio.
     }
     \label{fig:gradient-boosting-schematics}
-\end{figure*}
+\end{figure}
 
-It is worth noting that two sets of equivalent sources obtained through two
-adjacent overlapping windows have some portion of the sources on the same
-locations, specifically the ones that fall on the intersection between the two
-windows.
-We can interpret this as the gradient-boosting algorithm fitting the source
-coefficients multiple times: one time for every window that covers each source.
-This fact can be exploited in order to save computer memory.
-Instead of storing all of the $\mathbf{c}_k$ vectors
-(Eq.~\ref{eq:gb-linear-model}), we can initialize a single $\mathbf{c}$ vector
-with zeros, where each element represents the coefficient of each one of the
-original $M$ sources.
-After each iteration of the gradient-boosting algorithm, we add the estimated
-coefficients $\hat{\mathbf{c}}_k$ to the corresponding elements of vector
+Vale la pena notar que los dos conjuntos de fuentes equivalentes
+correspondientes a dos ventanas solapadas contiguas poseen una porción de sus
+fuentes las mismas ubicaciones, específicamente aquellas que caen en la
+intersección de ambas ventanas.
+Esto nos permite interpretar que el algoritmo de potenciación de gradiente
+ajusta los coeficientes de las fuentes múltiples veces: una vez por cada
+ventana que cubre cada una de las fuentes.
+Este hecho puede ser explotado con el objetivo de ahorrar memoria.
+En vez de almacenar todos los vectores $\mathbf{c}_k$
+(ec.~\ref{eq:gb-linear-model}), podemos inicializar un único vector
+$\mathbf{c}$ con ceros, donde cada elemento representa el coeficiente de cada
+una de las $M$ fuentes originales.
+Luego de cada iteración del algoritmo de potenciación por gradiente, añadimos
+los coeficientes estimados $\hat{\mathbf{c}}_k$ a sus correspondientes
+elementos del vector
 $\mathbf{c}$.
-Because the forward modelling function is linear, we can safely compute the
-resulting field through Eq.~\ref{eq:eql-forward} instead of
-Eq.~\ref{eq:eql-forward-gb}.
-This way, the memory needed to store the entire set of estimated coefficients
-is limited to a single vector of $M$ elements.
+Dado que la función de modelado directo es lineal, podemos calcular el campo
+resultante mediante la ec.~\ref{eq:eql-forward} en vez de utiliza la
+ec.~\ref{eq:eql-forward-gb}.
+De esta forma, la cantidad de memoria necesaria para almacenar el conjunto
+completo de coeficientes se limita a un único vector de $M$ elementos.
 
-Our gradient boosting algorithm for overlapping windows is similar to the
-``bootstrap inversion'' used in \citet{vonfrese1988}, which also iteratively
-fits portions of an equivalent source model to the data residuals.
-The key differences are that in our method:
-(i)~the sources in the overlapping portions of the windows are fitted more than
-once, allowing the algorithm to self-correct for poor solutions to any given
-window;
-(ii)~we use only data points within the window when fitting, what enables the
-use of larger datasets.
-
+Nuestro algoritmo de potenciado por el gradiente es similar a la \emph{boostrap
+inversion} utilizada por \citet{vonfrese1988}, la cual también ajusta
+iterativamente porciones del modelo de fuentes equivalentes a datos residuales.
+Las diferencias claves entre este y nuestro método son:
+(i)~las fuentes en las porciones de solapamiento de las ventanas son ajustadas
+más de una vez, permitiendo al algoritmo autocorregirse en caso de soluciones
+de baja calidad sobre alguna de las ventanas;
+(ii)~utilizamos solo los datos dentro de las ventanas durante el ajuste, lo
+cual permite la aplicación del algoritmo a conjuntos de datos más grandes.
 
 
 \subsection{Location of sources}
