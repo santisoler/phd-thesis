@@ -74,14 +74,14 @@ Vale nombrar también el método de colocación por mínimos cuadrados
 geodesia.
 \citep[][y referencias allí citadas]{tscherning2015}.
 Esta metodología se suele aplicar para combinar e interpolar diferentes
-funciones lineales de anomalías derivadas del potencial gravitatorio (anomalías de gravedad,
-disturbio de gravedad, deflexiones de la vertical, altitud del geoide, etc.).
+funciones lineales de anomalías derivadas del potencial gravitatorio (anomalías
+de gravedad, disturbio de gravedad, deflexiones de la vertical, altitud del
+geoide, etc.).
 Al igual que las fuentes equivalentes, el método de colocación requiere
 resolver un sistema lineal grande, cuyo orden equivale a la cantidad de datos
 observados.
 De esta manera, la aplicación práctica de ambos métodos sufren de los mismos
 desafíos computacionales.
-
 
 Muchas variantes de la técnica de fuentes equivalentes han sido propuestas,
 usualmente intentando obtener soluciones más precisas o en menor tiempo.
@@ -135,52 +135,56 @@ cuadrados utilizando el descenso del gradiente con el objetivo de evitar
 calcular las matrices Hessianas y resolver sistemas lineales.
 
 
+Muchos de los métodos existentes resuelven problemas subdeterminados,
+requiriendo un número mayor de fuentes equivalentes que de cantidad de datos.
+Algunos de ellos alcanzan mayores eficiencias al
+restringir su aplicación a tipos de datos específicos \citep{siqueira2017},
+realizar las interpolaciones sobre grillas regulares \citep{leao1989},
+o requieren datos ya grillados \citep{takahashi2020},
+por nombrar algunos.
+Además, muchas de las optimizaciones propuestas son complejas de implementar en
+un programa de computación, limitando que sean ampliamente utilizados.
 
-Many of the existing methods solve under-determined problems, requiring a much
-larger number of equivalent sources than the number of data points.
-Some achieve greater efficiency by restricting their applications
-to specific data types \citep{siqueira2017},
-interpolating only on regular grids \citep{leao1989},
-or requiring already gridded data \citep{takahashi2020},
-to name a few.
-Furthermore, many of the optimizations proposed are also complex to implement
-in a computer program, limiting their wider adoption.
-
-In the present study,
-we propose two strategies for reducing the computational load of
-the equivalent sources technique:
+En el presente trabajo, proponemos dos estrategias para reducir el costo
+computacional de la técnica de fuentes equivalentes:
 
 \begin{enumerate}
-    \item Reduce the number of equivalent sources for oversampled surveys
-      through a \emph{block-averaging} strategy while maintaining the quality
-      of the solution.
-    \item Fit the equivalent source model iteratively along overlapping windows
-      using a \emph{gradient boosting} algorithm \citep{friedman2001}.
+    \item Reducir el número de fuentes equivalentes para campañas con
+        sobremuestreo mediante una estrategia de \emph{promedio en
+        bloques} (\emph{block-averaging} en inglés), manteniendo la calidad de
+        la solución.
+    \item Ajustar el modelo de fuentes equivalentes iterativamente sobre
+        ventanas solapadas utilizando un algoritmo \emph{potenciado por
+        gradiente} (\emph{gradient-boosting} en inglés) \citep{friedman2001}.
 \end{enumerate}
 
-The first strategy consists in dividing the survey area into horizontal blocks
-and assigning a single source to each block, located at the median horizontal
-location of the data points.
-For airborne, shipborne, and satellite surveys, which are oversampled along
-tracks, this can greatly reduce the size of the inverse problem while retaining
-the same quality of interpolation.
+La primera estrategia consiste en dividir el área de estudio en bloques
+y asignar una única fuente a cada bloque, localizada en la ubicación media de
+los puntos de datos.
+Para campañas aéreas, navales y satelitales, las cuales presentan sobremuestreo
+a lo largo de la trayectoria del vehículo, esto puede reducir considerablemente
+el tamaño del problema inverso manteniendo a su vez la misma calidad en la
+interpolación.
 
-The gradient boosting algorithm allows us to fit the equivalent source model
-iteratively by operating on individual overlapping windows.
-As a result, our method solves several much smaller least-squares problems
-instead of a large one.
-This has some similarities with the strategy used by \citet{leao1989} but
-without the requirement for sources and predictions to be on regular grids.
+El algoritmo de \emph{potenciado por gradiente} permite ajustar el modelo de
+fuentes equivalentes de manera iterativa, operando de manera individual sobre
+cada una de las ventanas con solapamiento.
+Como resultado, nuestro método resuelve muchos problemas de mínimos cuadrados
+de menor tamaño en vez de un único gran problema.
+Este posee algunas semejanzas con la estrategia utilizada por \citet{leao1989},
+pero sin el requerimiento de que tanto las fuentes como los puntos de
+interpolación se encuentren en grillas regulares.
 
-Through tests on synthetic data, we show that:
-(i)~the \emph{block-averaged} sources are able to achieve the same accuracy as
-other traditional equivalent source layouts while using a fraction of the
-number of sources, and
-(ii)~the \emph{gradient boosting} algorithm greatly reduces the computational
-memory required to fit very large datasets without sacrificing prediction
-accuracy.
-Finally, a combination of both strategies is used to process a collection of
-approximately 1.7 million ground gravity data measurements from Australia.
+Mediantes pruebas sobre datos sintéticos, mostramos que:
+(i)~las fuentes \emph{promediadas en bloque} son capaces de alcanzar el mismo
+nivel de precisión que otras disposiciones de fuentes equivalentes más
+tradicionales, utilizando una fracción del número de fuentes; y
+(ii)~el algoritmo \emph{potenciado por gradiente} reduce significativamente la
+memoria necesaria para ajustar grandes cantidades de datos, sin sacrificar
+precisión en las predicciones.
+Finalmente, una combinación de ambas estrategias es utilizada para procesar una
+colección de aproximadamente 1.7 millones de datos de gravedad tomados sobre la
+superficie de Australia.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
