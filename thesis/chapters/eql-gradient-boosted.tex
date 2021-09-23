@@ -663,193 +663,208 @@ de baja calidad sobre alguna de las ventanas;
 cual permite la aplicación del algoritmo a conjuntos de datos más grandes.
 
 
-\subsection{Location of sources}
+\subsection{Ubicación de las fuentes}
 \label{sec:source_distribution}
 
-The ideal number of sources and their locations, both horizontally and
-vertically, has been debated since the inception of the equivalent sources
-technique with \citet{dampney1969}.
-The choices made regarding these parameters can play an important role on the
-accuracy of the predictions and the computational resources needed to estimate
-the source coefficients.
-An ideal distribution of sources should simultaneously be able to reproduce the
-measured data on the survey points, make accurate predictions on non-surveyed
-locations, and minimize the required computational resources.
+La cantidad ideal de fuentes y sus ubicaciones, tanto horizontales como
+verticales, han sido debatidas desde la concepción de la técnica de fuentes
+equivalentes de la mano de \citet{dampney1969}.
+Las elecciones que se realizan con respecto a estos parámetros juegan un rol
+importante en la precisión de las predicciones y de los recursos
+computacionales necesarios para estimar los coeficientes de las fuentes.
+Una distribución ideal de fuentes debería ser simultáneamente capaz de
+reproducir los datos observados en los puntos de muestreo, realizar
+predicciones precisas en locaciones no muestreadas y minimizar el costo
+computacional necesario.
 
-A large number of evenly distributed sources along the survey region are
-capable of reproducing the observed data.
-Nevertheless, the computational load can be prohibitive and such
-underdetermined problems are prone to overfitting the data, leading to poor
-predictive power when interpolating and extrapolating.
-On the other hand, using few sources will reduce the computational requirements
-but the model may be incapable of reproducing the full spectral content of the
-measured data.
+Un gran número de fuentes homogéneamente distribuidas a lo largo y ancho de la
+zona de estudio son capaces de reproducir los datos observados.
+Sin embargo, los costos computacionales pueden ser prohibitivos y los problemas
+subdeterminados que generan son susceptibles a sobreajustar a los datos,
+resultando en interpolaciones y extrapolaciones de baja calidad.
+En el otro extremo, la utilización de pocas fuentes reduciría el costo
+computacional, pero el modelo podría ser incapaz de reproducir el espectro
+completo de los datos observados.
 
-Particular survey characteristics also play a role in the choice of equivalent
-source distribution.
-In a ground survey, observations are usually located along irregular paths and
-scattered points.
-The coverage of the survey region is often uneven, leaving large areas without
-any observation.
-On the other hand, observations from airborne surveys are located along almost
-straight and closely spaced flight lines.
-Measurements are usually taken at a high temporal frequency, leading to
-observation points along the flight lines that are several times closer to each
-other than the flight line spacing.
-This creates a bias in the sampling, which can cause aliasing artifacts in
-gridded products.
+Las características particulares de cada muestra juegan también un rol
+importante en la elección de la distribución de las fuentes equivalentes.
+En el caso de muestras tomadas sobre la superficie terrestre, las observaciones
+suelen localizarse a lo largo de trayectorias irregulares junto con algunos
+puntos dispersos.
+La cobertura de la región de muestreo es usualmente despareja, dejando grandes
+áreas sin ninguna medición.
+Por otro lado, las observaciones realizadas mediante vehículos aéreos suelen
+estar localizadas a lo largo de líneas de vuelo casi rectas y con poca
+separación.
+Las mediciones se suelen tomar a intervalos muy cortos, produciendo una gran
+densidad de datos a lo largo de las líneas de vuelo.
+Esto genera un sesgo en el muestreo, lo cual puede producir artefactos de
+\emph{aliasing} en las grillas posteriores.
 
-\subsubsection{Horizontal source layouts}
+\subsubsection{Distribuciones horizontales de las fuentes}
 
-\begin{figure*}[tb]
+\begin{figure}[tb]
     \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/source-layouts-schematics.pdf}
     \caption{
-        Sketch of different horizontal layouts for equivalent source models.
-        Blue points represent the locations of observations and orange points
-        represent the locations of equivalent sources according to different
-        layout strategies.
-        (a)~Set of \SourceLayoutsSchematicsObservations{} observation points
-        that simulate a ground survey.
-        (b)~Location of the \SourceLayoutsSchematicsSourceBelowData{} sources
-        obtained through the \emph{sources below data} layout.
-        (c)~Location of the \SourceLayoutsSchematicsGridSources{} sources
-        obtained through the \emph{regular grid} layout.
-        (d)~Location of the \SourceLayoutsSchematicsBlockAveragedSources{}
-        sources obtained through the \emph{block-averaged sources} layout.
-        Grey dashed lines represent the spatial blocks within which the median
-        observation location is calculated.
+        Bosquejo de las diferentes distribuciones horizontales para los modelos
+        de fuentes equivalentes.
+        Los puntos azules representan las ubicaciones de las observaciones,
+        y los puntos naranja, las ubicaciones de las fuentes equivalentes según
+        las distintas estrategias de distribución.
+        (a)~Conjunto de \SourceLayoutsSchematicsObservations{} puntos de
+        observación que emulan una muestra terrestre.
+        (b)~Ubicación de \SourceLayoutsSchematicsSourceBelowData{} fuentes
+        obtenidas mediante la distribución \emph{fuentes debajo de datos}.
+        (c)~Ubicación de \SourceLayoutsSchematicsGridSources{} fuentes
+        obtenidas mediante la distribución \emph{grilla regular}.
+        (d)~Ubicación de \SourceLayoutsSchematicsBlockAveragedSources{} fuentes
+        obtenidas mediante la distribución \emph{fuentes promediadas por bloque}.
+        Las líneas de a trazos grises representan los bloques espaciales dentro
+        de los cuales la localización media de los datos es calculada.
     }
     \label{fig:source_layouts}
-\end{figure*}
+\end{figure}
 
-The most widely used layouts for distributing equivalent sources horizontally
-are:
+Las distribuciones más utilizadas para localizar las fuentes equivalentes
+horizontalmente son:
 
 \begin{enumerate}
   \item
-    \emph{Sources below data points}: one equivalent source is placed at the
-    horizontal location of each data point (Fig.~\ref{fig:source_layouts}b).
-    Therefore, the number of sources is equal to the number of observations
-    ($M=N$).
+    \emph{Fuentes debajo de datos}: una única fuente equivalente es ubicada en
+    la misma localización horizontal de cada dato
+    (Fig.~\ref{fig:source_layouts}b), pero a diferente altitud. Por lo tanto,
+    la cantidad de fuentes es igual a la cantidad de observaciones ($M=N$).
   \item
-    \emph{Regular grid}: a homogeneous distribution of point sources below the
-    survey region (Fig.~\ref{fig:source_layouts}c). A padding region is often
-    added to help reduce edge effects. In practice, it often leads to
-    underdetermined problems since a large number of sources is required
-    ($M>N$).
+    \emph{Grilla regular}: una distribución homogénea de fuentes debajo de la
+    zona de estudio (Fig.~\ref{fig:source_layouts}c). En la práctica, esto
+    suele generar problemas subdeterminados, ya que se requieren mayores
+    cantidades de fuentes que de datos ($M>N$).
 \end{enumerate}
 
-For ground surveys, the \emph{regular grid} layout needs a sufficiently
-small grid spacing to be able to fit the observed data.
-This creates an unnecessarily large number of sources in areas where no
-observations exist.
-In contrast, the \emph{sources below data} layout is more likely to accurately
-fit the observed data with many fewer sources, reducing the computational load.
-But when applied to airborne surveys, the \emph{sources below data} layout may
-place an undesirably large number of sources along the flight paths.
-This could lead to aliasing effects on the predicted values, such as the
-stripes parallel to flight lines that are often observed when gridding airborne
-magnetic data.
-The \emph{regular grid} layout can avoid this effect by evenly
-distributing sources and using a continuous source layer (e.g.,
-right-rectangular prisms or tesseroids).
+En el caso de muestras terrestres, la distribución de \emph{grilla regular}
+necesita un espaciado entre los nodos lo suficientemente pequeño para poder ser
+capaz de ajustar a los datos observados.
+Esto genera una cantidad de fuentes innecesariamente grande en regiones donde
+no se han realizado observaciones.
+En contraste, la distribución \emph{fuentes debajo de datos} es más propensa
+a ajustar de manera precisa a los datos observados haciendo uso de una cantidad
+menor de fuentes, y por ende reduciendo el costo computacional.
+Sin embargo, cuando esta distribución es aplicada a muestras aéreas, la
+distribución \emph{fuentes debajo de datos} ubicará una cantidad
+indeseablemente grande de fuentes debajo de las líneas de vuelo.
+Esto puede conllevar la generación de efectos de \emph{aliasing} sobre los
+valores predichos, como un patrón de rayas paralelas a las líneas de vuelo que
+suelen observarse en grillas obtenidas de vuelos aeromagnéticos.
+La distribución de \emph{grilla regular} puede evitar estos efectos al
+distribuir homogéneamente las fuentes y utilizando una capa de fuentes de
+densidades continuas (por ejemplo, prismas rectangulares o tesseroides).
 
-We propose a new way of distributing equivalent sources horizontally that could
-simultaneously reduce the computational load and mitigate some of the drawbacks
-of existing layouts.
-In the \emph{block-averaged sources} layout,
-point sources are placed in the average
-position of data points that fall within specified spatial blocks
-(Fig.~\ref{fig:source_layouts}d).
-This is done by:
+Aquí proponemos un nuevo tipo de distribución horizontal de fuentes
+equivalentes que puede simultáneamente reducir el costo computacional y mitigar
+algunas de las desventajas de las distribuciones existentes.
+En la distribución de \emph{fuentes promediadas por bloque}
+(\emph{block-averaging sources} en inglés), cada fuente es ubicada en la
+posición media de los puntos de datos que caen dentro de un determinado bloque
+espacial (Fig.~\ref{fig:source_layouts}d).
+Esto se realiza de la siguiente forma:
 
 \begin{enumerate}
-    \item Dividing the survey region into rectangular blocks of equal size.
-    \item \label{item:median-position} Computing the median horizontal position
-        of the observation points that fall inside each block. Blocks without
-        any observation point are omitted.
-    \item Assign one point source to each of the median horizontal positions
-      calculated in step \ref{item:median-position}.
+    \item Dividir la región de estudio en bloques rectangulares de mismo
+        tamaño.
+    \item \label{item:median-position} Calcular la media de las posiciones
+        horizontales de los puntos de observación que caen dentro de cada
+        bloque. Los bloques sin ningún punto de observación son omitidos.
+    \item Asignar una fuente puntual a cada posición horizontal media calculada
+        en el paso \ref{item:median-position}.
 \end{enumerate}
 
-The number of sources created by this new layout will be less than the number
-of observations if the block size is chosen appropriately (i.e., making sure
-that blocks are large enough to contain more than a single data point).
-The overdetermined problem that arises from this layout has a lower
-computational load and is less prone to overfitting the data since the model
-complexity is lower.
-Moreover, the block averaging process can balance the spacing between sources
-along a flight line and between adjacent lines, helping to reduce aliasing
-effects in the generated grids.
-In Section~\ref{sec:synthetic_distributions}, we demonstrate through tests on
-synthetic data that the block-averaged sources layout is able to interpolate
-with comparable accuracy to other layouts while using a fraction of the
-equivalent sources.
+La cantidad total de fuentes creadas por esta nueva distribución será menor que
+el número total de observaciones si el tamaño de los bloques es elegido
+apropiadamente (asegurándose de que los bloques sean lo suficientemente grandes
+como para contener más de un único punto de observación).
+El problema sobredeterminado que surge de esta distribución posee un costo
+computacional inferior y es menos propenso a sobreajustar los datos, ya que la
+complejidad del modelo es menor.
+Además, el proceso de \emph{promediado por bloques} puede balancear el
+espaciado entre fuentes a lo largo de líneas de vuelo y entre líneas contiguas,
+ayudando a reducir los efectos de \emph{aliasing} en las grillas que se generan.
+En la sección~\ref{sec:synthetic_distributions}, demostramos mediante pruebas
+sobre datos sintéticos que las \emph{fuentes promediadas por bloque} son
+capaces de realizar interpolaciones con una precisión comparable a la obtenida
+por las otras dos distribuciones, pero utilizando una fracción de fuentes
+equivalentes.
 
 
-\subsubsection{Depth of sources}
+\subsubsection{Profundidad de las fuentes}
 
-\begin{figure*}[tb]
+\begin{figure}[tb]
     \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/depth_types.pdf}
     \caption{
-        Examples of different strategies for assigning depths to equivalent
-        sources.
-        Here we assign one source for each
-        observation point, located at the same horizontal coordinates as the
-        data points.
-        Source depths are
-        (a)~a \emph{constant depth} at a chosen vertical coordinate,
-        (b)~a \emph{relative depth} determined by uniformly shifting downward
-        the vertical coordinate of data points,
-        and
-        (c)~a \emph{variable depth} determined by shifting the vertical
-        coordinates of the observation points by an amount proportional to the
-        average distance to neighbouring sources.
-        The distance between data points and their respective sources (a)
-        depends on observation height, (b) is constant, and (c) is proportional
-        to the horizontal distribution of sources.
-        Notice how the closely spaced sources in the middle of the profile (c)
-        are shallower than their counterparts in (b).
+        Ejemplos de diferentes estrategias para asignar profundidades a las
+        fuentes equivalentes.
+        Asignaremos una única fuente por cada punto de observación,
+        localizándolas en la mismas coordenadas horizontales que los puntos de
+        datos.
+        Las profundidades de las fuentes son
+        (a)~una \emph{profundidad constante} a una determinada coordenada
+        vertical,
+        (b)~una \emph{profundidad relativa} determinada al desplazar
+        uniformemente la coordenada vertical de los puntos de datos hacia
+        abajo, y
+        (c)~una \emph{profundidad variable} determinada por el desplazamiento
+        de la coordenada vertical de los puntos de observación por una cantidad
+        proporcional a la distancia media entre fuentes vecinas.
+        La distancia entre puntos de datos y sus respectivas fuentes (a)
+        depende de la altitud de las observaciones, (b) es constante, y (c) es
+        proporcional a la distancia horizontal de las fuentes.
+        Vale notar cómo las fuentes agrupadas en el centro del perfil (c) se
+        encuentran más someras que sus contrapartes en (b).
     }
     \label{fig:depth_types}
-\end{figure*}
+\end{figure}
 
-It is widely known from potential theory that the depth of a point source
-influences the wavelength of the observed field at the surface.
-This makes the source depth a key parameter affecting the outcome of
-interpolation and other operations done with equivalent sources.
-Several different strategies for assigning the depths of equivalent sources
-have been proposed in the literature.
-Here, we will highlight the following (Fig.~\ref{fig:depth_types}):
+Es ampliamente conocido de la teoría de potencial que la profundidad de una
+fuente puntual influencia la longitud de onda del campo observado en la
+superficie.
+Esto hace que la profundidad de la fuente sea un parámetro clave que afecta el
+producto de la interpolación y otras operaciones realizadas mediante fuentes
+equivalentes.
+En la literatura podemos encontrar múltiples estrategias diferentes para
+asignar profundidad de las fuentes.
+Aquí destacaremos las siguientes (Fig.~\ref{fig:depth_types}):
 
 \begin{enumerate}
   \item
-    \emph{Constant depth}:
-    The simplest option is to locate all sources at the same depth
+    \emph{Profundidad constante}:
+    La opción más simple es ubicar todas las fuentes a la misma profundidad
     (Fig.~\ref{fig:depth_types}a).
-    If the measurements were taken at significantly different altitudes, some
-    measurements will be more distant to the sources than others,
-    which may create problems for reproducing short wavelengths in high
-    altitude points.
+    Si las mediciones fueron obtenidas a altitudes significativamente diversas,
+    algunas mediciones se encontrarán más distantes a las fuentes que otras,
+    lo que podría generar problemas a la hora de reproducir las longitudes de
+    onda más cortas en los puntos de grandes altitudes.
  \item
-    \emph{Relative depth}:
-    The depths of sources are determined by shifting the vertical coordinate of
-    data points downward by a fixed amount (Fig.~\ref{fig:depth_types}b).
-    The sources will not all be at the same vertical coordinate, but they will
-    all be at the same vertical distance from the observation points.
+    \emph{Profundidad relativa}:
+    Las profundidades de las fuentes se determinan al desplazar la coordenada
+    vertical de los puntos de datos hacia abajo por una cantidad constante
+    (Fig.~\ref{fig:depth_types}b).
+    Las fuentes no tendrán todas las mismas coordenadas verticales, pero se
+    encontrarán todas a la misma distancia vertical con respecto a los puntos
+    de observación.
  \item
-    \emph{Variable depth}:
-    The depths of sources are proportional to the horizontal distance to the
-    nearest neighbouring data points or sources (Fig.~\ref{fig:depth_types}c).
-    Different variations of this strategy have been proposed before, for
-    example \citet{cordell1992}, \citet{guspi2004}, and \citet{guspi2009}.
-    The rationale for this strategy is that if a survey has data points
-    clustered in some areas, we may
-    want the sources below those areas to be shallower in order to preserve the
-    shorter wavelengths that can be measured.
+    \emph{Profundidad variable}:
+    Las profundidades de las fuentes son proporcionales a la distancia
+    horizontal entre primeros vecinos de datos o fuentes (Fig.~\ref{fig:depth_types}c).
+    Diferentes variaciones de esta estrategia han sido propuestas
+    anteriormente, por ejemplo
+    \citet{cordell1992}, \citet{guspi2004}, y \citet{guspi2009}.
+    La razón fundamental para utilizar esta estrategia surge en caso de que la
+    muestra posea puntos muy agrupados (formando \emph{clusters} o cúmulos) en
+    algunas áreas, es posible que deseemos ubicar las fuentes debajo de ellas
+    a menores profundidades, con el objetivo de preservar las longitudes de
+    onda más cortas presentes en esos datos.
 \end{enumerate}
 
-Our approach to the \emph{variable depth} strategy will be:
+Nuestro enfoque sobre la estrategia de \emph{profundidad variable} será:
 
 \begin{equation}
   z = z_{obs} + \Delta z + \alpha h,
@@ -857,23 +872,25 @@ Our approach to the \emph{variable depth} strategy will be:
 \end{equation}
 
 \noindent
-in which $z$ is the vertical coordinate (positive downwards) of an equivalent
-source,
-$\Delta z$ is a relative depth shift that is the same for all sources,
-$\alpha$ is an dimensionless depth factor,
-$h$ is the median horizontal distance to the $k$ nearest neighbouring sources,
-and
-$z_{obs}$ is a vertical observation coordinate that will depend on the
-horizontal layout strategy.
-For \emph{sources below data}, it is the vertical coordinate of the data point
-corresponding to the given source.
-For \emph{regular grid}, it can be interpolated from the vertical coordinates
-of all data points.
-Finally, for \emph{block-averaged sources} it will be the median vertical
-coordinate of the data within the corresponding block.
+donde $z$ es la coordenada vertical (positiva hacia abajo) de una fuente
+equivalente,
+$\Delta z$ es un desplazamiento relativo en profundidad que se aplica de manera
+uniforme a todas las fuentes,
+$\alpha$ es un \emph{factor de profundidad} adimensional,
+$h$ es la distancia horizontal media a las primeras $k$ fuentes vecinas,
+y
+$z_{obs}$ es una coordenada vertical relacionada a los puntos de observación
+que dependerá de la estrategia horizontal utilizada.
+Para \emph{fuentes debajo de datos}, será la coordenada vertical del
+punto de observación correspondiente a la fuente.
+Para una \emph{grilla regular}, puede ser interpolada a partir de la coordenada
+vertical de todos los puntos de datos.
+Finalmente, para \emph{fuentes promediadas por bloque} será la coordenada
+vertical media de todos los puntos de datos que caen dentro del bloque
+correspondiente a la fuente.
 
-In Section~\ref{sec:synthetic_distributions}, we test the effectiveness each of
-these strategies on synthetic data.
+En la sección~\ref{sec:synthetic_distributions}, probamos la efectividad de
+estas estrategias sobre datos sintéticos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
