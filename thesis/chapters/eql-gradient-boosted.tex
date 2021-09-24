@@ -1,7 +1,7 @@
-\chapter[Fuentes equivalentes potenciadas por el gradiente]{
-    Fuentes equivalentes potenciadas por el gradiente
+\chapter[Fuentes equivalentes potenciadas por gradiente]{
+    fuentes equivalentes potenciadas por gradiente
 }
-\chaptermark{Fuentes equiv. potenciadas por el gradiente}
+\chaptermark{Fuentes equiv. potenciadas por gradiente}
 \label{cha:eql-gradient-boosted}
 
 Este capítulo es una traducción al español del artículo titulado
@@ -549,7 +549,7 @@ Podemos mejorar la eficiencia del algoritmo aún más mediante:
 \end{enumerate}
 
 El Algoritmo~\ref{alg:gradient_boosting_window} sintetiza el definitivo
-\textit{algoritmo de fuentes equivalentes potenciadas por el gradiente},
+\textit{algoritmo de fuentes equivalentes potenciadas por gradiente},
 incorporando estas últimas modificaciones.
 La Figura~\ref{fig:gradient-boosting-schematics} muestra un bosquejo de los
 pasos del algoritmo aplicado a un conjunto de puntos de observación que simulan
@@ -601,7 +601,7 @@ observación.
   }
   \BlankLine
   \setstretch{1}
-  \caption{Algoritmo de fuentes equivalentes potenciadas por el gradiente.}
+  \caption{Algoritmo de fuentes equivalentes potenciadas por gradiente.}
   \label{alg:gradient_boosting_window}
 \end{algorithm}
 
@@ -926,7 +926,7 @@ estas estrategias sobre datos sintéticos.
 Hemos utilizado un conjunto de datos sintéticos de gravedad para probar la
 precisión de la interpolación entre las diferentes estrategias de distribución
 horizontal y vertical de fuentes equivalentes, así como también el desempeño
-del algoritmo de fuentes equivalentes potenciadas por el gradiente.
+del algoritmo de fuentes equivalentes potenciadas por gradiente.
 Para generar los datos sintéticos hemos creado un modelo de
 \NPrisms{} prismas rectangulares, distribuidos a lo largo y ancho de un área de
 \ModelEasting{}$\times$\ModelNorthing{} con profundidades variables entre
@@ -1069,165 +1069,196 @@ interpolados son visualmente indistinguibles entre ellos.
 del gradiente}
 \label{sec:window_size_and_overlap}
 
-We assessed the trade-offs in interpolation accuracy and computation time of
-the gradient-boosted equivalent sources algorithm as a function of the two key
-controlling factors: the window size and the amount of overlap between adjacent
-windows.
-The comparisons were performed against a regular least-squares solution
-(Eq.~\ref{eq:least_squares_solution}) using the synthetic airborne data
+Hemos analizado la relación entre la precisión de las interpolaciones y el
+tiempo de cómputo del algoritmo de fuentes equivalentes potenciadas por el
+gradiente en función de dos factores claves: el tamaño de las ventanas y la
+cantidad de solapamiento entre ventanas contiguas.
+Las comparaciones fueron realizadas contra la solución obtenida por mínimos
+cuadrados amortiguados (ec.~\ref{eq:least_squares_solution}, sin potenciación
+del gradiente) utilizando los datos provistos por la muestra aérea sintética
 (Fig.~\ref{fig:synthetic-layouts}c-d).
-To avoid biasing the results, we used the same locations of equivalent sources
-for both the regular and gradient-boosted interpolations, namely
-block-averaged sources with a block size of
-\BestAirborneBlockAveragedSourcesRelativeDepthSpacing\m{} and a
-relative depth of
+Para evitar que existan sesgos en los resultados, utilizamos las mismas
+ubicaciones para las fuentes equivalentes tanto como para las interpolaciones
+con y sin potenciación del gradiente.
+Más precisamente, elegimos fuentes promediadas por bloques con un tamaño de
+bloque de
+\BestAirborneBlockAveragedSourcesRelativeDepthSpacing\m{} y una profundidad
+relativa de
 \BestAirborneBlockAveragedSourcesRelativeDepthDepth\m{}.
 
-\subsubsection{Window size}
+\subsubsection{Tamaño de las ventanas}
 \label{sec:window_size}
 
-The size of the windows controls the size of the Jacobian matrices
-$\tilde{\mathbf{A}}_k$ by limiting the number of data points and equivalent
-sources used in each step of the gradient-boosting algorithm
+El tamaño de las ventanas controla el tamaño de las matrices Jacobianas
+$\tilde{\mathbf{A}}_k$ al limitar la cantidad de puntos de datos y fuentes
+equivalentes que se utilizan en cada paso del algoritmo de potenciación del
+gradiente
 (Alg.~\ref{alg:gradient_boosting_window}).
-Thus, using smaller windows will reduce the total amount of computer memory
-required to estimate the source coefficients.
-Nevertheless, smaller windows may produce less accurate interpolations by
-failing to achieve the global minimum of the goal function in
-Eq.~\ref{eq:misfit}.
-The window size might also impact the computation time in non-intuitive ways
-since smaller windows generate smaller least-squares problems but also require
-more gradient-boosting iterations.
+Por lo tanto, ventanas pequeñas reducen la cantidad total de memoria necesaria
+para estimar los coeficientes de las fuentes.
+Sin embargo, estas pueden producir interpolaciones menos precisas al no ser
+capaces de alcanzar el mínimo global de la función objetivo en la
+ec.~\ref{eq:misfit}.
+El tamaño de la ventana también impacta en el tiempo de cómputo de formas poco
+intuitivas, ya que ventanas pequeñas generan problemas de mínimos cuadrados más
+simples, pero también requieren mayor cantidad de iteraciones del algoritmo de
+potenciación del gradiente.
 
-We calculated the interpolation RMS error (between the interpolated grid and
-the target grid in Fig.~\ref{fig:synthetic-target}) and computation time for a
-fixed window overlap of 50\% and several window sizes.
-To avoid any biases introduced by the shuffling of windows, the calculations
-were repeated using different seeds for the pseudo-random number generator used
-in the shuffling.
-Fig.~\ref{fig:gradient-boosted-comparison}a shows the RMS error and
-Fig.~\ref{fig:gradient-boosted-comparison}c shows the computation time
-required for estimating the source coefficients, both as functions of
-the window size.
+Hemos calculado la \ac{RMS} de las interpolaciones (entre el resultado de la
+interpolación y la \emph{grilla objetivo} de la
+Fig.~\ref{fig:synthetic-target}) y registramos los tiempos de cómputo
+utilizando un valor fijo de solapamiento entre ventanas de 50\% y varios
+tamaños de ventanas diferentes.
+Para evitar sesgos introducidos por un determinado ordenamiento aleatorio
+particular de las ventanas, los cálculos fueron repetidos utilizando diferentes
+\emph{semillas} para el generado de números pseudo-aleatorios.
+La Figura~\ref{fig:gradient-boosted-comparison}a
+muestra la \ac{RMS}, y
+la Figura~\ref{fig:gradient-boosted-comparison}c
+el tiempo de cómputo requerido para estimar los coeficientes de las fuentes,
+ambos en función del tamaño de las ventanas.
 
-\begin{figure*}[tb]
+\begin{figure}[tb]
     \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/gradient-boosted-comparisons.pdf}
     \caption{
-        Interpolation RMS error (a-b) and relative computation time (c-d) for
-        regular least-squares equivalent sources (orange dashed lines) and
-        gradient-boosted equivalent sources (blue dots and error bars).
-        Window overlap is given as a percentage of the window size (an overlap
-        of 50\% means that two adjacent windows share an area half of the size
-        of the entire window).
-        For gradient-boosting, the RMS errors and computation times are the
-        means (error bars are 1 standard deviation) of results using different
-        seeds for the pseudo-random number generator.
-        Computation time is the ratio between the time required to estimate the
-        source coefficients for the gradient-boosted and the regular equivalent
-        sources.
-}
+        \acs{RMS} de las interpolaciones (a-b) y los tiempos de cómputos
+        relativos (c-d) para fuentes equivalentes regulares (líneas naranja de
+        a trazos) y para fuentes equivalentes potenciadas por gradiente
+        (puntos azules con barras de error).
+        El solapamiento de las ventanas se muestra como un porcentaje del
+        tamaño de la ventana (un solapamiento del 50\% significa que dos
+        ventanas contiguas comparten un área igual a la mitad del tamaño de la
+        ventana completa).
+        Para las fuentes equivalentes potenciadas por gradiente, la
+        \acs{RMS} y los tiempos de cómputo son valores medios (las barras de
+        error corresponden a una desviación estándar) de los resultados
+        obtenidos utilizando diferentes semillas para el generador de números
+        pseudo-aleatorios.
+        Los tiempos de cómputo se muestran como la relación entre el tiempo
+        necesario para estimar los coeficientes de las fuentes equivalentes
+        potenciadas por el gradiente y el necesario para estimar los
+        coeficientes de las fuentes equivalentes regulares.
+    }
     \label{fig:gradient-boosted-comparison}
-\end{figure*}
+\end{figure}
 
-These results show that the interpolation error for gradient-boosting is
-generally larger than the error for regular equivalent sources.
-The error decreases asymptotically to within $\sim 40\%$ of the regular
-equivalent sources for windows with an area greater than $\sim 10\%$ of the
-survey area.
-The computation time similarly decreases with window size, with the
-gradient-boosting being generally faster than the regular equivalent sources
-for windows with an area greater than $\sim 5\%$ of the survey area.
-As the window size increases, both RMS error and computation time appear to
-stabilize to nearly constant levels.
+Estos resultados muestran que los errores de interpolación obtenidos con
+potenciación del gradiente son generalmente mayores que el error obtenido por
+las fuentes equivalentes regulares.
+Los errores decrecen asintóticamente hasta el $\sim 40\%$ de las fuentes
+equivalentes regulares para ventanas con un área mayor que el $\sim 10\%$
+de la región de estudio.
+Los tiempos de cómputo decrecen similarmente con el tamaño de la ventana,
+siendo las fuentes potenciadas por gradiente usualmente más rápidas que las
+fuentes regulares para ventanas con áreas mayores que el $\sim 5\%$ de la
+región de estudio.
+A medida que el tamaño de la ventana aumenta, tanto la \ac{RMS} y el tiempo de
+cómputo parece estabilizarse cerca de niveles constantes.
 
-\subsubsection{Window overlap}
+\subsubsection{Solapamiento de las ventanas}
 
-The amount of overlap between adjacent windows plays an important role in the
-performance of the gradient-boosted equivalent sources.
-It controls the number of iterations and how many times a particular source is
-used in the least-squares fitting process.
-The experiments in the previous section showed that 50\% overlap was
-sufficient to achieve acceptable interpolation accuracy.
-However, we studied separately the impacts of the amount of window overlap on
-both accuracy and computation time.
+La cantidad de solapamiento entre ventanas contiguas juega un rol importante en
+el desempeño de las fuentes potenciadas por gradiente.
+Controla la cantidad de iteraciones y cuántas veces una fuente particular será
+utilizada en el proceso de ajuste por mínimos cuadrados.
+Los experimentos realizados en la sección anterior muestran que un solapamiento
+de 50\% es suficiente para alcanzar una precisión aceptable en las
+interpolaciones.
+Sin embargo, hemos estudiado de forma independiente cómo la cantidad de
+solapamiento impacta tanto en la precisión como en el tiempo de cómputo.
 
-We performed a similar experiment to the one in section~\ref{sec:window_size}
-but this time kept the window size fixed to \BoostOverlappingWindowSize{} and
-varied the amount of overlap from 0\% to 95\% with a step size of 5\%.
-All other experimental procedures remained unchanged.
-Fig.~\ref{fig:gradient-boosted-comparison}b shows the RMS error and
-Fig.~\ref{fig:gradient-boosted-comparison}d shows the computation time
-required for estimating the source coefficients, both as functions of
-the window overlap.
+Llevamos a cabo un experimento similar al realizado en la
+sección~\ref{sec:window_size}, pero esta vez mantuvimos el tamaño de la ventana
+fijo a \BoostOverlappingWindowSize{} y variamos la cantidad de solapamiento
+entre 0\% y 95\% con un paso de 5\%.
+Todos los otros procedimientos experimentales se mantuvieron intactos.
+La Figura~\ref{fig:gradient-boosted-comparison}b
+muestra la \ac{RMS} y la
+Figura~\ref{fig:gradient-boosted-comparison}d
+el tiempo de cómputo requerido para estimar los coeficientes de las fuentes,
+ambos en función de la cantidad de solapamiento entre las ventanas.
 
-Our results show that the interpolation RMS error decreases with the amount of
-overlap, reaching the same accuracy as the regular equivalent sources at
-approximately 90\% overlap.
-On the other hand, the computation time increases with the amount of overlap,
-becoming larger than that of the regular equivalent sources for overlaps
-greater than 70\%.
-This is expected since increasing the overlap adds iterations to the gradient
-boosting algorithm without decreasing the individual least-squares problem
-sizes to compensate.
+Nuestros resultados muestran que la \ac{RMS} de la interpolación decrece con la
+cantidad de solapamiento, alcanzando la misma precisión que las fuentes
+equivalentes regulares a aproximadamente un solapamiento del 90\%.
+Por otro lado, el tiempo de cómputo aumenta con la cantidad de solapamiento,
+haciéndose mayor que el necesario por fuentes equivalentes regulares para
+solapamientos mayores al 70\%.
+Este comportamiento era de esperarse, ya que un aumento en el solapamiento
+aumenta la cantidad de iteraciones en el proceso de potenciación del gradiente,
+sin reducir el tamaño de los problemas de mínimos cuadrados de forma tal que se
+compensen.
 
 
 \subsection{
-    Interpolation with gradient boosting
+    Interpolación con potenciación del gradiente
 }
 \label{sec:gb_interpolation}
 
-Finally, we applied the gradient-boosted equivalent sources to interpolate the
-synthetic airborne survey (Fig.~\ref{fig:synthetic-layouts}).
-As previously, we used the block-averaged sources layout with a block size of
-\EqlBoostAirborneSpacing{}.
-Based on the results from section \ref{sec:window_size_and_overlap}, we adopted
-a window overlap of 50\% and a window size of \EqlBoostAirborneWindowSize{}.
+Finalmente, hemos aplicado las fuentes equivalentes potenciadas por gradiente
+para interpolar la muestra sintética aérea (Fig.~\ref{fig:synthetic-layouts}).
+Tal y como hemos realizado anteriormente, utilizamos las fuentes promediadas
+por bloque con un tamaño de bloque de \EqlBoostAirborneSpacing{}.
+Basado en los resultados de la sección \ref{sec:window_size_and_overlap},
+adoptamos un solapamiento entre ventanas contiguas de 50\% y un tamaño de
+ventanas de \EqlBoostAirborneWindowSize{}.
 
-We estimated the relative depth of the sources and the damping parameter by
-comparing the predictions against the values of the target grid.
-The search explored \emph{depth} values between \EqlBoostAirborneMinDepth{} and
-\EqlBoostAirborneMaxDepth{} and \emph{damping} values between
-\EqlBoostAirborneMinDamping{} and \EqlBoostAirborneMaxDamping{} by steps of one
-order of magnitude.
-The most accurate predictions achieved a RMS error of
-\EqlBoostAirborneRmsScore{} with a depth of \EqlBoostAirborneDepth{} and
-a damping of \EqlBoostAirborneDamping{}.
-It is worth noting that the RMS error achieved by the gradient-boosted
-equivalent sources is comparable to the ones obtained by the regular equivalent
-sources in Section \ref{sec:synthetic_distributions}.
-To highlight the importance of randomizing the order of windows in the
-gradient-boosting iterations, we preformed the interpolation once more using
-the same values of \emph{damping} and \emph{depth} but this time iterating over
-windows in sequential order (South to North, West to East).
+Hemos estimado la profundidad relativa de las fuentes y el parámetro de
+\emph{amortiguamiento} comparando las predicciones con los valores de la
+\emph{grilla objetivo}.
+Durante la búsqueda, exploramos valores de profundidad relativa entre
+\EqlBoostAirborneMinDepth{} y
+\EqlBoostAirborneMaxDepth{} y de valores de \emph{amortiguamiento} entre
+\EqlBoostAirborneMinDamping{} y \EqlBoostAirborneMaxDamping{}
+de a pasos de un orden magnitud.
+Las predicciones más precisas alcanzaron una \ac{RMS} de
+\EqlBoostAirborneRmsScore{} con una profundidad relativa de
+\EqlBoostAirborneDepth{} y
+un \emph{amortiguamiento} de \EqlBoostAirborneDamping{}.
+Vale la pena notar que la \ac{RMS} alcanzada por las fuentes potenciadas por
+gradiente es comparable con los valores obtenidos por las fuentes equivalentes
+regulares en la sección~\ref{sec:synthetic_distributions}.
+Para resaltar la importancia de aleatorizar el orden en el que se recorren las
+ventanas durante la potenciación del gradiente, llevamos a cabo la misma
+interpolación una vez más haciendo uso de los mismos valores para la profundidad
+relativa y el \emph{amortiguamiento}, pero esta vez iteramos sobre las ventanas
+en orden secuencial (de Sur a Norte, de Oeste a Este).
 
-\begin{figure}[tb]
-    \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/eql-boost-airborne.pdf}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/eql-gradient-boosted/eql-boost-airborne.pdf}
     \caption{
-        Interpolation error for gradient-boosted equivalent sources using
-        randomized (a) and sequential (b) window order.
-        (a and b)~Pseudo-color maps of the differences between the target grid
-        and the interpolated synthetic airborne survey data.
-        The color scale has been cropped to the same range as
-        Fig.~\ref{fig:airborne-survey-differences}.
-        (c)~Root-mean squared error after each iteration of the
-        gradient-boosting algorithm.
+        Error de la interpolación obtenida a partir de fuentes equivalentes
+        potenciadas por gradiente utilizando un (a) orden aleatorio y un (b)
+        orden secuencial para recorrer las ventanas.
+        (a and b)~Mapas de las diferencias entre la \emph{grilla objetivo}
+        y los resultados de la interpolación de la muestra sintética aérea.
+        La escala de colores fue truncada al mismo rango de valores que la de
+        la Figura~\ref{fig:airborne-survey-differences}.
+        (c)~\acl{RMS} luego de cada iteración del algoritmo de potenciación del
+        gradiente.
 }
 \label{fig:eql-boost-airborne}
 \end{figure}
 
-Figs.~\ref{fig:eql-boost-airborne}a-b show the differences between the target
-grid and the interpolation results for windows in randomized and sequential
-order, respectively.
-The differences for randomized windows resemble those for regular least-squares
-equivalent sources seen in Figs.~\ref{fig:ground-survey-differences} and
-\ref{fig:airborne-survey-differences}.
-On the other hand, the differences for sequential windows show a clear
-trend of large negative differences in the South decreasing towards the North.
-This trend is correlated with the order in which windows are executed, with
-differences decreasing in absolute value towards the end of the algorithm.
-Fig.~\ref{fig:eql-boost-airborne}c shows the RMS error of the fitting process
-after each iteration for both window orders, clearly indicating that
-a randomized window order leads to faster convergence of the algorithm.
+Las Figuras~\ref{fig:eql-boost-airborne}a-b
+muestran las diferencias entre la \emph{grilla objetivo} y los resultados de la
+interpolación obtenida con ventanas en orden aleatorio y en orden secuencial,
+respectivamente.
+Las diferencias para las ventanas en orden aleatorio se asemejan a las
+obtenidas por las fuentes equivalentes regulares que vimos en las
+Figuras~\ref{fig:ground-survey-differences}
+y \ref{fig:airborne-survey-differences}.
+Por otro lado, las diferencias para las ventanas en orden secuencial muestran
+una clara tendencia de grandes diferencias negativas hacia el Sur, decreciendo
+hacia el Norte.
+Esta tendencia se correlaciona con el orden en el que las ventanas son
+ejecutadas, con diferencias que van decreciendo en valor absoluto hacia el
+final del algoritmo.
+La Figura~\ref{fig:eql-boost-airborne}c
+muestra la \ac{RMS} del proceso de ajuste luego de cada iteración, tanto para
+ventanas ejecutadas en orden aleatorio como secuencial, indicando claramente
+que las ventanas aleatorias generan una convergencia más rápida del algoritmo.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
