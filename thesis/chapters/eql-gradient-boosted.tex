@@ -894,156 +894,179 @@ estas estrategias sobre datos sintéticos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Tests on synthetic data}
-
-\begin{figure*}[tb]
-    \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/synthetic-survey-layouts.pdf}
-    \caption{
-        Observation heights and gravity values for the synthetic ground (a-b)
-        and airborne (c-d) surveys.
-        Heights are given in meters above the zero height plane.
-        The synthetic gravity data are contaminated with pseudo-random Gaussian
-        noise with zero mean and \SurveyNoise{} standard deviation.
-    }
-    \label{fig:synthetic-layouts}
-\end{figure*}
+\section{Pruebas sobre datos sintéticos}
 
 \begin{figure}[tb]
-    \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/target-grid.pdf}
+    \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/synthetic-survey-layouts.pdf}
     \caption{
-        Pseudo-color map of the target grid of synthetic gravity data. The grid
-        is composed of \TargetEastingSize{}$\times$\TargetNorthingSize{} points
-        with a spacing of \TargetSpacing{}. The grid height is \TargetHeight{}
-        above the zero height plane.
+        Altitudes de los puntos de observación y valores de gravedad para las
+        muestras sintéticas sobre terreno (a-b) y aéreas (c-d).
+        Las altitudes están dadas en metros sobre el plano de altitud cero.
+        Los datos sintéticos de gravedad están contaminados con ruido Gaussiano
+        pseudo-aleatorio con media cero y desviación estándar de
+        \SurveyNoise{}.
+    }
+    \label{fig:synthetic-layouts}
+\end{figure}
+
+\begin{figure}[tb]
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/eql-gradient-boosted/target-grid.pdf}
+    \caption{
+        Gráfico de la \emph{grilla objetivo} de datos sintéticos de gravedad.
+        La grilla está compuesta por
+        \TargetEastingSize{}$\times$\TargetNorthingSize{} puntos
+        con un espaciado de \TargetSpacing{}.
+        Todos los puntos de la grilla se encuentran a una altitud de
+        \TargetHeight{} sobre el plano de altitud cero.
     }
     \label{fig:synthetic-target}
 \end{figure}
 
-We have used synthetic gravity datasets to test the interpolation accuracy of
-the difference horizontal and vertical source distribution strategies as well
-as the gradient-boosted equivalent sources method.
-To generate the data, we created a model of \NPrisms{} right-rectangular
-prisms,
-distributed in a \ModelEasting{}$\times$\ModelNorthing{} area with depths
-varying between \ModelDepth{} and zero.
-The density contrast of prisms ranges from \ModelMinDensity{} to
+Hemos utilizado un conjunto de datos sintéticos de gravedad para probar la
+precisión de la interpolación entre las diferentes estrategias de distribución
+horizontal y vertical de fuentes equivalentes, así como también el desempeño
+del algoritmo de fuentes equivalentes potenciadas por el gradiente.
+Para generar los datos sintéticos hemos creado un modelo de
+\NPrisms{} prismas rectangulares, distribuidos a lo largo y ancho de un área de
+\ModelEasting{}$\times$\ModelNorthing{} con profundidades variables entre
+\ModelDepth{} y cero.
+El contraste de densidad de los prismas van desde \ModelMinDensity{} a
 \ModelMaxDensity{}.
-The model includes prisms of different shapes, sizes, and depths to create
-gravity disturbances with a variety of wavelengths.
+El modelo incluye prismas de diferentes formas, tamaños y profundidades para
+crear disturbio de gravedad con una variedad de longitudes de onda.
 
-We created two synthetic datasets from the model, one simulating a ground
-survey and another an airborne acquisition (Fig.~\ref{fig:synthetic-layouts}).
-To create the synthetic ground survey, we selected measurement positions from a
-portion of a public domain gravity dataset for Southern Africa, available
-through the NOAA National Centers for Environmental Information (NCEI).
-For the synthetic airborne survey, we used a portion of the Great Britain
-Aeromagnetic Survey acquired by Hunting Geology and Geophysics Ltd and Canadian
-Aeroservices Ltd between 1955 and 1965 and made publicly available by the
-British Geological Survey (BGS).
-In both cases, we rescaled the horizontal coordinates of each survey portion to
-span an area of \SurveyEasting{}$\times$\SurveyNorthing{}, matching the model
-dimensions.
-The ground survey contains \GroundSurveyPoints{} observations distributed at
-heights between \GroundSurveyMinHeight{} and \GroundSurveyMaxHeight{}
-(Fig.~\ref{fig:synthetic-layouts}a).
-The airborne survey has \AirborneSurveyPoints{} observations at heights between
-\AirborneSurveyMinHeight{} and \AirborneSurveyMaxHeight{}
+Hemos creado dos conjuntos de datos sintéticos a partir del mismo modelo, uno
+que simula un muestreo sobre el terreno y otro una campaña aérea
+(Fig.~\ref{fig:synthetic-layouts}).
+Para crear la muestra sintética sobre el terreno hemos elegido una porción de
+las observaciones presentes en un conjunto de datos de dominio público sobre
+Sudáfrica, disponibles a través del NOAA National Centers for Environmental
+Information (NCEI). Para la muestra aérea, utilizamos una porción de la Great
+Britain Aeromagnetic Survey adquirida por Hunting Geology and Geophysics Ltd
+y Canadian Aeroservices Ltd, entre 1955 y 1965, y puesta a disposición pública
+por el British Geological Survey (BGS).
+En ambos casos, re-escalamos las coordenadas horizontales de cada porción de
+muestra para cubrir un área de \SurveyEasting{}$\times$\SurveyNorthing{},
+coincidentes con las dimensiones del modelo sintético.
+La muestra sintética sobre el terreno contiene \GroundSurveyPoints{}
+observaciones distribuidas en altitudes que van desde \GroundSurveyMinHeight{}
+y \GroundSurveyMaxHeight{} (Fig.~\ref{fig:synthetic-layouts}a).
+La muestra aérea posee \AirborneSurveyPoints{} observaciones a altitudes entre
+\AirborneSurveyMinHeight{} y \AirborneSurveyMaxHeight{}
 (Fig.~\ref{fig:synthetic-layouts}c).
 
-The vertical component of the gravitational acceleration generated by the
-model was computed  using the method of \citet{nagy2000, nagy2002}
-with recent modifications by \citet{fukushima2020},
-as implemented in the open-source software Harmonica \citep{harmonica2021}.
-We generated a \emph{target grid} of
-\TargetEastingSize{}$\times$\TargetNorthingSize{} points with a spacing of
-\TargetSpacing{} and located \TargetHeight{} above the zero height plane
-(Fig.~\ref{fig:synthetic-target}) to serve as a reference when calculating the
-interpolation error.
-We then generated synthetic ground (Fig.~\ref{fig:synthetic-layouts}b) and
-airborne (Fig.~\ref{fig:synthetic-layouts}d) data to which we added
-pseudo-random Gaussian noise with zero mean and \SurveyNoise{} standard
-deviation.
+Calculamos la componente vertical de la aceleración gravitatoria generada por
+el modelo sintético utilizando el método de \citet{nagy2000, nagy2002} con
+recientes modificaciones hechas por \citet{fukushima2020}, como se ha
+implementado en el software open-source Harmonica \citep{harmonica2021}.
+Hemos generado una \emph{grilla objetivo} de
+\TargetEastingSize{}$\times$\TargetNorthingSize{} puntos con un espaciado de
+\TargetSpacing{} y localizados a una altitud de \TargetHeight{} sobre el plano
+de altitud cero (Fig.~\ref{fig:synthetic-target}) que nos servirá de referencia
+para estimar los errores de las interpolaciones.
+Luego generamos los datos sintéticos de aceleración de la gravedad sobre la
+muestra sobre el terreno (Fig.~\ref{fig:synthetic-layouts}b) y sobre la muestra
+aérea (Fig.~\ref{fig:synthetic-layouts}d).
+Además hemos contaminado estos datos sintéticos con ruido Gaussiano
+pseudo-aleatorio con media cero y con desviación estándar de \SurveyNoise{}.
 
 
-\subsection{Source distribution strategies}
+\subsection{Estrategias de distribución de fuentes}
 \label{sec:synthetic_distributions}
 
-\begin{figure*}[p]
+\begin{figure}[p]
     \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/ground_survey_differences.pdf}
     \caption{
-        Pseudo-color maps of the differences between the target grid and the
-        interpolated synthetic ground survey data produced by each source
-        distribution strategy.
-        The black dots represent the horizontal location of the synthetic data
-        points. The RMS error and total number of equivalent sources is
-        reported for each strategy at the top of the respective maps.
+        Gráficos con las diferencias entre la \emph{grilla objetivo} y los
+        valores interpolados para la muestra sobre el terreno, producidas por
+        cada una de las estrategias de distribución de fuentes.
+        Los puntos negros representan la ubicación horizontal de los puntos
+        correspondientes a los datos sintéticos.
+        La \acs{RMS} y el número total de fuentes equivalentes para cada
+        distribución se encuentran reportadas por encima del respectivo
+        gráfico.
     }
     \label{fig:ground-survey-differences}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[p]
+\begin{figure}[p]
     \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/airborne_survey_differences.pdf}
     \caption{
-        Pseudo-color maps of the differences between the target grid and the
-        interpolated synthetic airborne survey data produced by each source
-        distribution strategy.
-        The black dots represent the horizontal location of the synthetic data
-        points. The RMS error and total number of equivalent sources is
-        reported for each strategy at the top of the respective maps.
+        Gráficos con las diferencias entre la \emph{grilla objetivo} y los
+        valores interpolados para la muestra aérea, producidas por
+        cada una de las estrategias de distribución de fuentes.
+        Los puntos negros representan la ubicación horizontal de los puntos
+        correspondientes a los datos sintéticos.
+        La \acs{RMS} y el número total de fuentes equivalentes para cada
+        distribución se encuentran reportadas por encima del respectivo
+        gráfico.
     }
     \label{fig:airborne-survey-differences}
-\end{figure*}
+\end{figure}
 
-We investigated the effect on interpolation accuracy of different strategies
-for distributing the equivalent sources horizontally and vertically.
-To do this, we used the damped least-squares solution described in
-Section~\ref{sec:eql_inversion} (without gradient boosting) to interpolate the
-synthetic datasets (Fig.~\ref{fig:synthetic-layouts}) and compared the results
-against the target grid (Fig.~\ref{fig:synthetic-target}).
-This process was repeated for each combination of horizontal layout
-(\emph{sources below data} and \emph{block-averaged sources}) and depth type
-(\emph{constant}, \emph{relative}, and \emph{variable}) and for regular grid
-sources with a constant depth, totalling 7 different combinations.
+Hemos investigado el efecto sobre la precisión de las interpolaciones de
+diferentes estrategias para distribuir las fuentes equivalentes, tanto
+horizontal como verticalmente.
+Para hacer esto, hemos utilizado las soluciones por mínimos cuadrados
+amortiguados descriptas en la sección~\ref{sec:eql_inversion} (sin potenciación
+del gradiente) para interpolar los datos sintéticos
+(Fig.~\ref{fig:synthetic-layouts}) y comparamos los resultados con los valores
+de la \emph{grilla objetivo} (Fig.~\ref{fig:synthetic-target}).
+Este proceso es repetido para cada una de las combinaciones de distribución
+horizontal (\emph{fuentes debajo de datos} y \emph{fuentes promediadas por
+bloque}) y tipo de profundidad (\emph{constante}, \emph{relativa},
+y \emph{variable}), y para fuentes distribuidas en una \emph{grilla regular}
+con profundidad constante.
+En total se generan 7 diferentes tipos de combinaciones.
 
-Each source distribution strategy requires certain hyper-parameters to be
-chosen in order to build the set of point sources.
-For example, using a constant depth needs the definition of the depth and using
-block-averaged sources requires the definition of the block size.
-The predictive capabilities of the equivalent sources depend on the choice of
-these hyper-parameters.
-To ensure that our comparisons are fair, we perform an exhaustive search over
-combinations of hyper-parameter values (including the damping parameter from
-Eq.~\ref{eq:misfit}) to obtain the best prediction that can be achieved by each
-source distribution strategy.
-Here, the best prediction is defined as the one that minimizes the root
-mean-square error (RMS) between interpolated values and the target grid
+Cada estrategia de distribución de fuentes requiere seleccionar valores para
+determinados hiperparámetros necesarios para construir, en cada caso, el
+conjunto de fuentes equivalentes.
+Por ejemplo, al utilizar una profundidad constante necesitamos definir la
+profundidad de las fuentes, y si la combinamos con \emph{fuentes promediadas
+por bloques} se requiere el tamaño de los bloques.
+Las capacidades predictivas de las fuentes equivalentes depende de la elección
+de estos hiperparámetros.
+Para garantizar que nuestras comparaciones sean justas, llevamos a cabo
+exhaustivas búsquedas sobre las combinaciones de los hiperparámetros
+(incluyendo el parámetro de \emph{amortiguamiento} de la eq.~\ref{eq:misfit})
+con el objetivo de obtener las mejores predicciones que puedan ser alcanzadas
+por cada estrategia de distribución de fuentes.
+La mejor predicción se define como aquella que minimiza la \ac{RMS} entre los
+valores interpolados y los valores de la \emph{grilla objetivo}
 (Fig.~\ref{fig:synthetic-target}).
-The parameter values used in these searches and the one producing the smallest
-RMS error are outlined in Tables~\ref{tab:parameters-ground-survey}
-and~\ref{tab:parameters-airborne-survey}.
+Los valores para cada uno de los parámetros utilizados en estas búsquedas
+y aquellos que producen la menor \ac{RMS} se exponen en las
+Tablas~\ref{tab:parameters-ground-survey}
+y~\ref{tab:parameters-airborne-survey}.
 
-Fig.~\ref{fig:ground-survey-differences}
-and~\ref{fig:airborne-survey-differences} show the differences between the
-target grid and the best prediction achieved by each source distribution
-strategy for the ground and airborne synthetic surveys, respectively.
-For the synthetic ground survey, the horizontal layouts produced similar RMS
-values of approximately 0.8\mGal{} regardless of the depth type, with the
-exception of the regular grid layout which produced a larger RMS of
+Las Figuras.~\ref{fig:ground-survey-differences}
+y~\ref{fig:airborne-survey-differences}
+muestran las diferencias entre la \emph{grilla objetivo} y las mejores
+predicciones alcanzadas por cada estrategia de distribución de fuentes, tanto
+para la muestra sobre el terreno como para la muestra aérea, respectivamente.
+En el caso de la muestra sintética sobre el terreno, las distribuciones
+horizontales produjeron valores similares de \ac{RMS} de aproximadamente
+0.8\mGal{}, independientemente del tipo de profundidad que se utilice;
+a excepción de las fuentes distribuidas sobre una \emph{grilla regular}, la
+cual produjo una \ac{RMS} mayor de
 \BestGroundGridSourcesConstantDepthRms{}\mGal{}.
-The differences between the target grid and the interpolated values are larger
-in regions of poor data coverage.
-Edge effects are present for all strategies but are noticeably smaller for the
-combination of block-averaged sources with a variable depth based on the
-nearest neighbour distance.
-For the synthetic airborne survey, all strategies (including the regular grid)
-produced similar RMS errors of approximately 0.3\mGal{}.
-The maps of the differences between the target grid and interpolation results
-are visually indistinguishable from each other.
+Las diferencias entre la \emph{grilla objetivo} y los valores interpolados son
+mayores en regiones con una pobre cobertura de datos.
+Los efectos de borde están presentes en todas las estrategias, pero son
+notablemente menores para la combinación de \emph{fuentes promediadas por
+bloque} con profundidad variable.
+En el caso de la muestra aérea, todas las estrategias (incluyendo la grilla
+regular) produce valores similares de \ac{RMS} de aproximadamente 0.3\mGal{}.
+Los gráficos de las diferencias entre la \emph{grilla objetivo} y los valores
+interpolados son visualmente indistinguibles entre ellos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{Window size and overlap in gradient boosting}
+\subsection{Tamaño de las ventanas y cantidad de solapamiento en potenciación
+del gradiente}
 \label{sec:window_size_and_overlap}
 
 We assessed the trade-offs in interpolation accuracy and computation time of
