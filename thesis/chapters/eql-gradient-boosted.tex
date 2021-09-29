@@ -448,7 +448,7 @@ del modelo aditivo, una a la vez, a los residuos de la componente anterior.
 descenso del gradiente en el \emph{espacio funcional}.
 El Algoritmo~\ref{alg:gradient_boosting} presenta nuestra adaptación del
 algoritmo de potenciación del gradiente para hallar las soluciones  de los $K$
-vectores de parámetros $\mathbf{c}_k$ de la ec~\ref{eq:gb-linear-model}
+vectores de parámetros $\mathbf{c}_k$ de la ec.~\ref{eq:gb-linear-model}
 mediante mínimos cuadrados amortiguados.
 
 \begin{algorithm}[!h]
@@ -543,7 +543,7 @@ Podemos mejorar la eficiencia del algoritmo aún más mediante:
       valores predichos y los residuos (pasos \ref{alg:predicted}
       y \ref{alg:residual} del algoritmo~\ref{alg:gradient_boosting}).
   \item La operación de modelado directo que se realiza en el paso \ref{alg:predicted}
-      puede ser llevada a cabo mediante una suma (Eq.~\ref{eq:forward-sum}),
+      puede ser llevada a cabo mediante una suma (ec.~\ref{eq:forward-sum}),
       en vez de un producto matricial, lo cual permite evitar almacenar en
       memoria la matriz $\mathbf{A}_k$ de $N \times M_k$ elementos.
 \end{enumerate}
@@ -732,11 +732,11 @@ horizontalmente son:
   \item
     \emph{Fuentes debajo de datos}: una única fuente equivalente es ubicada en
     la misma localización horizontal de cada dato
-    (Fig.~\ref{fig:source_layouts}b), pero a diferente altitud. Por lo tanto,
+    (fig.~\ref{fig:source_layouts}b), pero a diferente altitud. Por lo tanto,
     la cantidad de fuentes es igual a la cantidad de observaciones ($M=N$).
   \item
     \emph{Grilla regular}: una distribución homogénea de fuentes debajo de la
-    zona de estudio (Fig.~\ref{fig:source_layouts}c). En la práctica, esto
+    zona de estudio (fig.~\ref{fig:source_layouts}c). En la práctica, esto
     suele generar problemas subdeterminados, ya que se requieren mayores
     cantidades de fuentes que de datos ($M>N$).
 \end{enumerate}
@@ -765,7 +765,7 @@ algunas de las desventajas de las distribuciones existentes.
 En la distribución de \emph{fuentes promediadas por bloque}
 (\emph{block-averaging sources} en inglés), cada fuente es ubicada en la
 posición media de los puntos de datos que caen dentro de un determinado bloque
-espacial (Fig.~\ref{fig:source_layouts}d).
+espacial (fig.~\ref{fig:source_layouts}d).
 Esto se realiza de la siguiente forma:
 
 \begin{enumerate}
@@ -831,13 +831,13 @@ producto de la interpolación y otras operaciones realizadas mediante fuentes
 equivalentes.
 En la literatura podemos encontrar múltiples estrategias diferentes para
 asignar profundidad de las fuentes.
-Aquí destacaremos las siguientes (Fig.~\ref{fig:depth_types}):
+Aquí destacaremos las siguientes (fig.~\ref{fig:depth_types}):
 
 \begin{enumerate}
   \item
     \emph{Profundidad constante}:
     La opción más simple es ubicar todas las fuentes a la misma profundidad
-    (Fig.~\ref{fig:depth_types}a).
+    (fig.~\ref{fig:depth_types}a).
     Si las mediciones fueron obtenidas a altitudes significativamente diversas,
     algunas mediciones se encontrarán más distantes a las fuentes que otras,
     lo que podría generar problemas a la hora de reproducir las longitudes de
@@ -846,14 +846,14 @@ Aquí destacaremos las siguientes (Fig.~\ref{fig:depth_types}):
     \emph{Profundidad relativa}:
     Las profundidades de las fuentes se determinan al desplazar la coordenada
     vertical de los puntos de datos hacia abajo por una cantidad constante
-    (Fig.~\ref{fig:depth_types}b).
+    (fig.~\ref{fig:depth_types}b).
     Las fuentes no tendrán todas las mismas coordenadas verticales, pero se
     encontrarán todas a la misma distancia vertical con respecto a los puntos
     de observación.
  \item
     \emph{Profundidad variable}:
     Las profundidades de las fuentes son proporcionales a la distancia
-    horizontal entre primeros vecinos de datos o fuentes (Fig.~\ref{fig:depth_types}c).
+    horizontal entre primeros vecinos de datos o fuentes (fig.~\ref{fig:depth_types}c).
     Diferentes variaciones de esta estrategia han sido propuestas
     anteriormente, por ejemplo
     \citet{cordell1992}, \citet{guspi2004}, y \citet{guspi2009}.
@@ -938,7 +938,7 @@ crear disturbio de gravedad con una variedad de longitudes de onda.
 
 Hemos creado dos conjuntos de datos sintéticos a partir del mismo modelo, uno
 que simula un muestreo sobre el terreno y otro una campaña aérea
-(Fig.~\ref{fig:synthetic-layouts}).
+(fig.~\ref{fig:synthetic-layouts}).
 Para crear la muestra sintética sobre el terreno hemos elegido una porción de
 las observaciones presentes en un conjunto de datos de dominio público sobre
 Sudáfrica, disponibles a través del NOAA National Centers for Environmental
@@ -951,10 +951,10 @@ muestra para cubrir un área de \SurveyEasting{}$\times$\SurveyNorthing{},
 coincidentes con las dimensiones del modelo sintético.
 La muestra sintética sobre el terreno contiene \GroundSurveyPoints{}
 observaciones distribuidas en altitudes que van desde \GroundSurveyMinHeight{}
-y \GroundSurveyMaxHeight{} (Fig.~\ref{fig:synthetic-layouts}a).
+y \GroundSurveyMaxHeight{} (fig.~\ref{fig:synthetic-layouts}a).
 La muestra aérea posee \AirborneSurveyPoints{} observaciones a altitudes entre
 \AirborneSurveyMinHeight{} y \AirborneSurveyMaxHeight{}
-(Fig.~\ref{fig:synthetic-layouts}c).
+(fig.~\ref{fig:synthetic-layouts}c).
 
 Calculamos la componente vertical de la aceleración gravitatoria generada por
 el modelo sintético utilizando el método de \citet{nagy2000, nagy2002} con
@@ -963,11 +963,11 @@ implementado en el software open-source Harmonica \citep{harmonica2021}.
 Hemos generado una \emph{grilla objetivo} de
 \TargetEastingSize{}$\times$\TargetNorthingSize{} puntos con un espaciado de
 \TargetSpacing{} y localizados a una altitud de \TargetHeight{} sobre el plano
-de altitud cero (Fig.~\ref{fig:synthetic-target}) que nos servirá de referencia
+de altitud cero (fig.~\ref{fig:synthetic-target}) que nos servirá de referencia
 para estimar los errores de las interpolaciones.
 Luego generamos los datos sintéticos de aceleración de la gravedad sobre la
-muestra sobre el terreno (Fig.~\ref{fig:synthetic-layouts}b) y sobre la muestra
-aérea (Fig.~\ref{fig:synthetic-layouts}d).
+muestra sobre el terreno (fig.~\ref{fig:synthetic-layouts}b) y sobre la muestra
+aérea (fig.~\ref{fig:synthetic-layouts}d).
 Además hemos contaminado estos datos sintéticos con ruido Gaussiano
 pseudo-aleatorio con media cero y con desviación estándar de \SurveyNoise{}.
 
@@ -983,7 +983,7 @@ pseudo-aleatorio con media cero y con desviación estándar de \SurveyNoise{}.
         cada una de las estrategias de distribución de fuentes.
         Los puntos negros representan la ubicación horizontal de los puntos
         correspondientes a los datos sintéticos.
-        La \acs{RMS} y el número total de fuentes equivalentes para cada
+        La \acs{RMSE} y el número total de fuentes equivalentes para cada
         distribución se encuentran reportadas por encima del respectivo
         gráfico.
     }
@@ -998,7 +998,7 @@ pseudo-aleatorio con media cero y con desviación estándar de \SurveyNoise{}.
         cada una de las estrategias de distribución de fuentes.
         Los puntos negros representan la ubicación horizontal de los puntos
         correspondientes a los datos sintéticos.
-        La \acs{RMS} y el número total de fuentes equivalentes para cada
+        La \acs{RMSE} y el número total de fuentes equivalentes para cada
         distribución se encuentran reportadas por encima del respectivo
         gráfico.
     }
@@ -1011,8 +1011,8 @@ horizontal como verticalmente.
 Para hacer esto, hemos utilizado las soluciones por mínimos cuadrados
 amortiguados descriptas en la sección~\ref{sec:eql_inversion} (sin potenciación
 del gradiente) para interpolar los datos sintéticos
-(Fig.~\ref{fig:synthetic-layouts}) y comparamos los resultados con los valores
-de la \emph{grilla objetivo} (Fig.~\ref{fig:synthetic-target}).
+(fig.~\ref{fig:synthetic-layouts}) y comparamos los resultados con los valores
+de la \emph{grilla objetivo} (fig.~\ref{fig:synthetic-target}).
 Este proceso es repetido para cada una de las combinaciones de distribución
 horizontal (\emph{fuentes debajo de datos} y \emph{fuentes promediadas por
 bloque}) y tipo de profundidad (\emph{constante}, \emph{relativa},
@@ -1030,14 +1030,14 @@ Las capacidades predictivas de las fuentes equivalentes depende de la elección
 de estos hiperparámetros.
 Para garantizar que nuestras comparaciones sean justas, llevamos a cabo
 exhaustivas búsquedas sobre las combinaciones de los hiperparámetros
-(incluyendo el parámetro de \emph{amortiguamiento} de la eq.~\ref{eq:misfit})
+(incluyendo el parámetro de \emph{amortiguamiento} de la ec.~\ref{eq:misfit})
 con el objetivo de obtener las mejores predicciones que puedan ser alcanzadas
 por cada estrategia de distribución de fuentes.
-La mejor predicción se define como aquella que minimiza la \ac{RMS} entre los
+La mejor predicción se define como aquella que minimiza la \ac{RMSE} entre los
 valores interpolados y los valores de la \emph{grilla objetivo}
-(Fig.~\ref{fig:synthetic-target}).
+(fig.~\ref{fig:synthetic-target}).
 Los valores para cada uno de los parámetros utilizados en estas búsquedas
-y aquellos que producen la menor \ac{RMS} se exponen en las
+y aquellos que producen la menor \ac{RMSE} se exponen en las
 Tablas~\ref{tab:parameters-ground-survey}
 y~\ref{tab:parameters-airborne-survey}.
 
@@ -1047,10 +1047,10 @@ muestran las diferencias entre la \emph{grilla objetivo} y las mejores
 predicciones alcanzadas por cada estrategia de distribución de fuentes, tanto
 para la muestra sobre el terreno como para la muestra aérea, respectivamente.
 En el caso de la muestra sintética sobre el terreno, las distribuciones
-horizontales produjeron valores similares de \ac{RMS} de aproximadamente
+horizontales produjeron valores similares de \ac{RMSE} de aproximadamente
 0.8\mGal{}, independientemente del tipo de profundidad que se utilice;
 a excepción de las fuentes distribuidas sobre una \emph{grilla regular}, la
-cual produjo una \ac{RMS} mayor de
+cual produjo una \ac{RMSE} mayor de
 \BestGroundGridSourcesConstantDepthRms{}\mGal{}.
 Las diferencias entre la \emph{grilla objetivo} y los valores interpolados son
 mayores en regiones con una pobre cobertura de datos.
@@ -1058,7 +1058,7 @@ Los efectos de borde están presentes en todas las estrategias, pero son
 notablemente menores para la combinación de \emph{fuentes promediadas por
 bloque} con profundidad variable.
 En el caso de la muestra aérea, todas las estrategias (incluyendo la grilla
-regular) produce valores similares de \ac{RMS} de aproximadamente 0.3\mGal{}.
+regular) produce valores similares de \ac{RMSE} de aproximadamente 0.3\mGal{}.
 Los gráficos de las diferencias entre la \emph{grilla objetivo} y los valores
 interpolados son visualmente indistinguibles entre ellos.
 
@@ -1076,7 +1076,7 @@ cantidad de solapamiento entre ventanas contiguas.
 Las comparaciones fueron realizadas contra la solución obtenida por mínimos
 cuadrados amortiguados (ec.~\ref{eq:least_squares_solution}, sin potenciación
 del gradiente) utilizando los datos provistos por la muestra aérea sintética
-(Fig.~\ref{fig:synthetic-layouts}c-d).
+(fig.~\ref{fig:synthetic-layouts}c-d).
 Para evitar que existan sesgos en los resultados, utilizamos las mismas
 ubicaciones para las fuentes equivalentes tanto como para las interpolaciones
 con y sin potenciación del gradiente.
@@ -1093,7 +1093,7 @@ El tamaño de las ventanas controla el tamaño de las matrices Jacobianas
 $\tilde{\mathbf{A}}_k$ al limitar la cantidad de puntos de datos y fuentes
 equivalentes que se utilizan en cada paso del algoritmo de potenciación del
 gradiente
-(Alg.~\ref{alg:gradient_boosting_window}).
+(alg.~\ref{alg:gradient_boosting_window}).
 Por lo tanto, ventanas pequeñas reducen la cantidad total de memoria necesaria
 para estimar los coeficientes de las fuentes.
 Sin embargo, estas pueden producir interpolaciones menos precisas al no ser
@@ -1104,16 +1104,16 @@ intuitivas, ya que ventanas pequeñas generan problemas de mínimos cuadrados m�
 simples, pero también requieren mayor cantidad de iteraciones del algoritmo de
 potenciación del gradiente.
 
-Hemos calculado la \ac{RMS} de las interpolaciones (entre el resultado de la
+Hemos calculado la \ac{RMSE} de las interpolaciones (entre el resultado de la
 interpolación y la \emph{grilla objetivo} de la
-Fig.~\ref{fig:synthetic-target}) y registramos los tiempos de cómputo
+fig.~\ref{fig:synthetic-target}) y registramos los tiempos de cómputo
 utilizando un valor fijo de solapamiento entre ventanas de 50\% y varios
 tamaños de ventanas diferentes.
 Para evitar sesgos introducidos por un determinado ordenamiento aleatorio
 particular de las ventanas, los cálculos fueron repetidos utilizando diferentes
 \emph{semillas} para el generado de números pseudo-aleatorios.
 La Figura~\ref{fig:gradient-boosted-comparison}a
-muestra la \ac{RMS}, y
+muestra la \ac{RMSE}, y
 la Figura~\ref{fig:gradient-boosted-comparison}c
 el tiempo de cómputo requerido para estimar los coeficientes de las fuentes,
 ambos en función del tamaño de las ventanas.
@@ -1121,7 +1121,7 @@ ambos en función del tamaño de las ventanas.
 \begin{figure}[tb]
     \includegraphics[width=\linewidth]{figs/eql-gradient-boosted/gradient-boosted-comparisons.pdf}
     \caption{
-        \acs{RMS} de las interpolaciones (a-b) y los tiempos de cómputos
+        \acs{RMSE} de las interpolaciones (a-b) y los tiempos de cómputos
         relativos (c-d) para fuentes equivalentes regulares (líneas naranja de
         a trazos) y para fuentes equivalentes potenciadas por gradiente
         (puntos azules con barras de error).
@@ -1130,7 +1130,7 @@ ambos en función del tamaño de las ventanas.
         ventanas contiguas comparten un área igual a la mitad del tamaño de la
         ventana completa).
         Para las fuentes equivalentes potenciadas por gradiente, la
-        \acs{RMS} y los tiempos de cómputo son valores medios (las barras de
+        \acs{RMSE} y los tiempos de cómputo son valores medios (las barras de
         error corresponden a una desviación estándar) de los resultados
         obtenidos utilizando diferentes semillas para el generador de números
         pseudo-aleatorios.
@@ -1152,7 +1152,7 @@ Los tiempos de cómputo decrecen similarmente con el tamaño de la ventana,
 siendo las fuentes potenciadas por gradiente usualmente más rápidas que las
 fuentes regulares para ventanas con áreas mayores que el $\sim 5\%$ de la
 región de estudio.
-A medida que el tamaño de la ventana aumenta, tanto la \ac{RMS} y el tiempo de
+A medida que el tamaño de la ventana aumenta, tanto la \ac{RMSE} y el tiempo de
 cómputo parece estabilizarse cerca de niveles constantes.
 
 \subsubsection{Solapamiento de las ventanas}
@@ -1173,12 +1173,12 @@ fijo a \BoostOverlappingWindowSize{} y variamos la cantidad de solapamiento
 entre 0\% y 95\% con un paso de 5\%.
 Todos los otros procedimientos experimentales se mantuvieron intactos.
 La Figura~\ref{fig:gradient-boosted-comparison}b
-muestra la \ac{RMS} y la
+muestra la \ac{RMSE} y la
 Figura~\ref{fig:gradient-boosted-comparison}d
 el tiempo de cómputo requerido para estimar los coeficientes de las fuentes,
 ambos en función de la cantidad de solapamiento entre las ventanas.
 
-Nuestros resultados muestran que la \ac{RMS} de la interpolación decrece con la
+Nuestros resultados muestran que la \ac{RMSE} de la interpolación decrece con la
 cantidad de solapamiento, alcanzando la misma precisión que las fuentes
 equivalentes regulares a aproximadamente un solapamiento del 90\%.
 Por otro lado, el tiempo de cómputo aumenta con la cantidad de solapamiento,
@@ -1196,7 +1196,7 @@ compensen.
 \label{sec:gb_interpolation}
 
 Finalmente, hemos aplicado las fuentes equivalentes potenciadas por gradiente
-para interpolar la muestra sintética aérea (Fig.~\ref{fig:synthetic-layouts}).
+para interpolar la muestra sintética aérea (fig.~\ref{fig:synthetic-layouts}).
 Tal y como hemos realizado anteriormente, utilizamos las fuentes promediadas
 por bloque con un tamaño de bloque de \EqlBoostAirborneSpacing{}.
 Basado en los resultados de la sección \ref{sec:window_size_and_overlap},
@@ -1211,11 +1211,11 @@ Durante la búsqueda, exploramos valores de profundidad relativa entre
 \EqlBoostAirborneMaxDepth{} y de valores de \emph{amortiguamiento} entre
 \EqlBoostAirborneMinDamping{} y \EqlBoostAirborneMaxDamping{}
 de a pasos de un orden magnitud.
-Las predicciones más precisas alcanzaron una \ac{RMS} de
+Las predicciones más precisas alcanzaron una \ac{RMSE} de
 \EqlBoostAirborneRmsScore{} con una profundidad relativa de
 \EqlBoostAirborneDepth{} y
 un \emph{amortiguamiento} de \EqlBoostAirborneDamping{}.
-Vale la pena notar que la \ac{RMS} alcanzada por las fuentes potenciadas por
+Vale la pena notar que la \ac{RMSE} alcanzada por las fuentes potenciadas por
 gradiente es comparable con los valores obtenidos por las fuentes equivalentes
 regulares en la sección~\ref{sec:synthetic_distributions}.
 Para resaltar la importancia de aleatorizar el orden en el que se recorren las
@@ -1235,7 +1235,7 @@ en orden secuencial (de Sur a Norte, de Oeste a Este).
         y los resultados de la interpolación de la muestra sintética aérea.
         La escala de colores fue truncada al mismo rango de valores que la de
         la Figura~\ref{fig:airborne-survey-differences}.
-        (c)~\acl{RMS} luego de cada iteración del algoritmo de potenciación del
+        (c)~\acl{RMSE} luego de cada iteración del algoritmo de potenciación del
         gradiente.
 }
 \label{fig:eql-boost-airborne}
@@ -1256,7 +1256,7 @@ Esta tendencia se correlaciona con el orden en el que las ventanas son
 ejecutadas, con diferencias que van decreciendo en valor absoluto hacia el
 final del algoritmo.
 La Figura~\ref{fig:eql-boost-airborne}c
-muestra la \ac{RMS} del proceso de ajuste luego de cada iteración, tanto para
+muestra la \ac{RMSE} del proceso de ajuste luego de cada iteración, tanto para
 ventanas ejecutadas en orden aleatorio como secuencial, indicando claramente
 que las ventanas aleatorias generan una convergencia más rápida del algoritmo.
 
@@ -1298,8 +1298,8 @@ altitud geométrica constante de \AustraliaEqlGridHeight{} (la altitud de
 observación más alta presente en los datos).
 
 Hemos calculado el disturbio de gravedad quitando la gravedad normal generada
-por el elipsode WGS84 sobre los datos de gravedad observados
-(Fig.~\ref{fig:australia}).
+por el elipsoide WGS84 sobre los datos de gravedad observados
+(fig.~\ref{fig:australia}).
 Los valores de gravedad normal fueron calculados en cada punto de observación
 mediante la fórmula cerrada de \citet{ligotze2001} (ver
 sección~\ref{sec:normal-gravity-closed-form}) implementada en la librería Boule
@@ -1311,7 +1311,7 @@ Comenzamos el proceso de interpolación definiendo un conjunto de \emph{fuentes
 promediadas por bloque} haciendo uso de bloques de 1.8\km{} de lado, obteniendo
 un total de \AustraliaEqlNSources{}~fuentes puntuales.
 El tamaño de los bloques fue elegido para que concuerde con la resolución
-deseada para la grilla final (1~minuto de arco equivale aproximadamenta
+deseada para la grilla final (1~minuto de arco equivale aproximadamente
 a 1.8\km{} en el ecuador).
 Basado en los resultados obtenidos en la sección~\ref{sec:synthetic_distributions},
 elegimos localizar las fuentes siguiendo la estrategia de \emph{profundidad
@@ -1320,7 +1320,7 @@ El solapamiento de las ventanas fue fijado nuevamente a 50\%.
 Para determinar el tamaño de las ventanas, calculamos la cantidad de memoria
 necesaria para almacenar la matriz Jacobiana más grande que genera el algoritmo
 para diferentes valores de tamaño de ventana
-(Fig.~\ref{fig:australia-memory-cv-error}a).
+(fig.~\ref{fig:australia-memory-cv-error}a).
 Hemos seleccionado un tamaño de venta de \AustraliaEqlWindowSize{} con el
 objetivo de limitar la cantidad de memoria por debajo de los 16~Gigabytes.
 
@@ -1332,13 +1332,13 @@ objetivo de limitar la cantidad de memoria por debajo de los 16~Gigabytes.
         matriz Jacobiana en función del tamaño de las ventanas. Nuestra
         implementación de algoritmo almacena los elementos de la matriz como
         puntos flotantes de doble precisión (64 bits).
-        (b) \acs{RMS} entre los valores observados y los valores predichos
+        (b) \acs{RMSE} entre los valores observados y los valores predichos
         sobre cada punto de observación luego de cada iteración del algoritmo
         de potenciación del gradiente.
-        (c) \acs{RMS} obtenidas de la validación cruzada de K iteraciones para
+        (c) \acs{RMSE} obtenidas de la validación cruzada de K iteraciones para
         pares de valores de \emph{amortiguamiento} y profundidad relativa de
         las fuentes.
-        La estrella naranja señala la \acs{RMS} mínima.
+        La estrella naranja señala la \acs{RMSE} mínima.
     }
     \label{fig:australia-memory-cv-error}
 \end{figure}
@@ -1352,7 +1352,7 @@ Este método divide aleatoriamente los datos originales en $k$ conjuntos
 sólo los datos de $k - 1$ conjuntos y valida el modelo comparando sus
 predicciones sobre los puntos pertenecientes al conjunto restante.
 Este proceso se lleva a cabo una vez por cada uno de los $k$ conjuntos,
-obteniendo una media de las \ac{RMS} para dicho modelo.
+obteniendo una media de las \ac{RMSE} para dicho modelo.
 Con el objetivo de acelerar el cómputo, realizamos la validación cruzada sobre
 un subconjunto de los datos originales correspondientes a un área de
 \AustraliaSmallAreaEastingSize{}$\times$\AustraliaSmallAreaNorthingSize{}
@@ -1362,7 +1362,7 @@ profundidad relativa con valores entre \AustraliaDepthMin{}
 y \AustraliaDepthMax{}, y el parámetro de \emph{amortiguamiento} con valores
 entre \AustraliaDampingMin{} y \AustraliaDampingMax{} con pasos de un orden de
 magnitud.
-La figura~\ref{fig:australia-memory-cv-error}c muestra los valores de \ac{RMS}
+La figura~\ref{fig:australia-memory-cv-error}c muestra los valores de \ac{RMSE}
 obtenidas a partir de la validación cruzada y señala su mínimo valor alcanzado
 de \AustraliaEqlRmsScore{}, el cual corresponde a una profundidad relativa de
 \AustraliaEqlDepth{} y un \emph{amortiguamiento} de \AustraliaEqlDamping{}.
@@ -1385,7 +1385,7 @@ muestra la distribución de datos originales y la grilla de valores
 interpolados.
 Los puntos de la grilla que se encuentran más allá de 50\km{} del punto de
 datos más cercano fueron enmascarados para evitar extrapolaciones irreales.
-La figura~\ref{fig:australia-memory-cv-error}b muestra la \ac{RMS} entre los
+La figura~\ref{fig:australia-memory-cv-error}b muestra la \ac{RMSE} entre los
 datos observados y las predicciones del modelo luego de cada iteración del
 algoritmo.
 La figure~\ref{fig:australia-residuals}
@@ -1421,7 +1421,7 @@ Los resultados de nuestras pruebas sobre datos sintéticos
 y~\ref{fig:airborne-survey-differences})
 muestran que no hay diferencias significativas sobre la precisión de la
 interpolación entre las diferentes estrategias de distribución de las fuentes,
-tanto en términos de la \ac{RMS} así como también a partir de inspecciones
+tanto en términos de la \ac{RMSE} así como también a partir de inspecciones
 visuales de los mapas de diferencias.
 Por lo tanto podemos concluir que todas las estrategias de distribución de las
 fuentes son capaces de producir interpolaciones de calidad comparable.
@@ -1525,11 +1525,10 @@ Vale notar, sin embargo, que estos residuos de larga longitud de onda poseen
 amplitudes menores a 1\mGal{} y no representan una fuente de errores
 significativa .
 
-Los valles alargados alrededor del valor mínimo de la \ac{RMS} obtenida durante
-la validación cruzada
-(Fig.~\ref{fig:australia-memory-cv-error}c muestran que existe cierta
-ambigüedad en la elección del parámetro de \emph{amortiguamiento} y la
-profundad de las fuentes.
+Los valles alargados alrededor del valor mínimo de la \ac{RMSE} obtenida
+durante la validación cruzada (fig.~\ref{fig:australia-memory-cv-error}c
+muestran que existe cierta ambigüedad en la elección del parámetro de
+\emph{amortiguamiento} y la profundad de las fuentes.
 Uno podría elegir un valor alto de \emph{amortiguamiento} junto a fuentes
 someras o bien valores pequeños de \emph{amortiguamiento} junto a fuentes
 profundas y alcanzar aproximadamente los mismos resultados.
