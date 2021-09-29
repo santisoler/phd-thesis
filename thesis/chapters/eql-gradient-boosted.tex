@@ -1614,58 +1614,56 @@ potenciación del gradiente a otros métodos de fuentes equivalentes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Data and code availability}
+\section{Disponibilidad de datos y código}
 
-The Python source code used to produce all results and figures presented here
-is available at
-\url{https://doi.org/10.6084/m9.figshare.13604360} and
+El código fuente en Python utilizado para producir todos los resultados
+y figuras presentados en este trabajo se encuentra disponible en
+\url{https://doi.org/10.6084/m9.figshare.13604360} y
 \url{https://github.com/compgeolab/eql-gradient-boosted}
-under the BSD 3-clause open-source license.
+bajo la licencia open-source BSD 3-clause.
 
-The gradient-boosted equivalent sources implementation is based on the
-equivalent source code in the Harmonica library \citep{harmonica2021}.
-Other software used in this study includes:
-Pooch \citep{pooch2020} for downloading and caching datasets,
-Verde \citep{verde2018} for block reductions and coordinate manipulations,
-Boule \citep{boule2020} for normal gravity calculations,
-xarray \citep{xarray2017} and Numpy \citep{numpy2020} for handling
-multidimensional arrays and numerical computations,
-Numba \citep{numba2015} for just-in-time compilation and parallelization,
-scikit-learn \citep{sklearn2011} for cross-validation,
-Matplotlib \citep{matplotlib2007} and PyGMT \citep{pygmt2020} for generating
-the figures and maps,
-and the Jupyter notebook programming environment \citep{jupyter2016}.
-Harmonica, Boule, Pooch, and Verde are part of the Fatiando a Terra project
+La implementación de las fuentes equivalentes potenciadas por gradiente se
+encuentra basada en la implementación de fuentes equivalentes presente en la
+librería Harmonica \citep{harmonica2021}.
+Entre otros software utilizados en este estudio se incluyen:
+Pooch \citep{pooch2020} para descargar y almacenar conjuntos de datos,
+Verde \citep{verde2018} para reducciones por bloques y manipulación de
+coordenadas,
+Boule \citep{boule2020} para el cálculo de gravedad normal,
+xarray \citep{xarray2017} y Numpy \citep{numpy2020}
+para el manejo de arreglos multidimensionales y para cálculos numéricos,
+Numba \citep{numba2015} para compilaciones en tiempo de ejecución
+y paralelizaciones,
+scikit-learn \citep{sklearn2011} para validaciones cruzadas,
+Matplotlib \citep{matplotlib2007} y PyGMT \citep{pygmt2020}
+para la generación de figuras y mapas,
+y el ambiente de programación Jupyter \citep{jupyter2016}.
+Harmonica, Boule, Pooch, y Verde son partes del proyecto Fatiando a Terra
 \citep{fatiando2013}.
 
-All datasets used are open-access and publicly available.
-The synthetic surveys were generated using
-a public domain gravity dataset for Southern Africa distributed by the
-NOAA NCEI (\url{https://www.ngdc.noaa.gov/mgg/gravity/gravity.html})
-and the Great Britain Aeromagnetic
-Survey distributed by the
-British Geological Survey (BGS) under an Open Government License
+Todos los datos utilizados son de acceso abierto y disponibles públicamente.
+Las muestras sintéticas fueron generadas utilizando un conjunto de datos de
+gravedad sobre Sudáfrica de dominio público, distribuidos por el
+NOAA NCEI (\url{https://www.ngdc.noaa.gov/mgg/gravity/gravity.html}),
+y la Great Britain Aeromagnetic Survey distribuida por la
+British Geological Survey (BGS) bajo una Open Government License
 (\url{https://www.bgs.ac.uk/products/geophysics/aeromagneticRegional.html}).
-The shaded relief in Fig.~\ref{fig:australia} is the SRTM15+ dataset by
-\citet{tozer2019}.
-The Australian ground gravity
-data is based on a compilation distributed by Geoscience Australia under a
-Creative Commons Attribution 4.0 International Licence \citep{wynne2018}  which
-was filtered and referenced to the WGS84 ellipsoid by
-\citet{australia_compilation} and is distributed under the same license
+El relieve sombreado presente en la figura.~\ref{fig:australia} corresponde al
+SRTM15+ de \citet{tozer2019}.
+Los datos de gravedad sobre Australia están basados en una compilación
+distribuida por Geoscience Australia bajo una Creative Commons Attribution 4.0
+International Licence \citep{wynne2018}, los cuales fueron filtrados
+y referenciados al elipsoide WGS84 por \citet{australia_compilation}, que a su
+vez se distribuye bajo la misma licencia
 (\url{https://doi.org/10.6084/m9.figshare.13643837}).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Acknowledgements}
+\section{Agradecimientos}
 
-We are indebted to the developers and maintainers of the open-source software
-without which this work would not have been possible.
-We would also like to thank Editor Frederik Simons, Assistant Editor Fern
-Storey, and two anonymous reviewers for their constructive comments.
-S.R. Soler is supported by a scholarship from CONICET, Argentina.
-This work contains British Geological Survey materials ©~UKRI.
-S.R. Soler and L. Uieda jointly developed the initial idea, analysed the
-results, and wrote the paper. S.R. Soler produced all results and developed the
-software implementation with the assistance of L. Uieda.
+Nos encontramos eternamente agradecidos con los y las desarrolladores del
+software open-source, sin el cual este trabajo no hubiera sido posible.
+Agradecemos también al editor Frederik Simons, editor asistente Fern Storey,
+y a dos revisores anónimos por sus comentarios y contribuciones.
+Este trabajo contiene material de British Geological Survey ©~UKRI.
