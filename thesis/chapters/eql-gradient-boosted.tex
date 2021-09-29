@@ -1412,107 +1412,129 @@ se encuentran normalmente distribuidos alrededor de cero.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Discussion}
+\section{Discusión}
 
-\subsection{Location of sources}
+\subsection{Ubicación de las fuentes}
 
-The results of our tests on synthetic data
-(Figs.~\ref{fig:ground-survey-differences}
-and~\ref{fig:airborne-survey-differences}) show that there are no significant
-differences in interpolation accuracy between source distribution strategies,
-both in terms of the interpolation RMS errors and from visual inspection of the
-difference maps.
-Therefore, we conclude that all source distribution strategies are able to
-produce comparable interpolations.
-Nevertheless, the \emph{block-averaged sources} strategy makes use of fewer
-sources when compared with other strategies, which reduces the computational
-load of estimating the sources coefficients and forward modelling.
-To ensure that the interpolation is able to reproduce the high frequencies in
-the data, the block size used in the averaging should be chosen to match the
-desired grid resolution.
+Los resultados de nuestras pruebas sobre datos sintéticos
+(figs.~\ref{fig:ground-survey-differences}
+y~\ref{fig:airborne-survey-differences})
+muestran que no hay diferencias significativas sobre la precisión de la
+interpolación entre las diferentes estrategias de distribución de las fuentes,
+tanto en términos de la \ac{RMS} así como también a partir de inspecciones
+visuales de los mapas de diferencias.
+Por lo tanto podemos concluir que todas las estrategias de distribución de las
+fuentes son capaces de producir interpolaciones de calidad comparable.
+Sin embargo, las \emph{fuentes promediadas por bloque} hacen uso de menor
+cantidad de fuentes si las comparamos con las otras estrategias, lo que reduce
+el costo computacional involucrado en la estimación de sus parámetros y en el
+modelado directo.
+Para garantizar que las interpolaciones sean capaces de reproducir las altas
+frecuencias presentes en los datos, el tamaño de los bloques utilizados en
+durante el promediado debe ser elegido de forma tal que se corresponda con la
+resolución deseada en la grilla resultante.
 
-The choice of source depth strategy does not appear to significantly impact the
-interpolation RMS error.
-In the particular case of a sparse ground survey with block-averaged sources,
-the use of a variable depth visibly reduced edge effects and artifacts in areas
-of poor data coverage.
-At a first glance, the choice of a depth strategy would not seem to impact
-the computation time.
-However, when searching for the set of hyper-parameters that produce the most
-accurate interpolation (e.g., through cross-validation), one must solve the
-inverse problem once for every possible combination of parameters.
-A depth strategy like the \emph{variable depth} requires a higher number of
-hyper-parameters (depth shift $\Delta z$, depth factor $\alpha$, and the number
-of nearest neighbours $k$ from Eq.~\ref{eq:variable_depth}) than other
-strategies which only require a single parameter.
-Having more parameters means increasing the dimensions of the parameter space
-and thus increasing the number of possible combinations.
-Thus, we recommend using a \emph{constant depth} or a \emph{relative depth}
-when processing large datasets in order to minimize computation time.
+La elección de la profundidad de las fuentes no aparenta tener un impacto
+significativo sobre el error de interpolación.
+En el caso particular de una muestra dispersa sobre terreno
+con \emph{fuentes promediadas por bloque}, el uso de profundidades variables
+reduce visiblemente los efectos de borde y la presencia de artefactos en áreas
+con poca cobertura.
+A primera vista, la elección de una estrategia particular para elegir la
+profundidad de las fuentes no parecería tener impacto sobre el tiempo de
+cómputo.
+Sin embargo, la búsqueda del conjunto de hiperparámetros que produce la
+interpolación más precisa (por ejemplo, mediante validación cruzada), uno debe
+resolver el problema inverso una vez por cada combinación posible de los
+parámetros.
+Una estrategia como la de \emph{profundidad variable} requiere una mayor
+cantidad de parámetros a ser determinados (el desplazamiento relativo $\Delta
+z$, el factor de profundidad $\alpha$, y la cantidad de vecinos cercanos $k$
+presentes en la ec.~\ref{eq:variable_depth})
+en comparación con las otras que sólo requieren uno solo.
+La presencia de un mayor número de parámetros significa incrementar las
+dimensiones del espacio de parámetros y por ende, aumentar la cantidad de
+posibles combinaciones.
+Por lo tanto, recomendamos utilizar una \emph{profundidad constante} o una
+\emph{profundidad relativa} al procesar grandes cantidades de datos con el
+objetivo de minimizar el tiempo de cómputo.
 
-\subsection{Gradient boosting}
+\subsection{Potenciación del gradiente}
 
-From Fig.~\ref{fig:gradient-boosted-comparison}a
-and~\ref{fig:gradient-boosted-comparison}c, we can see that the
-gradient-boosted equivalent sources produce slightly less accurate
-interpolation results but are able to achieve smaller computation times than
-regular equivalent sources.
-The reduction of the accuracy might be due to the gradient boosting algorithm
-failing to converge to the global minimum of the goal function.
-As the windows increase in size, interpolation error decreases because more data
-points are included into the least-squares fitting of the source coefficients.
-At the same time, the fitting process becomes faster because of a reduction in
-the number of iterations.
-Our results indicate that it is desirable to maximize the window size,
-which can be done up to the point that the Jacobian matrices still fit within
-the available computer memory.
+A partir de la figura~\ref{fig:gradient-boosted-comparison}a
+y~\ref{fig:gradient-boosted-comparison}c,
+podemos ver que las fuentes equivalentes potenciadas por gradiente producen
+interpolaciones ligeramente menos precisas que las fuentes equivalentes
+regulares, pero son capaces de alcanzar menores tiempos de cómputo.
+La reducción en la precisión puede ser debida a que el algoritmo de
+potenciación del gradiente no consigue converger al mínimo global de la función
+objetivo.
+A medida que las ventanas aumentan en tamaño, los errores de interpolación
+decrecen debido a que mayor cantidad de puntos son incluidos dentro del ajuste
+por mínimos cuadrados.
+Al mismo tiempo, el proceso de ajuste se vuelve más rápido debido a la
+reducción en la cantidad de iteraciones.
+Nuestros resultados indican que es deseable maximizar el tamaño de las
+ventanas, lo cual puede hacerse mientra las matrices Jacobianas involucradas
+puedan ser almacenadas en la memoria disponible.
 
-The results shown in Figs.~\ref{fig:gradient-boosted-comparison}b
-and~\ref{fig:gradient-boosted-comparison}d indicate that using
-window overlap values between 40\% and 70\% strike a balance between
-accuracy and computation time.
-This corroborates our initial choice of 50\% overlap, which is good enough for
-producing accurate predictions in reasonable times.
+Los resultados mostrados en las figuras~\ref{fig:gradient-boosted-comparison}b
+y~\ref{fig:gradient-boosted-comparison}d
+indican que valores de solapamiento entre 40\% y 70\% logran un balance entre
+la precisión de la interpolación y el tiempo de cómputo.
+Esto corrobora nuestra elección inicial de solapamiento de 50\%, la cual es
+suficientemente bueno para producir interpolaciones precisas en tiempos
+razonables.
 
-Finally, the results in Fig.~\ref{fig:eql-boost-airborne} highlight the
-importance of randomizing the order in which the overlapping windows are
-iterated.
-Running the gradient boosting algorithm sequentially produces less accurate
-predictions and decreases the convergence rate of the method.
+Finalmente, los resultados expuestos en la figura~\ref{fig:eql-boost-airborne}
+señalan la importancia de aleatorizar el orden en el que las ventanas son
+iteradas.
+Corriendo el algoritmo de potenciación del gradiente secuencialmente produce
+predicciones significativamente menos precisas y expone una menor velocidad de
+convergencia del método.
 
-\subsection{Australia gravity data}
+\subsection{Datos gravimétricos sobre Australia}
 
-The application of the gradient-boosted equivalent sources to the Australian
-gravity dataset demonstrates that the method is able to interpolate and
-upward-continue large datasets in a reasonable amount of time using only modest
-computational resources.
-The resulting grid (Fig.~\ref{fig:australia}) preserves the high resolution of
-the original data while avoiding aliasing artifacts due to the block averaging
-of the source locations.
-Some parts of the grid are smoother and have lower amplitudes than the original
-data (e.g., some southwestern parts), which is expected from the upward
-continuation that was performed to have the grid at a constant height.
-From the cross-validation analysis on a subset of the data, we estimate that
-the interpolation error is approximately \AustraliaEqlRmsScore{}.
+La aplicación de las fuentes equivalentes potenciadas por gradiente a los datos
+de aceleración de gravedad sobre Australia demuestra que el método es capaz de
+interpolar y realizar continuaciones ascendentes sobre grandes cantidades de
+datos en tiempos razonables utilizando recursos computacionales modestos.
+La grilla resultante (fig.~\ref{fig:australia}) preserva la alta resolución de
+los datos originales mientras evita artefactos de \emph{aliasing} debido al
+promediado de las ubicaciones de las fuentes.
+Algunas porciones de la grilla se observan más suaves y con menores amplitudes
+que los datos originales (por ejemplo, porciones ubicadas al sudoeste), las
+cuales son esperables luego de aplicar continuaciones ascendentes.
+A partir del análisis de validación cruzada sobre una porción de los datos,
+estimamos que el error de las interpolaciones es de aproximadamente
+\AustraliaEqlRmsScore{}.
 
-The largest residuals in Fig.~\ref{fig:australia-residuals} are located in
-regions with high-amplitude short-wavelength features in the observed data.
-This is expected since the method involves some degree of smoothing because of
-the use of damping and the source depths.
-There are also low-amplitude long-wavelength residual signals that seem to
-coincide with some of the windows of the gradient-boosting method.
-A possible cause of these features is inability of the equivalent-sources
-within a window to adequately fit the long-wavelength components of the data.
-We note, however, that all of these long-wavelength residuals are smaller than
-1\mGal{} in amplitude and do not represent a significant source of errors.
+Los residuos más altos que se aprecian en la figura~\ref{fig:australia-residuals}
+están ubicados en regiones en las cuales los datos presentan señales de alta
+amplitud y longitud de onda corta.
+Este comportamiento es esperable, ya que el método involucra algún grado de
+suavizado debido al uso del término de \emph{amortiguamiento} y de la elección
+de la profundidad de las fuentes.
+Existen además residuos cuyas señales poseen bajas amplitudes y largas
+longitudes de onda que parecen coincidir con las áreas ocupadas por algunas de
+las ventanas del algoritmo de potenciación del gradiente.
+Una posible causa de estos artefactos es la inhabilidad de las fuentes
+equivalentes dentro de ventanas particulares de ajustar adecuadamente
+las componentes de largas longitudes de onda.
+Vale notar, sin embargo, que estos residuos de larga longitud de onda poseen
+amplitudes menores a 1\mGal{} y no representan una fuente de errores
+significativa .
 
-The elongated valley around the minimum of the cross-validation RMS errors
-(Fig.~\ref{fig:australia-memory-cv-error}c) shows that there is ambiguity in
-the choice of damping and source depths.
-One could choose a large damping with a small depth or a small damping with a
-large depth to achieve roughly the same interpolation result.
-This is expected since both parameters control the smoothness of the
-interpolation.
+Los valles alargados alrededor del valor mínimo de la \ac{RMS} obtenida durante
+la validación cruzada
+(Fig.~\ref{fig:australia-memory-cv-error}c muestran que existe cierta
+ambigüedad en la elección del parámetro de \emph{amortiguamiento} y la
+profundad de las fuentes.
+Uno podría elegir un valor alto de \emph{amortiguamiento} junto a fuentes
+someras o bien valores pequeños de \emph{amortiguamiento} junto a fuentes
+profundas y alcanzar aproximadamente los mismos resultados.
+Esto es esperables, ya que ambos parámetros controlan la suavidad de la
+interpolación.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
