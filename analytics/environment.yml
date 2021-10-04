@@ -6,6 +6,7 @@ dependencies:
   - pip
   - numpy
   - matplotlib
+  - cartopy
   - pandas
   - geopandas
   - plotly
