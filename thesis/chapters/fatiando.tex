@@ -51,6 +51,35 @@ Astropy, etc), estado actual.
 
 Motivación inicial, personas involucradas, evolución del proyecto.
 
+A partir de 2018 el proyecto tomó una nueva dirección.
+El panorama de software de código abierto para Geofísica había cambiado mucho
+desde los inicios de Fatiando a Terra: la cantidad de nuevos paquetes diseñados
+para atacar diversos problemas de las geociencias había aumentado
+considerablemente.
+Dentro de este nuevo ecosistema, fatiando no presentaba un objetivo claro.
+Esto no solo hacía difícil que potenciales usuarios y usuarias distingan el
+propósito en sí del proyecto, sino que también constituía una base de código
+difícil de mantener.
+Por otro lado, para ese entonces fatiando había sido el hogar de
+implementaciones de métodos muy novedosos (cuya audiencia está más orientada
+a investigadores), así como de código \emph{juguete} diseñado para ser
+utilizado en clases para fines didácticos, pero sin las capacidades para atacar
+problemas reales.
+
+Era necesario establecer nuevos objetivos del proyecto.
+La decisión fue la de dividir el proyecto en múltiples paquetes con
+objetivos claros y concisos.
+Esto permitiría no sólo una fácil adopción por parte de usuarios y usuarias,
+sino también que otros proyectos los utilicen como dependencias en caso de
+desearlo.
+Además, esta oportunidad abrió las puertas a hacer uso de mejores prácticas
+para el desarrollo de software, estableciendo estándares de calidad más altos.
+En la sección~\ref{sec:best-practices} se describen las mencionadas mejores
+prácticas.
+
+ dividir el fatiando en librerías más pequeñas.
+
+
 
 \section{Paquetes de software}
 
@@ -68,6 +97,7 @@ Paper en JOSS de Verde y Pooch
 
 
 \section{Desarrollo y mejores prácticas}
+\label{sec:best-practices}
 
 Flujo de trabajo en Github.
 
