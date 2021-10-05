@@ -21,14 +21,20 @@
 \usepackage[round,authoryear,sort]{natbib}
 \usepackage{doi} % show dois as links on references
 \usepackage{mathpazo} % Use the Palatino font by default
+\usepackage[longend,linesnumbered,ruled,spanish,onelanguage]{algorithm2e}
 \usepackage{acronym}
 \usepackage[labelfont=bf]{caption}
 
+% Add toc to the toc
+\usepackage{tocbibind}
+
+% Import packages useful for creating the parameters tables
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{setspace}
+
 % Use the appendix package and translate it
-\usepackage[toc,page,title]{appendix}
-\renewcommand{\appendixname}{Apéndice}
-\renewcommand{\appendixtocname}{Apéndices}
-\renewcommand{\appendixpagename}{Apéndices}
+\usepackage{appendix}
 
 % Use custom apalike bibliography style:
 %   - translated to Spanish
@@ -126,12 +132,27 @@
 
 \chapter{Agradecimientos}
 
+% tesseroids
+Nos encontramos eternamente agradecidos con los y las desarrolladores del
+software open-source, sin el cual este trabajo no hubiera sido posible.
+Agradecemos también al editor Kosuke Heki y a dos revisores anónimos por sus
+comentarios y contribuciones.
+
+% eqls
+Nos encontramos eternamente agradecidos con los y las desarrolladores del
+software open-source, sin el cual este trabajo no hubiera sido posible.
+Agradecemos también al editor Frederik Simons, editor asistente Fern Storey,
+y a dos revisores anónimos por sus comentarios y contribuciones.
+Este trabajo contiene material de British Geological Survey ©~UKRI.
+
+
 % Indice y lista de abreviaturas
 \tableofcontents
 
-\chapter*{Lista de Abreviaturas}
+\chapter{Lista de Abreviaturas}
 \begin{acronym}
    \acro{GLQ}{Cuadratura de Gauss-Legendre}
+   \acro{RMSE}{raíz del error cuadrático medio}
 \end{acronym}
 
 
@@ -144,18 +165,15 @@
 
 \include{chapters/tesseroids-variable-density}
 
-\include{chapters/gradient-boosted-eql}
+\include{chapters/eql-gradient-boosted}
 
 \include{chapters/fatiando}
 
-\begin{appendices}
-    \include{chapters/appendix}
-\end{appendices}
+\include{chapters/conclusions}
 
 \backmatter
 
 \phantomsection
 \bibliography{references}
-\addcontentsline{toc}{chapter}{Bibliografía}
 
 \end{document}

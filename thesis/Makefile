@@ -9,8 +9,10 @@ TEX_FILES = apalike-doi.bst \
 			chapters/titlepage.tex \
 			chapters/introduccion.tex chapters/fundamentos.tex \
 			chapters/tesseroids-variable-density.tex \
-			chapters/gradient-boosted-eql.tex \
-			chapters/fatiando.tex
+			chapters/eql-gradient-boosted.tex \
+			chapters/eql-gradient-boosted-results.tex \
+			chapters/fatiando.tex \
+			chapters/conclusions.tex \
 # Folder where output will be placed
 OUTDIR = _output
 CHAPTERS_DIR = $(OUTDIR)/chapters
