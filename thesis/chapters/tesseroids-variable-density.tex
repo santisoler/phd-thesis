@@ -591,7 +591,7 @@ cascarón esférico con densidad lineal en la coordenada radial.
 Aplicando el Teorema del Cascarón de Newton \citep{chandrasekhar1995,
 binney2008}, podemos derivar expresiones para el potencial gravitatorio de un
 cascarón esférico con densidades lineales, exponenciales o sinusoidales (ver
-Apéndice~\ref{cha:shell}).
+Apéndice~\ref{sec:shell}).
 
 Con el objetivo de comparar los resultados numéricos con las soluciones
 analíticas debemos construir modelos de un cascarón esférico a partir de
@@ -966,7 +966,7 @@ constante adimensional que regula cuántos períodos de la función trigonométr
 serán incluidos dentro de los radios interior y exterior.
 La solución analítica para el potencial $V$ y su gradiente vertical $g_z$ que
 genera un cascarón esférico con una densidad sinusoidal puede hallarse en el
-Apéndice~\ref{cha:shell}.
+Apéndice~\ref{sec:shell}.
 
 Calculamos la diferencia relativa entre los resultados numéricos y la solución
 analítica para $V$ y $g_z$ para cada combinación de modelos de cascarones
@@ -1361,3 +1361,128 @@ Nos encontramos eternamente agradecidos con los y las desarrolladores del
 software open-source, sin el cual este trabajo no hubiera sido posible.
 Agradecemos también al editor Kosuke Heki y a dos revisores anónimos por sus
 comentarios y contribuciones.
+
+
+\begin{subappendices}
+
+\section{Soluciones analíticas para un cascarón esférico}
+\label{sec:shell}
+
+Consideremos un cascarón esférico con radio interior $R_1$ y radio exterior
+$R_2$, cuya densidad es función $\rho(r')$ de la coordenada radial.
+Deseamos obtener una expresión analítica para los campos gravitatorios que
+general en cualquier punto externo ubicado a una distancia $r$ del centro del
+cascarón ($r > R_2$).
+
+Según el Teorema del Cascarón de Newton (\emph{Newton's Shell Theorem, Theorem
+XXXI}) \citep{chandrasekhar1995, binney2008}, el potencial gravitatorio
+generado por el cascarón esférico en cualquier punto externo es equivalente
+al que generaría si toda su masa estuviera concentrada en un punto localizado
+en su centro:
+
+\begin{equation}
+    V_\text{sh}(\phi, \lambda, r) = \frac{GM}{r},
+\end{equation}
+
+\noindent donde $M$ es la masa total del cascarón, la cual puede ser fácilmente
+calculada como:
+
+\begin{equation}
+    M =
+    \iiint\limits_{\Omega} \rho(r') dV =
+    4\pi \int\limits_{R_1}^{R_2} \rho(r') {r'}^2 dr',
+\end{equation}
+
+\noindent donde $\Omega$ simboliza el volumen del cascarón.
+
+Combinando las dos ecuaciones anteriores, obtenemos la siguiente expresión para
+el potencial:
+
+\begin{equation}
+    V_\text{sh}(r) = \frac{4\pi G}{r}
+    \int\limits_{R_1}^{R_2} {r'}^2 \rho(r') \, dr',
+\label{eq:shell-pot}
+\end{equation}
+
+\noindent la cual es equivalente a la obtenida por \citet[p.62]{binney2008}.
+
+El gradiente de potenciales que dependen solo de $r$ poseen solo una componente
+no nula: la componente vertical del gradiente ($g_z$).
+Según \citet{grombein2013}:
+
+\begin{equation}
+    g_z(r) = \frac{V_\text{sh}(r)}{r}.
+\label{eq:shell-gz}
+\end{equation}
+
+A partir de la ecuación~\ref{eq:shell-pot} podemos obtener expresiones del
+potencial gravitatorio para diferentes funciones de densidad. La integración de
+las siguientes funciones de densidad fueron llevadas a cabo mediante el uso de
+SymPy \citep{sympy2017}, una librería de Python para matemática simbólica.
+
+\subsection{Densidad lineal}
+
+Para una densidad lineal
+
+\begin{equation}
+    \rho(r') = ar' + b\ ,
+\end{equation}
+
+\noindent
+el potencial gravitatorio en cualquier punto externo es
+
+\begin{equation}
+    V_\text{sh}^\text{lin}(r) = \pi G \left[
+    a \frac{R_2^4 - R_1^4}{r} +
+    b \,\frac{4}{3} \frac{R_2^3 - R_1^3}{r} \right].
+    \label{eq:shell-pot-linear}
+\end{equation}
+
+\noindent El primer término de la ecuación reproduce el potencial generado por
+un cascarón esférico con densidad variable $\rho(r') = ar'$, mientras que el
+segundo término es equivalente al potencial generado por el mismo cascarón con
+densidad homogénea $\rho = b$ \citep{mikuska2006,grombein2013}.
+La ecuación~\ref{eq:shell-pot-linear} coincide con la obtenida por \citet{lin2019}.
+
+\subsection{Densidad exponencial}
+
+Para una densidad exponencial
+
+\begin{equation}
+    \rho(r') = A e^{- k (r' - R)},
+\end{equation}
+
+\noindent donde $A$, $k$ y $R$ son constantes, el potencial gravitatorio en
+cualquier punto exterior es
+
+\begin{equation}
+    \begin{split}
+        V_\text{exp}(r) = \frac{4\pi G}{r} \frac{A}{k^3} \Big[
+        & \left( R_1^2 k^2 + 2 R_1 k + 2 \right) e^{- k (R_1 - R)} - \\
+        & \left( R_2^2 k^2 + 2 R_2 k + 2 \right) e^{- k (R_2 - R)}
+        \Big].
+    \end{split}
+\end{equation}
+
+
+\subsection{Densidad sinusoidal}
+
+Para una función de densidad sinusoidal
+
+\begin{equation}
+    \rho(r') = A \sin ( k (r' - R)),
+\end{equation}
+
+\noindent donde $A$, $k$ y $R$ son constantes, el potencial gravitatorio en
+cualquier punto exterior es
+
+\begin{equation}
+    \begin{split}
+        V_\text{sine}(r) = \frac{4\pi G}{r} \frac{A}{k^3} \Big[
+    & (2 - k^2 R_2^2) \cos(k(R_2 - R)) + 2 k R_2 \sin(k(R_2 - R)) - \\
+    & (2 - k^2 R_1^2) \cos(k(R_1 - R)) - 2 k R_1 \sin(k(R_1 - R))
+    \Big].
+    \end{split}
+\end{equation}
+
+\end{subappendices}
