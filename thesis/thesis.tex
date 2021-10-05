@@ -21,8 +21,14 @@
 \usepackage[round,authoryear,sort]{natbib}
 \usepackage{doi} % show dois as links on references
 \usepackage{mathpazo} % Use the Palatino font by default
+\usepackage[longend,linesnumbered,ruled,spanish,onelanguage]{algorithm2e}
 \usepackage{acronym}
 \usepackage[labelfont=bf]{caption}
+
+% Import packages useful for creating the parameters tables
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{setspace}
 
 % Use the appendix package and translate it
 \usepackage[toc,page,title]{appendix}
@@ -132,6 +138,7 @@
 \chapter*{Lista de Abreviaturas}
 \begin{acronym}
    \acro{GLQ}{Cuadratura de Gauss-Legendre}
+   \acro{RMSE}{raíz del error cuadrático medio}
 \end{acronym}
 
 
@@ -144,7 +151,7 @@
 
 \include{chapters/tesseroids-variable-density}
 
-\include{chapters/gradient-boosted-eql}
+\include{chapters/eql-gradient-boosted}
 
 \include{chapters/fatiando}
 
