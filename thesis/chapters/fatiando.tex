@@ -49,7 +49,111 @@ Astropy, etc), estado actual.
 
 \section{Historia}
 
-Motivación inicial, personas involucradas, evolución del proyecto.
+% Motivación inicial, personas involucradas, evolución del proyecto.
+
+Los orígenes del proyecto se remonta a finales de la década del 2000, cuando
+Leonardo Uieda, Vanderlei Oliveira Jr. junto a otros estudiantes se encontraban
+cursando los últimos años del Bachillerato en Geofísica (\emph{Bacharelado em
+Geofísica}) en la Universidade de São Paulo.
+En este contexto surge la idea de implementar una alternativa propia a los
+software de modelado gravimétrico 2D comerciales.
+Tras asistir a cursos dictados por
+Software Carpentry\footnote{%
+    \url{https://software-carpentry.org}
+}
+en Canadá, Leonardo Uieda adquiere mayores conocimientos en el uso de sistema
+de control de versiones junto a otras mejores prácticas para el desarrollo de
+Software, regresa con nuevas ideas para el proyecto y un diagrama de un posible
+diseño para este proyecto (fig.~\ref{fig:talwani-idea}).
+La idea finalmente se desarrolla mediante
+una implementación del método de \citet{talwani1959} para
+modelado directo de polígonos 2D, y la posterior construcción de una interfaz
+gráfica escrita en C que más tarde se reimplementaría en Python.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/fluxo-simples.pdf}
+    \caption{
+        Diagrama de flujo para la primera implementación de un software para el
+        modelado gravimétrico de polígonos 2D. Realizado por Leonardo Uieda
+        (circa 2009).
+    }
+    \label{fig:talwani-idea}
+\end{figure}
+
+En paralelo, y como proyecto final de su Bachillerato, Leonardo Uieda realiza
+una implementación en Python del algoritmo para el cálculo de campos
+gravitacionales de tesseroides mediante la \ac{GLQ}.
+Luego de reescribirlo en C, este proyecto deriva en el lanzamiento del software
+Tesseroids \citep{uieda2016} que ha sido ampliamente utilizado por la comunidad
+geocientista.
+
+El éxito de estos proyectos los llevó a aspirar a una idea mucho más
+ambiciosa: desarrollar un software de código abierto para modelar el planeta
+Tierra de
+forma completa.
+En ese entonces surge un nombre para el proyecto: \emph{Fatiando a Terra}, que
+puede traducirse como \emph{rebanando la Tierra}.
+
+Durante su Master en Geofisica en el Observatório Nacional, Rio de Janeiro,
+Leonardo comienza el desarrollo de Fatiando a Terra, transformándolo en el hogar
+de las implementaciones que realiza a lo largo de sus investigaciones, todas
+mediante el lenguaje Python.
+Entre ellas podemos encontrar: modelados directos con diferentes geometrías,
+continuación ascendente, deconvolución de Euler, fuentes equivalentes, hasta un
+incipiente \emph{framework} de inversión y algunas implementaciones de
+tomografías sísmicas simples.
+
+En los años posteriores, cuando la mayoría de los gestores del proyecto se
+encontraban cursando sus Doctorados, Fatiando a Terra comienza a cobrar mayor
+forma.
+Leonardo y Vanderei deciden utilizar el \emph{framework} de inversión para dar
+un curso sobre inversiones geofísicas en la Universidade de São Paulo.
+Fatiando adquiere su propio dominio
+(\href{https://www.fatiando.org}{fatiando.org}) y su primera página web,
+alojada en un servidor casero por José Caparica Jr\footnote{%
+    Más adelante se utilizarán los servicios de
+    \href{https://readthedocs.org/}{Read The Docs} para alojar el sitio web,
+    que más tarde se reemplazarían por GitHub Pages.
+}.
+Además se elige distribuirlo bajo la licencia
+\href{https://opensource.org/licenses/BSD-3-Clause}{BSD 3-clause}.
+En 2013, el proyecto es presentado en una charla en SciPy 2013
+\citep{uieda2013}.
+
+En los años posteriores el proyecto comienza a cobrar mayor reconocimiento.
+Empieza a ser utilizado en publicaciones científicas \citep{},
+% 10.1190/geo2011-0388.1
+%
+dictado de clases ()
+% https://www.leouieda.com/teaching/inversao-iag-2012.html
+% https://www.leouieda.com/teaching/inversao-unb-2014.html
+% https://www.leouieda.com/teaching/geofisica1.html
+% https://www.leouieda.com/teaching/geofisica2.html
+y en trabajos finales de grado y posgrado \citep{}.
+% https://www.leouieda.com/about/phd.html
+% Tesina de Santi
+% Tesis en PINGA
+Además comienza a atraer la atención de la comunidad internacional, recibiendo
+colaboraciones de investigadores y desarrolladores de diferentes partes del
+mundo.
+
+Mi primea contribución al proyecto consiste en una implementación del promedio
+radial del espectro de frecuencias de grillas de gravedad
+o magnetismo\footnote{%
+    \url{https://github.com/fatiando/fatiando/pull/303}
+}.
+Desde entonces comencé a involucrarme cada vez más en el proyecto, lo que me
+permitió adquirir mayores conocimientos en el uso de controladores de
+versiones, flujos de trabajo para el desarrollo colaborativo, creación de
+funciones de \emph{testing}, buenas prácticas para el diseño de algoritmos y la
+importancia de mantener la documentación actualizada.
+
+La última versión del paquete fatiando es la v0.5, lanzada en Noviembre de
+2016.
+Si bien ese paquete en particular se encuentra obsoleto y no recibe mayor
+mantenimiento, esto no significa que la vida de el proyecto haya finalizado en
+ese entonces.
 
 A partir de 2018 el proyecto tomó una nueva dirección.
 El panorama de software de código abierto para Geofísica había cambiado mucho
