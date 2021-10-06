@@ -1,0 +1,15 @@
+name: phd-thesis
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - pip
+  - numpy
+  - matplotlib
+  - cartopy
+  - pandas
+  - geopandas
+  - plotly
+  - openpyxl
+  - jupyter
+  - nb_conda

@@ -1,4 +1,4 @@
-# Thesis title
+# Metodologías y herramientas computacionales para el procesado y modelado de datos gravimétricos
 
 [Santiago Soler](https://santisoler.github.io)
 
@@ -15,12 +15,13 @@ Usando BibTeX:
 
 ```
 @phdthesis{soler2021,
-  author  = "Santiago Rubén Soler",
-  title   = "TITLE",
-  school  = "Universidad Nacional de San Juan",
-  year    = "2021",
-  type    = "PhD Thesis",
-  doi     = "xxxx/xxxxx"
+  author  = {Santiago Rub{\'e}n Soler},
+  title   = {Metodolog{\'i}as y herramientas computacionales para el procesado
+        y modelado de datos gravimétricos},
+  school  = {Universidad Nacional de San Juan},
+  year    = {2021},
+  type    = {PhD Thesis},
+  doi     = {xxxx/xxxxx}
 }
 ```
 
