@@ -49,8 +49,6 @@ Astropy, etc), estado actual.
 
 \section{Historia}
 
-% Motivación inicial, personas involucradas, evolución del proyecto.
-
 Los orígenes del proyecto se remonta a finales de la década del 2000, cuando
 Leonardo Uieda, Vanderlei Oliveira Jr. junto a otros estudiantes se encontraban
 cursando los últimos años del Bachillerato en Geofísica (\emph{Bacharelado em
@@ -122,23 +120,44 @@ En 2013, el proyecto es presentado en una charla en SciPy 2013
 \citep{uieda2013}.
 
 En los años posteriores el proyecto comienza a cobrar mayor reconocimiento.
-Empieza a ser utilizado en publicaciones científicas \citep{},
-% 10.1190/geo2011-0388.1
-%
-dictado de clases ()
-% https://www.leouieda.com/teaching/inversao-iag-2012.html
-% https://www.leouieda.com/teaching/inversao-unb-2014.html
-% https://www.leouieda.com/teaching/geofisica1.html
-% https://www.leouieda.com/teaching/geofisica2.html
-y en trabajos finales de grado y posgrado \citep{}.
-% https://www.leouieda.com/about/phd.html
-% Tesina de Santi
-% Tesis en PINGA
+Empieza a ser utilizado en publicaciones científicas
+\citep[][entre otros]{%
+    uieda2012,
+    carlos2014,
+    oliveira2015,
+    hidalgogato2015,
+    carlos2016,
+    reis2016,
+    uieda2017,
+    hidalgogato2017,
+    siqueira2017%
+},
+% fill in more papers if you know about some others
+dictado de clases
+(Tópicos de inversão em
+geofísica\footnote{%
+    \url{https://www.leouieda.com/teaching/inversao-iag-2012.html}
+    y \url{https://www.leouieda.com/teaching/inversao-unb-2014.html}
+},
+\citet{uieda2014},
+Geofísica 1: Gravimetria e magnetometria\footnote{%
+    \url{https://www.leouieda.com/teaching/geofisica1.html}
+},
+Geofísica 2: Sismologia e sísmica\footnote{%
+    \url{https://www.leouieda.com/teaching/geofisica2.html}
+})
+y en trabajos finales de grado y posgrado
+\citep{carlos2013, sales2014, soler2015, uieda2016b, melo2020}.
 Además comienza a atraer la atención de la comunidad internacional, recibiendo
 colaboraciones de investigadores y desarrolladores de diferentes partes del
 mundo.
+La utilización de fatiando por otros investigadores e investigadoras deriva
+a su vez en un ciclo de retroalimentación: quienes comienzan siendo usuarios
+realizan colaboraciones.
+De esta forma fatiando comienza a alojar implementaciones de métodos
+novedosos recientemente publicados \citep{uieda2012b, oliveira2013}
 
-Mi primea contribución al proyecto consiste en una implementación del promedio
+Mi primea contribución al proyecto consistió en una implementación del promedio
 radial del espectro de frecuencias de grillas de gravedad
 o magnetismo\footnote{%
     \url{https://github.com/fatiando/fatiando/pull/303}
@@ -159,30 +178,36 @@ A partir de 2018 el proyecto tomó una nueva dirección.
 El panorama de software de código abierto para Geofísica había cambiado mucho
 desde los inicios de Fatiando a Terra: la cantidad de nuevos paquetes diseñados
 para atacar diversos problemas de las geociencias había aumentado
-considerablemente.
-Dentro de este nuevo ecosistema, fatiando no presentaba un objetivo claro.
+considerablemente
+\citep{cockett2015, ruecker2017, varga2019, obspy2019}.
+Dentro de este nuevo ecosistema, fatiando no poseía un objetivo claro.
 Esto no solo hacía difícil que potenciales usuarios y usuarias distingan el
 propósito en sí del proyecto, sino que también constituía una base de código
 difícil de mantener.
 Por otro lado, para ese entonces fatiando había sido el hogar de
-implementaciones de métodos muy novedosos (cuya audiencia está más orientada
-a investigadores), así como de código \emph{juguete} diseñado para ser
-utilizado en clases para fines didácticos, pero sin las capacidades para atacar
-problemas reales.
+implementaciones de métodos clásicos de la geofísica, métodos muy novedosos
+(orientados principalmente a la investigación científica), así como de código
+\emph{juguete} diseñado para ser utilizado en clases para fines didácticos
+pero sin las capacidades para atacar problemas reales.
+Sumado a esto, la versión de Python 2.7 llegaba pronto a su final de vida, lo
+que hacía necesario adaptar fatiando al nuevo Python 3.
 
-Era necesario establecer nuevos objetivos del proyecto.
-La decisión fue la de dividir el proyecto en múltiples paquetes con
-objetivos claros y concisos.
+Estas razones ponían en evidencia la necesidad de establecer objetivos claros
+para el proyecto, así como también repensar su diseño y sustentabilidad
+a futuro.
+Por esto se tomó la decisión de dividir el proyecto en varios paquetes que
+posean objetivos claros y concisos.
 Esto permitiría no sólo una fácil adopción por parte de usuarios y usuarias,
 sino también que otros proyectos los utilicen como dependencias en caso de
 desearlo.
-Además, esta oportunidad abrió las puertas a hacer uso de mejores prácticas
-para el desarrollo de software, estableciendo estándares de calidad más altos.
-En la sección~\ref{sec:best-practices} se describen las mencionadas mejores
-prácticas.
-
- dividir el fatiando en librerías más pequeñas.
-
+Además, manteniendo los campos de acción de cada paquete aislados del resto,
+se facilitaría el desarrollo a futuro: los colaboradores no necesitan
+familiarizarse con el proyecto completo, sino solo con algunas de sus partes.
+Por otro lado, la decisión de reescribir gran parte del código se presentó como
+una oportunidad para pensar mejores diseños del software ya existente y de
+implementar mejores
+prácticas para el desarrollo de software, estableciendo estándares de calidad
+más altos.
 
 
 \section{Paquetes de software}
