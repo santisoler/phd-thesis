@@ -1679,8 +1679,6 @@ Estos valores óptimos fueron utilizados para producir los resultados de las
 figuras~\ref{fig:ground-survey-differences}
 y~\ref{fig:airborne-survey-differences}.
 
-{\renewcommand\normalsize{\scriptsize}%
-\normalsize
 
 \begin{table}[h]
     \centering
@@ -1692,6 +1690,7 @@ y~\ref{fig:airborne-survey-differences}.
         correspondiente valor.
     }
     \label{tab:parameters-ground-survey}
+    {\scriptsize % reduce size of table to fit paper width
     \begin{tabular}{c c l c c c}
         \textbf{Distribución}
             & \textbf{Profundidad}
@@ -1837,6 +1836,7 @@ y~\ref{fig:airborne-survey-differences}.
                 & \BestGroundGridSourcesConstantDepthDamping
                 & \\
     \end{tabular}
+    }
 \end{table}
 
 \begin{table}[h]
@@ -1849,6 +1849,7 @@ y~\ref{fig:airborne-survey-differences}.
         correspondiente valor.
     }
     \label{tab:parameters-airborne-survey}
+    {\scriptsize % reduce size of table to fit paper width
     \begin{tabular}{c c l c c c}
         \textbf{Distribución}
             & \textbf{Profundidad}
@@ -1994,7 +1995,8 @@ y~\ref{fig:airborne-survey-differences}.
                 & \BestAirborneGridSourcesConstantDepthDamping
                 & \\
     \end{tabular}
+    }
 \end{table}
-}
+
 
 \end{subappendices}
