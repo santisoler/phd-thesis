@@ -40,6 +40,36 @@
 %   - adds dois as links
 \bibliographystyle{apalike-doi}
 
+% Import listings for adding source code in the document
+\usepackage{xcolor}
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Código}
+
+\definecolor{codegreen}{HTML}{50A14F}
+\definecolor{codered}{HTML}{E4564A}
+\definecolor{codegray}{HTML}{383A42}
+\definecolor{codepurple}{HTML}{A626A4}
+\lstdefinestyle{onelight}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{codered},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    % captionpos=b,
+    keepspaces=true,
+    % numbers=left,
+    % numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    frame=tb,
+    framesep=5pt
+}
+\lstset{style=onelight}
+
 % Change margins at each side of the page
 \addtolength{\oddsidemargin}{1cm}
 \addtolength{\evensidemargin}{-1cm}

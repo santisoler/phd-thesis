@@ -309,9 +309,80 @@ posible integrarlo a flujos de trabajos establecidos con gran facilidad.
 La versión v1.0.0 de \emph{Verde} ha sido publicada en el Journal of Open
 Source Software luego de un proceso abierto de revisión por pares
 \citep{verde2018}.
+Podemos acceder a la documentación correspondiente a la última versión estable
+de la librería en \href{https://www.fatiando.org/verde}{fatiando.org/verde}.
 
 
 \subsection{Boule}
+
+\emph{Boule} es una librería que nos permite representar elipsoides de
+referencia mediante objetos. Además nos ofrece herramientas para calcular los
+campos gravitatorios que estos elipsoides generan y para realizar conversiones
+de coordenadas.
+
+Como hemos visto en la sección~\ref{sec:gravedad-terrestre}, un elipsoide de
+referencia puede definirse mediante los semiejes mayor $a$ y menor $b$, su masa
+total $M$ y su velocidad angular $\omega$.
+De forma alternativa pero equivalente, es posible definirlo mediante los
+siguientes parámetros:
+
+\begin{itemize}
+    \item el semieje mayor $a$,
+    \item el achatamiento $f = (a - b) / a$,
+    \item la constante gravitacional geocéntrica $GM$ (donde $M$ es la masa
+        del elipsoide y $G$ la constante de gravitación universal),
+    \item y la velocidad angular $\omega$.
+\end{itemize}
+
+Las funcionalidades principales de \emph{Boule} vienen dadas dentro de la clase
+\texttt{Ellipsoids}, la cual nos permite definir cualquier elipsoide de
+referencia a partir de los parámetros mencionados.
+A modo de ejemplo, uno podría definir el elipsoide WGS84 como se muestra en le
+Código~\ref{lst:boule-wgs84}.
+Sin embargo, \emph{Boule} ya ofrece algunos de los elipsoides de referencia más
+ampliamente usados en geodesia y geofísica, tales como el WGS84
+(\texttt{boule.WGS84}), el GRS80: Geodetic Reference System
+(\texttt{boule.GRS80}) e incluso un elipsoide de referencia para el planeta
+Marte definido según los parámetros disponibles en \citet{ardalan2009}
+(\texttt{boule.MARS}).
+
+\lstinputlisting[
+    float,
+    language=Python,
+    caption={Ejemplo de definición de elipsoide de referencia con \emph{Boule}},
+    label=lst:boule-wgs84
+]{chapters/fatiando-examples/boule-wgs84.py}
+
+A su vez, la clase \texttt{Ellipsoids} posee una serie de propiedades que se
+calculan a partir de los parámetros que definen cada elipsoide, entre ellos: el
+semieje menor $b$, la primera y segunda excentricidad, la excentricidad lineal,
+el radio medio del elipsoide (medido desde un sistema geocéntrico), el módulo
+del vector aceleración de la gravedad sobre cualquier punto en el ecuador o en
+sus polos.
+Además, la misma clase ofrece un conjunto de métodos útiles para realizar
+cálculos acerca de los campos gravitatorios que genera el elipsoide
+y conversión de unidades.
+El método \texttt{geocentric\_radius()} nos permite calcular la distancia entre
+el centro del elipsoide y cualquier punto de su superficie a partir de su
+latitud geodésica o geocéntrica.
+Los métodos \texttt{geodetic\_to\_spherical()}
+y \texttt{spherical\_to\_geodetic()} nos permiten convertir coordenadas
+geodésicas en esféricas geocéntricas o viceversa siguiendo las ecuaciones de
+\citet{vermeille2002}.
+El método \texttt{normal\_gravity()} implementa la \emph{fórmula cerrada} de
+\citet{li2001a} para calcular el módulo de la aceleración de la gravedad
+generada por el elipsoide en cualquier punto dado por sus coordenadas
+geodésicas.
+
+Si bien \emph{Boule} es una librería que se encuentra en un estado funcional
+y puede ser utilizada en investigaciones científicas al día de la fecha, aún no
+ha alcanzado su primera versión estable.
+Es posible que aún sea necesario realizar modificaciones sobre su diseño en los
+planes de incorporar otros tipos de elipsoides, como las esferas o elipsoides
+triaxiales.
+A pesar de ello, podemos acceder a la documentación correspondiente a la última
+versión lanzada en \href{https://www.fatiando.org/verde}{fatiando.org/boule}.
+
 
 \subsection{Harmonica}
 
@@ -367,3 +438,7 @@ Visitas a la página web
 Stable release of every package
 
 Mayor interoperabilidad con el resto de paquetes geofísicos (SimPEG, pyGIMLi, etc)
+
+Implementar esféras en boule (luna, mercurio).
+Implementar elipsoides traixiales en boule.
+Unificar las clases de elipsoides para todo tipo.
