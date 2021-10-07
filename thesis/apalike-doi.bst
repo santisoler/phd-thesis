@@ -450,7 +450,7 @@ FUNCTION {format.thesis.type}
 
 FUNCTION {format.tr.number}
 { type empty$
-    { "Technical Report" }
+    { "Reporte técnico" }
     'type
   if$
   number empty$
@@ -721,7 +721,7 @@ FUNCTION {mastersthesis}
   new.block
   format.title "title" output.check
   new.block
-  "Master's thesis" format.thesis.type output.nonnull
+  "Tesis de Maestría" format.thesis.type output.nonnull
   school "school" output.check
   address output
   doi missing$
@@ -759,7 +759,7 @@ FUNCTION {phdthesis}
   new.block
   format.btitle "title" output.check
   new.block
-  "PhD thesis" format.thesis.type output.nonnull
+  "Tesis de Doctorado" format.thesis.type output.nonnull
   school "school" output.check
   address output
   doi missing$
