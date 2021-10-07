@@ -212,11 +212,104 @@ más altos.
 
 \section{Paquetes de software}
 
-Descripción de cada uno de los paquetes. Breve, casi como paper de JOSS.
-Puedo poner códigos de ejemplo, especificar versiones.
-Paper en JOSS de Verde y Pooch
+Actualmente Fatiando a Terra está compuesto por cuatro paquetes de software
+destinados a ofrecer soluciones a diversas problemáticas en geociencias, así
+como también a otras áreas de la ciencia:
+
+\begin{description}
+    \item[\emph{Verde}]{%
+        Procesado y grillado de datos espaciales
+    }
+    \item[\emph{Boule}]{%
+        Elipsoides de referencia para aplicaciones geodésicas y geofísicas
+    }
+    \item[\emph{Harmonica}]{%
+        Procesado, modelado directo e inverso de datos gravimétricos
+        y magnéticos
+    }
+    \item[\emph{Pooch}]{%
+        Descargar y almacenar datos científicos de la web de forma sencilla
+    }
+\end{description}
 
 \subsection{Verde}
+
+\emph{Verde} ofrece herramientas para procesar datos espaciales (tales como
+muestras geofísicas obtenidas en el campo, mediciones de batimetría, etc)
+e interpolarlos sobre grillas regulares.
+
+La mayoría de los muestreos de datos espaciales se componen por datos
+irregularmente distribuidos sobre la zona de estudio:
+puntos dispersos, trayectos irregulares o líneas casi rectas.
+Sin embargo, muchas metodologías de procesado e interpretación requieren que
+los datos se sitúen sobre puntos pertenecientes a una grilla regular.
+Este problema suele resolverse mediante la interpolación de los datos
+originales sobre una grilla regular, proceso que se conoce como
+\emph{grillado}.
+
+Dentro de los algoritmos de grillado existe una categoría que se conoce como
+\emph{interpolaciones con funciones de base radial} (\emph{radial basis
+function interpolation} en inglés). Un ejemplo de un algoritmo que entra en
+esta categoría son las \emph{splines} biharmónicas.
+Estos métodos asumen que podemos representar los datos observados por una
+combinación lineal de funciones de Green, es decir:
+
+\begin{equation}
+    d_i = \sum_{j=1}^M c_j G(\mathbf{p}_i, \mathbf{q}_j),
+\end{equation}
+
+\noindent donde $d_i$ y es el dato $i$-ésimo, $\mathbf{p}_i$ es la ubicación de
+ese mismo punto, $c_j$ es un coeficiente escalar, $G$ es una función de Green y
+$\mathbf{q}_j$ es la ubicación del punto que define la función de Green en el
+término $j$-ésimo.
+El proceso de interpolación consiste en ajustar los valores de los
+coeficientes $c_j$ mediante mínimos cuadrados de forma tal que se recuperen los
+datos observados, y luego utilizarlos para predecir valores sobre los puntos de
+la grilla:
+
+\begin{equation}
+    d(\mathbf{p}) = \sum_{j=1}^M c_j G(\mathbf{p}, \mathbf{q}_j),
+\end{equation}
+
+\noindent donde $\mathbf{p}$ es la ubicación de cualquier punto de la grilla.
+
+Dentro de \emph{Verde} hallamos implementaciones de algoritmos de interpolación
+de este tipo siguiendo un diseño similar
+a los modelos de aprendizaje automático de \emph{scikit-learn}
+\citep{sklearn2011}. Esto permite que quienes estén familiarizados con la
+aplicación de métodos de aprendizaje automático en Python puedan fácilmente
+entender cómo utilizar la \ac{API} de \emph{Verde}.
+Entre los algoritmos de interpolación que se encuentran implementados están las
+\emph{splines} biharmónicas, así como métodos más complejos como la
+interpolación de vectores 2D con funciones de Green \citep{sandwell2016}.
+
+Como hemos mencionado anteriormente, los interpoladores presentes en
+\emph{Verde} han sido implementados mediante clases que reproducen un
+comportamiento similar a las clases de \emph{scikit-learn}.
+Los interpoladores en verde poseen un método \texttt{fit()} que se usa para
+ajustar los parámetros $c_j$ mediante mínimos cuadrados partiendo de un
+conjunto de datos y sus ubicaciones. Luego podemos hacer uso del método
+\texttt{predict()} para predecir valores en cualquier conjunto de puntos,
+o bien usando el método \texttt{grid()} podemos predecir sobre una grilla
+regular de puntos.
+
+Además, \emph{Verde} cuenta con utilidades para realizar reducciones por
+bloque, una clases para determinación de tendencias polinomiales, funciones
+para el manejo de coordenadas, y herramientas para realizar validaciones
+cruzadas y selección de modelos.
+
+El diseño de \emph{Verde} permite su extensibilidad: todos los interpoladores
+heredan su estructura a partir de una clase base denominada
+\texttt{verde.BaseClass}, lo cual permite construir nuevos tipos de
+interpoladores de manera sencilla, restando que definir únicamente el tipo de
+función de Green a utilizar.
+Además, debido a la compatibilidad con las librerías científicas de Python, es
+posible integrarlo a flujos de trabajos establecidos con gran facilidad.
+
+La versión v1.0.0 de \emph{Verde} ha sido publicada en el Journal of Open
+Source Software luego de un proceso abierto de revisión por pares
+\citep{verde2018}.
+
 
 \subsection{Boule}
 
