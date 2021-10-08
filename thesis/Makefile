@@ -5,6 +5,7 @@ REFERENCES = references.bib
 TEX_FILES = apalike-doi.bst \
 			$(REFERENCES) \
 		   	variables.tex \
+			chapters/agradecimientos.tex \
 			chapters/license.tex \
 			chapters/titlepage.tex \
 			chapters/introduccion.tex chapters/fundamentos.tex \

@@ -12,17 +12,25 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{hyperref}
-\usepackage{enumitem}
-\usepackage{fancyhdr}
-\usepackage[Glenn]{fncychap}
-\usepackage{datetime2}
-\usepackage{multicol}
+\usepackage{fancyhdr} % create fancy headers
+\usepackage{datetime2} % commands for managing dates and its formats
 \usepackage[round,authoryear,sort]{natbib}
 \usepackage{doi} % show dois as links on references
 \usepackage{mathpazo} % Use the Palatino font by default
+\usepackage[Glenn]{fncychap}  % create fancy chapter titles
+
+\usepackage{xurl}  % improved urls with proper hyphenation
+
+% Import enumitem to customize descriptions in license.tex
+\usepackage{enumitem}
+
+% Import package to generate algorithms
 \usepackage[longend,linesnumbered,ruled,spanish,onelanguage]{algorithm2e}
+
+% Import acronym style for creating hyperref acronym and a list of acronyms
 \usepackage{acronym}
+
+% Make caption titles bold
 \usepackage[labelfont=bf]{caption}
 
 % Add toc to the toc
@@ -51,6 +59,7 @@
 \input{variables}
 
 % Configure hyperref and add PDF metadata
+\usepackage{hyperref}
 \hypersetup{
     colorlinks,
     allcolors=[rgb]{0, 0.451, 0.753},
@@ -60,7 +69,7 @@
     pdfkeywords={\PDFKeywords},
     pdftex,
 }
-\urlstyle{same}
+\urlstyle{same} % make urls use the same font as every other text
 
 
 % Configure headers and footers
@@ -129,25 +138,13 @@
 
 \include{chapters/license}
 
-\chapter{Agradecimientos}
+% \include{chapters/agradecimientos}
 
-% tesseroids
-Nos encontramos eternamente agradecidos con los y las desarrolladores del
-software open-source, sin el cual este trabajo no hubiera sido posible.
-Agradecemos también al editor Kosuke Heki y a dos revisores anónimos por sus
-comentarios y contribuciones.
-
-% eqls
-Nos encontramos eternamente agradecidos con los y las desarrolladores del
-software open-source, sin el cual este trabajo no hubiera sido posible.
-Agradecemos también al editor Frederik Simons, editor asistente Fern Storey,
-y a dos revisores anónimos por sus comentarios y contribuciones.
-Este trabajo contiene material de British Geological Survey ©~UKRI.
-
-
-% Indice y lista de abreviaturas
+% Indice
+\cleardoublepage\phantomsection  % fix href of the toc to the toc itself
 \tableofcontents
 
+% Lista de abreviaturas
 \chapter{Lista de Abreviaturas}
 \begin{acronym}
    \acro{GLQ}{Cuadratura de Gauss-Legendre}
@@ -172,7 +169,7 @@ Este trabajo contiene material de British Geological Survey ©~UKRI.
 
 \backmatter
 
-\phantomsection
+\phantomsection  % use phantomsection to fix bibliography href in the toc
 \bibliography{references}
 
 \end{document}
