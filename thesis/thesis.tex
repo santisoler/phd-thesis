@@ -174,16 +174,6 @@
 \cleardoublepage\phantomsection  % fix href of the toc to the toc itself
 \tableofcontents
 
-% Lista de abreviaturas
-\chapter{Lista de Abreviaturas}
-\begin{acronym}
-   \acro{GLQ}{Cuadratura de Gauss-Legendre}
-   \acro{RMSE}{raíz del error cuadrático medio}
-   \acro{API}{interfaz de programación de aplicaciones}
-   \acro{DOI}{identificador de objetos digital}
-\end{acronym}
-
-
 \mainmatter
 \fancymain
 
@@ -200,6 +190,15 @@
 \include{chapters/conclusions}
 
 \backmatter
+
+% Lista de abreviaturas
+\chapter{Lista de Abreviaturas}
+\begin{acronym}
+   \acro{GLQ}{Cuadratura de Gauss-Legendre}
+   \acro{RMSE}{raíz del error cuadrático medio}
+   \acro{API}{interfaz de programación de aplicaciones}
+   \acro{DOI}{identificador de objetos digital}
+\end{acronym}
 
 \phantomsection  % use phantomsection to fix bibliography href in the toc
 \bibliography{references}
