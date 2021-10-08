@@ -2,18 +2,10 @@
 THESIS = thesis
 # List other .tex needed files
 REFERENCES = references.bib
-TEX_FILES = apalike-doi.bst \
-			$(REFERENCES) \
-		   	variables.tex \
-			chapters/agradecimientos.tex \
-			chapters/license.tex \
-			chapters/titlepage.tex \
-			chapters/introduccion.tex chapters/fundamentos.tex \
-			chapters/tesseroids-variable-density.tex \
-			chapters/eql-gradient-boosted.tex \
-			chapters/eql-gradient-boosted-results.tex \
-			chapters/fatiando.tex \
-			chapters/conclusions.tex \
+TEX_FILES = $(wildcard *.tex chapters/*.tex)
+TEX_STYLES = $(wildcard *.sty *.bst)
+FIGURES = $(wildcard figs/* figs/*/*)
+SOURCE_FILES = $(REFERENCES) $(TEX_FILES) $(TEX_STYLES) $(FIGURES)
 # Folder where output will be placed
 OUTDIR = _output
 CHAPTERS_DIR = $(OUTDIR)/chapters
@@ -23,6 +15,8 @@ PDF = $(OUTDIR)/$(THESIS).pdf
 LATEX_COMPILER = latexmk
 LATEX_FLAGS = -pdf -outdir=$(OUTDIR)
 PDFVIEWER = xdg-open
+
+.PHONY: all help clean word-count show bibsort live
 
 
 all: $(PDF)
@@ -49,7 +43,7 @@ show: all
 bibsort: $(REFERENCES)
 	bibtool -s -i $< -o $<
 
-$(PDF): $(THESIS).tex $(TEX_FILES) | $(OUTDIR) $(CHAPTERS_DIR)
+$(PDF): $(THESIS).tex $(SOURCE_FILES) | $(OUTDIR) $(CHAPTERS_DIR)
 	$(LATEX_COMPILER) $(LATEX_FLAGS) $<
 
 $(OUTDIR):
