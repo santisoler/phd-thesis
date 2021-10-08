@@ -14,9 +14,10 @@ PDF = $(OUTDIR)/$(THESIS).pdf
 
 LATEX_COMPILER = latexmk
 LATEX_FLAGS = -pdf -outdir=$(OUTDIR)
+LATEXMK_RC = .latexmkrc
 PDFVIEWER = xdg-open
 
-.PHONY: all help clean word-count show bibsort live
+.PHONY: all help live clean word-count show bibsort live
 
 
 all: $(PDF)
@@ -25,6 +26,7 @@ help:
 	@echo "Commands:"
 	@echo ""
 	@echo "  all         build a PDF version of the thesis"
+	@echo "  live        build and show the thesis with continuosly update"
 	@echo "  show        opens the PDF with your favourite reader"
 	@echo "  bibsort     autosort the BibTeX file alphabetically"
 	@echo "  word-count  counts the number of words, figures, etc."
@@ -37,11 +39,14 @@ clean:
 word-count: $(THESIS).tex
 	texcount -merge $<
 
-show: all
+show: $(PDF)
 	@( $(PDFVIEWER) $(PDF) 2> /dev/null; )
 
 bibsort: $(REFERENCES)
 	bibtool -s -i $< -o $<
+
+live: $(THESIS).tex $(SOURCE_FILES) | $(OUTDIR) $(CHAPTERS_DIR) $(LATEXMK_RC)
+	$(LATEX_COMPILER) -pvc -r $(LATEXMK_RC) $(LATEX_FLAGS) $<
 
 $(PDF): $(THESIS).tex $(SOURCE_FILES) | $(OUTDIR) $(CHAPTERS_DIR)
 	$(LATEX_COMPILER) $(LATEX_FLAGS) $<
