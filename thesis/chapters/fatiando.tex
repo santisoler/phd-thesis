@@ -388,6 +388,111 @@ versión lanzada en \href{https://www.fatiando.org/verde}{fatiando.org/boule}.
 
 \subsection{Pooch}
 
+\emph{Pooch} nos ofrece herramientas para descargar datos científicos alojados
+en Internet, almacenarlos localmente y comprobar sus sumas de verificación,
+entre otras características.
+
+Muchas de las librerías de software científico hacen uso de datos de muestra
+para ejemplificar su funcionamiento en las secciones de la documentación que se
+conocen como \emph{Galería de ejemplos}.
+Usualmente estos datos de muestra se incluyen dentro de los repositorios donde
+se aloja el mismo código fuente de la librería, sin embargo estos archivos de
+datos no son empaquetados para su distribución con el objetivo de reducir el
+tamaño de las futuras instalaciones.
+En cambio, los datos de muestra suelen ser descargados al ser necesarios
+mediante código implementado dentro de cada una de estas librerías, haciendo
+uso de paquetes de Python para descargar archivos mediante protocolo HTTP por
+ejemplo.
+\emph{Pooch} surge como una solución a este problema transversal a muchas
+librerías del ecosistema científico de Python.
+
+\lstinputlisting[
+    float,
+    language=Python,
+    caption={%
+        Ejemplo de descarga de archivos con \emph{Pooch} mediante la
+        clase \texttt{pooch.Pooch}. Este código es a modo de ejemplificación
+        y no está escrito para ser ejecutado.
+    },
+    label=lst:pooch-registry
+]{chapters/fatiando-examples/pooch-registry.py}
+
+
+\emph{Pooch} permite gestionar un \emph{registro} en el cual podemos listar las
+direcciones de cada uno de los archivos que queremos ofrecer para su descarga,
+junto con el \emph{hash} de una suma de verificación. Al solicitar alguno
+o algunos de estos archivos, \emph{Pooch} se encarga de descargarlos de su
+correspondiente localización, almacenarlos en un \emph{caché} local y realizar
+una suma de verificación con el objetivo de certificar la integridad de los
+mismos.
+La descarga de los archivos se lleva a cabo únicamente si no existe tal archivo
+en el \emph{caché} local.
+En el Código~\ref{lst:pooch-registry} podemos visualizar cómo es posible
+utilizar la función \texttt{pooch.create()} para inicializar una instancia de
+la clase \texttt{pooch.Pooch} especificando el directorio donde se descargarán
+los archivos, la dirección base donde se encuentran alojados los archivos de
+interés, y el \emph{registro} donde especificamos el nombre de los archivos
+y sus \emph{hashes} de las sumas de verificación.
+Luego podemos solicitar la descarga de uno de los archivos mediante el método
+\texttt{fetch()}, el cual devuelve la ruta al archivo descargado y almacenado
+localmente.
+
+\emph{Pooch} no sólo nos permite descargar archivos desde el protocolo HTTPS,
+sino también desde FTP y SFTP con autenticación.
+Incluso es posible descargar archivos almacenados en repositorios de acceso
+abierto como Zenodo\footnote{\url{https://zenodo.org/}}
+o figshare\footnote{\url{https://figshare.com}} únicamente mediante el
+\ac{DOI}.
+A su vez, también soporta diferentes tipos de suma de verificación, como
+SHA256, MD5, XXH128, entre otras.
+Además ofrece la posibilidad de realizar post-procesados luego de la descarga
+de los archivos, como por ejemplo descomprimir archivos \texttt{.zip},
+\texttt{.tar}, \texttt{.gzip}, \texttt{.xz}, etc.
+
+El paquete presenta ciertas cualidades que lo hacen un excelente candidato para
+ser utilizados por librerías de terceros.
+En primer lugar, es posible configurarlo para que se adapte a diferentes
+necesidades en pocas líneas con una sintaxis sencilla.
+En segundo lugar, es un paquete puramente escrito en Python con dependencias
+mínimas.
+Y por último, presenta un alto grado de extensibilidad: es posible definir
+funciones propias para otro tipos de descargas (desde otros protocolos, por
+ejemplo) o bien para realizar post-procesados. Estas funciones personalizadas
+puede acoplarse fácilmente al \emph{framework} de \emph{Pooch}, permitiendo
+utilizar su misma sintaxis y sus capacidades de descarga, almacenamiento
+y comprobación de sumas de verificación, incluso en aplicaciones particulares.
+
+La versión v0.7.1 de \emph{Pooch} fue publicada en el Journal of Open Source
+Software luego de una revisión abierta por pares \citep{pooch2020}.
+
+\lstinputlisting[
+    float,
+    language=Python,
+    caption={%
+        Ejemplo de descarga de archivos con \emph{Pooch} mediante la
+        función \texttt{pooch.retrieve()}.
+    },
+    label=lst:pooch-retrieve
+]{chapters/fatiando-examples/pooch-retrieve.py}
+
+Hasta entonces la principal audiencia de \emph{Pooch} eran otros
+desarrolladores de software que deseaban una forma sencilla de distribuir datos
+de muestra a sus usuarios.
+Sin embargo, en los meses subsiguientes se presentó la oportunidad de incluir
+otro tipo de audiencia al paquete: usuarios finales que deseaban descargar
+pocos archivos por única vez.
+Esto se materializó con la creación de la función \texttt{pooch.retrieve()} que
+permite acceder a las mismas funcionalidades de \emph{Pooch}, pero sin la
+necesidad de predefinir una instancia de \texttt{pooch.Pooch} y con una
+interfaz más sencilla.
+El Código~\ref{lst:pooch-retrieve} ejemplifica cómo podemos utilizar la función
+\texttt{pooch.retrieve()} para descargar un archivo, almacenarlo localmente
+y comprobar su suma de verificación en una única ejecución.
+La función devuelve la ruta al archivo descargado y almacenado localmente.
+
+% quien usa pooch hoy en dia
+% xarray
+% scikit-image
 
 \section{Desarrollo y mejores prácticas}
 \label{sec:best-practices}
