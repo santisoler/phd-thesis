@@ -5,7 +5,8 @@ REFERENCES = references.bib
 TEX_FILES = $(wildcard *.tex chapters/*.tex)
 TEX_STYLES = $(wildcard *.sty *.bst)
 FIGURES = $(wildcard figs/* figs/*/*)
-SOURCE_FILES = $(REFERENCES) $(TEX_FILES) $(TEX_STYLES) $(FIGURES)
+PYTHON_EXAMPLES = $(wildcard chapters/fatiando-examples/*.py)
+SOURCE_FILES = $(REFERENCES) $(TEX_FILES) $(TEX_STYLES) $(FIGURES) $(PYTHON_EXAMPLES)
 # Folder where output will be placed
 OUTDIR = _output
 CHAPTERS_DIR = $(OUTDIR)/chapters
