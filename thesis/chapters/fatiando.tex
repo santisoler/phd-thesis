@@ -381,10 +381,123 @@ Es posible que aún sea necesario realizar modificaciones sobre su diseño en lo
 planes de incorporar otros tipos de elipsoides, como las esferas o elipsoides
 triaxiales.
 A pesar de ello, podemos acceder a la documentación correspondiente a la última
-versión lanzada en \href{https://www.fatiando.org/boule}{fatiando.org/boule}.
+versión en \href{https://www.fatiando.org/boule}{fatiando.org/boule}.
 
 
 \subsection{Harmonica}
+
+\emph{Harmonica} fue creada con la intención de ser el nuevo hogar de aquellas
+implementaciones de métodos de procesado y modelado de datos gravimétricos
+y magnéticos.
+Además, surgió como oportunidad de rediseñar algunas de estas implementaciones
+con el objetivo de facilitar su utilización, extensibilidad y mantenimiento
+a futuro.
+
+Una de las principales herramientas que ofrece \emph{Harmonica} son las
+funciones de modelado directo para distintas geometrías y para diferentes
+sistemas de coordenadas.
+La geometría más sencilla que hallamos son masas puntuales en coordenadas
+esféricas geocéntricas o en coordenadas Cartesianas, implementando las
+ecuaciones~\ref{eq:potencial-masa-puntual} y \ref{eq:gz-particula}.
+Podemos calculas los campos gravitacionales producidos por masas puntuales
+mediante la función \texttt{point\_mass\_gravity()}.
+También podemos calcular los campos gravitacionales de prismas rectangulares
+mediante el método de \citet{nagy2000} con las correcciones de
+\citet{fukushima2020} descriptas en la sección~\ref{sec:prismas-rectangulares},
+haciendo uso de la función \texttt{prism\_gravtiy()}.
+\emph{Harmonica} también cuenta con una implementación en Python de los
+algoritmos de discretización adaptativa y \ac{GLQ} para calcular los campos
+gravitacionales de tesseroides con densidad constante, a los cuales podemos
+acceder mediante la función \texttt{tesseroid\_gravity()}.
+El Código~\ref{lst:harmonica-point-mass} ejemplifica como podemos utilizar la
+función \texttt{point\_mass\_gravity()} para calcular la aceleración de la
+gravedad producida por dos masas puntuales dadas en coordenadas Cartesianas.
+
+\lstinputlisting[
+    float,
+    language=Python,
+    caption={%
+        Ejemplo de cálculo de aceleración de la gravedad producida por dos
+        masas puntuales dadas en coordenadas Cartesianas mediante
+        \emph{Harmonica}.
+    },
+    label=lst:harmonica-point-mass
+]{chapters/fatiando-examples/harmonica-point-mass.py}
+
+La mayoría de los métodos de modelado directo involucran cómputos moderadamente
+complejos, los cuales puede conllevar a un alto costo computacional,
+especialmente a la hora de modelar grandes cantidades de geometrías sobre
+muchos puntos de observación.
+Escribir estas funciones en Python puro resultaría en implementaciones que no
+harían un uso eficiente de los recursos computacionales debido a la misma
+naturaleza del interprete de Python.
+Es por ello que una de las alternativas más viables es recurrir a código
+precompilado (escribiendo las implementaciones en lenguajes como C o FORTRAN
+y luego añadir \emph{wrappers} de Python) o bien a compilaciones en tiempo de
+ejecución.
+En los orígenes de de \emph{Harmonica}, hemos optado por realizar nuestras
+implementaciones mediante Numba \citep{numba2015}: un compilador de Python de
+alto desempeño.
+Numba se encarga de precompilar el código que implementa cada uno de estos
+algoritmos al momento de ejecutar las funciones por primera vez, utilizando en
+adelante los binarios ya compilados.
+Mediante este método no solo podemos hacer un uso mucho más eficiente de los
+recursos computacionales sino que además podemos habilitar sencillamente la
+paralelización de nuestros algoritmos, distribuyendo la tarea en los
+núcleos disponibles del procesador donde se está ejecutando.
+Además, dada la naturaleza de Numba, no es necesario que distribuyamos los
+binarios de \emph{Harmonica} para cada plataforma o sistema operativo: Numba se
+encarga de la precompilación durante el tiempo de ejecución.
+De esta manera, se simplifica mucho la tarea de distribuir e instalar
+\emph{Harmonica} en cualquier tipo de plataforma.
+Las decisiones de diseño han permitido que los métodos de \texttt{EQLHarmonic}
+reutilicen muchas de las funciones centrales del modelado directo de masas
+puntuales, permitiendo no solo un ahorro en cantidad de código, sino también el
+reciclado de las oportunidades que estas proveen mediante el compilador Numba,
+como paralelizar la construcción de la matriz Jacobiana.
+
+Otra de las capacidades que presenta esta librería es la de realizar cálculos
+a partir de los algoritmos de fuentes equivalentes.
+La clase \texttt{EQLHarmonic} contiene una implementación del método de fuentes
+equivalentes que utiliza fuentes puntuales y la inversa de la distancia como
+función de Green (tal y como se describe en la
+sección~\ref{sec:equivalent-sources-technique}).
+El ajuste de los coeficientes de las fuentes se realiza mediante un algoritmo
+de mínimos cuadrados amortiguados, haciendo uso del parámetro de
+\emph{amortiguamiento} adimensional introducido en la
+sección~\ref{sec:eql_inversion}.
+\texttt{EQLHarmonic} permite ajustar fuentes equivalentes dadas en coordenadas
+Cartesianas, mientras que \texttt{EQLHarmonicSpherical} nos permite aplicar la
+misma metodología pero definiendo las fuentes puntuales y los puntos de
+observación en coordenadas esféricas geocéntricas.
+Estas clases heredan muchos de los métodos y atributos de la clase
+\texttt{BaseGridder} de \emph{Verde}, haciendo que su utilización sea a su vez
+muy similar a la que encontramos en los métodos de aprendizaje automático de
+scikit-learn \citep{sklearn2011}.
+
+\emph{Harmonica} ofrece además algunas otras funcionalidades de procesado de
+datos gravimétricos: aplicación de la corrección de Bouguer utilizando una
+aproximación de placa infinita, cálculo de profundidad de raíces según un
+modelo isostático de Airy, la capacidad de leer archivos \texttt{.gdf}
+provistos por el servicio
+ICGEM\footnote{\url{http://icgem.gfz-potsdam.de/home}}, creación de muestras
+sintéticas aéreas o sobre terreno a partir de muestras reales.
+
+Si bien \emph{Harmonica} es una librería que se encuentra en un estado funcional
+y puede ser utilizada en investigaciones científicas al día de la fecha, aún no
+ha alcanzado su primera versión estable.
+A pesar de ello, podemos acceder a la documentación correspondiente a la última
+versión en \href{https://www.fatiando.org/harmonica}{fatiando.org/harmonica}.
+
+% Planes a futuro:
+
+% incluir gradient-boosted eqls y variable density tesseroids
+
+% derivadas espaciales de grillas (verticales con FFT)
+
+% Euler deconvolution
+
+% inversion: nuevo framework de inversion
 
 \subsection{Pooch}
 
