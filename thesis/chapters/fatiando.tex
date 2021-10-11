@@ -618,23 +618,71 @@ puede hallarse en \href{https://www.fatiando.org/pooch}{fatiando.org/pooch}.
 \section{Desarrollo y mejores prácticas}
 \label{sec:best-practices}
 
-Flujo de trabajo en Github.
+Desde sus orígenes, el proyecto ha sido desarrollado siguiendo las mejores
+prácticas que se encontraban en conocimiento de sus desarrolladores.
+Es por esta razón que a lo largo de sus años de vida se hayan incorporado cada
+vez mayor cantidad o mejores herramientas para desempeñar estas mejores
+prácticas, a medida que los desarrolladores adquirían mayores conocimientos.
 
-Code review.
+Todo desarrollo de Fatiando a Terra se realiza mediante un software de
+controlador de versiones, y a excepción de algunos momentos en la concepción
+del proyecto, utilizamos \texttt{git}\footnote{\url{https://git-scm.com}} como
+controlador de versiones distribuido
+y GitHub\footnote{\url{https://www.github.com}} como servidor de repositorios.
 
-Documentación.
+Gracias a \texttt{git}, cada librería posee una \emph{rama} principal de
+desarrollo donde se provee del código fuente que será utilizado por los
+usuarios y usuarias finales.
+El flujo de desarrollo de cada una de las librerías del proyecto se basa en los
+\emph{Issues} y \emph{Pull Requests} que ofrece GitHub.
+En cada \emph{Issue} ponemos en evidencia la existencia de un problema
+existente en el código de la \emph{rama} principal, exponemos una nueva idea
+a implementar a futuro o solicitamos una nueva capacidad o comportamiento del
+código existente.
+Los \emph{Issues} representan un canal de comunicación entre toda la comunidad,
+incluyendo usuarios, desarrolladores y contribuidores.
 
-Testeo.
+Cada vez que alguien desea colaborar con alguna modificación o una nueva
+implementación, esta persona escribe su código en una nueva \emph{rama} que
+se desprende de la principal y abre un \emph{Pull Request}, es decir, una
+solicitud a los mantenedores de incluir ese nuevo código en la rama principal.
+Dentro de los \emph{Pull Requests} otros colaboradores pueden realizar una
+revisión del código, sugerir cambios y discutir alternativas, de forma tal que
+la propuesta inicial alcance el estado necesario para poder ser incorporada
+al código fuente de la librería.
+Los requisitos para que un nuevo código sea aceptado no son estrictos, sin
+embargo se busca alcanzar un determinado estándar de calidad siguiendo un
+conjunto de mejores prácticas.
+Las revisiones de código no tienen como objetivo determinar si una cierta
+contribución debe ser aceptada o rechazada, sino que se toman como punto de
+partida para aplicar las modificaciones necesarias hasta alcanzar dicho
+estándar de calidad.
 
-CI.
+Muchas de las mejores prácticas que aplicamos a lo largo del proyecto pueden
+hallarse en \citet{wilson2014,wilson2017}, sin embargo presentamos
+a continuación una descripción detallada de las más importantes.
 
-Ejemplos.
+\subsection{Estilo de escritura}
 
-Filosofía UNIX?
+% Flujo de trabajo en Github.
 
-Releases y backward compatibility?
+% Code review.
 
-Pypi y conda-forge?
+% Code style. Black. Lint
+
+% Documentación.
+
+% Testeo.
+
+% CI.
+
+% Ejemplos.
+
+% Filosofía UNIX?
+
+% Releases y backward compatibility?
+
+% Pypi y conda-forge?
 
 
 \section{Comunidad}
