@@ -381,7 +381,7 @@ Es posible que aún sea necesario realizar modificaciones sobre su diseño en lo
 planes de incorporar otros tipos de elipsoides, como las esferas o elipsoides
 triaxiales.
 A pesar de ello, podemos acceder a la documentación correspondiente a la última
-versión lanzada en \href{https://www.fatiando.org/verde}{fatiando.org/boule}.
+versión lanzada en \href{https://www.fatiando.org/boule}{fatiando.org/boule}.
 
 
 \subsection{Harmonica}
@@ -450,13 +450,13 @@ de los archivos, como por ejemplo descomprimir archivos \texttt{.zip},
 \texttt{.tar}, \texttt{.gzip}, \texttt{.xz}, etc.
 
 El paquete presenta ciertas cualidades que lo hacen un excelente candidato para
-ser utilizados por librerías de terceros.
+ser utilizado por librerías de terceros.
 En primer lugar, es posible configurarlo para que se adapte a diferentes
 necesidades en pocas líneas con una sintaxis sencilla.
 En segundo lugar, es un paquete puramente escrito en Python con dependencias
 mínimas.
 Y por último, presenta un alto grado de extensibilidad: es posible definir
-funciones propias para otro tipos de descargas (desde otros protocolos, por
+funciones propias para otro tipos de descargas (mediante otros protocolos, por
 ejemplo) o bien para realizar post-procesados. Estas funciones personalizadas
 puede acoplarse fácilmente al \emph{framework} de \emph{Pooch}, permitiendo
 utilizar su misma sintaxis y sus capacidades de descarga, almacenamiento
@@ -475,7 +475,7 @@ Software luego de una revisión abierta por pares \citep{pooch2020}.
     label=lst:pooch-retrieve
 ]{chapters/fatiando-examples/pooch-retrieve.py}
 
-Hasta entonces la principal audiencia de \emph{Pooch} eran otros
+Hasta entonces la principal audiencia de \emph{Pooch} consistía en otros
 desarrolladores de software que deseaban una forma sencilla de distribuir datos
 de muestra a sus usuarios.
 Sin embargo, en los meses subsiguientes se presentó la oportunidad de incluir
@@ -490,9 +490,17 @@ El Código~\ref{lst:pooch-retrieve} ejemplifica cómo podemos utilizar la funci�
 y comprobar su suma de verificación en una única ejecución.
 La función devuelve la ruta al archivo descargado y almacenado localmente.
 
-% quien usa pooch hoy en dia
-% xarray
-% scikit-image
+Actualmente \emph{Pooch} es utilizado por varias librerías del ambiente
+científico, entre ellas: MetPy \citep{metpy}, icepack \citep{icepack}, MOABB
+\citep{moabb}, MNE-Python \citep{mnepython}, junto a otras librerías de
+Fatiando como \emph{Harmonica} y \emph{Verde}.
+Además, otras librerías de Python con aplicaciones más amplias han incluido
+a \emph{Pooch} dentro de sus dependencias, por ejemplo Xarray
+\citep{xarray2017} y scikit-image \citep{skimage}.
+
+La documentación correspondiente a la última versión estable de \emph{Pooch}
+puede hallarse en \href{https://www.fatiando.org/pooch}{fatiando.org/pooch}.
+
 
 \section{Desarrollo y mejores prácticas}
 \label{sec:best-practices}
