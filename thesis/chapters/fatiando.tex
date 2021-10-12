@@ -664,6 +664,46 @@ a continuación una descripción detallada de las más importantes.
 
 \subsection{Estilo de escritura}
 
+El lenguaje Python admite estilos de escritura muy variados, priorizando que el
+código sea legible a poseer una sintaxis muy estricta.
+Sin embargo, a la hora de mantener una base de código entre muchos
+desarrolladores, es recomendable establecer un estilo de escritura común.
+Dentro del proyecto hemos decidido seguir los lineamientos establecidos en
+PEP8 (siglas en inglés de \emph{Python Enhancement Proposals}, propuestas de
+mejoras de Python)\footnote{\url{https://www.python.org/dev/peps/pep-0008/}}.
+Dentro de estos lineamientos se establecen recomendaciones acerca del tipo de
+\emph{indentación} (sangrado) que se debe utilizar; la cantidad máxima de
+caracteres por línea; la cantidad de líneas vacías antes y después de la
+definición de funciones, clases y métodos; la forma en que se deben nombrar las
+variables, las funciones y las clases; entre muchas otras.
+
+Con el objetivo de facilitar la tarea de adecuar cualquier nuevo código a estas
+reglas, tanto para quien lo escribe como para quien lo revisa, hemos
+normalizado el uso del auto-formateador
+Black\footnote{\url{https://black.readthedocs.io/en/stable/}}, el cual
+modifica automáticamente cualquier código sintácticamente correcto para seguir
+muchos de los lineamientos establecidos en PEP8.
+De esta forma, los contribuidores pueden utilizar el estilo de escritura que
+les sea más cómodo y luego correr Black para poder adecuarlo al estilo que
+adoptamos en Fatiando.
+
+Sin embargo, Black no es capaz de aplicar algunas de las recomendaciones
+establecidas en PEP8, especialmente las que tienen que ver con el nombre de las
+variables, el modo de uso de operadores lógicos, entre otras.
+Para este tipo de situaciones hacemos uso de otro software que permite detectar
+este tipo de errores además de muchas otras recomendaciones para mejorar la
+escritura de nuestro código: pylint\footnote{\url{https://pylint.org/}}.
+pylint no solo identifica violaciones a PEP8, sino que además realiza un
+análisis más profundo del código: desde detectar variables definidas pero no
+utilizadas, módulos importados innecesariamente, definiciones de funciones
+extremadamente largas o con muchos argumentos entre muchas otras.
+Dentro del proyecto utilizamos pylint para identificar este tipo de errores más
+difíciles de detectar, sin embargo establecemos un criterio más flexible:
+permitimos ignorar alguna de sus recomendaciones si lo consideramos
+conveniente.
+
+\subsection{Documentación}
+
 % Flujo de trabajo en Github.
 
 % Code review.
