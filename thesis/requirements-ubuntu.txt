@@ -4,3 +4,4 @@ texlive-xetex
 texlive-science
 texlive-lang-spanish
 texlive-fonts-extra
+fonts-firacode
