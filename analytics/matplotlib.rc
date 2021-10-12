@@ -3,4 +3,4 @@ font.serif          : Computer Modern Roman
 font.size           : 8.0
 text.usetex         : True
 figure.dpi          : 300
-hatch.linewidth     : 0.05
+hatch.linewidth     : 0.25
