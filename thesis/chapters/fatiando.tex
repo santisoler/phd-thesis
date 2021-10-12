@@ -835,6 +835,89 @@ importantes como las implementaciones mismas.
 \subsection{Automatización e integración continua}
 \label{sec:ci}
 
+Muchas de las tareas involucradas en la aplicación de las mejores prácticas
+mencionadas deben ser realizadas repetitivamente ante una nueva solicitud de
+incorporación de código o incluso periódicamente tras actualizaciones en las
+dependencias de cada librería.
+Realizar estas tareas de forma manual no solo representa una rutina tediosa,
+sino que además no se presta de manera eficiente.
+Es por ello que dentro del proyecto recurrimos a los servicios de
+\emph{integración continua} para automatizar muchas de estas tareas,
+quitándonos el peso de tener que ejecutarlas manualmente y permitiéndonos
+ocupar ese tiempo en otras tareas de forma más eficiente.
+
+Cada vez que un contribuido crea un \emph{Pull Request}, el servicio de
+integración continua que provee GitHub mediante las GitHub Actions realiza
+diversas tareas.
+Mediante el uso de máquinas virtuales ejecuta comprobaciones sobre el estilo de
+escritura del último código publicado en ese \emph{Pull Request}.
+Para ello utiliza tanto Black como \texttt{pylint}, devolviendo un reporte de
+su ejecución donde se pueden identificar las violaciones a las recomendaciones
+que realizan estas dos utilidades.
+Además, mediante otras máquinas virtuales procede a instalar el nuevo código
+junto con todas sus dependencias bajo diferentes sistemas operativos y haciendo
+uso de diferentes versiones de Python 3 (Python 3.7, Python 3.8, Python 3.9 por
+ejemplo).
+Luego ejecuta la suite de pruebas de software en cada configuración mediante
+\texttt{pytest}, devolviendo también su reporte de fallos y de cobertura.
+Otro servicio de integración continua que se ejecuta es la construcción de la
+documentación correspondiente a este nuevo código, la cual también devuelve
+información acerca de posibles fallos que se hayan encontrado.
+Dentro de la interfaz del \emph{Pull Request} podemos observar si algunas de
+estas ejecuciones han fallado o si han pasado correctamente, evitando que
+incorporemos ese nuevo código en la \emph{rama} principal.
+
+En cada una de las librerías del proyecto se ha establecido como requisito
+mínimo para incorporar un código nuevo a la \emph{rama} principal que:
+
+\begin{itemize}
+    \item las comprobaciones de estilos escritura pasen correctamente,
+    \item las pruebas de software no presenten errores en ninguna plataforma, y
+    \item la documentación pueda construirse sin errores.
+\end{itemize}
+
+De esta forma se garantiza que la \emph{rama} principal cuente únicamente con
+código que sigue estos estándares, bajo la idea de que es más sencillo
+y factible enmendar una contribución antes de ser incorporada que solucionar el
+problema posteriormente.
+
+Los servicios de integración continua no son utilizados únicamente durante el
+proceso de \emph{Pull Request}.
+Las GitHub Actions son usadas además para construir la documentación presente
+en la \emph{rama} principal cada vez que un cambio se incorpora a ella
+y publicarla de forma automática para que esté disponible para toda la
+comunidad.
+
+Otra tarea que se realiza con cierta periodicidad dentro del proyecto es la de
+generar \emph{lanzamientos} (\emph{releases} en inglés).
+Cada lanzamiento consiste en asignar un número a una versión particular del
+código y publicarlo bajo esa denominación en servicios que proveen las fuentes
+para distintos gestores de paquetes, tales como
+PyPI\footnote{\url{https://pypi.org/}} (\emph{Python package index})
+y \texttt{conda-forge}\footnote{\url{https://conda-forge.org/}}.
+Gracias a esto los usuarios pueden descargar e instalar nuestras librerías
+mediante la utilización de gestores de paquetes.
+Por ejemplo, si se desea instalar Boule con el gestor \texttt{pip} es posible
+hacerlo ejecutando:
+
+\begin{lstlisting}[language=bash,frame=]
+pip install boule
+\end{lstlisting}
+
+\noindent Y si deseamos instalar Harmonica con el gestor \texttt{conda} podemos
+hacerlo con:
+
+\begin{lstlisting}[language=bash,frame=]
+conda install --channel conda-forge harmonica
+\end{lstlisting}
+
+Cada vez que se genera un nuevo lanzamiento mediante GitHub,
+los servicios de integración continua publican esta nueva versión en PyPI
+mediante su \ac{API} de forma automática.
+Afortunadamente, \texttt{conda-forge} realiza una tarea similar pero desde su
+lado: registra un nuevo lanzamiento en los paquetes que provee y automatiza el
+proceso para su publicación.
+
 % ---------
 
 % Flujo de trabajo en Github.
