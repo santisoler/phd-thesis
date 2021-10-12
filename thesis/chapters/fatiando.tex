@@ -314,6 +314,7 @@ de la librería en \href{https://www.fatiando.org/verde}{fatiando.org/verde}.
 
 
 \subsection{Boule}
+\label{sec:boule}
 
 \emph{Boule} es una librería que nos permite representar elipsoides de
 referencia mediante objetos. Además nos ofrece herramientas para calcular los
@@ -385,6 +386,7 @@ versión en \href{https://www.fatiando.org/boule}{fatiando.org/boule}.
 
 
 \subsection{Harmonica}
+\label{sec:harmonica}
 
 \emph{Harmonica} fue creada con la intención de ser el nuevo hogar de aquellas
 implementaciones de métodos de procesado y modelado de datos gravimétricos
@@ -704,6 +706,137 @@ conveniente.
 
 \subsection{Documentación}
 
+Cada nueva función, clase o método dentro de las librerías de Fatiando debe
+estar acompañado de su correspondiente documentación, es decir, un texto que
+describa su funcionamiento, que enumere los parámetros de entrada que admite
+y que especifique sus salidas o resultados.
+Opcionalmente la documentación puede incluir ejemplos sencillos de uso,
+mostrando cuáles son las salidas esperadas para el mismo, y referencias
+a artículos científicos si el código en cuestión implementa algún método que
+podamos hallar en la literatura.
+
+Dentro del proyecto se ha establecido como criterio que la documentación debe
+seguir un estilo establecido por
+\texttt{numpydoc}\footnote{\url{https://numpydoc.readthedocs.io/}},
+una extensión para Sphinx\footnote{\url{https://www.sphinx-doc.org/}}.
+A su vez, Sphinx nos permite generar la documentación de toda la librería como
+un sitio web estático que puede ser servido y utilizado por los usuarios.
+Como hemos mencionado anteriormente, las documentaciones de todos los paquetes
+del proyecto se pueden hallar bajo el dominio
+\href{https://www.fatiando.org}{fatiando.org}.
+
+Además de la documentación de cada función, clase o método, Sphinx nos permite
+además agregar otro tipo de contenido: descripción del paquete, instrucciones
+para la instalación, galería de ejemplos, tutoriales específicos para
+diferentes tareas, etc.
+Toda la documentación de cada uno de los proyectos forma parte del mismo
+repositorio sobre el cual desarrollamos el código fuente, lo que nos permite
+hacer uso del mismo sistema de control de versiones, \emph{Issues} y \emph{Pull
+Requests} para su mantenimiento y actualización.
+Esto no solo simplifica la tarea manteniendo todo el flujo de trabajo
+concentrado en un mismo lugar, sino que también permite recibir reportes de
+mejora de la documentación existente del mismo modo que lo hacemos con el
+código.
+
+\subsection{Pruebas de software}
+
+Una de las mejores prácticas más conocidas para el desarrollo de software
+consiste en el agregado de funciones de prueba o \emph{testing} para cada nueva
+implementación.
+Las funciones de prueba son porciones de software que tienen como único
+objetivo corroborar el buen funcionamiento del código que compone un
+determinado paquete.
+Estas funciones de prueba no están destinadas a ser utilizadas por usuarios
+finales de la forma en que sí son diseñadas las funciones incluidas en la
+\ac{API} del proyecto.
+Por el contrario, se añaden para ser ejecutadas por desarrolladores o por
+servicios de integración continua (ver sección~\ref{sec:ci}).
+
+En el caso particular del software científico, un comportamiento no deseado de
+nuestro código puede conllevar la obtención de resultados erróneos, que pueden
+repercutir en el avance de determinada disciplinas o incluso hasta en la toma
+de decisiones sobre sociedades y la vida de personas.
+Si bien estos comportamientos erróneos pueden ser percibidos por los usuarios
+o desarrolladores durante el uso cotidiano del código, muchos otros pueden
+permanecer inadvertidos durante mucho tiempo.
+Las pruebas de software son herramientas extremadamente útiles a la hora de
+detectar estos comportamientos no deseados, especialmente porque permite
+adelantarse y reconocerlos antes de que puedan tener impactos negativos.
+Nos permiten detectar errores mientras escribimos una nueva implementación, al
+realizar modificaciones sobre el código existente, o al intentar utilizar
+nuestro proyecto con versiones actualizadas de sus dependencias.
+
+Una de las metodologías más aplicadas para construir funciones de prueba son
+las \emph{pruebas unitarias} (\emph{unit testing}).
+Estas consisten en concebir el código fuente de nuestro proyecto como un
+conjunto de unidades independientes de código.
+Cada unidad de código puede ser interpretada de forma distinta, pero podemos
+asumir que cada función o método es una unidad.
+Las pruebas unitarias consisten en escribir funciones de prueba que corroboren
+el buen funcionamiento de una unidad a la vez, o al menos un determinado
+comportamiento de una única unidad.
+Cada una de estas funciones de prueba debe ser independiente del resto y ser
+capaz de ser ejecutada de manera automatizada.
+Además, es deseable que todas las funciones de pruebas formen un conjunto
+completo de prueba, es decir, que las funciones de prueba en su totalidad
+corroboren el buen funcionamiento de toda la base de código de la librería.
+
+Dentro de Fatiando a Terra hacemos un uso intensivo de las pruebas de software,
+siendo un requerimiento indispensable para que un nuevo código pueda formar
+parte de cada paquete.
+Para su escritura y ejecución hacemos uso del paquete
+\texttt{pytest}\footnote{\url{https://docs.pytest.org}}, del cual se pueden
+obtener reportes detallados sobre la ejecución de las funciones de testeo,
+identificando cuál o cuáles fallan y por qué razón.
+Además, \texttt{pytest} ofrece herramientas muy útiles para una escritura más
+simple de estas funciones de prueba, tales como parametrizaciones mediante
+decoradores de funciones y la creación de \emph{fixtures} que pueden se
+utilizados transversalmente en cada función de testeo, ahorrando la necesidad
+de repetir código.
+\texttt{pytest} permite además generar un reporte de cobertura, es decir, un
+porcentaje de qué cantidad de la base del código es sometida a prueba y
+detalla cuáles son las líneas que no.
+
+La gran mayoría del código fuente que podemos encontrar en las librerías del
+proyecto son fácilmente probables, especialmente las que tienen que ver con
+estructuras de datos y comportamientos particulares frente a diferentes
+parámetros.
+Sin embargo, en algunas de nuestras librerías incluimos implementaciones de
+métodos numéricos y soluciones analíticas a problemas geofísicos, los cuales
+pueden presentar determinada complejidad de corroborar, ya que su
+implementación surge de la propia necesidad de arribar a los resultados
+numéricos que ellas generan.
+A pesar de esto, existen algunos métodos para someterlas a prueba.
+Tanto las soluciones analíticas como los cálculos numéricos pueden ser
+corroborados con valores conocidos o con soluciones analíticas a casos
+particulares.
+Por ejemplo, la implementación del cálculo de gravedad normal en Boule (ver
+sección~\ref{sec:boule}) es corroborada por comparación con la ecuación de
+Somigliana (ec.~\ref{eq:somigliana}) sobre puntos en la superficie del
+elipsoide.
+Así como la implementación del modelado directo por tesseroides en Harmonica
+(ver sección~\ref{sec:harmonica}) es puesta a prueba comparando sus resultados
+numéricos con la solución analítica para un cascarón esférico.
+Otro método consiste en verificar que nuestros resultados numéricos o obtenidos
+mediante una solución analítica verifican determinadas propiedades matemáticas.
+Por ejemplo, la implementación del modelado directo por prismas rectangulares
+presente en Harmonica (ver sección~\ref{sec:harmonica}) debe verificar una
+determinada simetría: los valores de los campos a lados opuestos del prisma
+deben poseer los mismos valores.
+
+Es importante destacar que un conjunto finito de funciones de prueba no
+garantizan la inexistencia de comportamientos no deseados o errores en la base
+del código, al igual que una cobertura del 100\% no es un indicativo de la
+calidad del conjunto de pruebas de software.
+Es por esto que es necesario considerar la escritura de funciones de prueba tan
+importantes como las implementaciones mismas.
+
+
+\subsection{Automatización e integración continua}
+\label{sec:ci}
+
+% ---------
+
 % Flujo de trabajo en Github.
 
 % Code review.
@@ -714,7 +847,7 @@ conveniente.
 
 % Testeo.
 
-% CI.
+% CI y automatizacion
 
 % Ejemplos.
 
