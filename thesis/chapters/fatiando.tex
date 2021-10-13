@@ -918,49 +918,106 @@ Afortunadamente, \texttt{conda-forge} realiza una tarea similar pero desde su
 lado: registra un nuevo lanzamiento en los paquetes que provee y automatiza el
 proceso para su publicación.
 
-% ---------
-
-% Flujo de trabajo en Github.
-
-% Code review.
-
-% Code style. Black. Lint
-
-% Documentación.
-
-% Testeo.
-
-% CI y automatizacion
-
-% Ejemplos.
-
-% Filosofía UNIX?
-
-% Releases y backward compatibility?
-
-% Pypi y conda-forge?
-
 
 \section{Comunidad}
 
-Codigo de conducta
+Una de las partes fundamentales para que el proyecto se haya podido desarrollar
+de la forma en que lo hizo es la comunidad que se ha construido a su alrededor
+y las comunidades con las que esta interactúa.
+La comunidad de Fatiando a Terra no solo esta formada por los mantenedores del
+código, de desarrolladores y contribuidores, sino también de usuarios
+y usuarias que intercambian ideas y preguntas mediante los canales de
+comunicación que se han establecido.
 
-Instructivos para contribuir
+Hacia el resto de la comunidad científica Fatiando se presenta mediante su
+página web, donde se pueden encontrar descripciones de cada una de las
+librerías, enlaces a la documentación respectiva de cada una de ellas,
+instrucciones de instalación, videos tutoriales, información sobre nuestros
+canales de comunicación e instructivos para comenzar a colaborar en el
+proyecto.
 
-Reuniones periodicas
+Como hemos mencionado anteriormente, mucha del intercambio de ideas al respecto
+del desarrollo de cada librería, reportes de fallos, propuesta de ideas
+y revisión de código se realiza mediante GitHub.
+Sin embargo, muchas otras conversaciones suceden dentro de la sala de
+Slack\footnote{\url{https://slack.com}}, donde se realizan preguntas, se
+ofrecen soluciones a problemas comunes, se anuncian eventos y más.
+La sala de Slack constituye un canal de comunicación más informal y más
+directo entre los integrantes de la comunidad.
+Además, se organizan dos tipos de videollamadas periódicas: las reuniones de la
+comunidad y las reuniones de desarrolladores.
+Las primeras se llevan a cabo un par de veces al año y tienen como objetivo la
+sociabilización y la discusión de proyectos, sin entran en muchos detalles
+técnicos.
+Las segundas suceden semanalmente y en ellas se discuten problemáticas
+específicas del desarrollo de las librerías.
+A pesar de la diferente naturaleza de ambas, cualquier persona es bienvenida
+a participar, independientemente de su grado de habilidades técnicas.
 
-Discusiones abiertas en issues/PRs
+Dentro de cada uno de los canales de comunicación de la comunidad se espera
+que sus integrantes respeten el Código de
+Conducta%
+\footnote{%
+    \url{https://github.com/fatiando/community/blob/main/CODE_OF_CONDUCT.md}%
+}
+con el objetivo de generar un ambiente ameno y respetuoso.
 
-Interacción con otros proyectos?
+% Interacción con otros proyectos?
 
 
 \section{Adopción en la comunidad científica}
 
-Publicaciones científicas relacionadas.
+Desde sus comienzos, las herramientas provistas en Fatiando a Terra han sido
+utilizadas en publicaciones científicas por investigadores de diferentes partes
+del mundo.
+Muchas de ellas citan a los artículos \citet{uieda2013} y \citet{verde2018}.
+Además, el proyecto ha sido presentado en congresos científicos y reuniones
+científicas \citep{uieda2013,uieda2020b,soler2021c}.
 
-Tutoriales en Transform2020 y Transform 21 charla para la GSH
+Estimar la cantidad de usuarios y usuarias que utilizan las herramientas que
+ofrece el proyecto no es trivial.
+Es posible conocer la cantidad de descargas de los paquetes desde PyPI
+o \texttt{conda-forge}, sin embargo muchas de ellas son realizadas de manera
+automática por servicios como los de integración continua, introduciendo una
+sobreestimación de la cifra.
+Quizás una métrica que más se acerque es la cantidad de visitas al sitio web
+\href{https://fatiando.org}{fatiando.org}, incluidas las páginas de
+documentación.
+Estos datos han sido recopilados mediante los servicios de Google Analytics de
+manera anónima (no se recogen las direcciones de IP de quienes visitan el
+sitio).
+La figura~\ref{fig:fatiando-users-history} muestra la cantidad de visitas que
+recibió el sitio desde Abril del 2017 a Septiembre de 2021 por ventana móvil de
+28 días.
+Mientras que la figura~\ref{fig:fatiando-users-map} expone la cantidad de
+visitas en el mismo intervalo según su ubicación geográfica.
 
-Visitas a la página web
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/fatiando/users_history.pdf}
+    \caption{
+        Cantidad de visitas a \href{https://fatiando.org}{fatiando.org} entre
+        Abril de 2017 y Septiembre de 2021 en ventana móvil de 28 días.
+        Cada valor representa la cantidad de visitas recibidas en una ventana
+        de 28 días centrada en su fecha correspondiente.
+    }
+    \label{fig:fatiando-users-history}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{figs/fatiando/users_map.pdf}
+    \caption{
+        Cantidad de visitas a \href{https://fatiando.org}{fatiando.org} entre
+        Abril de 2017 y Septiembre de 2021 por ubicación geográfica.
+        Los países en grises con líneas paralelas blancas corresponden a sitios
+        de los cuales no se han recibido visitas en el mismo período.
+        La escala de colores posee pasos no proporcionales para mejorar la
+        visualización del mapa.
+    }
+    \label{fig:fatiando-users-map}
+\end{figure}
 
 
 \section{Planes a futuro}
