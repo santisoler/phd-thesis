@@ -741,6 +741,23 @@ concentrado en un mismo lugar, sino que también permite recibir reportes de
 mejora de la documentación existente del mismo modo que lo hacemos con el
 código.
 
+Una de las mejores prácticas que hemos aplicado dentro del proyecto es la
+manera en la que diseñamos el código para una nueva implementación.
+En vez de partir por la escritura de la implementación misma, comenzamos por la
+creación de sus ejemplos, en donde identificamos de qué manera deseamos que esa
+nueva porción de software sea utilizada.
+Es decir, partimos nuestro diseño bosquejando la interfaz con la cual los
+usuarios y usuarias interactuarán.
+Luego procedemos a redactar la documentación de esta nueva implementación,
+siendo consistentes con el diseño inicial.
+Una vez que nos encontramos conformes con la propuesta, procedemos a escribir
+la propia implementación.
+Este flujo de trabajo ha demostrado ser más eficiente que otros que guardan el
+diseño de la interfaz como última instancia, los cuales suelen requerir
+múltiples iteraciones entre modificaciones de la implementación y de la
+interfaz.
+
+
 \subsection{Pruebas de software}
 
 Una de las mejores prácticas más conocidas para el desarrollo de software
