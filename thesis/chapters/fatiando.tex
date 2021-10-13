@@ -496,11 +496,6 @@ binarios de \emph{Harmonica} para cada plataforma o sistema operativo: Numba se
 encarga de la precompilación durante el tiempo de ejecución.
 De esta manera, se simplifica mucho la tarea de distribuir e instalar
 \emph{Harmonica} en cualquier tipo de plataforma.
-Las decisiones de diseño han permitido que los métodos de \texttt{EQLHarmonic}
-reutilicen muchas de las funciones centrales del modelado directo de masas
-puntuales, permitiendo no solo un ahorro en cantidad de código, sino también el
-reciclado de las oportunidades que estas proveen mediante el compilador Numba,
-como paralelizar la construcción de la matriz Jacobiana.
 
 Otra de las capacidades que presenta esta librería es la de realizar cálculos
 a partir de los algoritmos de fuentes equivalentes.
@@ -520,6 +515,12 @@ Estas clases heredan muchos de los métodos y atributos de la clase
 \texttt{BaseGridder} de \emph{Verde}, haciendo que su utilización sea a su vez
 muy similar a la que encontramos en los métodos de aprendizaje automático de
 scikit-learn \citep{sklearn2011}.
+Las decisiones de diseño han permitido que los métodos de \texttt{EQLHarmonic}
+y \texttt{EQLHarmonicSpherical} reutilicen muchas de las funciones centrales
+del modelado directo de masas puntuales, permitiendo no solo un ahorro en
+cantidad de código, sino también el reciclado de las oportunidades que estas
+proveen mediante el compilador Numba, como paralelizar la construcción de la
+matriz Jacobiana.
 
 \emph{Harmonica} ofrece además algunas otras funcionalidades de procesado de
 datos gravimétricos: aplicación de la corrección de Bouguer utilizando una
