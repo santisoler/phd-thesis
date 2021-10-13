@@ -406,17 +406,20 @@ esféricas geocéntricas o en coordenadas Cartesianas, implementando las
 ecuaciones~\ref{eq:potencial-masa-puntual} y \ref{eq:gz-particula}.
 Podemos calcular los campos gravitacionales producidos por masas puntuales
 mediante la función \texttt{point\_mass\_gravity()}.
-También podemos calcular los campos gravitacionales de prismas rectangulares
-mediante el método de \citet{nagy2000} con las correcciones de
-\citet{fukushima2020} descriptas en la sección~\ref{sec:prismas-rectangulares},
-haciendo uso de la función \texttt{prism\_gravtiy()}.
-\emph{Harmonica} también cuenta con una implementación en Python de los
-algoritmos de discretización adaptativa y \ac{GLQ} para calcular los campos
+El Código~\ref{lst:harmonica-point-mass} ejemplifica como podemos utilizar esta
+función para calcular la aceleración de la gravedad producida por dos masas
+puntuales dadas en coordenadas Cartesianas.
+
+\emph{Harmonica} cuenta con una implementación del método de \citet{nagy2000}
+para calcular los campos gravitacionales de prismas rectangulares haciendo uso
+de las correcciones de \citet{fukushima2020} descriptas en la
+sección~\ref{sec:prismas-rectangulares} mediante la función
+\texttt{prism\_gravtiy()}.
+
+La librería también cuenta con una implementación en Python de los algoritmos
+de discretización adaptativa y \ac{GLQ} para calcular los campos
 gravitacionales de tesseroides con densidad constante, a los cuales podemos
 acceder mediante la función \texttt{tesseroid\_gravity()}.
-El Código~\ref{lst:harmonica-point-mass} ejemplifica como podemos utilizar la
-función \texttt{point\_mass\_gravity()} para calcular la aceleración de la
-gravedad producida por dos masas puntuales dadas en coordenadas Cartesianas.
 
 \lstinputlisting[
     float,
@@ -429,6 +432,43 @@ gravedad producida por dos masas puntuales dadas en coordenadas Cartesianas.
     },
     label=lst:harmonica-point-mass
 ]{chapters/fatiando-examples/harmonica-point-mass.py}
+
+Cada una de estas funciones admiten una cantidad arbitraria de geometrías
+y puntos de observación que pueden venir dadas por estructuras de datos muy
+sencillas, tales como listas, tuplas o arreglos de valores numéricos.
+Sin embargo pueden ser utilizadas para aumentar el grado de abstracción del
+modelo.
+Por ejemplo, la función \texttt{prism\_layer()} permite construir una capa de
+prismas rectangulares de iguales dimensiones horizontales, distribuidos
+regularmente de forma tal que las caras de prismas contiguos se encuentran en
+contacto.
+La función permite asignar diferentes valores para las caras superiores
+e inferiores de los prismas, y devuelve una instancia de
+\texttt{xarray.Dataset} que contiene las coordenadas de los centros de los
+prismas junto con las coordenadas \texttt{top} y \texttt{bottom} para cada uno
+de ellos.
+\emph{Harmonica} ofrece un accesor de Xarray para poder calcular los campos
+gravitatorios que toda la capa genera sobre un conjunto de puntos de
+observación, la cual hace uso de función \texttt{prism\_gravity()} mencionada
+anteriormente.
+Este tipo de capas resultan muy útiles para calcular los efectos gravimétricos
+de la topografía o para realizar inversiones como las de \citet{uieda2017}.
+El Código~\ref{lst:harmonica-prism-layer} ejemplifica cómo podemos usar la
+función \texttt{prism\_layer()} junto con el método \texttt{prism\_gravity} del
+accesor de Xarray para calcular el efecto gravitatorio de la topografía de
+Sudáfrica sobre una grilla regular a 4000\m{} de altitud.
+
+\lstinputlisting[
+    float,
+    floatplacement=p,
+    language=Python,
+    caption={%
+        Ejemplo de cálculo de efecto gravitatorio de la topografía de Sudáfrica
+        sobre una grilla regular haciendo uso de
+        \texttt{harmonica.prism\_gravity()}.
+    },
+    label=lst:harmonica-prism-layer
+]{chapters/fatiando-examples/harmonica-prism-layer.py}
 
 La mayoría de los métodos de modelado directo involucran cómputos moderadamente
 complejos, los cuales puede conllevar a un alto costo computacional,
