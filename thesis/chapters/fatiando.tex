@@ -1,11 +1,6 @@
 \chapter{Fatiando a Terra}
 
-\section{Resumen}
-
-
 \section{Introducción}
-
-% Necesidad de software open-source en geofísica.
 
 Desde su invención, las computadoras han sido puestas a disposición de la
 comunidad científica con el objetivo de resolver problemas que resultaban
@@ -36,15 +31,79 @@ o soluciones para cada una de sus etapas, que puedan ser utilizados libremente
 por otros investigadores y otras investigadoras, que a su vez puedan
 modificarlos y volver a distribuirlos en caso de desearlo.
 En resumen, los problemas científicos actuales requieren soluciones
-comunitarias, tanto para dar respuestas a las preguntas fundamentales, así como
-para desarrollar herramientas que faciliten la resolución de estos problemas.
+comunitarias y colaborativas, tanto para dar respuestas a las preguntas
+fundamentales, así como para desarrollar herramientas que faciliten la
+resolución de estos problemas.
 
-Por fuera de la comunidad científica (aunque con algunas intersecciones) se
-comenzó a gestar en la década del 80 un movimiento que trabajaba en la creación
-de herramientas computaciones con características similares.
+Los movimientos de Software Libre y de código abierto que comenzaron
+a proliferarse durante las décadas de los 80 y 90 tuvieron una fuerte raíz en
+el ámbito científico.
+Muchos científicos y científicas comenzaron a desarrollar herramientas
+computacionales a partir de necesidades propias de sus investigaciones que
+luego las distribuyeron bajo licencias de Software Libre y de código abierto.
+Dentro de las ciencias de la Tierra podemos hallar Seismic Unix
+\citep{sesmicunix}, cuyo desarrollo comenzó a finales de la década del 70 y está
+disponible bajo una licencia BSD Clause-3;
+\ac{GMT} \citep{gmt1991,gmt2019}, creado en 1988 por Paul Wessel y Walter H.F.
+Smith y lanzado bajo la GNU Lesser General Public License%
+\footnote{%
+    \url{https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License}%
+}
+en 1991.
 
-Movimiento open-source en ciencia (IPython, Jupyter, NumPy, Matplotlib,
-Astropy, etc), estado actual.
+A inicios de la década del 2000 se comienzan a desarrollar herramientas
+especialmente orientadas a aplicaciones científicas y de cálculo numérico que
+hacían uso del lenguaje de programación Python creado por Guido van Rossum una
+década atrás.
+En 2001 se lanza IPython \citep{perez2007}, un intérprete de comandos
+interactivo originalmente desarrollado para el lenguaje Python, cuyo objetivo
+es facilitar la forma en la cual los usuarios y las usuarias operan con sus
+datos.
+En el mismo año ve la luz la primera versión de SciPy \citep{scipy2020}, una
+librería con módulos de optimización, álgebra lineal, integración,
+interpolación, resolución de ecuaciones diferenciales, aplicación de
+Transformada de Fourier, entre otros.
+En 2003 aparece la primera versión de Matplotlib \citep{matplotlib2007}, una
+librería para realización de gráficos y visualización de datos con una \ac{API}
+orientada a objetos.
+En 2006, se bautiza a la librería NumPy \citep{numpy2020}, heredera de Numeric,
+dando soporte a operaciones con arreglos al lenguaje Python, para lo cual no
+había sido diseñado.
+Debido principalmente a los beneficios que trae el lenguaje Python dados por su
+sintaxis sencilla, su portabilidad, su orientación a objetos entre otros
+atributos, estas herramientas comenzaron a ser utilizadas dentro de diferentes
+ámbitos científicos \citep{travis2007,millman2011,perez2011}.
+
+La segunda década del nuevo milenio comenzó a vislumbrar una explosión en la
+cantidad de aplicaciones y nuevos desarrollos de software alrededor de estas
+nuevas herramientas.
+Se destacan proyectos como Jupyter \citep{jupyter2016}, lanzado en 2016, que
+logró introducir un nuevo tipo de forma de interactuar con código de
+investigación: los \emph{Jupyter Notebooks}, que facilitan no solo la
+experimentación, sino la comunicación de los procesos y resultados científicos
+junto con la reproducibilidad de los mismos.
+Librerías como Pandas \citep{pandas2010}, que ofrece herramientas para la
+manipulación y análisis de datos; scikit-learn \citep{sklearn2011}, con
+especialmente orientada a la aplicación de algoritmos de aprendizaje
+automático; SymPy \citep{sympy2017} para cálculo simbólico; entre otras.
+Surge también Anaconda\footnote{\url{https://www.anaconda.com}}, una
+distribución de Python orientada específicamente para realizar ciencia de
+datos, aprendizaje automático e investigaciones científicas; facilitando la
+instalación del intérprete y las múltiples librerías en diferentes plataformas
+y sistemas operativos.
+
+En este capítulo expondremos cómo se desarrolló el proyecto Fatiando a Terra,
+del cual formo parte del grupo de desarrolladores, construyendo herramientas
+computacionales con aplicaciones directas en geofísica, particularmente sobre
+temáticas relacionadas a métodos potenciales.
+Enumeraremos las prácticas de desarrollo de software aprendidas y aplicadas en
+la construcción del proyecto, y qué beneficio han traído a la generación de
+investigaciones científicas reproducibles.
+También exploraremos de qué manera existe una retroalimentación entre los
+proyectos de software científico y las investigaciones que estos permiten.
+Finalmente bosquejaremos un conjunto de ideas a implementar a futuro,
+definiendo los nuevos caminos que el proyecto debe tomar en función del
+ambiente científico actual.
 
 
 \section{Historia}
@@ -1084,21 +1143,12 @@ visitas en el mismo intervalo según su ubicación geográfica.
 \end{figure}
 
 
-\section{Planes a futuro}
+% \section{Planes a futuro}
 
-Stable release of every package
+% Stable release of every package
 
-Mayor interoperabilidad con el resto de paquetes geofísicos (SimPEG, pyGIMLi, etc)
+% Mayor interoperabilidad con el resto de paquetes geofísicos (SimPEG, pyGIMLi, etc)
 
-Implementar esféras en boule (luna, mercurio).
-Implementar elipsoides traixiales en boule.
-Unificar las clases de elipsoides para todo tipo.
-
-
-\section{Conclusiones}
-
-Desarrollo open-source como retroalimentacion de la investigacion cientifica.
-
-Colaboracion internacional de formas más directas.
-
-Aprendizaje sobre software development y generacion de ciencia reproducible.
+% Implementar esféras en boule (luna, mercurio).
+% Implementar elipsoides traixiales en boule.
+% Unificar las clases de elipsoides para todo tipo.
