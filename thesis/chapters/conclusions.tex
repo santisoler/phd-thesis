@@ -1,20 +1,5 @@
 \chapter{Conclusiones}
 
-% que se hizo
-
-% resultados obtenidos
-
-% integracion ciencia con desarrollo de software
-
-% aprendizaje de mejores practicas
-
-% ciencia reproducible
-
-% planes a futuro
-
-% implementacion de tesseroides de densidad variable y fuentes equivalente
-% gradient boosted en Harmonica
-
 Durante el desenvolvimiento de esta Tesis Doctoral se desarrollaron dos nuevas
 metodologías para el modelado y procesamiento de datos gravimétricos que pueden
 ser aplicadas a un amplio espectro de problemáticas geofísicas que pueden
@@ -151,3 +136,54 @@ puntos sobre una grilla regular a altitud constante con una resolución de
 1 minuto de arco, aproximadamente.
 El proceso de interpolación fue llevado a cabo en una computadora personal
 modesta, utilizando menos de 16~Gigabytes de memoria computacional.
+
+\vspace{1em}
+
+En paralelo al desarrollo de estas nuevas metodologías, a lo largo de esta
+Tesis he realizado múltiples contribuciones a proyectos de software de código
+abierto, particularmente a las librerías pertenecientes a Fatiando a Terra.
+Estas contribuciones han favorecido a la creación y desarrollo de cuatro
+librerías de software escritas en lenguaje Python: Verde (interpolaciones de
+datos georreferenciados mediante funciones de Green), Boule (elipsoides de
+referencia y cálculo de gravedad normal), Harmonica (procesamiento y modelado
+de datos potenciales) y Pooch (descarga de datos científicos de la web).
+La mayoría de estas librerías poseen una íntima relación con las áreas de la
+geofísica en las que se desarrolla esta Tesis.
+
+Debido a esto, tanto las investigaciones científicas aquí expuestas como los
+proyectos de software nombrados han tenido una profunda relación de
+retroalimentación: el software se desarrolla en función de las necesidades de
+la investigación que se lleva a cabo, poniéndose a disposición de la comunidad,
+mientras que los proyectos científicos adquieren una base de herramientas
+sobre las cuales pueden experimentar y desarrollar nuevas metodologías.
+Como resultado de esta relación, los proyectos de software terminan recibiendo
+implementaciones de métodos de vanguardia, permitiendo al resto de la comunidad
+científica poder aplicarlos a sus problemáticas particulares sin necesidad de
+escribir sus propias implementaciones.
+De esta manera, el avance científico no se realiza únicamente dentro de los
+artículos publicados, sino también existe una colaboración indirecta con el
+resto de la comunidad haciendo disponibles estas implementaciones bajo
+licencias de código abierto.
+
+La oportunidad de desarrollar software científico siguiendo las mejores
+prácticas también posee un impacto en la calidad de las investigaciones
+expuestas en esta Tesis.
+El desarrollo de cada una de las metodologías presentadas ha sido realizado
+utilizando las mismas herramientas que se detallaron en el capítulo anterior:
+se utilizaron controladores de versiones, se aplicaron las mismas
+recomendaciones acerca de los estilos de escritura, se escribían funciones de
+testeo para las nuevas implementaciones de los métodos, entre otras.
+La aplicación de estas prácticas heredadas del desarrollo de software
+permitieron generar publicaciones científicas reproducibles.
+
+% integracion ciencia con desarrollo de software
+
+% aprendizaje de mejores practicas
+
+% ciencia reproducible
+
+% planes a futuro
+
+% implementacion de tesseroides de densidad variable y fuentes equivalente
+% gradient boosted en Harmonica
+
