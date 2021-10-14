@@ -1267,11 +1267,11 @@ mundo real.
 Hemos desarrollado una nueva metodología para calcular el potencial
 gravitatorio y su gradiente generados por un tesseroide con una densidad dada
 por una función continua de la coordenada radial.
-Este método resuelve numéricamente integrales volumétricas mediante la \ac{GLQ}
-incluyendo la función densidad dentro de la integración numérica.
-Mediante una implementación del algoritmo en un lenguaje dinámico como Python,
-los usuarios y las usuarias pueden definir su propia función densidad
-y servirla como entrada al algoritmo.
+Este método resuelve numéricamente integrales volumétricas mediante la
+\ac{GLQ} incluyendo la función densidad dentro del integrando.
+Mediante una implementación del algoritmo en lenguaje Python, los usuarios
+y las usuarias pueden definir su propia función densidad y servirla como
+entrada al algoritmo.
 Esto permite el uso de funciones continuas arbitrarias sin necesidad de
 realizar modificaciones sobre el método o el software.
 La precisión de la integración numérica es controlada automáticamente por un
@@ -1279,7 +1279,7 @@ algoritmo de discretización adaptativa bidimensional y un nuevo algoritmo de
 discretización basado en densidad.
 El primero subdivide iterativamente al tesseroide en caso de que las relaciones
 entre la distancia al punto de cómputo y las dimensiones longitudinal
-y latitudinal del tesseroide son menores que un ratio distancia-tamaño $D$
+y latitudinal del tesseroide sean menores que un ratio distancia-tamaño $D$
 predefinido.
 Este algoritmo minimiza los errores de integración a cuando el punto de
 cómputo se encuentra cerca del tesseroide.
@@ -1299,7 +1299,8 @@ Hemos determinado de manera empírica valores óptimos para los parámetros $D$
 y $\delta$ comparando los resultados numéricos con soluciones analíticas para
 cascarones esféricos.
 Nuestro análisis incluye un rango de modelos de tesseroides y grillas de
-cómputo así como funciones de densidades de las más utilizadas.
+cómputo así como funciones de densidades de las más utilizadas en problemas
+reales.
 Estos valores minimizan el tiempo de cómputo mientras mantienen el error
 numérico por debajo de un umbral de 0.1\%.
 Las funciones de densidad utilizadas para establecer estos valores óptimos
@@ -1348,9 +1349,8 @@ Los resultados producidos por una densidad exponencial muestran un error de
 con respecto a una función lineal.
 Los modelos directos robustos son una componente clave para cualquier método de
 inversión de datos gravimétricos.
-Y errores de esta magnitud pueden resultar en una significativa sobrestimación
+Y errores de esta magnitud pueden resultar en una significativa sobreestimación
 del espesor del paquete sedimentario, por poner un ejemplo.
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
