@@ -2,10 +2,10 @@
 
 Durante el desenvolvimiento de esta Tesis Doctoral se desarrollaron dos nuevas
 metodologías para el modelado y procesamiento de datos gravimétricos que pueden
-ser aplicadas a un amplio espectro de problemáticas geofísicas que pueden
-abarcar desde investigaciones científicas hasta exploración de recursos
+ser aplicadas a un amplio espectro de problemáticas geofísicas,
+desde investigaciones científicas hasta exploración de recursos
 naturales.
-Cada una de estas metodologías han sino implementadas mediante software
+Cada una de estas metodologías han sido implementadas mediante software
 a través del lenguaje de programación Python y se encuentran disponibles bajo
 licencias de código abierto.
 
@@ -21,17 +21,18 @@ discretización:
 \begin{itemize}
     \item un algoritmo de discretización adaptativa bidimensional que divide al
         tesseroide en las direcciones longitudinales y latitudinales en función
-        de la distancia entre el centro del tesseroide y el punto de cómputo, y
+        de la distancia entre el centro del tesseroide y el punto de cómputo; y
     \item  un algoritmo de discretización basado en la densidad que lo
-        fracciona en la dirección radial en los lugares donde toma lugar la
-        \emph{máxima variación de densidad}.
+        fracciona en la dirección radial, donde toma lugar la \emph{máxima
+        variación de densidad}.
 \end{itemize}
 
 Estos algoritmos cuentan con dos parámetros que controlan de manera indirecta
 la cantidad de subdivisiones que se llevan a cabo: el ratio distancia-tamaño
 $D$ y el ratio delta $\delta$, respectivamente.
 Los valores que estos asumen poseen un impacto sobre el tiempo de cómputo
-necesario para finalizar los cálculos y sobre la precisión de los resultados.
+necesario para llevar a cabo los cálculos y sobre la precisión de los
+resultados.
 
 Con el objetivo de hallar valores óptimos de $D$ y $\delta$ que minimicen el
 tiempo de cómputo mientras alcanzan precisiones aceptables, llevamos a cabo
@@ -44,24 +45,23 @@ numérica alcanza precisiones por debajo del 0.1\% para cascarones de diferentes
 espesores y sobre puntos de observación situados en diversas localizaciones.
 De manera análoga, la elección de un ratio $\delta$ de 0.1 alcanza la misma
 precisión para diferentes funciones de densidad, a excepción de funciones
-sinusoidales con altas frecuencias en cuyo caso alcanza una precisión de 1\%
+sinusoidales con altas frecuencias, en cuyo caso alcanza una precisión de 1\%
 con respecto a las soluciones analíticas.
-Además, podemos concluir que las elecciones de $D$ y $\delta$ no poseen una
-relación significativa entre sí y por ende la elección de sus valores puede
-realizarse de forma independiente.
+Además, concluimos que las elecciones de $D$ y $\delta$ no poseen una relación
+significativa entre sí y por ende la elección de sus valores puede realizarse
+de forma independiente.
 
 Si bien la incorporación del algoritmo de discretización basado en la densidad
 introduce un mayor costo computacional, esta metodología presenta un alto grado
 de flexibilidad: es posible utilizar cualquier tipo de función continua sin
 necesidad de modificar la implementación del algoritmo.
 Esta característica hace que esta metodología pueda ser ampliamente utilizada
-para diferentes fines, sin necesidad de realizar de limitarse a supuestos
-previos.
+para diferentes fines, sin necesidad de limitarse a casos particulares.
 
 Finalmente, esta nueva metodología fue aplicada para el modelado directo de la
 Cuenca Neuquina ubicada al Norte de la Patagonia Argentina.
 Se ha calculado el efecto gravitatorio del paquete sedimentario de la cuenca
-tomando en consideración la compactación del relleno, demostrando que existen
+tomando en consideración la compactación del relleno, demostrando que existe
 una diferencia apreciable en comparación a asumir valores constantes de
 densidad.
 
@@ -119,23 +119,25 @@ interpolaciones.
 A excepción de las \emph{profundidades variables}, que producen resultados
 ligeramente más precisos.
 Sin embargo, dado que involucran mayor cantidad de hiperparámetros, su uso
-puede conllevar un aumento en el costo computacional durante su determinación
-mediantes métodos como la validación cruzada.
+puede conllevar un aumento en el costo computacional durante la determinación
+de estos parámetros mediante métodos como la validación cruzada.
 Por esta razón, recomendamos la utilización de \emph{profundidades constantes}
-o \emph{profundidades relativas}.
+o \emph{profundidades relativas} en la mayoría de los casos.
 
 Dado que las \emph{fuentes equivalentes potenciadas por gradiente} no realizan
-ninguna suposición sobre las ubicaciones de las fuentes, es posible utilizar
-este método junto con \emph{fuentes promediadas por bloques}, reduciendo los
-requerimientos de memoria computacional por dos medios independientes.
+ninguna suposición sobre las ubicaciones de las fuentes mismas, es posible
+utilizar este método junto con \emph{fuentes promediadas por bloques},
+reduciendo los requerimientos de memoria computacional por dos medios
+independientes.
 
 Finalmente, hemos aplicado las \emph{fuentes equivalentes potenciadas por
 gradiente} junto con \emph{fuentes promediadas por bloques} para interpolar una
 colección de datos gravimétricos sobre Australia con más de 1.7 millones de
-puntos sobre una grilla regular a altitud constante con una resolución de
-1 minuto de arco, aproximadamente.
-El proceso de interpolación fue llevado a cabo en una computadora personal
-modesta, utilizando menos de 16~Gigabytes de memoria computacional.
+puntos.
+Las predicciones se realizaron sobre una grilla regular a altitud constante con
+una resolución de 1 minuto de arco, aproximadamente.
+El proceso fue llevado a cabo en una computadora personal modesta, utilizando
+menos de 16~Gigabytes de memoria computacional.
 
 \vspace{1em}
 
@@ -161,18 +163,18 @@ implementaciones de métodos de vanguardia, permitiendo al resto de la comunidad
 científica poder aplicarlos a sus problemáticas particulares sin necesidad de
 escribir sus propias implementaciones.
 De esta manera, el avance científico no se realiza únicamente dentro de los
-artículos publicados, sino también existe una colaboración indirecta con el
-resto de la comunidad haciendo disponibles estas implementaciones bajo
+artículos publicados, sino que existe también una colaboración indirecta con el
+resto de la comunidad poniendo a disposición estas implementaciones bajo
 licencias de código abierto.
 
 La oportunidad de desarrollar software científico siguiendo las mejores
-prácticas también posee un impacto en la calidad de las investigaciones
+prácticas ha tenido un impacto en la calidad de las investigaciones
 expuestas en esta Tesis.
 El desarrollo de cada una de las metodologías presentadas ha sido realizado
 utilizando las mismas herramientas que se detallaron en el capítulo anterior:
-se utilizaron controladores de versiones, se aplicaron las mismas
-recomendaciones acerca de los estilos de escritura, se escribían funciones de
-testeo para las nuevas implementaciones de los métodos, entre otras.
+el uso de controladores de versiones, la aplicación de las recomendaciones
+acerca de los estilos de escritura, la creación de funciones de testeo para las
+nuevas implementaciones de los métodos, entre otras.
 La aplicación de estas prácticas heredadas del desarrollo de software
 permitieron generar publicaciones científicas reproducibles.
 
