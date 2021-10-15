@@ -116,7 +116,7 @@ solución iterativamente al tratar un solo dato al mismo tiempo utilizando el
 concepto de \emph{dato equivalente}.
 
 \citet{leao1989} procesan los datos de entrada mediante una ventana móvil, solo
-ajustando los datos dentro de la ventan y prediciendo las observaciones en su
+ajustando los datos dentro de la ventana y prediciendo las observaciones en su
 centro.
 \citet{li2010} y \citet{barnes2011} aplican diferentes operaciones para generar
 una representación dispersa de la matriz de sensibilidades (\emph{wavelet
@@ -228,7 +228,8 @@ podemos escribir un sistema de $N$ ecuaciones de la forma:
     \label{eq:forward-sum}
 \end{equation}
 
-\noindent donde $d_i$ es el efecto de las fuentes sobre el punto $\mathbf{p}_i$.
+\noindent donde $d_i$ es el efecto de las fuentes sobre el punto
+$\mathbf{p}_i$.
 Estas ecuaciones pueden ser expresadas de forma matricial como:
 
 \begin{equation}
@@ -543,10 +544,11 @@ Podemos mejorar la eficiencia del algoritmo aún más mediante:
       Seguiremos utilizando todos los $N$ puntos de datos cuando calculamos los
       valores predichos y los residuos (pasos \ref{alg:predicted}
       y \ref{alg:residual} del algoritmo~\ref{alg:gradient_boosting}).
-  \item La operación de modelado directo que se realiza en el paso \ref{alg:predicted}
-      puede ser llevada a cabo mediante una suma (ec.~\ref{eq:forward-sum}),
-      en vez de un producto matricial, lo cual permite evitar almacenar en
-      memoria la matriz $\mathbf{A}_k$ de $N \times M_k$ elementos.
+  \item La operación de modelado directo que se realiza en el paso
+      \ref{alg:predicted} puede ser llevada a cabo mediante una suma
+      (ec.~\ref{eq:forward-sum}), en vez de un producto matricial, lo cual
+      permite evitar almacenar en memoria la matriz $\mathbf{A}_k$ de $N \times
+      M_k$ elementos.
 \end{enumerate}
 
 El Algoritmo~\ref{alg:gradient_boosting_window} sintetiza el definitivo
@@ -719,9 +721,10 @@ Esto genera un sesgo en el muestreo, lo cual puede producir artefactos de
         (c)~Ubicación de \SourceLayoutsSchematicsGridSources{} fuentes
         obtenidas mediante la distribución \emph{grilla regular}.
         (d)~Ubicación de \SourceLayoutsSchematicsBlockAveragedSources{} fuentes
-        obtenidas mediante la distribución \emph{fuentes promediadas por bloque}.
-        Las líneas de a trazos grises representan los bloques espaciales dentro
-        de los cuales la localización media de los datos es calculada.
+        obtenidas mediante la distribución \emph{fuentes promediadas por
+        bloque}. Las líneas de a trazos grises representan los bloques
+        espaciales dentro de los cuales la localización media de los datos es
+        calculada.
     }
     \label{fig:source_layouts}
 \end{figure}
@@ -788,7 +791,8 @@ computacional inferior y es menos propenso a sobreajustar los datos, ya que la
 complejidad del modelo es menor.
 Además, el proceso de \emph{promediado por bloques} puede balancear el
 espaciado entre fuentes a lo largo de líneas de vuelo y entre líneas contiguas,
-ayudando a reducir los efectos de \emph{aliasing} en las grillas que se generan.
+ayudando a reducir los efectos de \emph{aliasing} en las grillas que se
+generan.
 En la sección~\ref{sec:synthetic_distributions}, demostramos mediante pruebas
 sobre datos sintéticos que las \emph{fuentes promediadas por bloque} son
 capaces de realizar interpolaciones con una precisión comparable a la obtenida
@@ -854,7 +858,8 @@ Aquí destacaremos las siguientes (fig.~\ref{fig:depth_types}):
  \item
     \emph{Profundidad variable}:
     Las profundidades de las fuentes son proporcionales a la distancia
-    horizontal entre primeros vecinos de datos o fuentes (fig.~\ref{fig:depth_types}c).
+    horizontal entre primeros vecinos de datos o fuentes
+    (fig.~\ref{fig:depth_types}c).
     Diferentes variaciones de esta estrategia han sido propuestas
     anteriormente, por ejemplo
     \citet{cordell1992}, \citet{guspi2004}, y \citet{guspi2009}.
@@ -1179,8 +1184,8 @@ Figura~\ref{fig:gradient-boosted-comparison}d
 el tiempo de cómputo requerido para estimar los coeficientes de las fuentes,
 ambos en función de la cantidad de solapamiento entre las ventanas.
 
-Nuestros resultados muestran que la \ac{RMSE} de la interpolación decrece con la
-cantidad de solapamiento, alcanzando la misma precisión que las fuentes
+Nuestros resultados muestran que la \ac{RMSE} de la interpolación decrece con
+la cantidad de solapamiento, alcanzando la misma precisión que las fuentes
 equivalentes regulares a aproximadamente un solapamiento del 90\%.
 Por otro lado, el tiempo de cómputo aumenta con la cantidad de solapamiento,
 haciéndose mayor que el necesario por fuentes equivalentes regulares para
@@ -1314,15 +1319,15 @@ un total de \AustraliaEqlNSources{}~fuentes puntuales.
 El tamaño de los bloques fue elegido para que concuerde con la resolución
 deseada para la grilla final (1~minuto de arco equivale aproximadamente
 a 1.8\km{} en el ecuador).
-Basado en los resultados obtenidos en la sección~\ref{sec:synthetic_distributions},
-elegimos localizar las fuentes siguiendo la estrategia de \emph{profundidad
-relativa}.
+Basado en los resultados obtenidos en la
+sección~\ref{sec:synthetic_distributions}, elegimos localizar las fuentes
+siguiendo la estrategia de \emph{profundidad relativa}.
 El solapamiento de las ventanas fue fijado nuevamente a 50\%.
 Para determinar el tamaño de las ventanas, calculamos la cantidad de memoria
 necesaria para almacenar la matriz Jacobiana más grande que genera el algoritmo
 para diferentes valores de tamaño de ventana
 (fig.~\ref{fig:australia-memory-cv-error}a).
-Hemos seleccionado un tamaño de venta de \AustraliaEqlWindowSize{} con el
+Hemos seleccionado un tamaño de ventana de \AustraliaEqlWindowSize{} con el
 objetivo de limitar la cantidad de memoria por debajo de los 16~Gigabytes.
 
 \begin{figure}
