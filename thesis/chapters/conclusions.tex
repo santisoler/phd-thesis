@@ -1,1 +1,191 @@
 \chapter{Conclusiones}
+
+Durante el desenvolvimiento de esta Tesis Doctoral se desarrollaron dos nuevas
+metodologías para el modelado y procesamiento de datos gravimétricos que pueden
+ser aplicadas a un amplio espectro de problemáticas geofísicas,
+desde investigaciones científicas hasta exploración de recursos
+naturales.
+Cada una de estas metodologías han sido implementadas mediante software
+a través del lenguaje de programación Python y se encuentran disponibles bajo
+licencias de código abierto.
+
+\vspace{1em}
+
+La primer metodología consiste en un modelo directo que permite calcular los
+campos gravitacionales generados por tesseroides cuya densidad puede expresarse
+como una función continua dependiente de la coordenada radial.
+Este nuevo método resuelve numéricamente las integrales involucradas mediante
+una \acl{GLQ} de segundo orden aplicada en conjunto con dos algoritmos de
+discretización:
+
+\begin{itemize}
+    \item un algoritmo de discretización adaptativa bidimensional que divide al
+        tesseroide en las direcciones longitudinales y latitudinales en función
+        de la distancia entre el centro del tesseroide y el punto de cómputo; y
+    \item  un algoritmo de discretización basado en la densidad que lo
+        fracciona en la dirección radial, donde toma lugar la \emph{máxima
+        variación de densidad}.
+\end{itemize}
+
+Estos algoritmos cuentan con dos parámetros que controlan de manera indirecta
+la cantidad de subdivisiones que se llevan a cabo: el ratio distancia-tamaño
+$D$ y el ratio delta $\delta$, respectivamente.
+Los valores que estos asumen poseen un impacto sobre el tiempo de cómputo
+necesario para llevar a cabo los cálculos y sobre la precisión de los
+resultados.
+
+Con el objetivo de hallar valores óptimos de $D$ y $\delta$ que minimicen el
+tiempo de cómputo mientras alcanzan precisiones aceptables, llevamos a cabo
+comparaciones empíricas entre los resultados numéricos y las soluciones
+analíticas para cascarones esféricos con densidades lineales, exponenciales
+y sinusoidales.
+Como resultado, hallamos que al utilizar valores de $D$ de 1 y 2.5 para el
+potencial gravitatorio y para su gradiente, respectivamente, la integración
+numérica alcanza precisiones por debajo del 0.1\% para cascarones de diferentes
+espesores y sobre puntos de observación situados en diversas localizaciones.
+De manera análoga, la elección de un ratio $\delta$ de 0.1 alcanza la misma
+precisión para diferentes funciones de densidad, a excepción de funciones
+sinusoidales con altas frecuencias, en cuyo caso alcanza una precisión de 1\%
+con respecto a las soluciones analíticas.
+Además, concluimos que las elecciones de $D$ y $\delta$ no poseen una relación
+significativa entre sí y por ende la elección de sus valores puede realizarse
+de forma independiente.
+
+Si bien la incorporación del algoritmo de discretización basado en la densidad
+introduce un mayor costo computacional, esta metodología presenta un alto grado
+de flexibilidad: es posible utilizar cualquier tipo de función continua sin
+necesidad de modificar la implementación del algoritmo.
+Esta característica hace que esta metodología pueda ser ampliamente utilizada
+para diferentes fines, sin necesidad de limitarse a casos particulares.
+
+Finalmente, esta nueva metodología fue aplicada para el modelado directo de la
+Cuenca Neuquina ubicada al Norte de la Patagonia Argentina.
+Se ha calculado el efecto gravitatorio del paquete sedimentario de la cuenca
+tomando en consideración la compactación del relleno, demostrando que existe
+una diferencia apreciable en comparación a asumir valores constantes de
+densidad.
+
+\vspace{1em}
+
+La segunda metodología consiste en un algoritmo que permite realizar
+interpolaciones de grandes cantidades de datos gravimétricos o magnéticos
+mediante la utilización de \emph{fuentes equivalentes potenciadas por
+gradiente}.
+Este nuevo método construye conjuntos más pequeños de fuentes equivalentes
+mediante la utilización de ventanas solapadas, cuyos coeficientes son
+determinados de forma iterativa mediante un algoritmo de mínimos cuadrados
+amortiguados.
+De esta forma, las \emph{fuentes equivalentes potenciadas por gradiente} son
+capaces de transformar un gran problema con altos requisitos de memoria
+computacional en pequeños problemas más sencillos de resolver que son
+acumulados de forma iterativa.
+
+Mediante sucesivas pruebas sobre datos sintéticos, hemos sido capaces de
+demostrar que esta nueva metodología es capaz de alcanzar precisiones similares
+a las obtenidas mediante fuentes equivalentes regulares, reduciendo el tiempo
+de cómputo de forma considerable y permitiendo interpolar grandes cantidades de
+datos.
+También hallamos que un solapamiento del 50\% entre ventanas contiguas produce
+un balance óptimo entre tiempo de cómputo y precisión de las predicciones.
+Además, hemos demostrado que aleatorizar el orden en el cual se lleva a cabo la
+iteración de las ventanas es fundamental para obtener resultados más precisos
+y acelerar la convergencia del algoritmo.
+Con el objeto de maximizar la precisión del método, recomendamos elegir el
+máximo tamaño de ventana que genere matrices Jacobianas que puedan almacenarse
+en memoria.
+
+En adición a esta metodología, presentamos una nueva estrategia para ubicar las
+fuentes equivalentes, que denominamos \emph{fuentes promediadas por bloques}.
+Esta consiste en dividir la región de estudio en bloques de igual tamaño
+y ubicar una fuente en la posición horizontal media de las observaciones que
+caen dentro de cada bloque.
+De esta forma, la cantidad de fuentes equivalentes es mucho menor si comparamos
+con otras estrategias, como ubicar una fuente debajo de cada observación o en
+una grilla regular.
+
+Mediante la utilización de datos sintéticos, hemos comparado las predicciones
+que se obtienen al utilizar cada distribución de fuentes equivalentes,
+incluyendo también diversas formas de determinar sus profundidades.
+Nuestros resultados indican que las \emph{fuentes promediadas por bloques}
+reducen el costo computacional del método, alcanzando el mismo nivel de
+precisión que al utilizar distribuciones de fuentes clásicas.
+A partir de nuestra experiencia, recomendamos elegir un tamaño de bloque del
+mismo orden que la resolución de la grilla sobre la cual se interpolarán los
+datos.
+
+Hemos observado que las diferentes estrategias para asignar la profundidad de
+las fuentes no modifican significativamente la precisión de las
+interpolaciones.
+A excepción de las \emph{profundidades variables}, que producen resultados
+ligeramente más precisos.
+Sin embargo, dado que involucran mayor cantidad de hiperparámetros, su uso
+puede conllevar un aumento en el costo computacional durante la determinación
+de estos parámetros mediante métodos como la validación cruzada.
+Por esta razón, recomendamos la utilización de \emph{profundidades constantes}
+o \emph{profundidades relativas} en la mayoría de los casos.
+
+Dado que las \emph{fuentes equivalentes potenciadas por gradiente} no realizan
+ninguna suposición sobre las ubicaciones de las fuentes mismas, es posible
+utilizar este método junto con \emph{fuentes promediadas por bloques},
+reduciendo los requerimientos de memoria computacional por dos medios
+independientes.
+
+Finalmente, hemos aplicado las \emph{fuentes equivalentes potenciadas por
+gradiente} junto con \emph{fuentes promediadas por bloques} para interpolar una
+colección de datos gravimétricos sobre Australia con más de 1.7 millones de
+puntos.
+Las predicciones se realizaron sobre una grilla regular a altitud constante con
+una resolución de 1 minuto de arco, aproximadamente.
+El proceso fue llevado a cabo en una computadora personal modesta, utilizando
+menos de 16~Gigabytes de memoria computacional.
+
+\vspace{1em}
+
+En paralelo al desarrollo de estas nuevas metodologías, a lo largo de esta
+Tesis he realizado múltiples contribuciones a proyectos de software de código
+abierto, particularmente a las librerías pertenecientes a Fatiando a Terra.
+Estas contribuciones han favorecido a la creación y desarrollo de cuatro
+librerías de software escritas en lenguaje Python: Verde (interpolaciones de
+datos georreferenciados mediante funciones de Green), Boule (elipsoides de
+referencia y cálculo de gravedad normal), Harmonica (procesamiento y modelado
+de datos potenciales) y Pooch (descarga de datos científicos de la web).
+La mayoría de estas librerías poseen una íntima relación con las áreas de la
+geofísica en las que se desarrolla esta Tesis.
+
+Debido a esto, tanto las investigaciones científicas aquí expuestas como los
+proyectos de software nombrados han tenido una profunda relación de
+retroalimentación: el software se desarrolla en función de las necesidades de
+la investigación que se lleva a cabo, poniéndose a disposición de la comunidad,
+mientras que los proyectos científicos adquieren una base de herramientas
+sobre las cuales pueden experimentar y desarrollar nuevas metodologías.
+Como resultado de esta relación, los proyectos de software terminan recibiendo
+implementaciones de métodos de vanguardia, permitiendo al resto de la comunidad
+científica poder aplicarlos a sus problemáticas particulares sin necesidad de
+escribir sus propias implementaciones.
+De esta manera, el avance científico no se realiza únicamente dentro de los
+artículos publicados, sino que existe también una colaboración indirecta con el
+resto de la comunidad poniendo a disposición estas implementaciones bajo
+licencias de código abierto.
+
+La oportunidad de desarrollar software científico siguiendo las mejores
+prácticas ha tenido un impacto en la calidad de las investigaciones
+expuestas en esta Tesis.
+El desarrollo de cada una de las metodologías presentadas ha sido realizado
+utilizando las mismas herramientas que se detallaron en el capítulo anterior:
+el uso de controladores de versiones, la aplicación de las recomendaciones
+acerca de los estilos de escritura, la creación de funciones de testeo para las
+nuevas implementaciones de los métodos, entre otras.
+La aplicación de estas prácticas heredadas del desarrollo de software
+permitieron generar publicaciones científicas reproducibles.
+
+% integracion ciencia con desarrollo de software
+
+% aprendizaje de mejores practicas
+
+% ciencia reproducible
+
+% planes a futuro
+
+% implementacion de tesseroides de densidad variable y fuentes equivalente
+% gradient boosted en Harmonica
+
