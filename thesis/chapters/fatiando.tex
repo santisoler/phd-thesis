@@ -570,28 +570,28 @@ Harmonica en cualquier tipo de plataforma.
 
 Otra de las capacidades que presenta Harmonica es la de realizar cálculos
 a partir de los algoritmos de fuentes equivalentes.
-La clase \texttt{EQLHarmonic} contiene una implementación del método de fuentes
-equivalentes que utiliza fuentes puntuales y la inversa de la distancia como
-función de Green (tal y como se describe en la
+La clase \texttt{EquivalentSources} contiene una implementación del método de
+fuentes equivalentes que utiliza fuentes puntuales y la inversa de la distancia
+como función de Green (tal y como se describe en la
 sección~\ref{sec:equivalent-sources-technique}).
 El ajuste de los coeficientes de las fuentes se realiza mediante un algoritmo
 de mínimos cuadrados amortiguados, haciendo uso del parámetro de
 \emph{amortiguamiento} adimensional introducido en la
 sección~\ref{sec:eql_inversion}.
-\texttt{EQLHarmonic} permite ajustar fuentes equivalentes dadas en coordenadas
-Cartesianas, mientras que \texttt{EQLHarmonicSpherical} nos permite aplicar la
-misma metodología pero definiendo las fuentes puntuales y los puntos de
-observación en coordenadas esféricas geocéntricas.
+\texttt{EquivalentSources} permite ajustar fuentes equivalentes dadas en
+coordenadas Cartesianas, mientras que \texttt{EquivalentSourcesSph} nos permite
+aplicar la misma metodología pero definiendo las fuentes puntuales y los puntos
+de observación en coordenadas esféricas geocéntricas.
 Estas clases heredan muchos de los métodos y atributos de la clase
 \texttt{BaseGridder} de Verde, haciendo que su utilización sea a su vez
 muy similar a la que encontramos en los métodos de aprendizaje automático de
 scikit-learn \citep{sklearn2011}.
-Las decisiones de diseño han permitido que los métodos de \texttt{EQLHarmonic}
-y \texttt{EQLHarmonicSpherical} reutilicen muchas de las funciones centrales
-del modelado directo de masas puntuales, permitiendo no solo un ahorro en
-cantidad de código, sino también el reciclado de las oportunidades que estas
-proveen mediante el compilador Numba, como paralelizar la construcción de la
-matriz Jacobiana.
+Las decisiones de diseño han permitido que los métodos de
+\texttt{EquivalentSources} y \texttt{EquivalentSourcesSph} reutilicen muchas de
+las funciones centrales del modelado directo de masas puntuales, permitiendo no
+solo un ahorro en cantidad de código, sino también el reciclado de las
+oportunidades que estas proveen mediante el compilador Numba, como paralelizar
+la construcción de la matriz Jacobiana.
 
 Harmonica ofrece además algunas otras funcionalidades para procesar datos
 gravimétricos: aplicación de la corrección de Bouguer utilizando una
