@@ -411,9 +411,12 @@ siguientes parámetros:
     \item y la velocidad angular $\omega$.
 \end{itemize}
 
-Las funcionalidades principales de Boule vienen dadas dentro de la clase
-\texttt{Ellipsoids}, la cual nos permite definir cualquier elipsoide de
-referencia a partir de los parámetros mencionados.
+Las funcionalidades principales de Boule vienen dadas dentro de las clases
+\texttt{Ellipsoids} y \texttt{Sphere}, las cuales nos permiten definir
+cualquier elipsoide referencia a partir de los parámetros mencionados.
+La clase \texttt{Sphere} está orientada a representar esferas, las cuales
+poseen achatamiento nulo y en vez de especificar su semieje mayor, se define su
+radio.
 A modo de ejemplo, uno podría definir el elipsoide WGS84 como se muestra en le
 Código~\ref{lst:boule-wgs84}.
 Sin embargo, Boule ya ofrece algunos de los elipsoides de referencia más
@@ -422,6 +425,9 @@ ampliamente usados en geodesia y geofísica, tales como el WGS84
 (\texttt{boule.GRS80}) e incluso un elipsoide de referencia para el planeta
 Marte definido según los parámetros disponibles en \citet{ardalan2009}
 (\texttt{boule.MARS}).
+Además podemos hallar elipsoides esféricos para la Luna (\texttt{boule.MOON}),
+Venus (\texttt{boule.VENUS}) y Mercurio (\texttt{boule.MERCURY}) definidos
+según \citet{wieczorek2015}.
 
 \lstinputlisting[
     float,
@@ -450,12 +456,25 @@ El método \texttt{normal\_gravity()} implementa la \emph{fórmula cerrada} de
 \citet{li2001a} para calcular el módulo de la aceleración de la gravedad
 generada por el elipsoide en cualquier punto dado por sus coordenadas
 geodésicas.
+En el caso de la clase \texttt{Sphere}, su método \texttt{normal\_gravity()}
+hace uso de una ecuación más sencilla \citep{heiskanen1967}:
+
+\begin{equation}
+    \gamma(\phi, h) =
+        \sqrt{\left( \frac{GM}{(R + h)^2} \right)^2
+        + \left(\omega^2 (R + h) - 2\frac{GM}{(R + h)^2} \right)
+        \omega^2 (R + h) \cos^2 \phi},
+\end{equation}
+
+\noindent donde $R$ es el radio de la esfera, $\phi$ la coordenada latitudinal
+y $h$ la altitud sobre la superficie de la esfera correspondientes al punto de
+observación.
 
 Si bien Boule es una librería que se encuentra en un estado funcional
 y puede ser utilizada en investigaciones científicas al día de la fecha, aún no
 ha alcanzado su primera versión estable.
 Es posible que aún sea necesario realizar modificaciones sobre su diseño en los
-planes de incorporar otros tipos de elipsoides, como las esferas o elipsoides
+planes de incorporar otros tipos de elipsoides, como elipsoides
 triaxiales.
 Podemos acceder a la documentación correspondiente a la última versión en
 \href{https://www.fatiando.org/boule}{fatiando.org/boule}.
