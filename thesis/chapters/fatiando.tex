@@ -432,7 +432,10 @@ según \citet{wieczorek2015}.
 \lstinputlisting[
     float,
     language=Python,
-    caption={Ejemplo de definición de elipsoide de referencia con Boule},
+    caption={%
+        Ejemplo de definición de elipsoide de referencia con Boule
+        (\BouleVersion{})
+    },
     label=lst:boule-wgs84
 ]{fatiando-examples/boule-wgs84.py}
 
@@ -519,7 +522,7 @@ acceder mediante la función \texttt{tesseroid\_gravity()}.
     caption={%
         Ejemplo de cálculo de aceleración de la gravedad producida por dos
         masas puntuales dadas en coordenadas Cartesianas mediante
-        Harmonica.
+        Harmonica (\HarmonicaVersion{}).
     },
     label=lst:harmonica-point-mass
 ]{fatiando-examples/harmonica-point-mass.py}
@@ -555,8 +558,8 @@ Sudáfrica sobre una grilla regular a 4000\m{} de altitud.
     language=Python,
     caption={%
         Ejemplo de cálculo de efecto gravitatorio de la topografía de Sudáfrica
-        sobre una grilla regular haciendo uso de
-        \texttt{harmonica.prism\_gravity()}.
+        sobre una grilla regular con Harmonica (\HarmonicaVersion{})
+        haciendo uso de \texttt{harmonica.prism\_gravity()}.
     },
     label=lst:harmonica-prism-layer
 ]{fatiando-examples/harmonica-prism-layer.py}
@@ -657,9 +660,9 @@ librerías del ecosistema científico de Python.
     floatplacement=h,
     language=Python,
     caption={%
-        Ejemplo de descarga de archivos con Pooch mediante la
-        clase \texttt{pooch.Pooch}. Este código es a modo de ejemplificación
-        y no está escrito para ser ejecutado.
+        Ejemplo de descarga de archivos con Pooch (\PoochVersion{})
+        mediante la clase \texttt{pooch.Pooch}. Este código es a modo de
+        ejemplificación y no está escrito para ser ejecutado.
     },
     label=lst:pooch-registry
 ]{fatiando-examples/pooch-registry.py}
@@ -716,8 +719,8 @@ Software luego de una revisión abierta por pares \citep{pooch2020}.
     float,
     language=Python,
     caption={%
-        Ejemplo de descarga de archivos con Pooch mediante la
-        función \texttt{pooch.retrieve()}.
+        Ejemplo de descarga de archivos con Pooch (\PoochVersion{})
+        mediante la función \texttt{pooch.retrieve()}.
     },
     label=lst:pooch-retrieve
 ]{fatiando-examples/pooch-retrieve.py}
