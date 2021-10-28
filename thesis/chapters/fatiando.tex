@@ -432,9 +432,12 @@ según \citet{wieczorek2015}.
 \lstinputlisting[
     float,
     language=Python,
-    caption={Ejemplo de definición de elipsoide de referencia con Boule},
+    caption={%
+        Ejemplo de definición de elipsoide de referencia con Boule
+        (\BouleVersion{})
+    },
     label=lst:boule-wgs84
-]{chapters/fatiando-examples/boule-wgs84.py}
+]{fatiando-examples/boule-wgs84.py}
 
 A su vez, la clase \texttt{Ellipsoids} posee una serie de propiedades que se
 calculan a partir de los parámetros que definen cada elipsoide, entre ellos: el
@@ -519,10 +522,10 @@ acceder mediante la función \texttt{tesseroid\_gravity()}.
     caption={%
         Ejemplo de cálculo de aceleración de la gravedad producida por dos
         masas puntuales dadas en coordenadas Cartesianas mediante
-        Harmonica.
+        Harmonica (\HarmonicaVersion{}).
     },
     label=lst:harmonica-point-mass
-]{chapters/fatiando-examples/harmonica-point-mass.py}
+]{fatiando-examples/harmonica-point-mass.py}
 
 Cada una de estas funciones admiten una cantidad arbitraria de geometrías
 y puntos de observación que pueden venir dadas por estructuras de datos muy
@@ -555,11 +558,11 @@ Sudáfrica sobre una grilla regular a 4000\m{} de altitud.
     language=Python,
     caption={%
         Ejemplo de cálculo de efecto gravitatorio de la topografía de Sudáfrica
-        sobre una grilla regular haciendo uso de
-        \texttt{harmonica.prism\_gravity()}.
+        sobre una grilla regular con Harmonica (\HarmonicaVersion{})
+        haciendo uso de \texttt{harmonica.prism\_gravity()}.
     },
     label=lst:harmonica-prism-layer
-]{chapters/fatiando-examples/harmonica-prism-layer.py}
+]{fatiando-examples/harmonica-prism-layer.py}
 
 La mayoría de los métodos de modelado directo involucran cómputos moderadamente
 complejos, los cuales pueden conllevar a un alto costo computacional,
@@ -657,12 +660,12 @@ librerías del ecosistema científico de Python.
     floatplacement=h,
     language=Python,
     caption={%
-        Ejemplo de descarga de archivos con Pooch mediante la
-        clase \texttt{pooch.Pooch}. Este código es a modo de ejemplificación
-        y no está escrito para ser ejecutado.
+        Ejemplo de descarga de archivos con Pooch (\PoochVersion{})
+        mediante la clase \texttt{pooch.Pooch}. Este código es a modo de
+        ejemplificación y no está escrito para ser ejecutado.
     },
     label=lst:pooch-registry
-]{chapters/fatiando-examples/pooch-registry.py}
+]{fatiando-examples/pooch-registry.py}
 
 
 Pooch permite gestionar un \emph{registro} en el cual podemos listar las
@@ -716,11 +719,11 @@ Software luego de una revisión abierta por pares \citep{pooch2020}.
     float,
     language=Python,
     caption={%
-        Ejemplo de descarga de archivos con Pooch mediante la
-        función \texttt{pooch.retrieve()}.
+        Ejemplo de descarga de archivos con Pooch (\PoochVersion{})
+        mediante la función \texttt{pooch.retrieve()}.
     },
     label=lst:pooch-retrieve
-]{chapters/fatiando-examples/pooch-retrieve.py}
+]{fatiando-examples/pooch-retrieve.py}
 
 Hasta entonces la principal audiencia de Pooch consistía en otros
 desarrolladores de software que deseaban una forma sencilla de distribuir datos
