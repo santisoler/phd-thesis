@@ -1,0 +1,21 @@
+name: phd-thesis
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9.*
+  - pip
+  # Packages for running analytics
+  - numpy
+  - matplotlib
+  - cartopy
+  - pandas
+  - geopandas
+  - plotly
+  - openpyxl
+  - jupyter
+  - nb_conda
+  # Fatiando packages used in the thesis/fatiando-examples scripts
+  - verde=1.6.1
+  - pooch=1.5.2
+  - harmonica=0.3.3
+  - boule=0.3.1

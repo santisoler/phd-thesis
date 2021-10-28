@@ -121,6 +121,7 @@ ambiente científico actual.
 
 
 \section{Historia}
+\label{sec:fatiando-history}
 
 Los orígenes del proyecto se remontan a finales de la década del 2000, cuando
 Leonardo Uieda y Vanderlei Oliveira Jr. junto a otros estudiantes se
@@ -228,7 +229,7 @@ colaboraciones de investigadores y desarrolladores de diferentes partes del
 mundo.
 La utilización de la librería \texttt{fatiando} por otros investigadores
 e investigadoras deriva a su vez en un ciclo de retroalimentación: quienes
-comienzan siendo usuarios, terminan contribuyendo al proyecto.
+comienzan siendo usuarios o usuarias, terminan contribuyendo al proyecto.
 De esta forma \texttt{fatiando} comienza a alojar implementaciones de métodos
 novedosos recientemente publicados \citep{uieda2012b, oliveira2013}.
 
@@ -432,9 +433,12 @@ según \citet{wieczorek2015}.
 \lstinputlisting[
     float,
     language=Python,
-    caption={Ejemplo de definición de elipsoide de referencia con Boule},
+    caption={%
+        Ejemplo de definición de elipsoide de referencia con Boule
+        (\BouleVersion{})
+    },
     label=lst:boule-wgs84
-]{chapters/fatiando-examples/boule-wgs84.py}
+]{fatiando-examples/boule-wgs84.py}
 
 A su vez, la clase \texttt{Ellipsoids} posee una serie de propiedades que se
 calculan a partir de los parámetros que definen cada elipsoide, entre ellos: el
@@ -519,10 +523,10 @@ acceder mediante la función \texttt{tesseroid\_gravity()}.
     caption={%
         Ejemplo de cálculo de aceleración de la gravedad producida por dos
         masas puntuales dadas en coordenadas Cartesianas mediante
-        Harmonica.
+        Harmonica (\HarmonicaVersion{}).
     },
     label=lst:harmonica-point-mass
-]{chapters/fatiando-examples/harmonica-point-mass.py}
+]{fatiando-examples/harmonica-point-mass.py}
 
 Cada una de estas funciones admiten una cantidad arbitraria de geometrías
 y puntos de observación que pueden venir dadas por estructuras de datos muy
@@ -555,11 +559,11 @@ Sudáfrica sobre una grilla regular a 4000\m{} de altitud.
     language=Python,
     caption={%
         Ejemplo de cálculo de efecto gravitatorio de la topografía de Sudáfrica
-        sobre una grilla regular haciendo uso de
-        \texttt{harmonica.prism\_gravity()}.
+        sobre una grilla regular con Harmonica (\HarmonicaVersion{})
+        haciendo uso de \texttt{harmonica.prism\_gravity()}.
     },
     label=lst:harmonica-prism-layer
-]{chapters/fatiando-examples/harmonica-prism-layer.py}
+]{fatiando-examples/harmonica-prism-layer.py}
 
 La mayoría de los métodos de modelado directo involucran cómputos moderadamente
 complejos, los cuales pueden conllevar a un alto costo computacional,
@@ -626,15 +630,6 @@ ha alcanzado su primera versión estable.
 Podemos acceder a la documentación correspondiente a la última versión en
 \href{https://www.fatiando.org/harmonica}{fatiando.org/harmonica}.
 
-% Planes a futuro:
-
-% incluir gradient-boosted eqls y variable density tesseroids
-
-% derivadas espaciales de grillas (verticales con FFT)
-
-% Euler deconvolution
-
-% inversion: nuevo framework de inversion
 
 \subsection{Pooch}
 
@@ -657,12 +652,12 @@ librerías del ecosistema científico de Python.
     floatplacement=h,
     language=Python,
     caption={%
-        Ejemplo de descarga de archivos con Pooch mediante la
-        clase \texttt{pooch.Pooch}. Este código es a modo de ejemplificación
-        y no está escrito para ser ejecutado.
+        Ejemplo de descarga de archivos con Pooch (\PoochVersion{})
+        mediante la clase \texttt{pooch.Pooch}. Este código es a modo de
+        ejemplificación y no está escrito para ser ejecutado.
     },
     label=lst:pooch-registry
-]{chapters/fatiando-examples/pooch-registry.py}
+]{fatiando-examples/pooch-registry.py}
 
 
 Pooch permite gestionar un \emph{registro} en el cual podemos listar las
@@ -716,18 +711,18 @@ Software luego de una revisión abierta por pares \citep{pooch2020}.
     float,
     language=Python,
     caption={%
-        Ejemplo de descarga de archivos con Pooch mediante la
-        función \texttt{pooch.retrieve()}.
+        Ejemplo de descarga de archivos con Pooch (\PoochVersion{})
+        mediante la función \texttt{pooch.retrieve()}.
     },
     label=lst:pooch-retrieve
-]{chapters/fatiando-examples/pooch-retrieve.py}
+]{fatiando-examples/pooch-retrieve.py}
 
 Hasta entonces la principal audiencia de Pooch consistía en otros
 desarrolladores de software que deseaban una forma sencilla de distribuir datos
-de muestra a sus usuarios.
+de muestra a sus usuarios y usuarias.
 Sin embargo, en los meses subsiguientes se presentó la oportunidad de incluir
-otro tipo de audiencia al paquete: usuarios finales que deseaban descargar
-pocos archivos por única vez.
+otro tipo de audiencia al paquete: usuarios y usuarias finales que deseaban
+descargar pocos archivos por única vez.
 Esto se materializó con la creación de la función \texttt{pooch.retrieve()} que
 permite acceder a las mismas funcionalidades de Pooch, pero sin la
 necesidad de predefinir una instancia de \texttt{pooch.Pooch} y con una
@@ -774,7 +769,7 @@ código de la \emph{rama} principal, exponemos una nueva idea a implementar
 a futuro o solicitamos una nueva capacidad o comportamiento del código
 existente.
 Los \emph{Issues} representan un canal de comunicación entre toda la comunidad,
-incluyendo usuarios, desarrolladores y contribuidores.
+incluyendo usuarios y usuarias, desarrolladores y contribuidores.
 
 Cada vez que alguien desea colaborar con alguna modificación o una nueva
 implementación, esta persona escribe su código en una nueva \emph{rama} que
@@ -902,8 +897,8 @@ Las funciones de prueba son porciones de software que tienen como único
 objetivo corroborar el buen funcionamiento del código que compone un
 determinado paquete.
 Estas funciones de prueba no están destinadas a ser utilizadas por usuarios
-finales de la forma en que sí son diseñadas las funciones incluidas en la
-\ac{API} del proyecto.
+y usuarias finales de la forma en que sí son diseñadas las funciones incluidas
+en la \ac{API} del proyecto.
 Por el contrario, se añaden para ser ejecutadas por desarrolladores o por
 servicios de integración continua (ver sección~\ref{sec:ci}).
 
@@ -912,8 +907,8 @@ nuestro código puede conllevar la obtención de resultados erróneos, que puede
 repercutir en el avance de una determinada disciplina o incluso hasta en la
 toma de decisiones sobre sociedades y la vida de personas.
 Si bien estos comportamientos erróneos pueden ser percibidos por los usuarios
-o desarrolladores durante el uso cotidiano del código, muchos otros pueden
-permanecer inadvertidos durante mucho tiempo.
+y usuarias o desarrolladores durante el uso cotidiano del código, muchos otros
+pueden permanecer inadvertidos durante mucho tiempo.
 Las pruebas de software son herramientas extremadamente útiles a la hora de
 detectar estos comportamientos no deseados, especialmente porque permiten
 adelantarse y reconocerlos antes de que puedan tener impactos negativos.
@@ -1051,8 +1046,8 @@ código y publicarlo bajo esa denominación en servicios que proveen las fuentes
 para distintos gestores de paquetes, tales como
 PyPI\footnote{\url{https://pypi.org/}} (\emph{Python package index})
 y \texttt{conda-forge}\footnote{\url{https://conda-forge.org/}}.
-Gracias a esto los usuarios pueden descargar e instalar nuestras librerías
-mediante la utilización de gestores de paquetes.
+Gracias a esto los usuarios y usuarias pueden descargar e instalar nuestras
+librerías mediante la utilización de gestores de paquetes.
 Por ejemplo, si se desea instalar Boule con el gestor \texttt{pip} es posible
 hacerlo ejecutando:
 
@@ -1076,6 +1071,7 @@ proceso para su publicación.
 
 
 \section{Comunidad}
+\label{sec:fatiando-community}
 
 Una de las partes fundamentales para que el proyecto se haya podido desarrollar
 de la forma en que lo hizo es la comunidad que se ha construido a su alrededor
@@ -1120,7 +1116,25 @@ Conducta%
 }
 con el objetivo de generar un ambiente ameno y respetuoso.
 
-% Interacción con otros proyectos?
+La comunidad gestada alrededor de Fatiando a Terra interactúa además con otras
+comunidades del software de código abierto como SimPEG \citep{cockett2015},
+pyGIMLi \citep{ruecker2017}, GemPy \citep{varga2019}, emsig
+\citep{werthmuller2017,werthmuller2019}, PyVista \citep{sullivan2019},
+subsurface\footnote{\url{https://softwareunderground.github.io/subsurface/}},
+pyGMT \citep{pygmt2020}, Xarray \citep{xarray2017}, scikit-image
+\citep{skimage} y MetPy \citep{metpy}, entre otras.
+
+Aquellas que poseen una estrecha vinculación con las ciencias de la Tierra
+se relacionan dentro de comunidades como
+\href{https://softwareunderground.org/}{\emph{software
+underground}}\footnote{\url{https://softwareunderground.org/}}, donde se
+llevan a cabo reuniones de desarrolladores y eventos como los
+\href{%
+    https://softwareunderground.org/transform
+}{%
+    \emph{Transform}
+}\footnote{\url{https://softwareunderground.org/transform}} en los cuales de
+dictan tutoriales, diversas charlas y \emph{hackathons}.
 
 
 \section{Adopción en la comunidad científica}
@@ -1132,7 +1146,7 @@ Muchas de ellas citan a los artículos \citet{uieda2013} y \citet{verde2018}.
 Además, el proyecto ha sido presentado en congresos científicos y reuniones
 científicas \citep{uieda2013,uieda2020b,soler2021c}.
 
-\begin{figure}
+\begin{figure}[bh!]
     \centering
     \includegraphics[width=0.7\linewidth]{figs/fatiando/users_history.pdf}
     \caption{
@@ -1144,14 +1158,14 @@ científicas \citep{uieda2013,uieda2020b,soler2021c}.
     \label{fig:fatiando-users-history}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{figs/fatiando/users_map.pdf}
     \caption{
         Cantidad de visitas a \href{https://fatiando.org}{fatiando.org} entre
         Abril de 2017 y Septiembre de 2021 por ubicación geográfica.
-        Los países en grises con líneas paralelas blancas corresponden a sitios
-        de los cuales no se han recibido visitas en el mismo período.
+        Los países en color gris con líneas diagonales blancas corresponden
+        a sitios de los cuales no se han recibido visitas en el mismo período.
         La escala de colores posee pasos no proporcionales para mejorar la
         visualización del mapa.
     }
@@ -1181,16 +1195,89 @@ ascendente, principalmente desde comienzos del 2019, con algunas variaciones
 estacionales.
 Además, podemos ver que países como Estados Unidos de América, Brasil y China
 acaparan la mayor cantidad de consultas al sitio web del proyecto,
-aunque el interés sobre el proyecto parece estar distribuido entre muchos
+aunque el interés sobre el mismo parece estar distribuido entre muchos
 países del globo.
 
 
-% \section{Planes a futuro}
+\section{Retroalimentación con investigaciones científicas}
+
+Como se ha mencionado en los capítulos~\ref{cha:tesseroids-variable-density}
+y~\ref{cha:eql-gradient-boosted}, las herramientas desarrolladas en Fatiando
+a Terra han resultado indispensables para la culminación de las investigaciones
+descriptas en esta Tesis.
+Sentaron bases para la construcción de las implementaciones de estas nuevas
+metodologías y proveyeron de herramientas útiles para ponerlas a pruebas
+sobre datos sintéticos o reales.
+Esta relación entre el proyecto e investigaciones científicas como facilitador
+de herramientas no solo se ve reflejada en los avances de esta Tesis, sino que
+se replica en todos los trabajos que han hecho uso de las mismas,
+particularmente los mencionados en la sección~\ref{sec:fatiando-history}.
+
+Sin embargo, existe una relación de retroalimentación entre el proyecto y estas
+investigaciones científicas: muchos de los métodos publicados en artículos
+científicos son incorporados al mismo, generando una forma alternativa de
+acceder a sus implementaciones.
+Esto facilita mucho su aplicación por parte de otros investigadores y otras
+investigadoras: no es necesario recurrir a los materiales suplementarios de las
+publicaciones (en caso de que existan), sino que pueden ser accedidos gracias
+a paquetes de software propiamente distribuidos que además aplican mejores
+prácticas para su desarrollo y mantenimiento.
+
+
+\section{Planes a futuro}
+
+Cada uno de los paquetes del proyecto se encuentran en situaciones diferentes
+con respecto a su estabilidad, estado de su desarrollo y penetración como
+dependencia de otros proyectos.
+En función de estas características, cada uno de los paquetes presenta diversos
+objetivos a alcanzarse en el corto y mediano plazo.
+
+Por ejemplo, Pooch ha sido adoptado como dependencia por muchos otros
+proyectos, es por ello que se hace un fuerte énfasis en priorizar la
+retrocompatibilidad (\emph{backward compatibility}) a la hora de incluir nuevas
+características con el objetivo.
+
+A largo plazo sería deseable poder lanzar versiones estables de Harmonica
+y Boule para luego presentarlos para su publicación en el Journal of Open
+Source Software.
+Para lograr esto se requiere alcanzar otros objetivos intermedios.
+
+Dentro de Boule existe la intención de incorporar elipsoides triaxiales
+y unificar la inicialización de cualquier tipo de elipsoide (esfera, elipsoide
+de revolución o triaxial) combinando todos en una sola clase o proveyendo una
+función particular que decide qué clase debe utilizar en función de los
+parámetros que recibe.
+Además, deseamos incluir cálculos de campos gravitacionales generados por los
+elipsoides, es decir, aceleración de la gravedad que no contenga las
+componentes de la aceleración centrífuga.
+
+Por su parte, en Harmonica deseo incorporar las metodologías desarrolladas
+en esta Tesis: modelado directo de tesseroides con densidades variables y las
+fuentes equivalentes potenciadas por gradiente.
+Además planificamos añadir implementaciones para la deconvolución de Euler,
+cálculos de derivadas espaciales de grillas regulares y comenzar a diagramar un
+\emph{framework} de inversión similar al que existía en \texttt{fatiando} v0.5.
+
+De forma más global se encuentra el objetivo de incrementar la
+interoperabilidad de nuestros paquetes con los desarrollados por las otras
+comunidades de software de código abierto mencionadas en
+\ref{sec:fatiando-community}.
+En esta tarea, comunidades como \emph{software underground} juegan un papel
+fundamental como punto de reunión entre todas las personas involucradas.
+
 
 % Stable release of every package
 
 % Mayor interoperabilidad con el resto de paquetes geofísicos (SimPEG, pyGIMLi, etc)
 
-% Implementar esféras en boule (luna, mercurio).
 % Implementar elipsoides traixiales en boule.
 % Unificar las clases de elipsoides para todo tipo.
+% Planes a futuro:
+
+% incluir gradient-boosted eqls y variable density tesseroids
+
+% derivadas espaciales de grillas (verticales con FFT)
+
+% Euler deconvolution
+
+% inversion: nuevo framework de inversion
