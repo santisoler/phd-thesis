@@ -381,7 +381,7 @@ relaciones:
 \noindent donde $r \in [0, \infty)$, $\lambda \in (-\pi, \pi]$ y
 $\phi \in [-\pi/2, \pi/2]$.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{figs/spherical-coordinates.pdf}
     \caption{
@@ -537,7 +537,7 @@ reemplazando el dominio de integración:
     }.
 \end{equation}
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.6\linewidth]{figs/rectangular-prism.pdf}
     \caption{
@@ -1277,6 +1277,32 @@ y el vector \emph{gravedad normal} calculado en el mismo punto $\mathbf{p}$
     \label{eq:gravity-disturbance-vector}
 \end{equation}
 
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=\linewidth]{figs/surfaces.pdf}
+    \caption{
+        Elipsoide de referencia, geoide y vector del disturbio de gravedad.
+        Se identifica un punto $\mathbf{p}$ situado a una altitud geométrica
+        $h$ indicada por el segmento de recta que une el punto $\mathbf{q}$
+        sobre el elipsoide de referencia.
+        Se observa el vector de gravedad $\mathbf{g}(\mathbf{p})$ sobre el
+        punto $\mathbf{p}$ normal a la superficie equipotencial del campo de
+        gravedad $W$ que pasa por el mismo punto $\mathbf{p}$.
+        Se identifica además el vector de gravedad normal
+        $\boldsymbol\gamma(\mathbf{p})$ y el vector de disturbio de gravedad
+        $\boldsymbol\delta \mathbf{g}(\mathbf{p})$.
+        La altitud ortométrica $H$ se determina por la longitud del segmento de
+        la línea de fuerza del potencial $W$ que une el punto $\mathbf{q'}$
+        sobre el geoide con el punto $\mathbf{p}$, aunque puede aproximarse por
+        el segmento de recta que une el punto $\mathbf{q''}$ y el punto
+        $\mathbf{p}$.
+        Las curvaturas de las superficies equipotenciales han sido exageradas
+        para mejorar la visualización.
+        Esta figura es una versión modificada de \citet{oliveira2021b}.
+    }
+    \label{fig:superficies-equipotenciales}
+\end{figure}
+
 La mayoría de las metodologías que nos permiten realizar mediciones del campo
 gravitatorio terrestre consiguen estimar el valor de la componente del vector
 $\mathbf{g}$ a lo largo de la línea de fuerza del campo de gravedad $W$, la
@@ -1303,33 +1329,6 @@ Sin embargo, se puede asumir que el \emph{disturbio de gravedad} se aproxima lo
 suficiente al módulo del \emph{vector del disturbio de gravedad} si
 consideramos que la desviación del vector $\mathbf{g}(\mathbf{p})$ de la recta
 normal al elipsoide en el punto $\mathbf{p}$ es lo suficientemente pequeña.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{figs/surfaces.pdf}
-    \caption{
-        Elipsoide de referencia, geoide y vector del disturbio de gravedad.
-        Se identifica un punto $\mathbf{p}$ situado a una altitud geométrica
-        $h$ indicada por el segmento de recta que une el punto $\mathbf{q}$
-        sobre el elipsoide de referencia.
-        Se observa el vector de gravedad $\mathbf{g}(\mathbf{p})$ sobre el
-        punto $\mathbf{p}$ normal a la superficie equipotencial del campo de
-        gravedad $W$ que pasa por el mismo punto $\mathbf{p}$.
-        Se identifica además el vector de gravedad normal
-        $\boldsymbol\gamma(\mathbf{p})$ y el vector de disturbio de gravedad
-        $\boldsymbol\delta \mathbf{g}(\mathbf{p})$.
-        La altitud ortométrica $H$ se determina por la longitud del segmento de
-        la línea de fuerza del potencial $W$ que une el punto $\mathbf{q'}$
-        sobre el geoide con el punto $\mathbf{p}$, aunque puede aproximarse por
-        el segmento de recta que une el punto $\mathbf{q''}$ y el punto
-        $\mathbf{p}$.
-        Las curvaturas de las superficies equipotenciales han sido exageradas
-        para mejorar la visualización.
-        Esta figura es una versión modificada de \citet{oliveira2021b}.
-    }
-    \label{fig:superficies-equipotenciales}
-\end{figure}
-
 
 % =============================================================================
 
@@ -1435,7 +1434,7 @@ y definimos una densidad superficial $\sigma$:
     \diff s.
 \end{equation}
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.4\linewidth]{figs/fuentes-equivalentes.pdf}
     \caption{
