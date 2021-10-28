@@ -1230,7 +1230,7 @@ interpolación una vez más haciendo uso de los mismos valores para la profundid
 relativa y el \emph{amortiguamiento}, pero esta vez iteramos sobre las ventanas
 en orden secuencial (de Sur a Norte, de Oeste a Este).
 
-\begin{figure}
+\begin{figure}[t!]
     \centering
     \includegraphics[width=0.7\linewidth]{figs/eql-gradient-boosted/eql-boost-airborne.pdf}
     \caption{
@@ -1330,7 +1330,7 @@ para diferentes valores de tamaño de ventana
 Hemos seleccionado un tamaño de ventana de \AustraliaEqlWindowSize{} con el
 objetivo de limitar la cantidad de memoria por debajo de los 16~Gigabytes.
 
-\begin{figure}
+\begin{figure}[p]
     \centering
     \includegraphics[width=0.6\linewidth]{figs/eql-gradient-boosted/australia-memory-cv-error.pdf}
     \caption{
@@ -1394,13 +1394,13 @@ datos más cercano fueron enmascarados para evitar extrapolaciones irreales.
 La figura~\ref{fig:australia-memory-cv-error}b muestra la \ac{RMSE} entre los
 datos observados y las predicciones del modelo luego de cada iteración del
 algoritmo.
-La figure~\ref{fig:australia-residuals}
+La figura~\ref{fig:australia-residuals}
 muestra un mapa de los residuos, es decir, la diferencia entre los valores
 observados y predichos del disturbio de gravedad.
 La pequeña gráfica insertada muestra un histograma de los residuos, los cuales
 se encuentran normalmente distribuidos alrededor de cero.
 
-\begin{figure}
+\begin{figure}[t!]
     \centering
     \includegraphics[width=0.7\linewidth]{figs/eql-gradient-boosted/australia-residuals.png}
     \caption{
