@@ -1,11 +1,18 @@
 # Metodologías y herramientas computacionales para el procesamiento y modelado de datos gravimétricos
 
-[Santiago Soler](https://santisoler.github.io)
+[Santiago Soler](https://www.santisoler.com)
 
 > CONICET, Argentina
 >
 > Instituto Geofísico Sismológico Volponi, Universidad Nacional de San Juan,
 > Argentina
+
+doi: [10.6084/m9.figshare.16906909](https://doi.org/10.6084/m9.figshare.16906909)
+
+Versiones:
+
+- [`v1.0.0`](https://github.com/santisoler/phd-thesis/releases/tag/v1.0.0): Versión enviada para su evaluación ([descargar el PDF](https://github.com/santisoler/phd-thesis/releases/download/v1.0.0/thesis.pdf))
+- [`v0.1.0`](https://github.com/santisoler/phd-thesis/releases/tag/v0.1.0): Primer borrador ([descargar el PDF](https://github.com/santisoler/phd-thesis/releases/download/v0.1.0/thesis.pdf))
 
 PDF de la versión en desarrollo: https://github.com/santisoler/phd-thesis/raw/pdf/thesis.pdf
 
@@ -21,7 +28,7 @@ Usando BibTeX:
   school  = {Universidad Nacional de San Juan},
   year    = {2021},
   type    = {PhD Thesis},
-  doi     = {xxxx/xxxxx}
+  doi     = {10.6084/m9.figshare.16906909}
 }
 ```
 
