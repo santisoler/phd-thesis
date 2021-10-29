@@ -34,19 +34,19 @@ y los hemos comparado con los resultados del modelo numérico para densidades
 lineales, exponenciales y sinusoidales.
 Las densidades oscilantes fueron utilizadas con la única intención de someter
 al algoritmo a sus límites y no para emular un escenario real.
-Estas comparaciones nos han permitido obtener valores óptimos para los ratio
-distancia-tamaño y delta que garantizan una precisión de 0.1\% en relación con
-las soluciones analíticas.
-Los valores óptimos del ratio distancia-tamaño para el potencial gravitatorio
-y su gradiente son 1 y 2.5, respectivamente.
-La discretización basada en la densidad no produce subdivisiones en el caso de
-densidad lineal, pero un ratio delta de 0.1 es necesario para densidades
-exponenciales y para la mayoría de las sinusoidales.
-Estos valores pueden ser extrapolados para cubrir los usos más comunes, los
-cuales son siempre más sencillos que perfiles de densidad que oscilan.
-Sin embargo, los ratios densidad-tamaño y delta pueden ser configurados por el
-usuario para aumentar la precisión de los resultados a expensas de un aumento
-en el tiempo de cómputo.
+Estas comparaciones nos han permitido obtener valores óptimos para los
+\emph{ratio} distancia-tamaño y delta que garantizan una precisión de 0.1\% en
+relación con las soluciones analíticas.
+Los valores óptimos del \emph{ratio} distancia-tamaño para el potencial
+gravitatorio y su gradiente son 1 y 2.5, respectivamente.
+La discretización basada en la densidad no es necesaria en los casos de
+densidad lineal, pero se requiere de un \emph{ratio} delta de 0.1 para
+densidades exponenciales y la mayoría de las sinusoidales.
+Estos valores pueden ser extrapolados para cubrir los usos más comunes, siempre
+y cuando los perfiles de densidad sean más simples que funciones sinusoidales.
+Aunque los \emph{ratios} densidad-tamaño y delta pueden ser configurados
+por los usuarios o las usuarias para aumentar la precisión de los resultados
+a expensas de un aumento en el tiempo de cómputo.
 Por último, hemos aplicado esta nueva metodología para modelar la Cuenca
 Neuquina, una cuenca de antepaís en Argentina, con una profundidad máxima de
 5000\m{} y utilizando una densidad exponencial.
@@ -54,8 +54,8 @@ Neuquina, una cuenca de antepaís en Argentina, con una profundidad máxima de
 
 \section{Introducción}
 
-La variación de la densidad de la litósfera con la profundidad ha sido
-estudiada por casi un siglo.
+La variación de la densidad de la litósfera con respecto a la profundidad ha
+sido estudiada por casi un siglo.
 A lo largo de este tiempo, varias relaciones entre la densidad y la profundidad
 han sido propuestas para diferentes tipos de rocas
 \citep[por ejemplo~][]{maxant1980, rao1986, rao1993, rao1994}.
@@ -76,17 +76,18 @@ anomalías de gravedad para esas escalas resulta muy importante.
 Con el objetivo de tomar en consideración la curvatura de la Tierra, muchos
 modelos directos globales se definen en coordenadas esféricas geocéntricas
 (ver Capítulo~\ref{cha:fundamentos}).
-Un abordaje común es discretizar la Tierra en tesseroides \citep{anderson1976},
-es decir prismas esféricos, los cuales son definidos por el volumen que
-delimitan pares de latitud, longitud y radios (Fig.~\ref{fig:tesseroid}).
-Los campos gravitatorios generado por un tesseroide en cualquier punto exterior
-vienen dados por integrales de volumen que deben ser aproximadas numéricamente.
+Un abordaje común es discretizar la Tierra en tesseroides (prismas esféricos)
+\citep{anderson1976}, los cuales son definidos por el volumen que delimitan
+pares de latitud, longitud y radios (Fig.~\ref{fig:tesseroid}).
+Los campos gravitatorios generados por un tesseroide en cualquier punto
+exterior vienen dados por integrales de volumen que deben ser aproximadas
+numéricamente.
 La literatura ofrece dos abordajes principales: uno involucra expansiones en
-series de Taylor \citep{heck2006, grombein2013}, mientras que la otra hace uso
-de la \ac{GLQ}
+series de Taylor \citep{heck2006, grombein2013}, mientras que el otro hace uso
+de la \ac{GLQ}.
 La expansión en series de Taylor no resulta adecuada para desarrollar un
-algoritmo para densidades variables según funciones arbitrarias.
-Los diferentes términos de las series deberían obtenerse para cada una de las
+algoritmo que soporte densidades variables según funciones arbitrarias: los
+diferentes términos de las series deberían obtenerse para cada una de las
 posibles funciones de densidad.
 Por el contrario, una función de densidad arbitraria puede incluirse dentro de
 la \ac{GLQ} sin necesidad de modificar el método de integración.
@@ -97,25 +98,25 @@ El principal desafío de la integración por \ac{GLQ} es la pérdida de precisi�
 que ocurre cuando el punto de cómputo se acerca al tesseroide \citep{ku1977}.
 \citet{uieda2016} desarrollaron un método a partir del algoritmo de
 discretización adaptativa tridimensional de \citet{li2011} para obtener de
-manera automática campos gravitatorios de tesseroides con densidad uniforme con
-0.1\% de precisión.
+manera automática campos gravitatorios de tesseroides con densidad uniforme
+con una precisión de 0.1\%.
 El algoritmo divide recursivamente un tesseroide en otros más pequeños cuando
 un determinado umbral es excedido, esto es cuando la distancia normalizada
-entre el punto de cómputo es mayor que un parámetro denominado \emph{ratio
+al punto de cómputo es mayor que un parámetro denominado \emph{ratio
 distancia-tamaño} ($D$).
 \citet{uieda2016} obtuvieron además valores estándar de $D$ para el cómputo del
-potencial gravitatorio, las componentes de su gradiente y del tensor de Marussi
-comparando los resultados de la integración numérica con los campos generados
-por un cascarón esférico.
+potencial gravitatorio, las componentes de su gradiente y del tensor del
+gradiente comparando los resultados de la integración numérica con los campos
+generados por un cascarón esférico.
 
 Dos publicaciones recientes presentan abordajes alternativos para calcular los
 campos gravitatorios de tesseroides homogéneos e incorporan metodologías para
 el caso de tesseroides con densidades variables en profundidad.
 \citet{fukushima2018} ha resuelto analíticamente la integral correspondiente al
 potencial gravitatorio en la dirección radial, obteniendo una integral de
-superficie, la cual es posteriormente resuelta dividiendo condicionalmente el
+superficie, la cual es numéricamente resuelta dividiendo condicionalmente el
 tesseroide y aplicando la cuadratura exponencial doble.
-El gradiente del potencial y las componentes del tensor de Marussi son
+El gradiente del potencial y las componentes del tensor del gradiente son
 calculadas posteriormente por diferencias finitas.
 \citet{fukushima2018} además generaliza el método para tesseroides con una
 densidad que varía con el radio según una función polinomial de grado
@@ -123,39 +124,39 @@ arbitrario.
 \citet{lin2019} han comparado las diferentes metodologías de integración
 y discretización para tesseroides homogéneos.
 A partir de este análisis han desarrollado un método combinado:
-Para puntos de cómputo cercanos al tesseroide, utilizan una integración
-\ac{GLQ} junto con una discretización adaptativa basada en \citet{uieda2016}
+para puntos de cómputo cercanos al tesseroide, utilizan una integración
+\ac{GLQ} junto con una discretización adaptativa basada en \citet{uieda2016},
 pero solo aplicada a las dimensiones horizontales.
 Si el punto de cómputo se encuentra más allá de una cierta distancia de
 truncamiento, aplican una aproximación en serie de Taylor de segundo orden,
 junto con la subdivisión desarrollada por \citet{grombein2013}.
-\citet{lin2019} además introducen una variación de su método combinado para
-calcular los campos gravitatorios generados por tesseroides con densidades
-lineales en la dirección radial.
+\citet{lin2019} además presentan una variación de su método combinado que
+permite calcular los campos gravitatorios generados por tesseroides con
+densidades lineales en la dirección radial.
 
 Los desarrollos de \citet{lin2019} y \citet{fukushima2018} se limitan
 a funciones de densidad polinomiales.
 Si bien la mayoría de las funciones suaves pueden aproximarse por funciones
 lineales de a pasos, la elección del intervalo de discretización no es ni
 directa ni automática para el caso general.
-Aunque existen muchos algoritmos de aproximación lineales de a pasos
+Aunque existen muchos algoritmos de aproximación lineal de a pasos que
 automatizan este proceso \citep{ketkov1969, vandewalle1975, imamoto2008,
-ahmadi2013}, requieren un número fijo de intervalos de discretización o están
-diseñados para ser utilizados solo en funciones convexas.
+ahmadi2013}, estos requieren un número fijo de intervalos de discretización
+o bien están diseñados para ser utilizados solo en funciones convexas.
 El uso de estos algoritmos limitaría el dominio de funciones de densidades que
 pueden ser asignadas a tesseroides y no garantizarían un proceso completamente
 automático.
 Además, es bien conocido que el uso de polinomios de alto grado para aproximar
 una función altamente variable produce resultados inestables cuando se
 extrapola más allá del dominio de datos.
-Estos obstáculos podrían hacer que aproximar densidades mediante aproximaciones
+Estos obstáculos podrían hacer que aproximar densidades mediante funciones
 lineales de a pasos o por polinomios de alto grado no resulte adecuado para
-inversiones de gravedad no lineales \citep[e.g.][]{uieda2017} si la función
-densidad es altamente variable en profundidad.
+inversiones de gravedad no lineales \citep[e.g.][]{uieda2017}, especialmente si
+la función densidad es altamente variable en profundidad.
 
 Presentamos un nuevo algoritmo para el cálculo del potencial gravitatorio y su
-gradiente generado por un tesseroide con una función continua de densidad sobre
-cualquier punto de cómputo externo.
+gradiente generado por un tesseroide con una función continua de densidad que
+varía según la coordenada radial.
 Esta metodología está basada en una integración \ac{GLQ} tridimensional, una
 versión bidimensional del algoritmo de discretización adaptativa de
 \citet{uieda2016} \citep[de acuerdo con~][]{lin2019}, y un nuevo algoritmo
@@ -165,7 +166,7 @@ empíricamente valores óptimos para los parámetros que controlan las
 discretizaciones, comparando los resultados numéricos con las soluciones
 analíticas de cascarones esféricos.
 Finalmente, hemos aplicado la nueva metodología para modelar la Cuenca
-Neuquina, Argentina, utilizando tesseroides con densidades lineales
+Neuquina (Argentina) utilizando tesseroides con densidades lineales
 y exponenciales en profundidad.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -240,19 +241,19 @@ cuadratura:
 ecuación~\ref{eq:glq-resize-factor}, $f(r', \phi', \lambda')$ es el kernel
 correspondiente a un tesseroide con densidad homogénea \citep{grombein2013},
 $(r_i, \phi_j, \lambda_k)$ son las coordenadas de los nodos de la cuadratura,
-$N^r$, $N^\phi$, $M^\lambda$ son los órdenes de la cuadratura y $W_i^r$,
+$N^r$, $N^\phi$, $N^\lambda$ son los órdenes de la cuadratura y $W_i^r$,
 $W_j^\phi$, $W_k^\lambda$ son los pesos ponderados en la dirección radial,
 latitudinal y longitudinal, respectivamente.
 Vale la pena notar que aplicar la \ac{GLQ} es equivalente a aproximar el
 tesseroide por $N^r \times N^\phi \times N^\lambda$ masas puntuales localizadas
-en los nodos de la cuadratura. \citep{ku1977, asgharzadeh2007}.
+en los nodos de la cuadratura \citep{ku1977, asgharzadeh2007}.
 
 
 \subsection{Discretización adaptativa bidimensional}
 
 \citet{ku1977} dio cuenta de que la integración por \ac{GLQ} se vuelve menos
 precisa a medida que el punto de cómputo se acerca al tesseroide.
-Una manera de prevenir que esto suceda sería incrementar el orden de la
+Una manera de mitigar este comportamiento sería aumentar el orden de la
 cuadratura.
 Al hacer esto, incrementaríamos uniformemente la cantidad de masas puntuales
 utilizadas para aproximar el tesseroide.
@@ -262,9 +263,9 @@ Alternativamente,  \citet{li2011} han propuesto un algoritmo de discretización
 adaptativa que mantiene fijo el orden de la cuadratura y divide el tesseroide
 según una relación entre la distancia al punto de cómputo y las dimensiones
 del tesseroide.
-Este algoritmo produce un cómputo más eficiente, ya que produce un aumento en
-la concentración de masas puntuales sólo en las regiones donde es más
-necesario. \citet{uieda2016} han desarrollado una versión modificada de este
+Este algoritmo involucra un cómputo más eficiente, ya que produce un aumento en
+la concentración de masas puntuales sólo en las regiones donde es necesario.
+\citet{uieda2016} han desarrollado una versión modificada de este
 algoritmo junto con una implementación computacional eficiente.
 Ambas versiones del algoritmo subdividen el tesseroide en las direcciones
 latitudinal, longitudinal y radial, por ende podemos definirlos como
@@ -276,7 +277,7 @@ Remover una dimensión de la discretización produce un cómputo más eficiente 
 que reduce la cantidad de subdivisiones en el modelo, aunque manteniendo una
 precisión aceptable \citep{lin2019}.
 
-A lo largo de este capítulo nos guiaremos con los resultados de \citet{lin2019}
+A lo largo de este capítulo nos guiaremos por los resultados de \citet{lin2019}
 y haremos uso de una versión bidimensional del algoritmo de discretización
 adaptativa de \citet{uieda2016}.
 Lo que sigue a continuación es un resumen del algoritmo. El lector o la lectora
@@ -370,7 +371,7 @@ algoritmo de discretización adaptativa bidimensional.
 
 La integración numérica considerando una función continua de densidad introduce
 un nuevo tipo de problema: el error de integración que surge de utilizar solo
-unos pocos nodos de cuadratura para considerar la variación de la densidad del
+unos pocos nodos de cuadratura para evaluar la variación de la densidad del
 tesseroide.
 El algoritmo de discretización adaptativa tridimensional puede ayudar a reducir
 este tipo de error agregando más masas puntuales en la dirección radial.
@@ -390,7 +391,7 @@ en las profundidades a las cuales ocurre la "máxima variación de densidad".
 Consideremos un tesseroide, que llamaremos \emph{original}, con una función de
 densidad dada por $\rho(r')$.
 Antes de comenzar a aplicar el algoritmo de discretización basado en la
-densidad, normalizamos la función densidad al intervalo $[0, 1]$ de la
+densidad, normalizamos la función $\rho(r')$ al intervalo $[0, 1]$ de la
 siguiente manera:
 
 \begin{equation}
@@ -466,9 +467,8 @@ Si la siguiente desigualdad se satisface, el tesseroide no será subdividido:
     \label{eq:delta-density}
 \end{equation}
 
-\noindent
-donde $L_r$ es la dimensión radial del tesseroide considerado para ser
-subdividido,
+\noindent donde $L_r$ es la dimensión radial del tesseroide en consideración
+(no confundir con el tesseroide \emph{original}),
 
 \begin{equation}
     L_r = r_2 - r_1,
@@ -487,8 +487,8 @@ Repetimos los pasos 1~a~5 para cada tesseroide pequeño producido por este paso.
 \textit{Paso final}:
 Una vez que todos los pequeños tesseroides satisfacen la
 desigualdad~\ref{eq:delta-density}, cada uno es sometido al algoritmo de
-discretización adaptativa bidimensional descripto anteriormente con el objeto
-de calcular sus efectos gravitatorios.
+discretización adaptativa bidimensional con el objeto de calcular sus efectos
+gravitatorios.
 
 En la primer iteración, la relación $L_r/L_r^\text{orig}$ es igual a 1, ya que
 el tesseroide que se considera para subdividir corresponde al \emph{original}.
@@ -505,7 +505,7 @@ y viceversa.
 Por ende, el valor de $\delta$ controla cuántas veces los tesseroides serán
 divididos basados en la función densidad, e indirectamente, determina la
 precisión y el tiempo de cómputo de la integración numérica.
-Esto hace surgir la necesidad de determinar un valor máximo de $\delta$ que
+Surge entonces la necesidad de determinar un valor máximo de $\delta$ que
 garantice una precisión aceptable mientras minimiza el tiempo de cómputo.
 
 
@@ -532,23 +532,25 @@ Aplicar una \ac{GLQ} de segundo orden para calcular numéricamente los campos
 gravitatorios (ec.~\ref{eq:glq-var-dens}) generados por cada tesseroide
 obtenido en el paso anterior. La integración numérica incluye la función
 densidad y puede ser aplicada sin modificaciones a cualquier función continua.
-La suma de todos estos resultas corresponde al campo gravitatorio generado por
-el tesseroide original.
+La suma de todos estos resultados corresponde al campo gravitatorio generado
+por el tesseroide original.
 
 
 \subsection{Implementación por Software}
 
 Hemos implementado los algoritmos descriptos en las secciones anteriores
 mediante el uso del lenguaje de programación Python.
-El software está basado en la implementación en Python de \citet{uieda2016}
-incluida en la librería Fatiando a Terra v0.5 \citep{uieda2013}.
+El software está basado en la implementación de \citet{uieda2016} incluida en
+la librería Fatiando a Terra v0.5 \citep{uieda2013}.
 Los pasos que involucran un mayor tiempo de cómputo han sido escritos en
 lenguaje Cython para alcanzar un mejor desempeño.
-Aprovechamos la naturaleza dinámica del lenguaje Python para permitir funciones
-de densidades definidas por el usuario o la usuaria como entradas del software.
-Por ende, nuestro código puede evaluar sin modificaciones funciones lineales,
+Aprovechamos la naturaleza dinámica del lenguaje Python para admitir como
+parámetro de entrada funciones de densidades definidas por el usuario o la
+usuaria.
+Por ende, nuestro código puede ser utilizado con funciones lineales,
 exponenciales, polinomiales, sinusoidales, splines cúbicas o cualquier otra
-función de densidad continua.
+función de densidad continua sin necesidad de realizar modificaciones a su
+programación.
 Esta implementación se encuentra disponible libremente bajo la licencia
 de código abierto BSD 3-clause.
 Todo el código fuente, los scripts de Python, los datos y resultados se
@@ -573,7 +575,7 @@ presentados en este capítulo.
 \section{Determinación de los ratio distancia-tamaño y delta}
 
 El ratio distancia-tamaño $D$ de la discretización adaptativa y el ratio delta
-$\delta$ de la discretización basada en la densidad determinan cuantas veces
+$\delta$ de la discretización basada en la densidad determinan cuántas veces
 cada tesseroide será dividido y por ende controlan indirectamente el error
 numérico de las integraciones.
 Debemos determinar valores óptimos para $D$ y $\delta$ si deseamos asegurar
@@ -684,8 +686,8 @@ las soluciones analíticas del cascarón esférico en la mayoría de los casos.
 
 \subsection{Densidad Lineal}
 
-El potencial gravitatorio y su derivada vertical que genera un cascarón
-esférico con una función de densidad lineal dada por
+El potencial gravitatorio y la componente radial del gradiente que genera un
+cascarón esférico con una función de densidad lineal dada por
 
 \begin{equation}
     \rho(r') = ar' + b,
@@ -827,8 +829,8 @@ Para ello hacemos uso del método de búsqueda en grilla (\emph{grid search} en
 inglés) y calculamos el error numérico para cada par ($D$, $\delta$)
 perteneciente a una grilla en el espacio $D$-$\delta$
 (Fig.~\ref{fig:grid-search}).
-Con el objeto de obtener un óptimo desempeño del algoritmo, buscamos el ($D$,
-$\delta$) que minimice el número de subdivisiones de tesseroides mientras
+Con el objeto de obtener un óptimo desempeño del algoritmo, buscamos el par
+($D$, $\delta$) que minimice el número de subdivisiones de tesseroides mientras
 mantengan el error numérico por debajo del umbral de 0.1\%.
 Este requisito se traduce en minimizar el valor de $D$ y maximizar el valor de
 $\delta$.
@@ -852,15 +854,15 @@ coinciden con los valores $D_\text{linear}$ tanto para $V$ como para $g_z$.
 Estos resultados indican que los valores de $D_\text{linear}$ obtenidos pueden
 ser extrapolados a los casos de densidades no lineales.
 Esto no es una sorpresa, ya que la discretización adaptativa bidimensional y la
-discretización basada en densidad son independientes una de la otra.
-La primera divide al tesseroide en las direcciones horizontales, mientras que
-la otra lo hace solo en la dirección radial.
+discretización basada en densidad son independientes una de la otra: la primera
+divide al tesseroide en las direcciones horizontales, mientras que la otra lo
+hace solo en la dirección radial.
 Por ende, es de esperar que el valor óptimo de $\delta$ sea independiente del
 valor óptimo de $D$.
 Dado que la búsqueda en grilla fue limitada a una grilla de cómputo específica
-y a un único valor de $b$, en la próxima sección realizaremos un análisis más
-detallado para determinar un valor óptimo de $\delta$ para el caso de densidad
-exponencial.
+y a un único valor de $b$, en los próximos párrafos realizaremos un análisis
+más detallado para determinar un valor óptimo de $\delta$ para el caso de
+densidad exponencial.
 
 \begin{figure}
 \centering
@@ -891,7 +893,7 @@ exponencial.
 Habiendo fijado valores de $D$ iguales a los obtenidos para el caso de
 densidad lineal, nos encontramos en condiciones de explorar los errores de
 integración como función de $\delta$ en mayor detalle.
-Calcularemos la diferencia entre el error numérico y las soluciones analítica
+Calcularemos la diferencia entre el error numérico y las soluciones analíticas
 para todas las combinaciones de grillas de cómputo (Tabla~\ref{tab:grids})
 y modelos de cascarón esférico (Tabla~\ref{tab:shell-models}),
 variando los valores de $\delta$ entre $10^{-3}$ y $10^{1}$.
@@ -943,7 +945,7 @@ continuas más complejas, por ejemplo funciones no monotónicas o que presenten
 múltiples puntos de inflexión.
 Aunque este tipo de funciones de densidad son cuanto mucho raras de encontrar
 en seteos geológicos, queremos someter nuestro algoritmo a estos casos con el
-objetivo de mostrar de que puede resolver situaciones más complejas que
+objetivo de mostrar su capacidad para resolver situaciones más complejas que
 funciones lineales y exponenciales.
 Además, obtener un valor óptimo del ratio $\delta$ para casos de funciones de
 densidades irreales nos permitiría extrapolarlo a casos más simples
@@ -1033,7 +1035,7 @@ implementación del algoritmo, la elección del lenguaje de programación y la
 función densidad en particular.
 Con el objetivo de obtener un indicador sobre cuánto aumenta el costo
 computacional, elegimos la cantidad de subdivisiones al tesseroides en la
-discretización basada en densidad como una variable proxy.
+discretización basada en densidad como una variable \emph{proxy}.
 
 Analizamos densidades exponenciales (ec.~\ref{eq:density-exp}) con valores de
 $b$ iguales a 1, 2, 5, 10, 30 y 100, y densidades sinusoidales
@@ -1152,7 +1154,7 @@ Hemos elegido una variación de densidad exponencial (ec.~\ref{eq:density-exp})
 que asume el valor mínimo en la superficie superior y un valor máximo a una
 profundidad de 5014\m{} (la región más profunda de la cuenca), con un valor de
 $b$ igual a 3.
-Esta variación de densidad se encuentran dentro de los ordenes de magnitud
+Esta variación de densidad se encuentra dentro de los ordenes de magnitud
 utilizados por \citet{cowie1990} y \citet{cordell1973}.
 La función de densidad se muestra en la
 Figura~\ref{fig:neuquen-basin-densities}.
@@ -1194,7 +1196,7 @@ integración.
 Este algoritmo es independiente de la integración \ac{GLQ} y puede
 potencialmente ser aplicado para determinar una óptima discretización a la hora
 de aproximar una función mediante funciones lineales de a pasos \citep{lin2019}
-o funciones polinomiales de a paso \citep{fukushima2018}.
+o funciones polinomiales de a pasos \citep{fukushima2018}.
 
 Nuestros resultados experimentales muestran que la discretización adaptativa
 bidimensional es suficiente para alcanzar errores debajo del 0.1\% en conjunto
@@ -1215,7 +1217,7 @@ caso exponencial.
 Además, las diferencias con respecto a las soluciones analíticas caen por
 debajo del umbral de 0.1\% solo para valores de $\delta$ menores a 0.1.
 Por lo tanto, la aplicación de la discretización basada en la densidad es
-necesaria para alcanzar el nivel de precisión deseada para el caso de
+necesaria para alcanzar el nivel de precisión deseada en casos de
 densidades no lineales.
 
 Un análisis de errores más detallados muestra que el valor de $\delta = 0.1$ es
@@ -1229,7 +1231,7 @@ para la cual un valor de $\delta = 0.01$ es necesario para alcanzar el umbral
 Sin embargo, utilizar un valor de $\delta = 0.1$ en este caso produce
 resultados con errores por debajo del 1\%.
 
-Aunque los algoritmos aquí propuesto pueden ser aplicados a cualquier función
+Aunque los algoritmos aquí propuestos pueden ser aplicados a cualquier función
 de densidad continua, los valores óptimos de $D$ y $\delta$ fueron
 empíricamente determinados solo para funciones lineales, exponenciales
 y sinusoidales.
@@ -1242,13 +1244,13 @@ tesseroides de gran tamaño, funciones densidad altamente variables, etc.).
 Por esta razón, es plausible extrapolar los valores óptimos de $D$ y $\delta$
 a cualquier densidad continua que represente variaciones realistas de
 estructuras geológicas.
-A pesar de esto, alentamos a los usuarios y usuarias de estos algoritmos
+A pesar de esto, alentamos a los usuarios y las usuarias de estos algoritmos
 a llevar a cabo experimentaciones similares con el objetivo de evaluar su
 precisión en caso de utilizar funciones de densidades más complejas que las
-probadas aquí.
+aquí probadas.
 
 El análisis del desempeño del algoritmo muestra que el tiempo de cómputo
-en los casos de densidades variables es como mínimo el doble del
+en los casos de densidades no lineales es como mínimo el doble del
 necesario para el caso de densidad homogénea o lineal.
 Esta proporcionalidad puede aumentar con la cantidad de puntos de inflexión de
 la función densidad.
@@ -1269,7 +1271,7 @@ gravitatorio y su gradiente generados por un tesseroide con una densidad dada
 por una función continua de la coordenada radial.
 Este método resuelve numéricamente integrales volumétricas mediante la
 \ac{GLQ} incluyendo la función densidad dentro del integrando.
-Mediante una implementación del algoritmo en lenguaje Python, los usuarios
+Mediante una implementación del mismo en lenguaje Python, los usuarios
 y las usuarias pueden definir su propia función densidad y servirla como
 entrada al algoritmo.
 Esto permite el uso de funciones continuas arbitrarias sin necesidad de
@@ -1341,7 +1343,7 @@ discretización adaptativa y de la \ac{GLQ}.
 Es decir, podemos tomar a este algoritmo como un preprocesado que luego puede
 ser combinado con métodos de integración más específicos.
 
-La aplicación de este algoritmo al modelado de la Cuenca Neuquina, Argentina,
+La aplicación de este algoritmo al modelado de la Cuenca Neuquina (Argentina)
 demuestra que los efectos de la compactación sedimentaria no deben ser
 ignorados.
 Los resultados producidos por una densidad exponencial muestran un error de
@@ -1361,10 +1363,10 @@ del espesor del paquete sedimentario, por poner un ejemplo.
 \label{sec:shell}
 
 Consideremos un cascarón esférico con radio interior $R_1$ y radio exterior
-$R_2$, cuya densidad es función $\rho(r')$ de la coordenada radial.
+$R_2$, cuya densidad $\rho(r')$ es función de la coordenada radial.
 Deseamos obtener una expresión analítica para los campos gravitatorios que
-general en cualquier punto externo ubicado a una distancia $r$ del centro del
-cascarón ($r > R_2$).
+genera en cualquier punto externo ubicado a una distancia $r$ del centro del
+cascarón ($r \geq R_2$).
 
 Según el Teorema del Cascarón de Newton (\emph{Newton's Shell Theorem, Theorem
 XXXI}) \citep{chandrasekhar1995, binney2008}, el potencial gravitatorio
@@ -1398,9 +1400,9 @@ el potencial:
 
 \noindent la cual es equivalente a la obtenida por \citet[p.62]{binney2008}.
 
-El gradiente de potenciales que dependen solo de $r$ poseen solo una componente
-no nula: la componente vertical del gradiente ($g_z$).
-Según \citet{grombein2013}:
+El gradiente de aquellos potenciales que dependen solo de $r$ poseen solo una
+componente no nula: la componente vertical ($g_z$).
+Según \citet{grombein2013}, esta puede calcularse como:
 
 \begin{equation}
     g_z(r) = \frac{V_\text{sh}(r)}{r}.
