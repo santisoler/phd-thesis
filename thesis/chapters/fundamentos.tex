@@ -271,7 +271,7 @@ Aunque las expresiones del potencial gravitatorio
 (ec.~\ref{eq:potencial-gravitatorio-integral}),
 las componentes de su gradiente
 (ecs.~\ref{eq:gx-integral}--\ref{eq:gz-integral})
-y de su tensor (ecs.~\ref{eq:gxx-integral}--\ref{eq:gzz-integral}
+y de su tensor (ecs.~\ref{eq:gxx-integral}--\ref{eq:gzz-integral})
 aparentan ser sencillas, el cómputo de estas magnitudes para una geometría dada
 no resulta un problema trivial.
 Solo existen soluciones analíticas a dichas expresiones para determinadas
@@ -308,7 +308,7 @@ gravitatorio generado por una partícula:
 \noindent de acuerdo con la expresión del potencial de la
 ecuación~\ref{eq:potencial-gravitatorio-particula}.
 
-Realizando el mismo reemplazos en las ecuaciones correspondientes a las
+Realizando el mismo reemplazo en las ecuaciones correspondientes a las
 componentes del gradiente (ecs.~\ref{eq:gx-integral}--\ref{eq:gz-integral})
 arribamos a las siguientes expresiones:
 
@@ -336,7 +336,7 @@ En el caso de necesitar modelar cualquier conjunto de masas situadas bajo la
 superficie terrestre, resulta natural utilizar coordenadas esféricas tanto para
 las posiciones de las partículas como para los puntos de observación.
 Sin embargo, es muy común trabajar sobre zonas de estudio con dimensiones
-acotadas, bajo las cuales la aproximación de tierra plana es suficiente. En
+acotadas, bajo las cuales la aproximación de Tierra plana es suficiente. En
 estos casos es posible trabajar en coordenadas Cartesianas.
 
 \subsubsection{Coordenadas Cartesianas}
@@ -381,7 +381,7 @@ relaciones:
 \noindent donde $r \in [0, \infty)$, $\lambda \in (-\pi, \pi]$ y
 $\phi \in [-\pi/2, \pi/2]$.
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=\linewidth]{figs/spherical-coordinates.pdf}
     \caption{
@@ -397,7 +397,7 @@ $\phi \in [-\pi/2, \pi/2]$.
         radial.
         Se define a $\psi$ como el ángulo descripto por los vectores
         $\mathbf{p}$ y $\mathbf{q}$, y $\alpha$ al ángulo azimutal de
-        $-(\mathbf{p} - \mathbf{q})$ sobre el sistema \emph{local}.
+        $\mathbf{q} - \mathbf{p}$ sobre el sistema \emph{local}.
     }
     \label{fig:spherical-coordinates}
 \end{figure}
@@ -449,7 +449,7 @@ pueden expresarse en términos de las coordenadas esféricas como:
 \end{align}
 
 \noindent donde $\alpha$ es el ángulo azimutal del vector
-$-(\mathbf{p} - \mathbf{q})$ sobre el sistema de coordenadas \emph{locales}.
+$\mathbf{q} - \mathbf{p}$ sobre el sistema de coordenadas \emph{locales}.
 Haciendo uso de las siguientes relaciones de trigonometría esférica
 \citep[][p.~113]{heiskanen1967}:
 
@@ -505,11 +505,12 @@ puntual en coordenadas esféricas quedan determinadas de la siguiente manera:
 
 A la hora de modelar estructuras tridimensionales subyacentes a la superficie
 terrestre, los primas rectangulares se presentan como la geometría a elección
-por parte de muchos autores y muchas autoras \citep{}.
-Una de las razones recae en la simpleza de la geometría, aunque una que no
-debemos obviar es el hecho de que existen soluciones analíticas a las
-ecuaciones de los campos gravitatorios generados por prismas rectangulares
-\citep{nagy2000,nagy2002}.
+por parte de muchos autores y muchas autoras.
+Una de las razones recae en la simpleza de la geometría, que resulta muy útil
+para modelar estructuras geológicas.
+Aunque quizás la principal razón es la existencia de soluciones analíticas
+a las ecuaciones de los campos gravitatorios generados por prismas
+rectangulares \citep{nagy2000,nagy2002}.
 
 Consideremos un prisma rectangular de densidad homogénea $\rho$ cuyos vértices
 se encuentran determinados por las coordenadas $X_1, X_2, Y_1, Y_2, Z_1, Z_2$
@@ -537,7 +538,7 @@ reemplazando el dominio de integración:
     }.
 \end{equation}
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.6\linewidth]{figs/rectangular-prism.pdf}
     \caption{
@@ -621,8 +622,8 @@ Por ejemplo:
     \lim_{(x, y, z)\rightarrow (0, 0, 0)} xz \ln(z + r) = 0.
 \end{equation}
 
-Una solución es definir una nueva función $\safelog(x)$ de la siguiente
-manera:
+Una solución alternativa es reemplazar la función $\ln$ por una nueva función
+$\safelog(x)$ definida de la siguiente manera:
 
 \begin{equation}
     \safelog(x) =
@@ -721,10 +722,10 @@ del planeta Tierra.
 La mayoría de los modelos directos que sí lo hacen se definen en coordenadas
 esféricas geocéntricas y consisten en discretizar la Tierra en geometrías
 simples.
-Este es el caso de los tesseroides \citep{anderson1976}, también conocidos como
-prismas esféricos, los cuales se definen como el volumen comprendido entre dos
-esferas de radios distintos, dos meridianos de longitudes distintas y dos
-paralelos de distintas latitudes (Fig.~\ref{fig:tesseroid}).
+Este es el caso de los \emph{tesseroides} \citep{anderson1976}, también
+conocidos como prismas esféricos, los cuales se definen como el volumen
+comprendido entre dos esferas de radios distintos, dos meridianos de longitudes
+distintas y dos paralelos de distintas latitudes (Fig.~\ref{fig:tesseroid}).
 
 \begin{figure}
     \centering
@@ -740,10 +741,10 @@ paralelos de distintas latitudes (Fig.~\ref{fig:tesseroid}).
 
 El potencial gravitatorio que genera un tesseroide de densidad uniforme $\rho$,
 definido por las coordenadas $r_1$, $r_2$, $\lambda_1$, $\lambda_2$, $\phi_1$
-y $\phi_2$, sobre un punto de observación $\mathbf{p}$ dado por las coordenadas
-esféricas $r$, $\lambda$ y $\phi$ se puede obtener aplicando estos límites de
-integración a la ecuación~\ref{eq:potencial-gravitatorio-integral}, quedando
-expresado como la siguiente integral volumétrica
+y $\phi_2$, sobre un punto de observación $\mathbf{p}$, dado por las
+coordenadas esféricas $r$, $\lambda$ y $\phi$, se puede obtener aplicando estos
+límites de integración a la ecuación~\ref{eq:potencial-gravitatorio-integral},
+quedando expresado como la siguiente integral volumétrica
 \citep{grombein2013,uieda2016}:
 
 \begin{equation}
@@ -768,12 +769,11 @@ ecuación~\ref{eq:distance-spherical} y las coordenadas de integración $r'$,
 $\lambda'$ y $\phi'$ representan la posición $\mathbf{q}$ de cada volumen
 infinitesimal del tesseroide.
 
-Reemplazando los límites de integración del tesseroide en las ecuaciones
-\ref{eq:gx-integral}, \ref{eq:gy-integral} y \ref{eq:gz-integral} podemos
+Reemplazando los límites de integración de las ecuaciones \ref{eq:gx-integral},
+\ref{eq:gy-integral} y \ref{eq:gz-integral} por los del tesseroide, podemos
 obtener las componentes del gradiente del potencial gravitatorio generado por
-el tesseroide en el punto de observación $\mathbf{p}$ tomando las derivadas
-parciales con respecto al sistema de coordenadas \emph{local}:
-
+el tesseroide en el punto de observación $\mathbf{p}$ con respecto al
+sistema de coordenadas \emph{local}:
 
 \begin{align}
     g_x(\mathbf{p}) &=
@@ -818,11 +818,12 @@ Existen dos principales métodos en la literatura para aproximar estas
 integrales: uno involucra expansiones en serie de Taylor
 \citep{heck2006,grombein2013} mientras que los otros hacen uso de la \ac{GLQ}
 \citep{asgharzadeh2007,wildpfeiffer2008,li2011,uieda2016,lin2018}.
-En el Capítulo~\ref{cha:tesseroids-variable-density} se detalla las razones por
-las cuales a lo largo de esta Tesis abordaremos la estrategia de \ac{GLQ}.
+En el Capítulo~\ref{cha:tesseroids-variable-density} se detallan las razones
+por las cuales a lo largo de esta Tesis abordaremos la estrategia de la
+\ac{GLQ}.
 
 La \Ac{GLQ} consiste en la aproximación de una integral por una suma ponderada
-del kernel de integración \citep[][p.~390]{hildebrand1987}:
+del integrando \citep[][p.~390]{hildebrand1987}:
 
 \begin{equation}
     \int\limits_{-1}^1 f(x) \diff x \approx
@@ -830,8 +831,8 @@ del kernel de integración \citep[][p.~390]{hildebrand1987}:
 \end{equation}
 
 \noindent donde $N$ es el orden de la cuadratura,
-$x_i$ corresponden a las raíces del polinomio de Legendre $P_N(x)$ de grado $N$
-y $W_i$ son los pesos ponderados de cada término:
+$x_i$ corresponden a las raíces del polinomio de Legendre $P_N(x)$ de grado
+$N$, y $W_i$ son los pesos ponderados de cada término:
 
 \begin{equation}
     W_i = \frac{2}{(1 - x_i^2) \Big[ P'_N(x_i) \Big]^2}.
@@ -928,10 +929,10 @@ un conjunto de masas puntuales situadas en los nodos escalados de los
 polinomios de Legendre.
 La precisión de la aproximación dependerá entonces de la cantidad de nodos
 utilizados en las sumatorias, es decir, de los ordenes de las cuadraturas.
-De esta forma podemos aumentar la precisión de la \ac{GLQ} incrementando los
+Es posible entonces aumentar la precisión de la \ac{GLQ} incrementando los
 ordenes de las cuadraturas.
-Sin embargo, el aumento de cada cuadratura incrementa la cantidad de nodos
-según $O(n^3)$, haciendo de esta estrategia un método muy ineficiente.
+Sin embargo, el aumento de los ordenes de la cuadratura incrementa la cantidad
+de nodos según $O(n^3)$, haciendo de esta estrategia un método muy ineficiente.
 
 \citet{ku1977} demostró que la precisión de la aproximación también depende del
 cociente entre la distancia al punto de observación y la distancia entre nodos
@@ -955,8 +956,8 @@ la \emph{discretización adaptativa}.
 \label{sec:gravedad-terrestre}
 
 Un cuerpo en reposo situado sobre la superficie de la Tierra siente una fuerza
-resultante de la suma de la fuerza de atracción gravitatoria, debida a la masa
-del planeta; y la fuerza centrífuga, debida a la rotación del planeta sobre su
+resultante de la suma de la fuerza de atracción gravitatoria (debida a la masa
+del planeta) y la fuerza centrífuga, debida a la rotación del planeta sobre su
 eje y al sistema de referencia no inercial donde se encuentra dicho
 cuerpo.
 Esta fuerza genera sobre el cuerpo una aceleración $\mathbf{g}$ que
@@ -1057,12 +1058,13 @@ siguiente superficie equipotencial:
 El campo de gravedad normal puede ser escrito como
 
 \begin{equation}
-    U(\mathbf{p}) = V(\mathbf{p}) + \Phi(\mathbf{p}),
+    U(\mathbf{p}) = V_\text{el}(\mathbf{p}) + \Phi(\mathbf{p}),
 \end{equation}
 
 \noindent donde $\Phi(\mathbf{p})$ es el potencial centrífugo debido a la
 rotación del elipsoide de revolución (ec.~\ref{eq:potencial-centrifugo})
-y $V(\mathbf{p})$ es el potencial gravitatorio que produce el mismo elipsoide.
+y $V_\text{el}(\mathbf{p})$ es el potencial gravitatorio que produce el mismo
+elipsoide.
 
 El elipsoide de referencia vendrá definido mediante los siguientes parámetros:
 
@@ -1088,7 +1090,7 @@ normal}, sino que además nos permite definir un nuevo sistema de coordenadas:
 las \emph{coordenadas geodésicas} o \emph{geográficas}.
 Dado un punto arbitrario $\mathbf{p}$ podemos especificar su ubicación mediante
 su \emph{longitud} $\lambda$, su
-\emph{latitud geodésica} \footnote{
+\emph{latitud geodésica}\footnote{%
     Se notará a la \emph{latitud geodésica} con $\varphi$ y a la \emph{latitud
     esférica} con $\phi$.
 }
@@ -1263,10 +1265,10 @@ cualquier punto del ecuador y en los polos, respectivamente
 \subsection{Disturbio de gravedad}
 
 Con el objeto de poder identificar y caracterizar la distribución de densidades
-en el interior de la Tierra, es necesario remover la \emph{gravedad normal} de
-la gravedad terrestre.
+anómalas en el interior de la Tierra, es necesario remover la \emph{gravedad
+normal} de la gravedad terrestre.
 Definiremos entonces al \emph{vector del disturbio de gravedad}
-$\boldsymbol\delta \mathbf{g}$ (\emph{gravity disturbance vector} en ingles)
+$\boldsymbol\delta \mathbf{g}$ (\emph{gravity disturbance vector} en inglés)
 como la diferencia entre el vector \emph{gravedad} en el punto $\mathbf{p}$
 y el vector \emph{gravedad normal} calculado en el mismo punto $\mathbf{p}$
 (Fig.~\ref{fig:superficies-equipotenciales}):
@@ -1276,6 +1278,32 @@ y el vector \emph{gravedad normal} calculado en el mismo punto $\mathbf{p}$
         \mathbf{g}(\mathbf{p}) - \boldsymbol\gamma(\mathbf{p}).
     \label{eq:gravity-disturbance-vector}
 \end{equation}
+
+\begin{figure}[t!]
+    \centering
+    \includegraphics[width=\linewidth]{figs/surfaces.pdf}
+    \caption{
+        Elipsoide de referencia, geoide y vector del disturbio de gravedad.
+        Se identifica un punto $\mathbf{p}$ situado a una altitud geométrica
+        $h$ indicada por el segmento de recta que une el punto $\mathbf{q}$
+        sobre el elipsoide de referencia.
+        Se observa el vector de gravedad $\mathbf{g}(\mathbf{p})$ sobre el
+        punto $\mathbf{p}$ normal a la superficie equipotencial del campo de
+        gravedad $W$ que pasa por el mismo punto $\mathbf{p}$.
+        Se identifica además el vector de gravedad normal
+        $\boldsymbol\gamma(\mathbf{p})$ y el vector de disturbio de gravedad
+        $\boldsymbol\delta \mathbf{g}(\mathbf{p})$.
+        La altitud ortométrica $H$ se determina por la longitud del segmento de
+        la línea de fuerza del potencial $W$ que une el punto $\mathbf{q'}$
+        sobre el geoide con el punto $\mathbf{p}$, aunque puede aproximarse por
+        el segmento de recta que une el punto $\mathbf{q''}$ y el punto
+        $\mathbf{p}$.
+        Las curvaturas de las superficies equipotenciales han sido exageradas
+        para mejorar la visualización.
+        Esta figura es una versión modificada de \citet{oliveira2021b}.
+    }
+    \label{fig:superficies-equipotenciales}
+\end{figure}
 
 La mayoría de las metodologías que nos permiten realizar mediciones del campo
 gravitatorio terrestre consiguen estimar el valor de la componente del vector
@@ -1303,33 +1331,6 @@ Sin embargo, se puede asumir que el \emph{disturbio de gravedad} se aproxima lo
 suficiente al módulo del \emph{vector del disturbio de gravedad} si
 consideramos que la desviación del vector $\mathbf{g}(\mathbf{p})$ de la recta
 normal al elipsoide en el punto $\mathbf{p}$ es lo suficientemente pequeña.
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{figs/surfaces.pdf}
-    \caption{
-        Elipsoide de referencia, geoide y vector del disturbio de gravedad.
-        Se identifica un punto $\mathbf{p}$ situado a una altitud geométrica
-        $h$ indicada por el segmento de recta que une el punto $\mathbf{q}$
-        sobre el elipsoide de referencia.
-        Se observa el vector de gravedad $\mathbf{g}(\mathbf{p})$ sobre el
-        punto $\mathbf{p}$ normal a la superficie equipotencial del campo de
-        gravedad $W$ que pasa por el mismo punto $\mathbf{p}$.
-        Se identifica además el vector de gravedad normal
-        $\boldsymbol\gamma(\mathbf{p})$ y el vector de disturbio de gravedad
-        $\boldsymbol\delta \mathbf{g}(\mathbf{p})$.
-        La altitud ortométrica $H$ se determina por la longitud del segmento de
-        la línea de fuerza del potencial $W$ que une el punto $\mathbf{q'}$
-        sobre el geoide con el punto $\mathbf{p}$, aunque puede aproximarse por
-        el segmento de recta que une el punto $\mathbf{q''}$ y el punto
-        $\mathbf{p}$.
-        Las curvaturas de las superficies equipotenciales han sido exageradas
-        para mejorar la visualización.
-        Esta figura es una versión modificada de \citet{oliveira2021b}.
-    }
-    \label{fig:superficies-equipotenciales}
-\end{figure}
-
 
 % =============================================================================
 
@@ -1435,7 +1436,7 @@ y definimos una densidad superficial $\sigma$:
     \diff s.
 \end{equation}
 
-\begin{figure}
+\begin{figure}[t]
     \centering
     \includegraphics[width=0.4\linewidth]{figs/fuentes-equivalentes.pdf}
     \caption{
