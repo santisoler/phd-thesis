@@ -35,16 +35,16 @@ lineales, exponenciales y sinusoidales.
 Las densidades oscilantes fueron utilizadas con la única intención de someter
 al algoritmo a sus límites y no para emular un escenario real.
 Estas comparaciones nos han permitido obtener valores óptimos para los
-\emph{ratio} distancia-tamaño y delta que garantizan una precisión de 0.1\% en
-relación con las soluciones analíticas.
+\emph{ratio} distancia-tamaño y \emph{delta} que garantizan una precisión de
+0.1\% en relación con las soluciones analíticas.
 Los valores óptimos del \emph{ratio} distancia-tamaño para el potencial
 gravitatorio y su gradiente son 1 y 2.5, respectivamente.
 La discretización basada en la densidad no es necesaria en los casos de
-densidad lineal, pero se requiere de un \emph{ratio} delta de 0.1 para
+densidad lineal, pero se requiere de un \emph{ratio delta} de 0.1 para
 densidades exponenciales y la mayoría de las sinusoidales.
 Estos valores pueden ser extrapolados para cubrir los usos más comunes, siempre
 y cuando los perfiles de densidad sean más simples que funciones sinusoidales.
-Aunque los \emph{ratios} densidad-tamaño y delta pueden ser configurados
+Aunque los \emph{ratios} densidad-tamaño y \emph{delta} pueden ser configurados
 por los usuarios o las usuarias para aumentar la precisión de los resultados
 a expensas de un aumento en el tiempo de cómputo.
 Por último, hemos aplicado esta nueva metodología para modelar la Cuenca
@@ -348,7 +348,7 @@ Al finalizar el algoritmo, una \ac{GLQ} de segundo orden habrá sido aplicada
 a cada tesseroide más pequeño y el total acumulado del paso 2 será equivalente
 al efecto gravitatorio del tesseroide original.
 
-El ratio densidad-tamaño $D$ determina cuántas veces el tesseroide será
+El \emph{ratio} densidad-tamaño $D$ determina cuántas veces el tesseroide será
 dividido.
 Por lo tanto, su valor regula tanto la precisión del algoritmo como su tiempo
 de cómputo.
@@ -572,12 +572,12 @@ presentados en este capítulo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Determinación de los ratio distancia-tamaño y delta}
+\section{Determinación de los \emph{ratios} distancia-tamaño y \emph{delta}}
 
-El ratio distancia-tamaño $D$ de la discretización adaptativa y el ratio delta
-$\delta$ de la discretización basada en la densidad determinan cuántas veces
-cada tesseroide será dividido y por ende controlan indirectamente el error
-numérico de las integraciones.
+El \emph{ratio} distancia-tamaño $D$ de la discretización adaptativa y el
+\emph{ratio delta} $\delta$ de la discretización basada en la densidad
+determinan cuántas veces cada tesseroide será dividido y por ende controlan
+indirectamente el error numérico de las integraciones.
 Debemos determinar valores óptimos para $D$ y $\delta$ si deseamos asegurar
 tanto una precisión numérica aceptable así como una eficiencia computacional de
 los algoritmos.
@@ -585,7 +585,7 @@ los algoritmos.
 \citet{uieda2016} compararon los resultados de las integraciones numéricas de
 tesseroides homogéneos con las soluciones analíticas de un cascarón esférico
 \citep{mikuska2006, grombein2013} con el objetivo de obtener valores
-predeterminados para el ratio distancia-tamaño $D$.
+predeterminados para el \emph{ratio} distancia-tamaño $D$.
 Seguiremos esta idea, pero en nuestro caso el cascarón esférico debe tener el
 mismo perfil de densidad que nuestro modelo de tesseroides. \citet{lin2019}
 obtuvieron la solución analítica del potencial gravitatorio generado por un
@@ -721,7 +721,7 @@ y exterior ($R_\text{out}$) del cascarón, respectivamente:
 \caption{
     Diferencias entre los campos gravitatorios generados por cada modelo de
     cascarón hecho con tesseroides y sus respectivas soluciones analíticas en
-    función del ratio distancia-tamaño $D$.
+    función del \emph{ratio} distancia-tamaño $D$.
     Cada modelo posee una densidad lineal (ec.~\ref{eq:density-linear}).
     Los cálculos fueron realizados sobre las cuatro grillas descriptas en la
     Tabla~\ref{tab:grids}.
@@ -754,8 +754,8 @@ Tabla~\ref{tab:shell-models} en cada grilla de cómputo de la
 Tabla~\ref{tab:grids}.
 Las derivadas horizontales del potencial son iguales a cero fuera del cascarón
 debido a la simetría rotacional, y por ende son omitidos del análisis.
-Estos cálculos son repetidos para valores de ratio distancia-tamaño $D$ desde
-0.5 a 5 con incrementos de 0.5.
+Estos cálculos son repetidos para valores de \emph{ratio} distancia-tamaño $D$
+desde 0.5 a 5 con incrementos de 0.5.
 Luego calculamos la diferencia absoluta entre los resultados numéricos y las
 soluciones analíticas para el cascarón.
 La Figura~\ref{fig:D-linear} muestra la máxima diferencia absoluta para cada
@@ -778,9 +778,9 @@ e independientes del espesor de cascarón o de la ubicación geográfica.
 
 Para una función de densidad exponencial, la discretización basada en densidad
 será aplicada con anterioridad al algoritmo de discretización adaptativa.
-Esto significa que los valores óptimos para el ratio distancia-tamaño $D$ y el
-ratio delta $\delta$ (ec.~\ref{eq:delta-density}) deben ser determinados
-simultáneamente.
+Esto significa que los valores óptimos para el \emph{ratio} distancia-tamaño
+$D$ y el \emph{ratio delta} $\delta$ (ec.~\ref{eq:delta-density}) deben ser
+determinados simultáneamente.
 Para ello llevamos a cabo un análisis de error similar al que aplicamos en el
 caso de densidad lineal.
 Ahora el cascarón esférico poseerá una densidad según una función exponencial
@@ -812,7 +812,7 @@ de la función densidad (Fig.~\ref{fig:exp-densities}).
 \includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/exponential-densities.pdf}
 \caption{
     Funciones de densidad exponencial asignadas a los modelos de cascarón
-    esférico para la determinación del ratio $\delta$.
+    esférico para la determinación del \emph{ratio} $\delta$.
     Cada función densidad corresponde a diferentes valores de $b$ en la
     ecuación~\ref{eq:density-exp}.
 }
@@ -888,7 +888,7 @@ densidad exponencial.
 \end{figure}
 
 
-\subsubsection{Determinación del ratio delta}
+\subsubsection{Determinación del \emph{ratio delta}}
 
 Habiendo fijado valores de $D$ iguales a los obtenidos para el caso de
 densidad lineal, nos encontramos en condiciones de explorar los errores de
@@ -922,7 +922,8 @@ suavidad de la densidad exponencial y el error numérico.
 \includegraphics[width=\linewidth]{figs/tesseroids-variable-density/exponential-density-diffs.pdf}
 \caption{
     Diferencias entre el error numérico y las soluciones analíticas como
-    función del ratio $\delta$ para varias funciones de densidad exponenciales.
+    función del \emph{ratio} $\delta$ para varias funciones de densidad
+    exponenciales.
     Estas comparaciones fueron llevadas a cabo para cada combinación entre los
     modelos de cascarón (Tabla~\ref{tab:shell-models}) y las grillas de cómputo
     (Tabla~\ref{tab:grids}) haciendo uso de un valor fijo de $D$. Cada curva
@@ -947,9 +948,9 @@ Aunque este tipo de funciones de densidad son cuanto mucho raras de encontrar
 en seteos geológicos, queremos someter nuestro algoritmo a estos casos con el
 objetivo de mostrar su capacidad para resolver situaciones más complejas que
 funciones lineales y exponenciales.
-Además, obtener un valor óptimo del ratio $\delta$ para casos de funciones de
-densidades irreales nos permitiría extrapolarlo a casos más simples
-y realistas.
+Además, obtener un valor óptimo del \emph{ratio} $\delta$ para casos de
+funciones de densidades irreales nos permitiría extrapolarlo a casos más
+simples y realistas.
 Es por esta razón que los análisis que se describirán a continuación están
 destinados a someter el algoritmo a sus extremos y no para emular un escenario
 real.
@@ -973,9 +974,10 @@ Apéndice~\ref{sec:shell}.
 Calculamos la diferencia relativa entre los resultados numéricos y la solución
 analítica para $V$ y $g_z$ para cada combinación de modelos de cascarones
 (Tabla~\ref{tab:shell-models}) y grillas de cómputo (Tabla~\ref{tab:grids}).
-Hemos fijado el ratio distancia-tamaño $D$ a los valores obtenidos para el caso
-de densidad lineal y exploramos valores de $\delta$ entre $10^{-4}$ y $1$. Los
-cálculos fueron repetidos para valores de $b$ iguales a 1, 2, 5 y 10.
+Hemos fijado el \emph{ratio} distancia-tamaño $D$ a los valores obtenidos para
+el caso de densidad lineal y exploramos valores de $\delta$ entre $10^{-4}$
+y $1$.
+Los cálculos fueron repetidos para valores de $b$ iguales a 1, 2, 5 y 10.
 (Fig.~\ref{fig:sine-densities}). En todos los casos el valor de $A$ fue fijado
 a 1650\kgpercubicm{}.
 
@@ -984,8 +986,9 @@ a 1650\kgpercubicm{}.
 \includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/sine-densities.pdf}
 \caption{
     Densidades sinusoidales asignadas a los cascarones esféricos durante la
-    determinación del ratio $\delta$. Cada función de densidad corresponde a un
-    valor distinto de $b$ en la ecuación~\ref{eq:density-sine}.
+    determinación del \emph{ratio} $\delta$.
+    Cada función de densidad corresponde a un valor distinto de $b$ en la
+    ecuación~\ref{eq:density-sine}.
 }
 \label{fig:sine-densities}
 \end{figure}
@@ -1202,11 +1205,9 @@ Nuestros resultados experimentales muestran que la discretización adaptativa
 bidimensional es suficiente para alcanzar errores debajo del 0.1\% en conjunto
 con una \ac{GLQ} de segundo orden en caso de densidades lineales
 (Fig.~\ref{fig:D-linear}).
-Los valores del ratio distancia-tamaño determinados para el
-potencial gravitatorio
-($D=1$)
-y para su derivada vertical ($D=2.5$) son compatibles por los valores
-determinados por \citet{uieda2016}.
+Los valores del \emph{ratio} distancia-tamaño determinados para el potencial
+gravitatorio ($D=1$) y para su derivada vertical ($D=2.5$) son compatibles por
+los valores determinados por \citet{uieda2016}.
 Estos resultados muestran además que no existe una relación significativa entre
 la precisión del método y el espesor del modelo de tesseroides.
 
@@ -1281,8 +1282,8 @@ algoritmo de discretización adaptativa bidimensional y un nuevo algoritmo de
 discretización basado en densidad.
 El primero subdivide iterativamente al tesseroide en caso de que las relaciones
 entre la distancia al punto de cómputo y las dimensiones longitudinal
-y latitudinal del tesseroide sean menores que un ratio distancia-tamaño $D$
-predefinido.
+y latitudinal del tesseroide sean menores que un \emph{ratio} distancia-tamaño
+$D$ predefinido.
 Este algoritmo minimiza los errores de integración a cuando el punto de
 cómputo se encuentra cerca del tesseroide.
 Sin embargo, la discretización adaptativa por sí sola no es suficiente para
@@ -1292,7 +1293,7 @@ Para solucionar esto, el algoritmo de discretización basada en densidad divide
 al tesseroide a lo largo de la dirección radial en los lugares donde la
 \emph{máxima variación} de la función densidad ocurre.
 La cantidad de subdivisiones a lo largo del radio, y por ende la precisión del
-cómputo, están controladas por el parámetro delta $\delta$.
+cómputo, están controladas por el parámetro \emph{delta} $\delta$.
 Este nuevo algoritmo está diseñado para minimizar el error debido a la
 incapacidad de la \ac{GLQ} de producir aproximaciones precisas en caso de
 funciones de densidad con variaciones pronunciadas.
@@ -1309,7 +1310,7 @@ Las funciones de densidad utilizadas para establecer estos valores óptimos
 fueron lineales, exponenciales y sinusoidales.
 La función lineal representa la variación más sencilla de densidad y no
 requiere la aplicación de una discretización basada en densidad.
-Mediante este análisis hemos obtenido valores óptimos para el ratio
+Mediante este análisis hemos obtenido valores óptimos para el \emph{ratio}
 distancia-tamaño $D$ de 1 y 2.5 para el potencial gravitatorio y para su
 gradiente, respectivamente.
 Con el objetivo de analizar la precisión de la discretización basada en
@@ -1436,7 +1437,8 @@ el potencial gravitatorio en cualquier punto externo es
 un cascarón esférico con densidad variable $\rho(r') = ar'$, mientras que el
 segundo término es equivalente al potencial generado por el mismo cascarón con
 densidad homogénea $\rho = b$ \citep{mikuska2006,grombein2013}.
-La ecuación~\ref{eq:shell-pot-linear} coincide con la obtenida por \citet{lin2019}.
+La ecuación~\ref{eq:shell-pot-linear} coincide con la obtenida por
+\citet{lin2019}.
 
 \subsection{Densidad exponencial}
 
