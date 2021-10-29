@@ -2,7 +2,7 @@
 
 \begin{quotation}
     \textit{%
-    ``El cómputo en la ciencia ha evolucionado no solo porque el software lo ha
+    ``El cómputo en la Ciencia ha evolucionado no solo porque el software lo ha
     hecho, sino porque nosotros, como científicos, estamos haciendo mucho más
     que solo aritmética de punto flotante.''
     }
@@ -22,11 +22,11 @@ retroalimentación.
 Se desarrollaron lenguajes de programación especialmente diseñados para
 resolver problemas numéricos junto con interfaces que facilitaran la
 visualización y manipulación de datos científicos.
-La relación entre ciencia y las herramientas computacionales se desarrolló tan
+La relación entre Ciencia y las herramientas computacionales se desarrolló tan
 rápido que fue necesario crear el término \emph{computación científica} para
 diferenciarla de los otros usos que se estaban gestando para las computadoras
 (telecomunicaciones, fines comerciales, sistemas estatales de datos, etc.).
-Hoy en día es imposible imaginar una ciencia que no necesite de las
+Hoy en día es imposible imaginar una Ciencia que no necesite de las
 herramientas computacionales para su avance y la resolución de los problemas
 que enfrenta en la actualidad.
 
@@ -37,11 +37,11 @@ Mantenerse actualizado en los últimos conocimientos en la materia, adquirir
 nuevos datos, desarrollar el software necesario para procesarlos y finalmente
 generar un nuevo conocimiento se presenta como un desafío titánico para ser
 desempeñado por una persona o por apenas un puñado de investigadores.
-La complejidad actual de la ciencia requiere que el clásico flujo de trabajo
-científico se distribuya a lo ancho de la comunidad, ofreciendo productos
-o soluciones para cada una de sus etapas, que puedan ser utilizados libremente
-por otros investigadores y otras investigadoras, que a su vez puedan
-modificarlos y volver a distribuirlos en caso de desearlo.
+La complejidad actual de la Ciencia requiere que el flujo de trabajo científico
+se distribuya a lo ancho de la comunidad, ofreciendo productos o soluciones
+para cada una de sus etapas, que puedan ser utilizados libremente por otros
+investigadores y otras investigadoras, que a su vez puedan modificarlos
+y volver a distribuirlos en caso de desearlo.
 En resumen, los problemas científicos actuales requieren soluciones
 comunitarias y colaborativas, tanto para dar respuestas a las preguntas
 fundamentales, así como para desarrollar herramientas que faciliten la
@@ -53,7 +53,7 @@ el ámbito científico.
 Muchos científicos y científicas comenzaron a desarrollar herramientas
 computacionales a partir de necesidades propias de sus investigaciones que
 luego las distribuyeron bajo licencias de Software Libre y de código abierto.
-Dentro de las ciencias de la Tierra podemos hallar Seismic Unix
+Dentro de las Ciencias de la Tierra podemos hallar Seismic Unix
 \citep{seismicunix}, cuyo desarrollo comenzó a finales de la década del 70
 y está disponible bajo una licencia BSD Clause-3; y GMT (Generic Mapping Tool)
 \citep{gmt1991,gmt2019}, creado en 1988 por Paul Wessel y Walter H.F.
@@ -77,7 +77,7 @@ Transformada de Fourier, entre otros.
 En 2003 aparece la primera versión de Matplotlib \citep{matplotlib2007}, una
 librería para realización de gráficos y visualización de datos con una \ac{API}
 orientada a objetos.
-En 2006, se bautiza a la librería NumPy \citep{numpy2020}, heredera de Numeric,
+En 2006, se bautiza la librería NumPy \citep{numpy2020}, heredera de Numeric,
 dando soporte a operaciones con arreglos al lenguaje Python, para lo cual no
 había sido diseñado.
 
@@ -99,7 +99,7 @@ manipulación y análisis de datos; scikit-learn \citep{sklearn2011},
 especialmente orientada a la aplicación de algoritmos de aprendizaje
 automático; SymPy \citep{sympy2017} para cálculo simbólico; entre otras.
 Surge también Anaconda\footnote{\url{https://www.anaconda.com}}, una
-distribución de Python orientada específicamente a la ciencia de datos,
+distribución de Python orientada específicamente a la Ciencia de Datos,
 aprendizaje automático e investigaciones científicas; facilitando la
 instalación del intérprete y las múltiples librerías en diferentes plataformas
 y sistemas operativos.
@@ -108,7 +108,7 @@ En este Capítulo expondremos las  características del proyecto
 Fatiando a Terra, del cual el autor de esta Tesis forma parte del grupo de
 desarrolladores.
 Recorreremos su historia y cómo, dentro de su marco, se construyen herramientas
-computacionales con aplicaciones directas en geofísica, particularmente sobre
+computacionales con aplicaciones directas en Geofísica, particularmente sobre
 temáticas relacionadas a métodos potenciales.
 Enumeraremos las prácticas de desarrollo de software aprendidas y aplicadas en
 la construcción del proyecto, y qué beneficio han traído a la generación de
@@ -135,7 +135,7 @@ Software Carpentry\footnote{%
 }
 en Canadá, Leonardo Uieda adquiere mayores conocimientos en el uso de sistema
 de control de versiones junto a otras mejores prácticas para el desarrollo de
-Software y regresa con nuevas ideas para el proyecto.
+software y regresa con nuevas ideas para el proyecto.
 De vuelta en São Paulo, se gesta un diagrama de un posible diseño para este
 proyecto (Fig.~\ref{fig:talwani-idea}).
 La idea finalmente se desarrolla mediante una implementación del método de
@@ -177,7 +177,7 @@ continuación ascendente, deconvolución de Euler, fuentes equivalentes, hasta u
 incipiente \emph{framework} de inversión y algunas implementaciones de
 tomografías sísmicas simples.
 
-En los años posteriores, cuando la mayoría de los gestores del proyecto se
+En los años posteriores, cuando la mayoría de los creadores del proyecto se
 encontraban cursando sus Doctorados, Fatiando a Terra comienza a cobrar mayor
 forma.
 Leonardo y Vanderei deciden utilizar el \emph{framework} de inversión para dar
@@ -195,8 +195,8 @@ Además se elige distribuirlo bajo la licencia
 En 2013, el proyecto es presentado en una charla en SciPy 2013
 \citep{uieda2013}.
 
-En los años posteriores el proyecto comienza a cobrar mayor reconocimiento.
-Empieza a ser utilizado en publicaciones científicas
+En los años posteriores Fatiando a Terra comienza a cobrar mayor
+reconocimiento. Empieza a ser utilizado en publicaciones científicas
 \citep[][entre otros]{%
     uieda2012,
     carlos2014,
@@ -233,7 +233,7 @@ comienzan siendo usuarios o usuarias, terminan contribuyendo al proyecto.
 De esta forma \texttt{fatiando} comienza a alojar implementaciones de métodos
 novedosos recientemente publicados \citep{uieda2012b, oliveira2013}.
 
-Mi primea contribución al proyecto consistió en una implementación del promedio
+Mi primera contribución al proyecto consistió en una implementación del promedio
 radial del espectro de frecuencias de grillas de gravedad
 o magnetismo\footnote{%
     \url{https://github.com/fatiando/fatiando/pull/303}
@@ -241,19 +241,21 @@ o magnetismo\footnote{%
 Desde entonces comencé a involucrarme cada vez más, lo que me permitió adquirir
 mayores conocimientos en el uso de controladores de versiones, flujos de
 trabajo para el desarrollo colaborativo, creación de funciones de
-\emph{testing}, buenas prácticas para el diseño de algoritmos y la importancia
-de mantener la documentación actualizada.
+prueba, buenas prácticas para el diseño de algoritmos y redacción de
+documentación.
 
-La última versión del paquete \texttt{fatiando} es la v0.5, lanzada en
-Noviembre de 2016.
+La última versión del paquete \texttt{fatiando} es la
+\href{https://legacy.fatiando.org}{v0.5}, lanzada en Noviembre de
+2016.
 Si bien ese paquete en particular se encuentra obsoleto y no recibe mayor
 mantenimiento, esto no significa que la vida de el proyecto haya finalizado en
-ese entonces.
+ese entonces\footnote{La documentación correspondiente a la versión 0.5 de
+\texttt{fatiando} puede hallarse en \url{https://legacy.fatiando.org}.}.
 
 A partir de 2018 el proyecto tomó una nueva dirección.
 El panorama de software de código abierto para Geofísica había cambiado mucho
 desde los inicios de Fatiando a Terra: la cantidad de nuevos paquetes diseñados
-para atacar diversos problemas de las geociencias había aumentado
+para atacar diversos problemas de las Geociencias había aumentado
 considerablemente
 \citep{cockett2015, ruecker2017, varga2019, obspy2019}.
 Dentro de este nuevo ecosistema, \texttt{fatiando} no poseía un objetivo claro.
@@ -261,10 +263,10 @@ Esto no solo hacía difícil que potenciales usuarios y usuarias identifiquen el
 propósito del proyecto, sino que también constituía una base de código difícil
 de mantener.
 Por otro lado, para ese entonces \texttt{fatiando} había sido el hogar de
-implementaciones de métodos clásicos de la geofísica, métodos muy novedosos
+implementaciones de métodos clásicos de la Geofísica, de métodos muy novedosos
 (orientados principalmente a la investigación científica), así como de código
-\emph{juguete} diseñado para ser utilizado en clases para fines didácticos
-pero sin las capacidades para atacar problemas reales.
+\emph{juguete} diseñado para ser utilizado en clases con fines didácticos pero
+sin las capacidades para atacar problemas reales.
 Sumado a esto, la versión de Python 2.7 llegaba pronto a su final de vida, lo
 que hacía necesario adaptar \texttt{fatiando} al nuevo Python 3.
 
@@ -289,8 +291,8 @@ más altos.
 \section{Paquetes de software}
 
 Actualmente Fatiando a Terra está compuesto por cuatro paquetes de software
-destinados a ofrecer soluciones a diversas problemáticas en geociencias, así
-como también a otras áreas de la ciencia:
+destinados a ofrecer soluciones a diversas problemáticas en Geociencias, así
+como también a otras áreas de la Ciencia:
 
 \begin{description}
     \item[Verde]{%
@@ -350,28 +352,25 @@ la grilla:
 
 \noindent donde $\mathbf{p}$ es la ubicación de cualquier punto de la grilla.
 
-Dentro de Verde hallamos implementaciones de algoritmos de interpolación
-de este tipo siguiendo un diseño similar
-a los modelos de aprendizaje automático de \emph{scikit-learn}
-\citep{sklearn2011}. Esto permite que quienes estén familiarizados con la
-aplicación de métodos de aprendizaje automático en Python puedan fácilmente
-entender cómo utilizar la \ac{API} de Verde.
+Dentro de Verde hallamos implementaciones de algoritmos de interpolación de
+este tipo siguiendo un diseño similar a los modelos de aprendizaje automático
+de scikit-learn \citep{sklearn2011}.
+Esto permite que quienes estén familiarizados con la aplicación de métodos de
+aprendizaje automático en Python puedan fácilmente entender cómo utilizar la
+\ac{API} de Verde.
 Entre los algoritmos de interpolación que se encuentran implementados están las
 \emph{splines} biharmónicas, así como métodos más complejos como la
 interpolación de vectores 2D con funciones de Green \citep{sandwell2016}.
 
-Como hemos mencionado anteriormente, los interpoladores presentes en
-Verde han sido implementados mediante clases que reproducen un
-comportamiento similar a las clases de \emph{scikit-learn}.
-Los interpoladores en Verde poseen un método \texttt{fit()} que se usa para
-ajustar los parámetros $c_j$ mediante mínimos cuadrados partiendo de un
-conjunto de datos y sus ubicaciones. Luego podemos hacer uso del método
-\texttt{predict()} para predecir valores en cualquier conjunto de puntos,
-o bien usando el método \texttt{grid()} podemos predecir sobre una grilla
-regular.
+Las clases de interpoladores en Verde poseen un método \texttt{fit()} que se
+usa para ajustar los parámetros $c_j$ mediante mínimos cuadrados amortiguados
+partiendo de un conjunto de datos y sus ubicaciones.
+Luego podemos hacer uso del método \texttt{predict()} para predecir valores en
+cualquier conjunto de puntos, o bien usando el método \texttt{grid()} podemos
+predecir sobre una grilla regular.
 
 Además, Verde cuenta con utilidades para realizar reducciones por
-bloque, una clases para determinación de tendencias polinomiales, funciones
+bloque, clases para determinación de tendencias polinomiales, funciones
 para el manejo de coordenadas, y herramientas para realizar validaciones
 cruzadas y selección de modelos.
 
@@ -418,10 +417,10 @@ cualquier elipsoide referencia a partir de los parámetros mencionados.
 La clase \texttt{Sphere} está orientada a representar esferas, las cuales
 poseen achatamiento nulo y en vez de especificar su semieje mayor, se define su
 radio.
-A modo de ejemplo, uno podría definir el elipsoide WGS84 como se muestra en le
+A modo de ejemplo, uno podría definir el elipsoide WGS84 como se muestra en el
 Código~\ref{lst:boule-wgs84}.
 Sin embargo, Boule ya ofrece algunos de los elipsoides de referencia más
-ampliamente usados en geodesia y geofísica, tales como el WGS84
+ampliamente usados en Geodesia y Geofísica, tales como el WGS84
 (\texttt{boule.WGS84}), el GRS80: Geodetic Reference System
 (\texttt{boule.GRS80}) e incluso un elipsoide de referencia para el planeta
 Marte definido según los parámetros disponibles en \citet{ardalan2009}
@@ -544,8 +543,8 @@ prismas junto con las coordenadas \texttt{top} y \texttt{bottom} para cada uno
 de ellos.
 Harmonica ofrece un \emph{accessor} de Xarray para poder calcular los campos
 gravitatorios que toda la capa genera sobre un conjunto de puntos de
-observación, la cual hace uso de función \texttt{prism\_gravity()} mencionada
-anteriormente.
+observación, la cual hace uso de la función \texttt{prism\_gravity()}
+mencionada anteriormente.
 Este tipo de capas resultan muy útiles para calcular los efectos gravimétricos
 de la topografía o para realizar inversiones como las de \citet{uieda2017}.
 El Código~\ref{lst:harmonica-prism-layer} ejemplifica cómo podemos usar la
@@ -717,7 +716,7 @@ Software luego de una revisión abierta por pares \citep{pooch2020}.
     label=lst:pooch-retrieve
 ]{fatiando-examples/pooch-retrieve.py}
 
-Hasta entonces la principal audiencia de Pooch consistía en otros
+Hasta entonces la principal audiencia de Pooch consistía en otros y otras
 desarrolladores de software que deseaban una forma sencilla de distribuir datos
 de muestra a sus usuarios y usuarias.
 Sin embargo, en los meses subsiguientes se presentó la oportunidad de incluir
@@ -800,8 +799,8 @@ a continuación una descripción detallada de las más importantes.
 \subsection{Estilo de escritura}
 
 El lenguaje Python admite estilos de escritura muy variados, priorizando que el
-código sea legible a poseer una sintaxis muy estricta.
-Sin embargo, a la hora de mantener una base de código entre muchos
+código sea legible por encima de poseer una sintaxis muy estricta.
+Sin embargo, a la hora de mantener una base de código entre muchos y muchas
 desarrolladores, es recomendable establecer un estilo de escritura común.
 Dentro del proyecto hemos decidido seguir los lineamientos establecidos en
 PEP8 (siglas en inglés de \emph{Python Enhancement Proposals}: propuestas de
@@ -825,18 +824,19 @@ utilizamos en Fatiando.
 Sin embargo, Black no es capaz de aplicar algunas de las recomendaciones
 establecidas en PEP8, especialmente las que tienen que ver con el nombre de las
 variables, el modo de uso de operadores lógicos, entre otras.
-Para este tipo de situaciones hacemos uso de otro software que permite detectar
+Para este tipo de situaciones hacemos uso de otros software que permiten detectar
 este tipo de errores, además de muchas otras recomendaciones para mejorar la
 escritura de nuestro código:
-\texttt{pylint}\footnote{\url{https://pylint.org/}}.
-Esta herramienta no solo identifica violaciones a PEP8, sino que además realiza
-un análisis más profundo del código: desde detectar variables definidas pero no
-utilizadas, módulos importados innecesariamente, definiciones de funciones
-extremadamente largas o con muchos argumentos, entre muchas otras.
-Dentro del proyecto utilizamos \texttt{pylint} para identificar este tipo de
-errores más difíciles de detectar, sin embargo establecemos un criterio más
-flexible: permitimos ignorar alguna de sus recomendaciones si lo consideramos
-conveniente.
+\texttt{pylint}\footnote{\url{https://pylint.org/}} y
+\texttt{flake8}\footnote{\url{https://flake8.pycqa.org/en/latest/}}.
+Estas herramientas no solo identifican violaciones a PEP8, sino que además
+realizan un análisis más profundo del código: desde detectar variables
+definidas pero no utilizadas, módulos importados innecesariamente, definiciones
+de funciones extremadamente largas o con muchos argumentos, entre muchas otras.
+Dentro del proyecto utilizamos \texttt{pylint} y \texttt{flake8} para
+identificar este tipo de errores más difíciles de detectar, sin embargo
+establecemos un criterio más flexible: permitimos ignorar alguna de sus
+recomendaciones si lo consideramos conveniente.
 
 \subsection{Documentación}
 
@@ -968,7 +968,7 @@ Así como la implementación del modelado directo por tesseroides en Harmonica
 (ver Sección~\ref{sec:harmonica}) es puesta a prueba comparando sus resultados
 numéricos con la solución analítica para un cascarón esférico.
 Otro método consiste en verificar que nuestros resultados numéricos
-o analíticos verifican determinadas propiedades matemáticas.
+o analíticos satisfacen determinadas propiedades matemáticas.
 Por ejemplo, la implementación del modelado directo por prismas rectangulares
 presente en Harmonica (ver Sección~\ref{sec:harmonica}) debe verificar una
 determinada simetría: los valores de los campos a lados opuestos del prisma
@@ -979,7 +979,7 @@ garantizan la inexistencia de comportamientos no deseados o errores en la base
 del código, al igual que una cobertura del 100\% no es un indicativo de la
 calidad del conjunto de pruebas de software.
 Es por esto que es necesario considerar la escritura de funciones de prueba tan
-importantes como las implementaciones mismas.
+importante como las implementaciones mismas.
 
 
 \subsection{Automatización e integración continua}
@@ -996,30 +996,26 @@ Es por ello que dentro del proyecto recurrimos a los servicios de
 quitándonos el peso de tener que ejecutarlas manualmente y permitiéndonos
 ocupar ese tiempo en otras tareas de forma más eficiente.
 
-Cada vez que un contribuidor crea un \emph{Pull Request}, el servicio de
-integración continua que provee GitHub mediante las GitHub Actions realiza
-diversas tareas.
+Cada vez que un contribuidor o contribuidora crea un \emph{Pull Request}, el
+servicio de integración continua que provee GitHub mediante las GitHub Actions
+realiza diversas tareas.
 Haciendo uso de máquinas virtuales, ejecuta comprobaciones sobre el estilo de
 escritura del último código publicado en ese \emph{Pull Request}.
-Para ello utiliza tanto Black como \texttt{pylint}, devolviendo un reporte de
-su ejecución donde se pueden identificar las violaciones a las recomendaciones
-que realizan estas dos utilidades.
+Para ello utiliza tanto Black como \texttt{pylint} y \texttt{flake8},
+devolviendo un reporte de su ejecución donde se pueden identificar las
+violaciones a las recomendaciones que realizan estas dos utilidades.
 Además, mediante otro conjunto de máquinas virtuales procede a instalar el
 nuevo código junto con todas sus dependencias bajo diferentes sistemas
-operativos y haciendo uso de diferentes versiones de Python 3 (Python 3.7,
-Python 3.8, Python 3.9 por ejemplo).
+operativos y haciendo uso de diferentes versiones de Python 3.
 Luego ejecuta la \emph{suite} de pruebas de software en cada configuración
 mediante \texttt{pytest}, devolviendo también su reporte de fallos y de
 cobertura.
 Otro servicio de integración continua que se ejecuta es la construcción de la
 documentación correspondiente a este nuevo código, la cual también devuelve
 información acerca de posibles fallos que se hayan encontrado.
-Dentro de la interfaz del \emph{Pull Request} podemos observar si algunas de
-estas ejecuciones han fallado, evitando que incorporemos ese nuevo código en la
-\emph{rama} principal.
 
-En cada una de las librerías del proyecto se ha establecido como requisito
-mínimo para incorporar un código nuevo a la \emph{rama} principal que:
+A la hora de incorporar un código nuevo a la \emph{rama} principal de cualquier
+librería del proyecto, se requiere que:
 
 \begin{itemize}
     \item las comprobaciones de estilos escritura pasen correctamente,
@@ -1027,6 +1023,9 @@ mínimo para incorporar un código nuevo a la \emph{rama} principal que:
     \item la documentación pueda construirse sin errores.
 \end{itemize}
 
+Dentro de la interfaz del \emph{Pull Request} podemos observar si algunas de
+estas ejecuciones han fallado, evitando que incorporemos ese nuevo código en la
+\emph{rama} principal.
 De esta forma se garantiza que la \emph{rama} principal cuente únicamente con
 código que sigue estos estándares, bajo la idea de que es más sencillo
 y factible enmendar una contribución antes de ser incorporada que solucionar el
@@ -1076,7 +1075,7 @@ proceso para su publicación.
 Una de las partes fundamentales para que el proyecto se haya podido desarrollar
 de la forma en que lo hizo es la comunidad que se ha construido a su alrededor
 y las comunidades con las que ésta interactúa.
-La comunidad de Fatiando a Terra no solo esta formada por los mantenedores del
+La comunidad de Fatiando a Terra no solo está formada por los mantenedores del
 código, desarrolladores y contribuidores, sino también por usuarios
 y usuarias que intercambian ideas y preguntas mediante los canales de
 comunicación que se han establecido.
@@ -1125,7 +1124,7 @@ pyGMT \citep{pygmt2020}, SHTOOLS \citep{wieczorek2018}, Xarray
 \citep{xarray2017}, scikit-image \citep{skimage} y MetPy \citep{metpy}, entre
 otras.
 
-Aquellas que poseen una estrecha vinculación con las ciencias de la Tierra
+Aquellas que poseen una estrecha vinculación con las Ciencias de la Tierra
 se relacionan dentro de comunidades como
 \href{https://softwareunderground.org/}{\emph{software
 underground}}\footnote{\url{https://softwareunderground.org/}}, donde se
@@ -1153,8 +1152,8 @@ científicas \citep{uieda2013,uieda2020b,soler2021c}.
     \caption{
         Cantidad de visitas a \href{https://fatiando.org}{fatiando.org} entre
         Abril de 2017 y Septiembre de 2021 en ventana móvil de 28 días.
-        Cada valor representa la cantidad de visitas recibidas en una ventana
-        de 28 días centrada en su fecha correspondiente.
+        Cada valor representa la cantidad de visitas diarias promediadas en una
+        ventana de 28 días centrada en su fecha correspondiente.
     }
     \label{fig:fatiando-users-history}
 \end{figure}
@@ -1185,8 +1184,9 @@ páginas de documentación.
 Estos datos han sido recopilados mediante los servicios de Google Analytics de
 manera anónima (no se recogen las direcciones de IP de quienes visitan el
 sitio).
-La Figura~\ref{fig:fatiando-users-history} muestra la cantidad de visitas que
-recibió el sitio desde Abril del 2017 a Septiembre de 2021 por ventana móvil de
+La Figura~\ref{fig:fatiando-users-history} muestra la cantidad de visitas
+diarias que recibió el sitio desde Abril del 2017 a Septiembre de 2021
+promediadas por ventana móvil de
 28 días.
 Mientras que la Figura~\ref{fig:fatiando-users-map} expone la cantidad de
 visitas en el mismo intervalo según su ubicación geográfica.
