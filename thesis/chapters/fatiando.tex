@@ -104,7 +104,7 @@ aprendizaje automático e investigaciones científicas; facilitando la
 instalación del intérprete y las múltiples librerías en diferentes plataformas
 y sistemas operativos.
 
-En este capítulo expondremos las  características del proyecto
+En este Capítulo expondremos las  características del proyecto
 Fatiando a Terra, del cual el autor de esta Tesis forma parte del grupo de
 desarrolladores.
 Recorreremos su historia y cómo, dentro de su marco, se construyen herramientas
@@ -398,7 +398,7 @@ referencia mediante objetos. Además nos ofrece herramientas para calcular los
 campos gravitatorios que estos elipsoides generan y realizar conversiones
 de coordenadas.
 
-Como hemos visto en la sección~\ref{sec:gravedad-terrestre}, un elipsoide de
+Como hemos visto en la Sección~\ref{sec:gravedad-terrestre}, un elipsoide de
 referencia puede definirse mediante los semiejes mayor $a$ y menor $b$, su masa
 total $M$ y su velocidad angular $\omega$.
 De forma alternativa pero equivalente, es posible definirlo mediante los
@@ -509,7 +509,7 @@ puntuales dadas en coordenadas Cartesianas.
 Harmonica cuenta con una implementación del método de \citet{nagy2000} para
 calcular los campos gravitacionales de prismas rectangulares mediante la
 función \texttt{prism\_gravtiy()}, haciendo uso de las correcciones de
-\citet{fukushima2020} descriptas en la sección~\ref{sec:prismas-rectangulares}.
+\citet{fukushima2020} descriptas en la Sección~\ref{sec:prismas-rectangulares}.
 
 La librería también cuenta con una implementación en Python de los algoritmos
 de discretización adaptativa y \ac{GLQ} para calcular los campos
@@ -596,11 +596,11 @@ a partir de los algoritmos de fuentes equivalentes.
 La clase \texttt{EquivalentSources} contiene una implementación del método de
 fuentes equivalentes que utiliza fuentes puntuales y la inversa de la distancia
 como función de Green (tal y como se describe en la
-sección~\ref{sec:equivalent-sources-technique}).
+Sección~\ref{sec:equivalent-sources-technique}).
 El ajuste de los coeficientes de las fuentes se realiza mediante un algoritmo
 de mínimos cuadrados amortiguados, haciendo uso del parámetro de
 \emph{amortiguamiento} adimensional introducido en la
-sección~\ref{sec:eql_inversion}.
+Sección~\ref{sec:eql_inversion}.
 \texttt{EquivalentSources} permite ajustar fuentes equivalentes dadas en
 coordenadas Cartesianas, mientras que \texttt{EquivalentSourcesSph} nos permite
 aplicar la misma metodología pero definiendo las fuentes puntuales y los puntos
@@ -900,7 +900,7 @@ Estas funciones de prueba no están destinadas a ser utilizadas por usuarios
 y usuarias finales de la forma en que sí son diseñadas las funciones incluidas
 en la \ac{API} del proyecto.
 Por el contrario, se añaden para ser ejecutadas por desarrolladores o por
-servicios de integración continua (ver sección~\ref{sec:ci}).
+servicios de integración continua (ver Sección~\ref{sec:ci}).
 
 En el caso particular del software científico, un comportamiento no deseado de
 nuestro código puede conllevar la obtención de resultados erróneos, que pueden
@@ -961,16 +961,16 @@ Tanto las soluciones analíticas como los cálculos numéricos pueden ser
 corroborados con valores conocidos o con soluciones analíticas a casos
 particulares.
 Por ejemplo, la implementación del cálculo de gravedad normal en Boule (ver
-sección~\ref{sec:boule}) es corroborada por comparación con la ecuación de
+Sección~\ref{sec:boule}) es corroborada por comparación con la ecuación de
 Somigliana (ec.~\ref{eq:somigliana}) sobre puntos en la superficie del
 elipsoide.
 Así como la implementación del modelado directo por tesseroides en Harmonica
-(ver sección~\ref{sec:harmonica}) es puesta a prueba comparando sus resultados
+(ver Sección~\ref{sec:harmonica}) es puesta a prueba comparando sus resultados
 numéricos con la solución analítica para un cascarón esférico.
 Otro método consiste en verificar que nuestros resultados numéricos
 o analíticos verifican determinadas propiedades matemáticas.
 Por ejemplo, la implementación del modelado directo por prismas rectangulares
-presente en Harmonica (ver sección~\ref{sec:harmonica}) debe verificar una
+presente en Harmonica (ver Sección~\ref{sec:harmonica}) debe verificar una
 determinada simetría: los valores de los campos a lados opuestos del prisma
 deben poseer los mismos valores.
 
@@ -1202,7 +1202,7 @@ países del globo.
 
 \section{Retroalimentación con investigaciones científicas}
 
-Como se ha mencionado en los capítulos~\ref{cha:tesseroids-variable-density}
+Como se ha mencionado en los Capítulos~\ref{cha:tesseroids-variable-density}
 y~\ref{cha:eql-gradient-boosted}, las herramientas desarrolladas en Fatiando
 a Terra han resultado indispensables para la culminación de las investigaciones
 descriptas en esta Tesis.
@@ -1212,7 +1212,7 @@ sobre datos sintéticos o reales.
 Esta relación entre el proyecto e investigaciones científicas como facilitador
 de herramientas no solo se ve reflejada en los avances de esta Tesis, sino que
 se replica en todos los trabajos que han hecho uso de las mismas,
-particularmente los mencionados en la sección~\ref{sec:fatiando-history}.
+particularmente los mencionados en la Sección~\ref{sec:fatiando-history}.
 
 Sin embargo, existe una relación de retroalimentación entre el proyecto y estas
 investigaciones científicas: muchos de los métodos publicados en artículos

@@ -4,7 +4,7 @@
 \chaptermark{Fuentes equiv. potenciadas por gradiente}
 \label{cha:eql-gradient-boosted}
 
-Este capítulo es una traducción al español del artículo titulado
+Este Capítulo es una traducción al español del artículo titulado
 \emph{Gradient-boosted equivalent sources} escrito por Santiago R. Soler
 y Leonardo Uieda, y publicado en \emph{Geophysical Journal
 International} en Agosto de 2021 \citep{soler2021}.
@@ -210,7 +210,7 @@ puede ser aproximada por la suma de los efectos de $M$ fuentes puntuales
 vectores posición de datos y fuentes en un espacio cartesiano tridimensional,
 y $c_j$ es un coeficiente escalar relacionado con la masa puntual localizada en
 $\mathbf{q}_j$.
-En la sección~\ref{sec:source_distribution} realizamos una discusión acerca de
+En la Sección~\ref{sec:source_distribution} realizamos una discusión acerca de
 la distribución horizontal y vertical de las fuentes.
 
 En caso de que poseamos mediciones de nuestra función harmónica en $N$ puntos
@@ -424,7 +424,7 @@ pasos:
 
 \begin{enumerate}
   \item Definir un conjunto de $M$ fuentes equivalentes distribuidas a lo
-      largo de la zona de estudio (ver sección~\ref{sec:source_distribution}
+      largo de la zona de estudio (ver Sección~\ref{sec:source_distribution}
       para más detalles).
   \item Definir un conjunto de $K$ ventanas solapadas de igual tamaño que
       cubren toda la zona de estudio.
@@ -516,7 +516,7 @@ Para mejorar la convergencia del algoritmo, \citet{friedman2002} sugiere
 introducir aleatoriedad en el proceso de ajuste.
 En nuestra adaptación logramos esto aleatorizando el orden en el cual las $K$
 ventanas son utilizadas durante el algoritmo de potenciación de gradiente.
-La sección~\ref{sec:gb_interpolation} explora los efectos de la aleatorización
+La Sección~\ref{sec:gb_interpolation} explora los efectos de la aleatorización
 sobre la velocidad de convergencia del algoritmo y sobre la precisión de la
 interpolación.
 
@@ -793,7 +793,7 @@ Además, el proceso de \emph{promediado por bloques} puede balancear el
 espaciado entre fuentes a lo largo de líneas de vuelo y entre líneas contiguas,
 ayudando a reducir los efectos de \emph{aliasing} en las grillas que se
 generan.
-En la sección~\ref{sec:synthetic_distributions}, demostramos mediante pruebas
+En la Sección~\ref{sec:synthetic_distributions}, demostramos mediante pruebas
 sobre datos sintéticos que las \emph{fuentes promediadas por bloque} son
 capaces de realizar interpolaciones con una precisión comparable a la obtenida
 por las otras dos distribuciones, pero utilizando una fracción de fuentes
@@ -895,7 +895,7 @@ Finalmente, para \emph{fuentes promediadas por bloque} será la coordenada
 vertical media de todos los puntos de datos que caen dentro del bloque
 correspondiente a la fuente.
 
-En la sección~\ref{sec:synthetic_distributions}, probamos la efectividad de
+En la Sección~\ref{sec:synthetic_distributions}, probamos la efectividad de
 estas estrategias sobre datos sintéticos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1015,7 +1015,7 @@ Hemos investigado el efecto sobre la precisión de las interpolaciones de
 diferentes estrategias para distribuir las fuentes equivalentes, tanto
 horizontal como verticalmente.
 Para hacer esto, hemos utilizado las soluciones por mínimos cuadrados
-amortiguados descriptas en la sección~\ref{sec:eql_inversion} (sin potenciación
+amortiguados descriptas en la Sección~\ref{sec:eql_inversion} (sin potenciación
 del gradiente) para interpolar los datos sintéticos
 (fig.~\ref{fig:synthetic-layouts}) y comparamos los resultados con los valores
 de la \emph{grilla objetivo} (fig.~\ref{fig:synthetic-target}).
@@ -1167,14 +1167,14 @@ La cantidad de solapamiento entre ventanas contiguas juega un rol importante en
 el desempeño de las fuentes potenciadas por gradiente.
 Controla la cantidad de iteraciones y cuántas veces una fuente particular será
 utilizada en el proceso de ajuste por mínimos cuadrados.
-Los experimentos realizados en la sección anterior muestran que un solapamiento
+Los experimentos realizados en la Sección anterior muestran que un solapamiento
 de 50\% es suficiente para alcanzar una precisión aceptable en las
 interpolaciones.
 Sin embargo, hemos estudiado de forma independiente cómo la cantidad de
 solapamiento impacta tanto en la precisión como en el tiempo de cómputo.
 
 Llevamos a cabo un experimento similar al realizado en la
-sección~\ref{sec:window_size}, pero esta vez mantuvimos el tamaño de la ventana
+Sección~\ref{sec:window_size}, pero esta vez mantuvimos el tamaño de la ventana
 fijo a \BoostOverlappingWindowSize{} y variamos la cantidad de solapamiento
 entre 0\% y 95\% con un paso de 5\%.
 Todos los otros procedimientos experimentales se mantuvieron intactos.
@@ -1205,7 +1205,7 @@ Finalmente, hemos aplicado las fuentes equivalentes potenciadas por gradiente
 para interpolar la muestra sintética aérea (fig.~\ref{fig:synthetic-layouts}).
 Tal y como hemos realizado anteriormente, utilizamos las fuentes promediadas
 por bloque con un tamaño de bloque de \EqlBoostAirborneSpacing{}.
-Basado en los resultados de la sección \ref{sec:window_size_and_overlap},
+Basado en los resultados de la Sección \ref{sec:window_size_and_overlap},
 adoptamos un solapamiento entre ventanas contiguas de 50\% y un tamaño de
 ventanas de \EqlBoostAirborneWindowSize{}.
 
@@ -1223,7 +1223,7 @@ Las predicciones más precisas alcanzaron una \ac{RMSE} de
 un \emph{amortiguamiento} de \EqlBoostAirborneDamping{}.
 Vale la pena notar que la \ac{RMSE} alcanzada por las fuentes potenciadas por
 gradiente es comparable con los valores obtenidos por las fuentes equivalentes
-regulares en la sección~\ref{sec:synthetic_distributions}.
+regulares en la Sección~\ref{sec:synthetic_distributions}.
 Para resaltar la importancia de aleatorizar el orden en el que se recorren las
 ventanas durante la potenciación del gradiente, llevamos a cabo la misma
 interpolación una vez más haciendo uso de los mismos valores para la profundidad
@@ -1290,7 +1290,7 @@ que las ventanas aleatorias generan una convergencia más rápida del algoritmo.
     \label{fig:australia}
 \end{figure}
 
-En esta sección demostraremos cómo podemos utilizar las fuentes equivalentes
+En esta Sección demostraremos cómo podemos utilizar las fuentes equivalentes
 potenciadas por gradiente para interpolar grandes cantidades de datos sobre
 una grilla regular a una altitud uniforme.
 Para esto, hemos seleccionado una compilación de acceso abierto de muestras de
@@ -1308,7 +1308,7 @@ por el elipsoide WGS84 sobre los datos de gravedad observados
 (fig.~\ref{fig:australia}).
 Los valores de gravedad normal fueron calculados en cada punto de observación
 mediante la fórmula cerrada de \citet{ligotze2001} (ver
-sección~\ref{sec:normal-gravity-closed-form}) implementada en la librería Boule
+Sección~\ref{sec:normal-gravity-closed-form}) implementada en la librería Boule
 \citep{boule2020}.
 Finalmente, transformamos las coordenadas de los puntos de observación a un
 sistema de coordenadas planas aplicando una proyección de Mercator.
@@ -1320,7 +1320,7 @@ El tamaño de los bloques fue elegido para que concuerde con la resolución
 deseada para la grilla final (1~minuto de arco equivale aproximadamente
 a 1.8\km{} en el ecuador).
 Basado en los resultados obtenidos en la
-sección~\ref{sec:synthetic_distributions}, elegimos localizar las fuentes
+Sección~\ref{sec:synthetic_distributions}, elegimos localizar las fuentes
 siguiendo la estrategia de \emph{profundidad relativa}.
 El solapamiento de las ventanas fue fijado nuevamente a 50\%.
 Para determinar el tamaño de las ventanas, calculamos la cantidad de memoria
@@ -1678,7 +1678,7 @@ vez se distribuye bajo la misma licencia
 Las tablas~\ref{tab:parameters-ground-survey}
 y~\ref{tab:parameters-airborne-survey} muestran valores de parámetros
 utilizados para analizar estrategias de distribución de fuentes equivalentes
-con datos sintéticos (sección~\ref{sec:synthetic_distributions}, junto con los
+con datos sintéticos (Sección~\ref{sec:synthetic_distributions}, junto con los
 valores óptimos correspondientes a cada estrategia.
 Estos valores óptimos fueron utilizados para producir los resultados de las
 figuras~\ref{fig:ground-survey-differences}
