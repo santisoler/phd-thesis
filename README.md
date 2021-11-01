@@ -59,12 +59,12 @@ correspondiente proceso de revisión por pares en [_Geophysical Journal
 International_](https://academic.oup.com/gji/):
 
 - Soler, S. R., Pesce, A., Gimenez, M. E., & Uieda, L. (2019).
-  Gravitational field calculation in spherical coordinates using variable
-  densities in depth,
+  _Gravitational field calculation in spherical coordinates using variable
+  densities in depth_.
   Geophysical Journal International.
   doi: [10.1093/gji/ggz277](https://doi.org/10.1093/gji/ggz277)
 - Soler, S.R. and Uieda, L. (2021).
-  Gradient-boosted equivalent sources.
+  _Gradient-boosted equivalent sources_.
   Geophysical Journal International.
   doi: [10.1093/gji/ggab297](https://doi.org/10.1093/gji/ggab297)
 
@@ -73,11 +73,12 @@ publicados en el [_Journal of Open Source Software_](https://joss.theoj.org/):
 
 - Uieda, L., Soler, S.R., Rampin, R., van Kemenade, H., Turk, M., Shapero, D.,
   Banihirwe, A., and Leeman, J. (2020).
-  Pooch: A friend to fetch your data files.
+  _Pooch: A friend to fetch your data files_.
   Journal of Open Source Software, 5(45), 1943.
   doi: [10.21105/joss.01943](https://doi.org/10.21105/joss.01943)
-- Uieda, (2018). Verde: Processing and gridding spatial data using Green’s
-  functions.
+- Uieda, (2018).
+  _Verde: Processing and gridding spatial data using Green’s
+  functions_.
   Journal of Open Source Software, 3(30), 957,
   doi: [10.21105/joss.00957](https://doi.org/10.21105/joss.00957)
 
