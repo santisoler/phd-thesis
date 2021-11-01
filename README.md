@@ -9,6 +9,7 @@ de la
 |--------------|-----------|
 | Título   | _Metodologías y herramientas computacionales para el procesamiento y modelado de datos gravimétricos_ |
 | Autor    | [Santiago Soler](https://www.santisoler.com)<sup>1,2</sup> |
+| Año      | 2021 |
 | Director | Mario E. Gimenez<sup>1,2</sup>  |
 | Co-Director | [Leonardo Uieda](https://www.leouieda.com)<sup>3</sup> |
 | DOI      | [10.6084/m9.figshare.16906909](https://doi.org/10.6084/m9.figshare.16906909) |
