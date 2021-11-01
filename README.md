@@ -7,20 +7,18 @@ de la
 
 | Información  |           |
 |--------------|-----------|
-| **Título**   | _Metodologías y herramientas computacionales para el procesamiento y modelado de datos gravimétricos_ |
-| **Autor**    | [Santiago Soler](https://www.santisoler.com)<sup>1,2</sup>  |
-| **Director** | Mario E. Gimenez<sup>1,2</sup>  |
-| **Co-Director** | [Leonardo Uieda](https://www.leouieda.com)<sup>3</sup>  |
-| **DOI**      | [10.6084/m9.figshare.16906909](https://doi.org/10.6084/m9.figshare.16906909) |
-| **Licencia** | [Creative Commons Atribución 4.0 Internacional][cc-by] |
+| Título   | _Metodologías y herramientas computacionales para el procesamiento y modelado de datos gravimétricos_ |
+| Autor    | [Santiago Soler](https://www.santisoler.com)<sup>1,2</sup> |
+| Director | Mario E. Gimenez<sup>1,2</sup>  |
+| Co-Director | [Leonardo Uieda](https://www.leouieda.com)<sup>3</sup> |
+| DOI      | [10.6084/m9.figshare.16906909](https://doi.org/10.6084/m9.figshare.16906909) |
+| Licencia | [Creative Commons Atribución 4.0 Internacional][cc-by] |
+| **PDF** | [**Descargar el PDF**](https://doi.org/10.6084/m9.figshare.16906909) |
 
-
-[**Descarga el PDF**](https://doi.org/10.6084/m9.figshare.16906909)
-
-> <sup>1</sup>CONICET, Argentina<br/>
-> <sup>2</sup>Instituto Geofísico Sismológico Volponi, Universidad Nacional de San Juan,
+> <sup>1</sup> CONICET, Argentina<br/>
+> <sup>2</sup> Instituto Geofísico Sismológico Volponi, Universidad Nacional de San Juan,
 > Argentina<br>
-> <sup>3</sup>Department of Earth, Ocean and Ecological Sciences, School of Environmental Sciences, University of Liverpool, UK
+> <sup>3</sup> Department of Earth, Ocean and Ecological Sciences, School of Environmental Sciences, University of Liverpool, UK
 
 
 ## Resumen
