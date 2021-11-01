@@ -45,8 +45,11 @@ Por último, presentamos un recorrido sobre el desarrollo del proyecto de
 software de código abierto para Geofísica: Fatiando a Terra.
 Recorremos su historia, describimos los paquetes que forman parte del
 proyecto y enumeramos las mejores prácticas que se aplican para poder
-desarrollar, mantener y distribuir herramientas de código abierto para ser
-aplicadas en investigación científica o exploración de recursos naturales.
+desarrollarlas.
+Además intentamos evaluar qué impacto posee el proyecto sobre la comunidad
+geocientista internacional, cómo los y las integrantes de la comunidad de
+Fatiando a Terra interactúan entre sí y cómo lo hacen con las otras comunidades
+de software científico.
 
 
 ## Cómo citar
