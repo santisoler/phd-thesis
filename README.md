@@ -52,6 +52,36 @@ Fatiando a Terra interactúan entre sí y cómo lo hacen con las otras comunidad
 de software científico.
 
 
+## Publicaciones relacionadas
+
+Las dos metodologías que se presentan en la Tesis han sido publicadas tras su
+correspondiente proceso de revisión por pares en [_Geophysical Journal
+International_](https://academic.oup.com/gji/):
+
+- Soler, S. R., Pesce, A., Gimenez, M. E., & Uieda, L. (2019).
+  Gravitational field calculation in spherical coordinates using variable
+  densities in depth,
+  Geophysical Journal International.
+  doi: [10.1093/gji/ggz277](https://doi.org/10.1093/gji/ggz277)
+- Soler, S.R. and Uieda, L. (2021).
+  Gradient-boosted equivalent sources.
+  Geophysical Journal International.
+  doi: [10.1093/gji/ggab297](https://doi.org/10.1093/gji/ggab297)
+
+Además, algunas de los paquetes del proyecto Fatiando a Terra han sido
+publicados en el [_Journal of Open Source Software_](https://joss.theoj.org/):
+
+- Uieda, L., Soler, S.R., Rampin, R., van Kemenade, H., Turk, M., Shapero, D.,
+  Banihirwe, A., and Leeman, J. (2020).
+  Pooch: A friend to fetch your data files.
+  Journal of Open Source Software, 5(45), 1943.
+  doi: [10.21105/joss.01943](https://doi.org/10.21105/joss.01943)
+- Uieda, (2018). Verde: Processing and gridding spatial data using Green’s
+  functions.
+  Journal of Open Source Software, 3(30), 957,
+  doi: [10.21105/joss.00957](https://doi.org/10.21105/joss.00957)
+
+
 ## Cómo citar
 
 Cita en texto:
