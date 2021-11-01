@@ -54,6 +54,14 @@ de software científico.
 
 ## Cómo citar
 
+Cita en texto:
+
+> Soler, S.R. (2021).
+> Metodologías y herramientas computacionales para el procesamiento y modelado
+> de datos gravimétricos.
+> Tesis Doctoral, Universidad Nacional de San Juan.
+> doi: 10.6084/m9.figshare.16906909
+
 Usando BibTeX:
 
 ```
