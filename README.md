@@ -5,21 +5,22 @@ Tesis Doctoral para optar por el título de Doctor en Geofísica en la
 de la
 [Universidad Nacional de San Juan](http://www.unsj.edu.ar).
 
-## Información
+| Información  |           |
+|--------------|-----------|
+| **Título**   | _Metodologías y herramientas computacionales para el procesamiento y modelado de datos gravimétricos_ |
+| **Autor**    | [Santiago Soler](https://www.santisoler.com)<sup>1,2</sup>  |
+| **Director** | Mario E. Gimenez<sup>1,2</sup>  |
+| **Co-Director** | [Leonardo Uieda](https://www.leouieda.com)<sup>3</sup>  |
+| **DOI**      | [10.6084/m9.figshare.16906909](https://doi.org/10.6084/m9.figshare.16906909) |
+| **Licencia** | [Creative Commons Atribución 4.0 Internacional][cc-by] |
 
-- Título: Metodologías y herramientas computacionales para el procesamiento y modelado de datos gravimétricos
-- Autor: [Santiago Soler](https://www.santisoler.com)<sup>1,2</sup>
-- Director: Mario E. Giménez
-- Co-director: [Leonardo Uieda](https://www.leouieda.com)
-- doi: [10.6084/m9.figshare.16906909](https://doi.org/10.6084/m9.figshare.16906909)
-- Licencia: [Creative Commons Atribución 4.0 Internacional][cc-by].
 
-> <sup>1</sup>CONICET, Argentina
->
+[**Descarga el PDF**](https://doi.org/10.6084/m9.figshare.16906909)
+
+> <sup>1</sup>CONICET, Argentina<br/>
 > <sup>2</sup>Instituto Geofísico Sismológico Volponi, Universidad Nacional de San Juan,
-> Argentina
-
-[Descarga el PDF](https://doi.org/10.6084/m9.figshare.16906909)
+> Argentina<br>
+> <sup>3</sup>Department of Earth, Ocean and Ecological Sciences, School of Environmental Sciences, University of Liverpool, UK
 
 
 ## Resumen
