@@ -1,0 +1,141 @@
+/* These fontsizes are the same ones defined in the nord.css theme */
+@basefontsize: 1em;
+@fontsizeheading1: 1.9em;
+@fontsizeheading2: 1.5em;
+@fontsizeheading3: 1.1em;
+@fontsizeheading4: 1.0em;
+
+// Define Nord theme colors
+@black1: #2e3440;
+@black2: #3b4252;
+@black3: #434c5e;
+@black4: #4c566a;
+@white1: #d8dee9;
+@white2: #e5e9f0;
+@white3: #eceff4;
+@blue: #5e81ac;
+@blue1: #81a1c1;
+@red: #bf616a;
+@orange: #d08770;
+@yellow: #ebcb8b;
+@green: #a3be8c;
+@magenta: #b48ead;
+
+/* ---------------------- */
+/* Configure reveal style */
+/* ---------------------- */
+
+.reveal {
+  strong {
+    color: @green;
+  }
+
+  /* Set list-style-type to none on fa-ul */
+  .fa-ul {
+    list-style-type: none;
+  }
+
+  .print-pdf {
+    section.present {
+      height: 100%;
+    }
+  }
+
+  // Centre the content for a slide. Put in a div that wraps the entire
+  // slide. Must have another empty div inside it as well.
+  .centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  // Class to put bottom text, like references, links, notes, etc.
+  .bottom {
+    p {
+      font-size: @basefontsize * 0.85 !important;
+      text-align: left;
+      align-self: flex-end;
+      margin: 0;
+    }
+  }
+
+  // Displaying two columns. Wrap them in the container. Use either
+  // col-left/right for 2 equal columns or col-large col-small for one larger
+  // column.
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    img {
+      width: 100%;
+    }
+  }
+  .column {
+    flex: 1;
+  }
+  .col-2 {
+    flex: 2;
+  }
+  .col-3 {
+    flex: 3;
+  }
+  .col-4 {
+    flex: 4;
+  }
+
+  .slide-title {
+    hr {
+      color: @white1;
+    }
+    a {
+      color: @white3;
+    }
+    h1 {
+      font-size: @fontsizeheading1 * 0.9;
+      line-height: @fontsizeheading1 * 0.55;
+      margin-top: @fontsizeheading1 * 0.6;
+      margin-bottom: @fontsizeheading1 * 0.2;
+    }
+    h2 {
+      font-size: @fontsizeheading2 * 0.9;
+      text-transform: none;
+      font-weight: normal;
+      margin-top: @fontsizeheading2 * 0.4;
+      margin-bottom: @fontsizeheading2 * 0.4;
+    }
+    h3 {
+      font-size: @fontsizeheading3 * 0.9;
+      text-transform: none;
+      font-weight: normal;
+      margin-bottom: @fontsizeheading3 * 0.1;
+    }
+    p {
+      font-size: @basefontsize * 0.8;
+      margin-top: 0;
+    }
+
+    .logos {
+      justify-content: space-between;
+      align-items: center;
+      margin: 1em 15%;
+
+      .logo {
+        flex: 1;
+      }
+
+      img {
+        max-height: 110px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .slide-license {
+    .license-icons {
+      font-size: @basefontsize * 2;
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+}
