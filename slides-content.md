@@ -41,6 +41,16 @@ Lic. Santiago Soler
 
 ---
 
+# Contenido
+
+1. Introducción y motivación
+1. Tesseroides densidad variable
+1. Fuentes equivalentes potenciadas por gradiente
+1. Fatiando a Terra
+1. Conclusiones
+
+---
+
 # Regular slide
 
 ## With subtitles
