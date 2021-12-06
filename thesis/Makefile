@@ -18,7 +18,8 @@ LATEX_FLAGS = -pdf -outdir=$(OUTDIR)
 LATEXMK_RC = .latexmkrc
 PDFVIEWER = xdg-open
 
-.PHONY: all help live clean word-count show bibsort live
+
+.PHONY: all help live clean word-count show bibsort live diffs-v1.0.0
 
 
 all: $(PDF)
@@ -35,7 +36,7 @@ help:
 	@echo ""
 
 clean:
-	rm -rf $(OUTDIR)
+	rm -rf $(OUTDIR) thesis-diff*.tex
 
 word-count: $(THESIS).tex
 	texcount -merge $<
@@ -57,3 +58,17 @@ $(OUTDIR):
 
 $(CHAPTERS_DIR):
 	mkdir -p $@
+
+
+# Differences against older versions
+# ----------------------------------
+
+V1_TAG = v1.0.0
+
+diffs-v1.0.0: $(OUTDIR)/$(THESIS)-diff$(V1_TAG).pdf
+
+$(OUTDIR)/$(THESIS)-diffv1.0.0.pdf : $(THESIS)-diff$(V1_TAG).tex
+	$(LATEX_COMPILER) $(LATEX_FLAGS) $<
+
+$(THESIS)-diffv1.0.0.tex : $(THESIS).tex $(SOURCE_FILES)
+	latexdiff-vc --git --flatten --disable-citation-markup -r $(V1_TAG) $<

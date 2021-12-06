@@ -1,3 +1,4 @@
 _output
 *.aux
 .ipynb_checkpoints
+thesis/thesis-diff*.tex
