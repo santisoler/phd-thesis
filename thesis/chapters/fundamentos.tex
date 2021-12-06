@@ -991,12 +991,15 @@ la \emph{discretización adaptativa}.
 \label{sec:gravedad-terrestre}
 
 Un cuerpo en reposo situado sobre la superficie de la Tierra experimenta una
-fuerza resultante de la suma de la fuerza de atracción gravitatoria (debida
-a la masa del planeta) y la fuerza centrífuga, debida a la rotación del planeta
-sobre su eje y al sistema de referencia no inercial donde se encuentra dicho
-cuerpo.
-Esta fuerza genera sobre el cuerpo una aceleración $\mathbf{g}$ que
-llamaremos \emph{gravedad}, a partir de la cual podemos definir un
+fuerza de atracción gravitatoria debida a la masa del planeta.
+Las observaciones que se realizan sobre dicho cuerpo suelen hacerse sobre un
+sistema de referencia no inercial, en reposo sobre la superficie terrestre
+y rotando junto con ella.
+Esto hace necesario que debamos agregar una fuerza centrífuga (fuerza ficticia
+o pseudo-fuerza) actuando sobre dicho cuerpo.
+Llamaremos \emph{gravedad} a la aceleración $\mathbf{g}$ provocada por la
+fuerza resultante entre la atracción gravitatoria y la centrífuga, a partir de
+la cual podemos definir un
 \emph{campo de gravedad} $W$:
 
 \begin{equation}
@@ -1013,8 +1016,8 @@ El \emph{campo de gravedad} $W$ puede ser expresado como:
 \noindent donde $V(\mathbf{p})$ es el \emph{potencial gravitatorio} que genera
 la Tierra sobre el punto $\mathbf{p}$
 (ecuación~\ref{eq:potencial-gravitatorio-integral}), y $\Phi(\mathbf{p})$ el
-\emph{potencial centrífugo} al cual se ve sometido el cuerpo situado en el
-punto $\mathbf{p}$ debido a la rotación del planeta.
+\emph{potencial centrífugo} al cual se ve sometido el cuerpo situado en
+$\mathbf{p}$ debido a la rotación del planeta.
 Este último puede expresarse como:
 
 \begin{equation}
