@@ -865,15 +865,23 @@ $N$, y $W_i$ son los pesos ponderados de cada término:
     W_i = \frac{2}{(1 - x_i^2) \Big[ P'_N(x_i) \Big]^2}.
 \end{equation}
 
-\noindent El polinomio de Legendre $P_N(x)$ y su primera derivada $P'_N(x)$ se
-pueden obtener mediante relaciones de recurrencia
-\citep[][p.~330]{hildebrand1987}:
+\noindent El polinomio de Legendre $P_N(x)$ se puede obtener mediante
+relaciones de recurrencia \citep[][p.~330]{hildebrand1987}:
 
 \begin{align}
     &P_0(x) = 1 \\
     &P_1(x) = x \\
-    &P_{m + 1}(x) = \frac{2m + 1}{m + 1} x P_m(x) - \frac{m}{m + 1}P_{m-1}(x).
+    &P_{N + 1}(x) = \frac{2N + 1}{N + 1} x P_N(x) - \frac{N}{N + 1}P_{N-1}(x).
 \end{align}
+
+\noindent
+Mientras que los valores que asume su primera derivada $P'_N(x)$ en las raíces
+$x_i$ se pueden obtener gracias a la siguiente relación
+\citep[][p.~391]{hildebrand1987}:
+
+\begin{equation}
+    P'_N(x_i) = \frac{N}{(1 - x_i^2)} P_{N - 1}(x_i).
+\end{equation}
 
 La Tabla~\ref{tab:legendre-roots} muestra las raíces de los primeros polinomios
 de Legendre y sus respectivos pesos ponderados.
@@ -900,7 +908,7 @@ de Legendre y sus respectivos pesos ponderados.
 \end{table}
 
 En el caso de que la integral posea límites de integración distintos a
-$[-1, 1]$, podemos escalar los nodos y aplicar la \ac{GLQ} de la siguiente
+$(-1, 1)$, podemos escalar los nodos y aplicar la \ac{GLQ} de la siguiente
 forma:
 
 \begin{equation}
