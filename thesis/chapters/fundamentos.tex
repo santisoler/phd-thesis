@@ -1069,14 +1069,16 @@ punto (Fig.~\ref{fig:superficies-equipotenciales}).
 
 \subsection{Gravedad normal}
 
-Las mediciones del campo gravitatorio terrestre nos permite obtener información
-acerca de las masas que componen nuestro planeta. Los valores de este campo
-presentan ligeras variaciones a lo largo de la Tierra, originadas por la
-diferentes densidades de las masas del interior del planeta. Debido a que estas
-variaciones suelen ser lo suficientemente pequeñas, es posible asociarlas a la
-presencia de \emph{cuerpos anómalos} bajo la superficie terrestre. Para poder
-identificarlos es necesario definir primero el concepto de \emph{Tierra
-normal}.
+Las mediciones del campo gravitatorio terrestre nos permiten obtener
+información acerca de las masas que componen nuestro planeta.
+Los valores de este campo presentan ligeras variaciones a lo largo de la
+Tierra, originadas por la diferentes densidades de las masas del interior del
+planeta.
+Debido a que estas variaciones suelen ser lo suficientemente pequeñas, es
+posible asociarlas a la presencia de \emph{cuerpos anómalos} bajo la superficie
+terrestre.
+Para poder identificarlos es necesario definir primero el concepto de
+\emph{Tierra normal}.
 
 En una primera aproximación podemos considerar la geometría de la Tierra como
 un elipsoide de revolución. Si bien esta aproximación no es lo suficientemente
@@ -1112,7 +1114,8 @@ El elipsoide de referencia vendrá definido mediante los siguientes parámetros:
     \item{la velocidad angular $\omega$.}
 \end{enumerate}
 
-\noindent A partir de ellos podemos describir la superficie del elipsoide como:
+\noindent A partir de los dos semiejes podemos describir la superficie del
+elipsoide como:
 
 \begin{equation}
     \frac{X^2 + Y^2}{a^2} + \frac{Z^2}{b^2} = 1
@@ -1120,6 +1123,8 @@ El elipsoide de referencia vendrá definido mediante los siguientes parámetros:
 
 \noindent donde $X$, $Y$ y $Z$ son coordenadas Cartesianas geocéntricas.
 
+Tanto la masa del elipsoide como su velocidad angular resultarán útiles para
+definir cantidades como la gravedad normal.
 Vale notar que no resulta indispensable definir la distribución de densidad del
 elipsoide \citep[][p.~64]{heiskanen1967}.
 
@@ -1183,12 +1188,12 @@ De esta manera, al calcular el gradiente del campo de gravedad normal desde el
 sistema de coordenadas geodésicas podemos deducir que sólo la componente
 normal es no nula \citep[][p.~68]{heiskanen1967}, es decir:
 
-\begin{equation}
-    \gamma_\lambda =
-        \frac{\partial U}{\partial \lambda} = 0  \quad
-    \gamma_\varphi =
+\begin{align}
+    \gamma_\lambda &=
+        \frac{\partial U}{\partial \lambda} = 0,  \\
+    \gamma_\varphi &=
         \frac{\partial U}{\partial \varphi} = 0.
-\end{equation}
+\end{align}
 
 Definimos la \emph{gravedad normal} como el módulo del vector de gravedad
 normal:
@@ -1307,8 +1312,8 @@ anómalas en el interior de la Tierra, es necesario remover la \emph{gravedad
 normal} de la gravedad terrestre.
 Definiremos entonces al \emph{vector del disturbio de gravedad}
 $\boldsymbol\delta \mathbf{g}$ (\emph{gravity disturbance vector} en inglés)
-como la diferencia entre el vector \emph{gravedad} en el punto $\mathbf{p}$
-y el vector \emph{gravedad normal} calculado en el mismo punto $\mathbf{p}$
+como la diferencia entre el vector \emph{gravedad} y el vector \emph{gravedad
+normal} calculados en el punto $\mathbf{p}$
 (Fig.~\ref{fig:superficies-equipotenciales}):
 
 \begin{equation}
