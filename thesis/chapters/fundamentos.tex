@@ -4,24 +4,28 @@
 \section{Campo potencial gravitatorio}
 
 Según la Ley de Gravitación Universal de Newton, una masa puntual $m_p$ situada
-en la posición $\mathbf{p}$ siente una fuerza gravitatoria $\mathbf{F}$ debido
-a la presencia de otra masa $m$ situada en la posición $\mathbf{q}$. Esta
-fuerza puede expresarse como:
+en la posición $\mathbf{p}$ se ve sometida una fuerza gravitatoria $\mathbf{F}$
+debido a la presencia de otra masa $m$ situada en la posición $\mathbf{q}$.
+Esta fuerza puede expresarse como:
 
 \begin{equation}
     \mathbf{F} =
-        - G \frac{m_p m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}),
+        - G
+        \frac{m_p m}{\left\lVert \mathbf{p} - \mathbf{q}\right\rVert^3}
+        (\mathbf{p} - \mathbf{q}),
 \end{equation}
 
 \noindent donde $G = 6.67430 \times 10^{-11} \text{m}^3 \text{kg}^{-1}
 \text{s}^{-2}$ es la constante de gravitación universal
-(Fig.~\ref{fig:potencial-gravitatorio}a).
-Aplicando la segunda Ley de Newton, se deduce que la masa $m_p$ siente una
+(Fig.~\ref{fig:potencial-gravitatorio}a) y $\left\lVert \cdot \right\rVert$
+representa la norma L$_2$.
+Aplicando la segunda Ley de Newton, se deduce que la masa $m_p$ experimenta una
 aceleración gravitatoria $\mathbf{g}$:
 
 \begin{equation}
     \mathbf{g} =
-        - \frac{G m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}).
+        - \frac{G m}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        (\mathbf{p} - \mathbf{q}).
     \label{eq:aceleracion-newton}
 \end{equation}
 
@@ -33,7 +37,8 @@ partícula $m$:
 
 \begin{equation}
     \mathbf{g}(\mathbf{p}) =
-        - \frac{G m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}).
+        - \frac{G m}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        (\mathbf{p} - \mathbf{q}).
 \end{equation}
 
 Se puede demostrar que la atracción gravitatoria $\mathbf{g}$ define un campo
@@ -54,7 +59,8 @@ denominaremos \emph{potencial gravitatorio}:
 \noindent donde
 
 \begin{equation}
-    V(\mathbf{p}) = G \frac{m}{|\mathbf{p} - \mathbf{q}|}.
+    V(\mathbf{p}) =
+      G \frac{m}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}.
     \label{eq:potencial-gravitatorio-particula}
 \end{equation}
 
@@ -84,7 +90,8 @@ genera un potencial gravitatorio $\diff V$ en cualquier punto $\mathbf{p}$
 (Fig.~\ref{fig:potencial-gravitatorio}b):
 
 \begin{equation}
-    \diff V(\mathbf{p}) = \frac{G}{|\mathbf{p} - \mathbf{q}|} \diff m,
+    \diff V(\mathbf{p}) = \frac{G}{\left\lVert \mathbf{p} - \mathbf{q}
+        \right\rVert} \diff m,
 \end{equation}
 
 \noindent el potencial gravitatorio generado por una distribución de masa
@@ -92,7 +99,8 @@ $\Omega$ puede calcularse integrando los diferenciales de masa que lo componen:
 
 \begin{equation}
     V(\mathbf{p}) =
-        G \int\limits_\Omega \frac{\diff m}{|\mathbf{p} - \mathbf{q}|} .
+        G \int\limits_\Omega \frac{\diff m}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert} .
 \end{equation}
 
 Si reescribimos los diferenciales de masa como
@@ -108,7 +116,8 @@ el potencial se puede expresar como:
 \begin{equation}
     V(\mathbf{p}) =
         G \int\limits_\Omega
-        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|} \diff v.
+        \frac{\rho(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert} \diff v.
     \label{eq:potencial-gravitatorio-integral}
 \end{equation}
 
@@ -143,17 +152,20 @@ gravitatorio pueden expresarse como:
 \begin{align}
     g_x(\mathbf{p}) &=
         - G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
+        \frac{(x - x')}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        \diff v,
     \label{eq:gx-integral}
     \\
     g_y(\mathbf{p}) &=
         - G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
+        \frac{(y - y')}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        \diff v,
     \label{eq:gy-integral}
     \\
     g_z(\mathbf{p}) &=
         - G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
+        \frac{(z - z')}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        \diff v,
     \label{eq:gz-integral}
 \end{align}
 
@@ -177,8 +189,8 @@ expresar las componentes diagonales del tensor de la siguiente manera
     g_{xx}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
         \left[
-        \frac{3(x - x')^2}{|\mathbf{p} - \mathbf{q}|^5}
-        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{3(x - x')^2}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5}
+        - \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \right]
         \diff v,
     \label{eq:gxx-integral}
@@ -186,8 +198,8 @@ expresar las componentes diagonales del tensor de la siguiente manera
     g_{yy}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
         \left[
-        \frac{3(y - y')^2}{|\mathbf{p} - \mathbf{q}|^5}
-        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{3(y - y')^2}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5}
+        - \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \right]
         \diff v,
     \label{eq:gyy-integral}
@@ -195,8 +207,8 @@ expresar las componentes diagonales del tensor de la siguiente manera
     g_{zz}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
         \left[
-        \frac{3(z - z')^2}{|\mathbf{p} - \mathbf{q}|^5}
-        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{3(z - z')^2}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5}
+        - \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \right]
         \diff v,
     \label{eq:gzz-integral}
@@ -208,21 +220,33 @@ expresar las componentes diagonales del tensor de la siguiente manera
     g_{xy}(\mathbf{p}) =
     g_{yx}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{3(x - x')(y - y')}{|\mathbf{p} - \mathbf{q}|^5}
+        \frac{
+            3(x - x')(y - y')
+        }{
+            \left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5
+        }
         \diff v,
     \label{eq:gxy-integral}
     \\
     g_{xz}(\mathbf{p}) =
     g_{zx}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{3(x - x')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
+        \frac{
+            3(x - x')(z - z')
+        }{
+            \left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5
+        }
         \diff v,
     \label{eq:gxz-integral}
     \\
     g_{yz}(\mathbf{p}) =
     g_{zy}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{3(y - y')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
+        \frac{
+            3(y - y')(z - z')
+        }{
+            \left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5
+        }
         \diff v.
     \label{eq:gyz-integral}
 \end{align}
@@ -299,9 +323,10 @@ gravitatorio generado por una partícula:
 \begin{equation}
     V(\mathbf{p}) =
         G \int\limits_\Omega
-        m \frac{\delta(\mathbf{q} - \mathbf{q'})}{|\mathbf{p} - \mathbf{q'}|}
+        m \frac{\delta(\mathbf{q} - \mathbf{q'})}{\left\lVert \mathbf{p}
+            - \mathbf{q'} \right\rVert}
         \diff v =
-        \frac{G m}{|\mathbf{p} - \mathbf{q}|},
+        \frac{G m}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert},
     \label{eq:potencial-masa-puntual}
 \end{equation}
 
@@ -315,17 +340,17 @@ arribamos a las siguientes expresiones:
 \begin{align}
     g_x(\mathbf{p}) &=
         - G m
-        \frac{x - x'}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{x - x'}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gx-particula}
     \\
     g_y(\mathbf{p}) &=
         - G m
-        \frac{y - y'}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{y - y'}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gy-particula}
     \\
     g_z(\mathbf{p}) &=
         - G m
-        \frac{z - z'}{|\mathbf{p} - \mathbf{q}|^3}.
+        \frac{z - z'}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}.
     \label{eq:gz-particula}
 \end{align}
 
@@ -348,7 +373,7 @@ módulo de
 $\mathbf{p} - \mathbf{q}$ se calcula sencillamente bajo la norma L$_2$:
 
 \begin{equation}
-    | \mathbf{p} - \mathbf{q} | = \sqrt{
+    \left\lVert  \mathbf{p} - \mathbf{q}  \right\rVert = \sqrt{
         (x - x')^2 + (y - y')^2 + (z - z')^2
     }.
 \end{equation}
@@ -411,7 +436,7 @@ respectivamente, la distancia Euclidiana entre ellos puede expresarse como
 \citep{grombein2013}:
 
 \begin{equation}
-    |\mathbf{p} - \mathbf{q}| = \sqrt{
+    \left\lVert \mathbf{p} - \mathbf{q} \right\rVert = \sqrt{
         r^2 + r'^2 - 2rr'\cos\psi
     },
     \label{eq:distance-spherical}
@@ -482,17 +507,17 @@ puntual en coordenadas esféricas quedan determinadas de la siguiente manera:
 \begin{align}
     g_x(\mathbf{p}) &=
         G m
-        \frac{\Delta x}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{\Delta x}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gx-particula-spherical}
     \\
     g_y(\mathbf{p}) &=
         G m
-        \frac{\Delta y}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{\Delta y}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gy-particula-spherical}
     \\
     g_z(\mathbf{p}) &=
         G m
-        \frac{\Delta z}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{\Delta z}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gz-particula-spherical}
 \end{align}
 
@@ -527,13 +552,14 @@ reemplazando el dominio de integración:
     \int\limits_{X_1}^{X_2}
     \int\limits_{Y_1}^{Y_2}
     \int\limits_{Z_1}^{Z_2}
-    \frac{\diff X' \diff Y' \diff Z'}{|\mathbf{p} - \mathbf{q}|},
+    \frac{\diff X' \diff Y' \diff Z'}{\left\lVert \mathbf{p} - \mathbf{q}
+        \right\rVert},
 \end{equation}
 
 \noindent donde
 
 \begin{equation}
-    |\mathbf{p} - \mathbf{q}| = \sqrt{
+    \left\lVert \mathbf{p} - \mathbf{q} \right\rVert = \sqrt{
         (X - X')^2 + (Y - Y')^2 + (Z - Z')^2
     }.
 \end{equation}
@@ -752,7 +778,7 @@ quedando expresado como la siguiente integral volumétrica
         \int\limits_{r_1}^{r_2}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
-        \frac{\kappa}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\kappa}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
         \diff r' \diff \lambda' \diff \phi',
     \label{eq:potencial-tesseroide}
 \end{equation}
@@ -764,10 +790,10 @@ quedando expresado como la siguiente integral volumétrica
     \label{eq:kappa}
 \end{equation}
 
-\noindent la distancia $|\mathbf{p} - \mathbf{q}|$ viene dada por la
-ecuación~\ref{eq:distance-spherical} y las coordenadas de integración $r'$,
-$\lambda'$ y $\phi'$ representan la posición $\mathbf{q}$ de cada volumen
-infinitesimal del tesseroide.
+\noindent la distancia $\left\lVert \mathbf{p} - \mathbf{q} \right\rVert$ viene
+dada por la ecuación~\ref{eq:distance-spherical} y las coordenadas de
+integración $r'$, $\lambda'$ y $\phi'$ representan la posición $\mathbf{q}$ de
+cada volumen infinitesimal del tesseroide.
 
 Reemplazando los límites de integración de las ecuaciones \ref{eq:gx-integral},
 \ref{eq:gy-integral} y \ref{eq:gz-integral} por los del tesseroide, podemos
@@ -781,7 +807,7 @@ sistema de coordenadas \emph{local}:
         \int\limits_{r_1}^{r_2}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
-        \frac{\Delta x}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{\Delta x}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \kappa
         \diff r' \diff \lambda' \diff \phi',
     \label{eq:gx-tesseroide}
@@ -791,7 +817,7 @@ sistema de coordenadas \emph{local}:
         \int\limits_{r_1}^{r_2}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
-        \frac{\Delta y}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{\Delta y}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \kappa
         \diff r' \diff \lambda' \diff \phi',
     \label{eq:gy-tesseroide}
@@ -801,7 +827,7 @@ sistema de coordenadas \emph{local}:
         \int\limits_{r_1}^{r_2}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
-        \frac{\Delta z}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{\Delta z}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \kappa
         \diff r' \diff \lambda' \diff \phi',
     \label{eq:gz-tesseroide}
@@ -823,7 +849,8 @@ por las cuales a lo largo de esta Tesis abordaremos la estrategia de la
 \ac{GLQ}.
 
 La \Ac{GLQ} consiste en la aproximación de una integral por una suma ponderada
-del integrando \citep[][p.~390]{hildebrand1987}:
+del integrando evaluado en determinadas abscisas
+\citep[][p.~390]{hildebrand1987}:
 
 \begin{equation}
     \int\limits_{-1}^1 f(x) \diff x \approx
@@ -839,7 +866,8 @@ $N$, y $W_i$ son los pesos ponderados de cada término:
 \end{equation}
 
 \noindent El polinomio de Legendre $P_N(x)$ y su primera derivada $P'_N(x)$ se
-pueden obtener mediante relaciones de recurrencia \citep[][p.~330]{hildebrand1987}:
+pueden obtener mediante relaciones de recurrencia
+\citep[][p.~330]{hildebrand1987}:
 
 \begin{align}
     &P_0(x) = 1 \\
@@ -955,10 +983,10 @@ la \emph{discretización adaptativa}.
 \section{Gravedad terrestre}
 \label{sec:gravedad-terrestre}
 
-Un cuerpo en reposo situado sobre la superficie de la Tierra siente una fuerza
-resultante de la suma de la fuerza de atracción gravitatoria (debida a la masa
-del planeta) y la fuerza centrífuga, debida a la rotación del planeta sobre su
-eje y al sistema de referencia no inercial donde se encuentra dicho
+Un cuerpo en reposo situado sobre la superficie de la Tierra experimenta una
+fuerza resultante de la suma de la fuerza de atracción gravitatoria (debida
+a la masa del planeta) y la fuerza centrífuga, debida a la rotación del planeta
+sobre su eje y al sistema de referencia no inercial donde se encuentra dicho
 cuerpo.
 Esta fuerza genera sobre el cuerpo una aceleración $\mathbf{g}$ que
 llamaremos \emph{gravedad}, a partir de la cual podemos definir un
@@ -978,8 +1006,8 @@ El \emph{campo de gravedad} $W$ puede ser expresado como:
 \noindent donde $V(\mathbf{p})$ es el \emph{potencial gravitatorio} que genera
 la Tierra sobre el punto $\mathbf{p}$
 (ecuación~\ref{eq:potencial-gravitatorio-integral}), y $\Phi(\mathbf{p})$ el
-\emph{potencial centrífugo} que siente el cuerpo situado en el punto
-$\mathbf{p}$ debido a la rotación del planeta.
+\emph{potencial centrífugo} al cual se ve sometido el cuerpo situado en el
+punto $\mathbf{p}$ debido a la rotación del planeta.
 Este último puede expresarse como:
 
 \begin{equation}
@@ -1356,8 +1384,10 @@ obtener:
     \int\limits_S
         \Bigg[
             V(\mathbf{q}) \,
-            \nabla^2 \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
-            - \frac{1}{|\mathbf{p} - \mathbf{q}|}  \nabla^2 V(\mathbf{q})
+            \nabla^2 \left( \frac{1}{\left\lVert \mathbf{p} - \mathbf{q}
+                \right\rVert} \right)
+            - \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
+            \nabla^2 V(\mathbf{q})
         \Bigg]
     \diff v
     = \\
@@ -1365,9 +1395,11 @@ obtener:
         \Bigg[
             V(\mathbf{q}) \,
             \frac{\partial}{\partial n}
-            \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
+            \left(
+                \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
+            \right)
             -
-            \frac{1}{|\mathbf{p} - \mathbf{q}|}
+            \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
             &\frac{\partial V}{\partial n}
         \Bigg]
     \diff s,
@@ -1378,7 +1410,7 @@ obtener:
 y $n$ indica la dirección normal a la superficie $\partial S$.
 
 El primer término de la integral volumétrica es nulo, ya que la inversa de
-$|\mathbf{p} - \mathbf{q}|$ es un campo harmónico.
+$\left\lVert \mathbf{p} - \mathbf{q} \right\rVert$ es un campo harmónico.
 Por otro lado, el valor de $V(\mathbf{q})$ en el primer término de la integral
 de superficie es constante, ya que el dominio de integración $\partial S$ es
 una superficie equipotencial de $V$.
@@ -1386,16 +1418,19 @@ Por lo tanto, la ecuación anterior puede expresarse de forma más sencilla como
 
 \begin{equation}
     - \int\limits_S
-        \frac{\nabla^2 V(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\nabla^2 V(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff v
     =
     V_S
     \oint\limits_{\partial S}
         \frac{\partial}{\partial n}
-        \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
+        \left(
+            \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
+        \right)
     \diff s
     - \oint\limits_{\partial S}
-        \frac{1}{|\mathbf{p} - \mathbf{q}|}
+        \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
         \frac{\partial V}{\partial n}
     \diff s.
 \end{equation}
@@ -1407,11 +1442,12 @@ primera integral de superficie de la ecuación anterior:
 
 \begin{equation}
     - \int\limits_S
-        \frac{\nabla^2 V(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\nabla^2 V(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff v
     =
     - \oint\limits_{\partial S}
-        \frac{1}{|\mathbf{p} - \mathbf{q}|}
+        \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
         \frac{\partial V}{\partial n}
     \diff s,
 \end{equation}
@@ -1428,11 +1464,13 @@ y definimos una densidad superficial $\sigma$:
 
 \begin{equation}
     G \int\limits_S
-        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\rho(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff v
     =
     G \oint\limits_{\partial S}
-        \frac{\sigma(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\sigma(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff s.
 \end{equation}
 
@@ -1456,11 +1494,13 @@ el punto $\mathbf{p}$ (ec.~\ref{eq:potencial-gravitatorio-integral}):
 \begin{equation}
     V(\mathbf{p}) =
     G \int\limits_\Omega
-        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\rho(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff v
     =
     G \oint\limits_{\partial S}
-        \frac{\sigma(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\sigma(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff s.
 \end{equation}
 
