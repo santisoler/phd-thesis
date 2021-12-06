@@ -44,12 +44,12 @@ densidad lineal, pero se requiere de un \emph{ratio delta} de 0.1 para
 densidades exponenciales y la mayoría de las sinusoidales.
 Estos valores pueden ser extrapolados para cubrir los usos más comunes, siempre
 y cuando los perfiles de densidad sean más simples que funciones sinusoidales.
-Aunque los \emph{ratios} densidad-tamaño y \emph{delta} pueden ser configurados
+Los \emph{ratios} densidad-tamaño y \emph{delta} pueden ser configurados
 por los usuarios o las usuarias para aumentar la precisión de los resultados
 a expensas de un aumento en el tiempo de cómputo.
-Por último, hemos aplicado esta nueva metodología para modelar la Cuenca
-Neuquina, una cuenca de antepaís en Argentina, con una profundidad máxima de
-5000\m{} y utilizando una densidad exponencial.
+Hemos aplicado esta nueva metodología, utilizando una densidad exponencial,
+para modelar la Cuenca Neuquina, una cuenca de antepaís en Argentina, con una
+profundidad máxima de 5000\m{}.
 
 
 \section{Introducción}
@@ -64,8 +64,8 @@ modelado directo e inverso de datos gravitatorios, principalmente aplicados
 a cuencas sedimentarias
 \citep{cordell1973, rao1986, cowie1990, rao1993, rao1994, zhang2001,
 welford2010}.
-Estos modelos directos han sido desarrollados para cuerpos bidimensionales
-o tridimensionales en coordenadas Cartesianas, lo que limita su aplicación
+Estos modelos directos han sido desarrollados en coordenadas Cartesianas para
+cuerpos bidimensionales o tridimensionales, lo que limita su aplicación
 a escalas locales.
 La llegada de la gravimetría satelital ha proveído mediciones del campo
 gravitatorio terrestre con cobertura global, permitiendo el modelado
@@ -94,8 +94,9 @@ la \ac{GLQ} sin necesidad de modificar el método de integración.
 Es por esta razón que haremos foco en los métodos basados en la \ac{GLQ} de
 aquí en adelante.
 
-El principal desafío de la integración por \ac{GLQ} es la pérdida de precisión
-que ocurre cuando el punto de cómputo se acerca al tesseroide \citep{ku1977}.
+La principal dificultad que presenta la integración por \ac{GLQ} es la pérdida
+de precisión que ocurre cuando el punto de cómputo se acerca al tesseroide
+\citep{ku1977}.
 \citet{uieda2016} desarrollaron un método a partir del algoritmo de
 discretización adaptativa tridimensional de \citet{li2011} para obtener de
 manera automática campos gravitatorios de tesseroides con densidad uniforme
@@ -215,7 +216,7 @@ las ecuaciones~\ref{eq:delta-x}, \ref{eq:delta-y} y \ref{eq:delta-z}.
 
 Aplicando una \ac{GLQ} de orden $N$ podemos aproximar a cada integral definida
 por las ecuaciones~\ref{eq:tesseroid-pot} y~\ref{eq:tesseroid-grav} por una
-suma ponderada de los kernel de integración evaluados en las raíces de un
+suma ponderada de los núcleos de integración evaluados en las raíces de un
 polinomio de orden $N$ \citep[p.~390]{hildebrand1987}, conocidos como los nodos
 de la cuadratura.
 A diferencia de los tesseroides con densidad constante, la función de densidad
@@ -238,7 +239,7 @@ cuadratura:
 \end{equation}
 
 \noindent donde $A$ es una constante definida en la
-ecuación~\ref{eq:glq-resize-factor}, $f(r', \phi', \lambda')$ es el kernel
+ecuación~\ref{eq:glq-resize-factor}, $f(r', \phi', \lambda')$ es el núcleo
 correspondiente a un tesseroide con densidad homogénea \citep{grombein2013},
 $(r_i, \phi_j, \lambda_k)$ son las coordenadas de los nodos de la cuadratura,
 $N^r$, $N^\phi$, $N^\lambda$ son los órdenes de la cuadratura y $W_i^r$,
@@ -262,7 +263,7 @@ en cercanías del punto de cómputo \citep{uieda2016}.
 Alternativamente,  \citet{li2011} han propuesto un algoritmo de discretización
 adaptativa que mantiene fijo el orden de la cuadratura y divide el tesseroide
 según una relación entre la distancia al punto de cómputo y las dimensiones
-del tesseroide.
+del mismo.
 Este algoritmo involucra un cómputo más eficiente, ya que produce un aumento en
 la concentración de masas puntuales sólo en las regiones donde es necesario.
 \citet{uieda2016} han desarrollado una versión modificada de este
@@ -271,8 +272,8 @@ Ambas versiones del algoritmo subdividen el tesseroide en las direcciones
 latitudinal, longitudinal y radial, por ende podemos definirlos como
 \emph{algoritmos de discretización adaptativa tridimensionales}.
 Por otro lado, \citet{lin2019} han propuesto un \emph{algoritmo de
-discretización adaptativa bidimensional} que subdivide al tesseroide solo en
-las direcciones latitudinal y longitudinal.
+discretización adaptativa bidimensional} que subdivide solo en las direcciones
+latitudinal y longitudinal.
 Remover una dimensión de la discretización produce un cómputo más eficiente ya
 que reduce la cantidad de subdivisiones en el modelo, aunque manteniendo una
 precisión aceptable \citep{lin2019}.
@@ -283,16 +284,16 @@ adaptativa de \citet{uieda2016}.
 Lo que sigue a continuación es un resumen del algoritmo. El lector o la lectora
 puede referirse a \citet{uieda2016} para una descripción más detallada.
 
-\textit{Paso 1}: Corroboramos que el tesseroide satisface la siguiente
-desigualdad para sus dimensiones longitudinales y latitudinales
-$L_i\ (i \in \{\lambda, \phi\})$:
+\textit{Paso 1}: Corroboramos que el tesseroide satisface la
+desigualdad
 
 \begin{equation}
     \frac{d}{L_i} \geq D,
     \label{eq:condition}
 \end{equation}
 
-\noindent
+\noindent para sus dimensiones longitudinales y latitudinales
+$L_i\ (i \in \{\lambda, \phi\})$,
 donde $D$ es un escalar positivo denominado \emph{ratio de distancia-tamaño},
 $d$ es la distancia entre el punto de cómputo y el centro geométrico del
 tesseroide:
@@ -332,21 +333,22 @@ y las dimensiones del tesseroide se definen como:
 
 \textit{Paso 2}:
 Si todas de las dimensiones del tesseroide satisfacen la
-desigualdad~\ref{eq:condition}, entonces calculamos el efecto gravitatorio del
-tesseroide usando una \ac{GLQ} de segundo orden (ec.~\ref{eq:glq-var-dens}).
+desigualdad~\ref{eq:condition}, entonces calculamos su efecto gravitatorio
+usando una \ac{GLQ} de segundo orden (ec.~\ref{eq:glq-var-dens}).
 Agregamos el efecto a un total acumulado.
 
 \textit{Paso 3}:
 Si la desigualdad~\ref{eq:condition} no es satisfecha por una o ambas
-dimensiones (longitudinal o latitudinal), dividimos el tesseroide al medio a lo
-largo de esa dimensión o dimensiones.
+dimensiones (longitudinal o latitudinal), dividimos el tesseroide por la mitad
+a lo largo de esa dimensión o dimensiones.
 Repetimos los pasos 1~a~3 para todos los tesseroides más pequeños hasta que
 ninguno de ellos viole la desigualdad~\ref{eq:condition}.
 
 \textit{Último paso}:
 Al finalizar el algoritmo, una \ac{GLQ} de segundo orden habrá sido aplicada
-a cada tesseroide más pequeño y el total acumulado del paso 2 será equivalente
-al efecto gravitatorio del tesseroide original.
+a todos los tesseroides pequeños que satisfacen la desigualdad
+\ref{eq:condition}, y por lo tanto el total acumulado del paso 2 será
+equivalente al efecto gravitatorio del tesseroide original.
 
 El \emph{ratio} densidad-tamaño $D$ determina cuántas veces el tesseroide será
 dividido.
@@ -375,9 +377,9 @@ unos pocos nodos de cuadratura para evaluar la variación de la densidad del
 tesseroide.
 El algoritmo de discretización adaptativa tridimensional puede ayudar a reducir
 este tipo de error agregando más masas puntuales en la dirección radial.
-Sin embargo, este no tiene en cuenta la función de densidad en sí misma a la
-hora de decidir cómo subdividir al tesseroide, y por lo tanto no es el método
-más adecuado para realizar esta tarea.
+Sin embargo, este algoritmo no considera la función de densidad en sí misma
+a la hora de decidir cómo subdividir al tesseroide, y por lo tanto no es el
+método más adecuado para realizar esta tarea.
 
 En este trabajo hemos desarrollado un algoritmo de discretización
 complementario que subdivide al tesseroide en la dirección radial tomando en
@@ -492,13 +494,14 @@ gravitatorios.
 
 En la primer iteración, la relación $L_r/L_r^\text{orig}$ es igual a 1, ya que
 el tesseroide que se considera para subdividir corresponde al \emph{original}.
-En las subsiguientes iteraciones, esta relación sera progresivamente menor que
-1 a medida que los tesseroides son cada vez más pequeños.
-La intención de este comportamiento es limitar la cantidad de divisiones a un
-numero que reduzca significativamente el error numérico:
-dividir un tesseroide grande con un $\text{max}\{ \Delta \rho(r') \}$ bajo
-mejoraría la precisión de la integración en mayor medida que dividiendo un
-tesseroide pequeño con un $\text{max}\{ \Delta \rho(r') \}$ mayor.
+En las subsiguientes iteraciones, esta relación será progresivamente menor que
+1 a medida que los tesseroides sean cada vez más pequeños.
+La intención de incluir este factor en la desigualdad \ref{eq:delta-density} es
+limitar la cantidad de divisiones a un número que reduzca significativamente el
+error numérico: dividir un tesseroide grande con un $\text{max}\{ \Delta
+\rho(r') \}$ bajo mejoraría la precisión de la integración en mayor medida que
+dividiendo un tesseroide pequeño con un $\text{max}\{ \Delta \rho(r') \}$
+mayor.
 
 A mayor valor de $\delta$, se llevarán a cabo menor cantidad de divisiones,
 y viceversa.
@@ -694,12 +697,13 @@ cascarón esférico con una función de densidad lineal dada por
     \label{eq:density-linear}
 \end{equation}
 
-\noindent posee soluciones analíticas dadas por las
-ecuaciones~\ref{eq:shell-pot-linear} y~\ref{eq:shell-gz}. Los valores de los
-coeficientes $a$ y $b$ pueden ser elegidos de forma tal que la densidad asuma
-valores valores iguales a  $\rho_\text{in} = 3300$\kgpercubicm{} y
-$\rho_\text{out} = 2670$\kgpercubicm{} en los radios interior ($R_\text{in}$)
-y exterior ($R_\text{out}$) del cascarón, respectivamente:
+\noindent posee soluciones analíticas dadas por las ecuaciones del apéndice
+\ref{sec:shell}: \ref{eq:shell-pot-linear} y~\ref{eq:shell-gz}.
+Los valores de los coeficientes $a$ y $b$ pueden ser elegidos de forma tal que
+la densidad asuma valores valores iguales a  $\rho_\text{in}
+= 3300$\kgpercubicm{} y $\rho_\text{out} = 2670$\kgpercubicm{} en los radios
+interior ($R_\text{in}$) y exterior ($R_\text{out}$) del cascarón,
+respectivamente:
 
 \begin{equation}
     a = \frac{\rho_\text{out} - \rho_\text{in}}{R_\text{out} - R_\text{in}},
@@ -823,15 +827,15 @@ de la función densidad (Fig.~\ref{fig:exp-densities}).
 \subsubsection{Exploración del espacio $D$-$\delta$}
 
 Nuestro objetivo es hallar una combinación de valores para $D$ y $\delta$ que
-produzcan un error numérico menor al umbral de 0.1\% mientras minimicen el
-tiempo de cómputo.
+produzcan un error numérico menor al umbral de 0.1\% y simultáneamente
+minimicen el tiempo de cómputo.
 Para ello hacemos uso del método de búsqueda en grilla (\emph{grid search} en
 inglés) y calculamos el error numérico para cada par ($D$, $\delta$)
 perteneciente a una grilla en el espacio $D$-$\delta$
 (Fig.~\ref{fig:grid-search}).
 Con el objeto de obtener un óptimo desempeño del algoritmo, buscamos el par
-($D$, $\delta$) que minimice el número de subdivisiones de tesseroides mientras
-mantengan el error numérico por debajo del umbral de 0.1\%.
+($D$, $\delta$) que minimice el número de subdivisiones de tesseroides,
+manteniendo el error numérico por debajo del umbral de 0.1\%.
 Este requisito se traduce en minimizar el valor de $D$ y maximizar el valor de
 $\delta$.
 
@@ -849,7 +853,7 @@ de dicho umbral.
 Además, la figura destaca los valores de $D$ obtenidos en la Sección anterior
 para el caso de densidad lineal ($D_\text{linear}$).
 
-Los valores más chicos de $D$ que se encuentran debajo del umbral de 0.1\%
+Los valores más pequeños de $D$ que se encuentran debajo del umbral de 0.1\%
 coinciden con los valores $D_\text{linear}$ tanto para $V$ como para $g_z$.
 Estos resultados indican que los valores de $D_\text{linear}$ obtenidos pueden
 ser extrapolados a los casos de densidades no lineales.
@@ -947,7 +951,7 @@ múltiples puntos de inflexión.
 Aunque este tipo de funciones de densidad son cuanto mucho raras de encontrar
 en seteos geológicos, queremos someter nuestro algoritmo a estos casos con el
 objetivo de mostrar su capacidad para resolver situaciones más complejas que
-funciones lineales y exponenciales.
+las abordadas en las secciones anteriores.
 Además, obtener un valor óptimo del \emph{ratio} $\delta$ para casos de
 funciones de densidades irreales nos permitiría extrapolarlo a casos más
 simples y realistas.
@@ -1037,8 +1041,9 @@ realizado de forma significativa, ya que dependería fuertemente en la
 implementación del algoritmo, la elección del lenguaje de programación y la
 función densidad en particular.
 Con el objetivo de obtener un indicador sobre cuánto aumenta el costo
-computacional, elegimos la cantidad de subdivisiones al tesseroides en la
-discretización basada en densidad como una variable \emph{proxy}.
+computacional, elegimos como una variable \emph{proxy} la cantidad de
+subdivisiones realizadas sobre el tesseroide durante la discretización basada
+en densidad.
 
 Analizamos densidades exponenciales (ec.~\ref{eq:density-exp}) con valores de
 $b$ iguales a 1, 2, 5, 10, 30 y 100, y densidades sinusoidales
@@ -1073,8 +1078,8 @@ del tesseroide.
     presentes en la Fig.~\ref{fig:sine-densities}.
     En ambas figuras, las ubicaciones de las discretizaciones están marcadas
     con círculos naranja.
-    (c)~Muestra la cantidad de tesseroides obtenidos en el caso de densidad
-    sinusoidal como función de $b$.
+    (c)~Cantidad de tesseroides obtenidos en el caso de densidad sinusoidal en
+    función de $b$.
 }
 \label{fig:number-of-tesseroids}
 \end{figure}
@@ -1088,7 +1093,7 @@ Hemos aplicado los nuevos algoritmos y los valores óptimos para $D$
 y $\delta$ determinados previamente para calcular los efectos gravitatorios de
 la Cuenca Neuquina, una cuenca sedimentaria localizada al este de los Andes,
 entre las latitudes 32$^\circ$S y 40$^\circ$S (Fig.~\ref{fig:neuquen-basin}a).
-La cuenca incluye siliciclástos marinos y sedimentarios, carbonatos
+La cuenca incluye siliciclastos marinos y sedimentarios, carbonatos
 y evaporitas acumuladas durante el Jurásico y el Cretácito constituyendo un
 registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
 
@@ -1131,7 +1136,7 @@ registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
     mismo modelo pero con densidades homogéneas y lineales.
     \mbox{(a)-(b)}~Diferencias de $V$ y $g_z$ entre el modelo con densidad
     exponencial y el modelo con densidad homogénea,
-    \mbox{(c)-(f)}~diferencias de $V$ y $g_z$ entre el modelo con densidad
+    \mbox{(c)-(d)}~diferencias de $V$ y $g_z$ entre el modelo con densidad
     exponencial y el modelo con densidad lineal,
     calculadas a 10km de altitud sobre el radio medio de la Tierra.
 }
@@ -1143,7 +1148,7 @@ El espesor del paquete sedimentario fue digitalizado a partir de
 en las direcciones longitudinal y latitudinal (Fig.~\ref{fig:neuquen-basin}b).
 Creamos un modelo del paquete sedimentario a partir de tesseroides de
 $0.05^\circ \times 0.05^\circ$ ubicados sobre cada nodo de la grilla.
-El límite superior de cada tesseroide fue fijado a al altitud media de la
+El límite superior de cada tesseroide fue fijado a la altitud media de la
 topografía de la cuenca (845\m{} sobre el radio medio de la Tierra) y el límite
 inferior es seleccionado de forma tal que cada tesseroide posea la misma
 dimensión que el espesor de la cuenca sobre el correspondiente punto de la
@@ -1157,7 +1162,7 @@ Hemos elegido una variación de densidad exponencial (ec.~\ref{eq:density-exp})
 que asume el valor mínimo en la superficie superior y un valor máximo a una
 profundidad de 5014\m{} (la región más profunda de la cuenca), con un valor de
 $b$ igual a 3.
-Esta variación de densidad se encuentra dentro de los ordenes de magnitud
+Esta variación de densidad se encuentra dentro de los órdenes de magnitud
 utilizados por \citet{cowie1990} y \citet{cordell1973}.
 La función de densidad se muestra en la
 Figura~\ref{fig:neuquen-basin-densities}.
@@ -1273,7 +1278,7 @@ por una función continua de la coordenada radial.
 Este método resuelve numéricamente integrales volumétricas mediante la
 \ac{GLQ} incluyendo la función densidad dentro del integrando.
 Mediante una implementación del mismo en lenguaje Python, los usuarios
-y las usuarias pueden definir su propia función densidad y servirla como
+y las usuarias pueden definir su propia función densidad y pasarla como
 entrada al algoritmo.
 Esto permite el uso de funciones continuas arbitrarias sin necesidad de
 realizar modificaciones sobre el método o el software.
@@ -1352,8 +1357,8 @@ Los resultados producidos por una densidad exponencial muestran un error de
 con respecto a una función lineal.
 Los modelos directos robustos son una componente clave para cualquier método de
 inversión de datos gravimétricos.
-Y errores de esta magnitud pueden resultar en una significativa sobreestimación
-del espesor del paquete sedimentario, por poner un ejemplo.
+Por ejemplo, errores de esta magnitud pueden resultar en una significativa
+sobreestimación del espesor del paquete sedimentario.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
