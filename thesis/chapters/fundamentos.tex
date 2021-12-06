@@ -973,14 +973,13 @@ de nodos según $O(n^3)$, haciendo de esta estrategia un método muy ineficiente
 \citet{ku1977} demostró que la precisión de la aproximación también depende del
 cociente entre la distancia al punto de observación y la distancia entre nodos
 adyacentes.
-Haciendo uso de esto, \citet{li2011} han propuesto un método más eficiente para
-aumentar la precisión de la aproximación manteniendo: la \emph{discretización
-adaptativa}.
-Esta consiste en mantener el orden de las cuadraturas constantes e ir
-dividiendo el tesseroide en otros tesseroides de menor tamaño según la
-distancia entre ellos y el punto de observación.
+Haciendo uso de este conocimiento, \citet{li2011} han propuesto un método más
+eficiente para aumentar la precisión de la aproximación manteniendo el orden de
+la \ac{GLQ} constante: la \emph{discretización adaptativa}.
+Esta consiste en ir dividiendo el tesseroide en otros tesseroides de menor
+tamaño según la distancia entre ellos y el punto de observación.
 De esta forma, se incrementa la cantidad de nodos en las regiones que mayor
-afectan a la precisión, obteniendo un número considerablemente menor de nodos
+afectan a la precisión, obteniéndose un número considerablemente menor de nodos
 pero manteniendo una buena precisión.
 En el Capítulo \ref{cha:tesseroids-variable-density} describiremos en detalle
 la \emph{discretización adaptativa}.
