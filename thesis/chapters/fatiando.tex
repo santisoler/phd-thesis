@@ -48,7 +48,7 @@ fundamentales, así como para desarrollar herramientas que faciliten la
 resolución de estos problemas.
 
 Los movimientos de Software Libre y de código abierto que comenzaron
-a proliferarse durante las décadas de los 80 y 90 tuvieron una fuerte raíz en
+a proliferar durante las décadas de los 80 y 90 tuvieron una fuerte raíz en
 el ámbito científico.
 Muchos científicos y científicas comenzaron a desarrollar herramientas
 computacionales a partir de necesidades propias de sus investigaciones que
@@ -157,18 +157,17 @@ reimplementaría en Python.
 En paralelo, y como proyecto final de su Bachillerato, Leonardo Uieda realiza
 una implementación en Python del algoritmo para el cálculo de campos
 gravitacionales de tesseroides mediante la \ac{GLQ}.
-Luego de reescribirlo en C, este proyecto deriva en el lanzamiento del software
-Tesseroids \citep{uieda2016} que ha sido ampliamente utilizado por la comunidad
-geocientista.
+Luego de ser reescrito en C, este proyecto deriva en el lanzamiento del
+software Tesseroids \citep{uieda2016} que ha sido ampliamente utilizado por la
+comunidad geocientista.
 
-El éxito de estos proyectos los llevó a aspirar a una idea mucho más
-ambiciosa: desarrollar un software de código abierto para modelar el planeta
-Tierra de
-forma completa.
+El éxito de estos proyectos llevó a estos estudiantes a aspirar a una idea
+mucho más ambiciosa: desarrollar un software de código abierto para modelar el
+planeta Tierra de forma completa.
 En ese entonces surge un nombre para el proyecto: \emph{Fatiando a Terra}, que
 puede traducirse como \emph{rebanando la Tierra}.
 
-Durante su Master en Geofisica en el Observatório Nacional, Rio de Janeiro,
+Durante su Master en Geofísica en el Observatório Nacional, Rio de Janeiro,
 Leonardo comienza el desarrollo de Fatiando a Terra, transformándolo en el
 hogar de las implementaciones que realiza a lo largo de sus investigaciones,
 todas mediante el lenguaje Python.
@@ -565,16 +564,16 @@ Sudáfrica sobre una grilla regular a 4000\m{} de altitud.
 ]{fatiando-examples/harmonica-prism-layer.py}
 
 La mayoría de los métodos de modelado directo involucran cómputos moderadamente
-complejos, los cuales pueden conllevar a un alto costo computacional,
-especialmente a la hora de modelar grandes cantidades de geometrías sobre
-muchos puntos de observación.
+complejos que suelen requerir un alto costo computacional, especialmente a la
+hora de modelar grandes cantidades de geometrías sobre muchos puntos de
+observación.
 Escribir estas funciones en Python puro resultaría en implementaciones que no
 harían un uso eficiente de los recursos computacionales debido a la misma
-naturaleza del interprete de Python.
+naturaleza del intérprete de Python.
 Las alternativas más viables son recurrir a código precompilado (escribiendo
 las implementaciones en lenguajes como C o FORTRAN y luego añadir
 \emph{wrappers} de Python) o bien a compilaciones en tiempo de ejecución.
-En los orígenes de de Harmonica, hemos optado por realizar nuestras
+En los orígenes de Harmonica, hemos optado por realizar nuestras
 implementaciones mediante Numba \citep{numba2015}: un compilador de Python de
 alto desempeño.
 Numba se encarga de precompilar el código que implementa cada uno de estos
@@ -948,7 +947,7 @@ porcentaje de qué cantidad de la base del código es sometida a prueba y
 detalla cuáles son las líneas que no.
 
 La gran mayoría del código fuente que podemos encontrar en las librerías del
-proyecto son fácilmente probables, especialmente las que tienen que ver con
+proyecto es fácilmente probable, especialmente las que tienen que ver con
 estructuras de datos y comportamientos particulares frente a diferentes
 parámetros.
 Sin embargo, en algunas de nuestras librerías incluimos implementaciones de
@@ -1188,7 +1187,7 @@ La Figura~\ref{fig:fatiando-users-history} muestra la cantidad de visitas
 diarias que recibió el sitio desde Abril del 2017 a Septiembre de 2021
 promediadas por ventana móvil de
 28 días.
-Mientras que la Figura~\ref{fig:fatiando-users-map} expone la cantidad de
+Por su parte, la Figura~\ref{fig:fatiando-users-map} expone la cantidad de
 visitas en el mismo intervalo según su ubicación geográfica.
 
 Estos datos ilustran que la cantidad de visitas experimenta una tendencia
