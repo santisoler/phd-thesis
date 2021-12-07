@@ -30,7 +30,7 @@ discretización:
 Estos algoritmos cuentan con dos parámetros que controlan de manera indirecta
 la cantidad de subdivisiones que se llevan a cabo: el \emph{ratio}
 distancia-tamaño $D$ y el \emph{ratio delta} $\delta$, respectivamente.
-Los valores que estos asumen poseen un impacto sobre el tiempo de cómputo
+Los valores que éstos asumen poseen un impacto sobre el tiempo de cómputo
 necesario para llevar a cabo los cálculos y sobre la precisión de los
 resultados.
 
@@ -41,12 +41,12 @@ analíticas para cascarones esféricos con densidades lineales, exponenciales
 y sinusoidales.
 Como resultado, hallamos que al utilizar valores de $D$ de 1 y 2.5 para el
 potencial gravitatorio y para su gradiente, respectivamente, la integración
-numérica alcanza precisiones por debajo del 0.1\% para cascarones de diferentes
+numérica alcanza errores por debajo del 0.1\% para cascarones de diferentes
 espesores y sobre puntos de observación situados en diversas localizaciones.
-De manera análoga, la elección de un \emph{ratio} $\delta$ de 0.1 alcanza la
-misma precisión para diferentes funciones de densidad, a excepción de funciones
-sinusoidales con altas frecuencias, en cuyo caso alcanza una precisión de 1\%
-con respecto a las soluciones analíticas.
+De manera análoga, la elección de un \emph{ratio} $\delta$ de 0.1 permite
+alcanzar la misma precisión para diferentes funciones de densidad, a excepción
+de funciones sinusoidales con altas frecuencias, en cuyo caso resulta en
+errores por debajo del 1\% con respecto a las soluciones analíticas.
 Además, concluimos que las elecciones de $D$ y $\delta$ no poseen una relación
 significativa entre sí y por ende la elección de sus valores puede realizarse
 de forma independiente.
@@ -115,12 +115,11 @@ datos.
 
 Hemos observado que las diferentes estrategias para asignar la profundidad de
 las fuentes no modifican significativamente la precisión de las
-interpolaciones.
-A excepción de las \emph{profundidades variables}, que producen resultados
-ligeramente más precisos.
+interpolaciones, a excepción de las \emph{profundidades variables} que
+producen resultados ligeramente más precisos.
 Sin embargo, dado que involucran mayor cantidad de hiperparámetros, su uso
 puede conllevar un aumento en el costo computacional durante la determinación
-de estos parámetros mediante métodos como la validación cruzada.
+de los mismos mediante métodos como la validación cruzada.
 Por esta razón, recomendamos la utilización de \emph{profundidades constantes}
 o \emph{profundidades relativas} en la mayoría de los casos.
 
