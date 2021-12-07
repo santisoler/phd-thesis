@@ -2,7 +2,7 @@
 THESIS = thesis
 # List other .tex needed files
 REFERENCES = references.bib
-TEX_FILES = $(wildcard *.tex chapters/*.tex)
+TEX_FILES = $(wildcard thesis.tex variables.tex chapters/*.tex)
 TEX_STYLES = $(wildcard *.sty *.bst)
 FIGURES = $(wildcard figs/* figs/*/*)
 PYTHON_EXAMPLES = $(wildcard fatiando-examples/*.py)
