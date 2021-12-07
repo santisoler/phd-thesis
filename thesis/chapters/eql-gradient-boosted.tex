@@ -78,8 +78,8 @@ funciones lineales de anomalías derivadas del potencial gravitatorio (anomalía
 de gravedad, disturbio de gravedad, deflexiones de la vertical, altitud del
 geoide, etc.).
 Al igual que las fuentes equivalentes, el método de colocación requiere
-resolver un sistema lineal grande, cuyo orden equivale a la cantidad de datos
-observados.
+resolver un sistema de ecuaciones lineales de gran tamaño, cuyo orden equivale
+a la cantidad de datos observados.
 De esta manera, la aplicación práctica de ambos métodos sufren de los mismos
 desafíos computacionales.
 
@@ -133,14 +133,12 @@ operaciones vinculadas al modelado directo y resuelven el problema de mínimos
 cuadrados utilizando el descenso del gradiente con el objetivo de evitar
 calcular las matrices Hessianas y resolver sistemas lineales.
 
-
 Muchos de los métodos existentes resuelven problemas subdeterminados,
 requiriendo un número mayor de fuentes equivalentes que de cantidad de datos.
-Algunos de ellos alcanzan mayores eficiencias al
-restringir su aplicación a tipos de datos específicos \citep{siqueira2017},
-realizar las interpolaciones sobre grillas regulares \citep{leao1989},
-o requieren datos ya grillados \citep{takahashi2020},
-por nombrar algunos.
+Algunos de ellos alcanzan mayores eficiencias al restringir su aplicación
+a tipos de datos específicos \citep{siqueira2017}, realizar las interpolaciones
+sobre grillas regulares \citep{leao1989}, o requerir datos ya grillados
+\citep{takahashi2020}, por nombrar algunos.
 Además, muchas de las optimizaciones propuestas son complejas de implementar en
 un programa de computación de uso genérico, limitando que sean ampliamente
 utilizados.
@@ -193,10 +191,10 @@ superficie de Australia.
 \subsection{La técnica de fuentes equivalentes}
 \label{sec:equivalent-sources-technique}
 
-De aquí en más seguiremos las \emph{fuentes equivalentes generalizadas}
-propuestas por \citet{cordell1992}
-y asumiremos que cualquier función armónica $d(\mathbf{p})$
-puede ser aproximada por la suma de los efectos de $M$ fuentes puntuales
+De aquí en más seguiremos la propuesta de \emph{fuentes equivalentes
+generalizadas} de \citet{cordell1992} y asumiremos que cualquier función
+armónica $d(\mathbf{p})$ puede ser aproximada por la suma de los efectos de $M$
+fuentes puntuales
 %
 \begin{equation}
     d(\mathbf{p})
@@ -298,7 +296,7 @@ Por lo tanto, este rango puede variar (considerablemente en muchas ocasiones)
 entre diferentes conjuntos de datos, haciendo difícil una apropiada elección en
 la práctica.
 
-Para resolver esta problema, primero escalaremos la matriz Jacobiana de forma
+Para resolver este problema, primero escalaremos la matriz Jacobiana de forma
 tal que sus elementos sean adimensionales y que cada columna posea varianza
 unitaria.
 Definimos la matriz diagonal $\mathbf{S}$ como:
@@ -334,10 +332,10 @@ como:
     \mathbf{B} \mathbf{m}
 \end{equation}
 %
-donde $\mathbf{B} = \mathbf{A} \mathbf{S}\inv$ es la matriz Jacobiana
-escalda y adimensional, y
-$\mathbf{m} = \mathbf{S} \mathbf{c}$ es el vector que contiene los coeficientes
-escalados cuyas unidades son las mismas que la de los datos.
+donde $\mathbf{B} = \mathbf{A} \mathbf{S}\inv$ es la matriz Jacobiana escalada
+y adimensional, y $\mathbf{m} = \mathbf{S} \mathbf{c}$ es el vector que
+contiene los coeficientes escalados cuyas unidades son las mismas que la de los
+datos.
 
 La función objetivo definida en la ecuación~\ref{eq:misfit-unscaled} puede ser
 reescrita como:
@@ -428,7 +426,7 @@ pasos:
       cubren toda la zona de estudio.
   \item Crear $K$ conjuntos distintos de fuentes equivalentes, uno por cada
       ventana.
-      Cada conjunto estará conformado por la proción de las $M$ fuentes
+      Cada conjunto estará conformado por la porción de las $M$ fuentes
       originales que caen dentro de la respectiva ventana.
       Dado que las ventanas se solapan, el número total de fuentes considerando
       cada uno de los conjuntos será mayor que $M$.
@@ -659,10 +657,10 @@ inversion} utilizada por \citet{vonfrese1988}, la cual también ajusta
 iterativamente porciones del modelo de fuentes equivalentes a datos residuales.
 Las diferencias claves entre este y nuestro método son:
 (i)~las fuentes en las porciones de solapamiento de las ventanas son ajustadas
-más de una vez, permitiendo al algoritmo autocorregirse en caso de soluciones
-de baja calidad sobre alguna de las ventanas;
+más de una vez, permitiendo al algoritmo autocorregirse en caso de obtener
+soluciones de baja calidad sobre alguna de las ventanas;
 (ii)~utilizamos solo los datos dentro de las ventanas durante el ajuste, lo
-cual permite la aplicación del algoritmo a conjuntos de datos más grandes.
+cual permite la aplicación del algoritmo a conjuntos de datos de mayor tamaño.
 
 
 \subsection{Ubicación de las fuentes}
@@ -862,11 +860,11 @@ Aquí destacaremos las siguientes (Fig.~\ref{fig:depth_types}):
     Diferentes variaciones de esta estrategia han sido propuestas
     anteriormente, por ejemplo
     \citet{cordell1992}, \citet{guspi2004}, y \citet{guspi2009}.
-    La razón fundamental para utilizar esta estrategia surge en caso de que la
-    muestra posea puntos muy agrupados (formando \emph{clusters} o cúmulos) en
-    algunas áreas, es posible que deseemos ubicar las fuentes debajo de ellas
-    a menores profundidades, con el objetivo de preservar las longitudes de
-    onda más cortas presentes en esos datos.
+    Esta estrategia posee la capacidad de preservar el contenido frecuencial de
+    los datos: en caso de que la muestra posea puntos muy agrupados en algunas
+    áreas (formando \emph{clusters} o cúmulos), al ubicar las fuentes debajo de
+    ellas a menores profundidades podremos recuperar las longitudes de onda más
+    cortas presente en esos datos.
 \end{enumerate}
 
 Nuestro enfoque sobre la estrategia de \emph{profundidad variable} será:
@@ -893,7 +891,7 @@ Finalmente, para \emph{fuentes promediadas por bloque} será la coordenada
 vertical media de todos los puntos de datos que caen dentro del bloque
 correspondiente a la fuente.
 
-En la Sección~\ref{sec:synthetic_distributions}, probamos la efectividad de
+En la Sección~\ref{sec:synthetic_distributions} probamos la efectividad de
 estas estrategias sobre datos sintéticos.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -927,7 +925,7 @@ estas estrategias sobre datos sintéticos.
     \label{fig:synthetic-target}
 \end{figure}
 
-Hemos utilizado un conjunto de datos sintéticos de gravedad para probar la
+Hemos utilizado un conjunto de datos sintéticos de gravedad para evaluar la
 precisión de la interpolación entre las diferentes estrategias de distribución
 horizontal y vertical de fuentes equivalentes, así como también el desempeño
 del algoritmo de fuentes equivalentes potenciadas por gradiente.
@@ -956,7 +954,7 @@ muestra para cubrir un área de \SurveyEasting{}$\times$\SurveyNorthing{},
 coincidentes con las dimensiones del modelo sintético.
 La muestra sintética sobre el terreno contiene \GroundSurveyPoints{}
 observaciones distribuidas en altitudes que van desde \GroundSurveyMinHeight{}
-y \GroundSurveyMaxHeight{} (Fig.~\ref{fig:synthetic-layouts}a).
+a \GroundSurveyMaxHeight{} (Fig.~\ref{fig:synthetic-layouts}a).
 La muestra aérea posee \AirborneSurveyPoints{} observaciones a altitudes entre
 \AirborneSurveyMinHeight{} y \AirborneSurveyMaxHeight{}
 (Fig.~\ref{fig:synthetic-layouts}c).
@@ -1087,7 +1085,10 @@ ubicaciones para las fuentes equivalentes tanto como para las interpolaciones
 con y sin potenciación del gradiente.
 Más precisamente, elegimos fuentes promediadas por bloques con un tamaño de
 bloque de
-\BestAirborneBlockAveragedSourcesRelativeDepthSpacing\m{} y una profundidad
+\BestAirborneBlockAveragedSourcesRelativeDepthSpacing\m{}
+$\times$
+\BestAirborneBlockAveragedSourcesRelativeDepthSpacing\m{}
+y una profundidad
 relativa de
 \BestAirborneBlockAveragedSourcesRelativeDepthDepth\m{}.
 
@@ -1160,7 +1161,7 @@ cómputo parece estabilizarse cerca de niveles constantes.
 
 \subsubsection{Solapamiento de las ventanas}
 
-La cantidad de solapamiento entre ventanas contiguas juega un rol importante en
+El tamaño del solapamiento entre ventanas contiguas juega un rol importante en
 el desempeño de las fuentes potenciadas por gradiente.
 Controla la cantidad de iteraciones y cuántas veces una fuente particular será
 utilizada en el proceso de ajuste por mínimos cuadrados.
@@ -1183,14 +1184,13 @@ ambos en función de la cantidad de solapamiento entre las ventanas.
 
 Nuestros resultados muestran que la \ac{RMSE} de la interpolación decrece con
 la cantidad de solapamiento, alcanzando la misma precisión que las fuentes
-equivalentes regulares a aproximadamente un solapamiento del 90\%.
+equivalentes regulares a un solapamiento de aproximadamente 90\%.
 Por otro lado, el tiempo de cómputo aumenta con la cantidad de solapamiento,
 haciéndose mayor que el necesario por fuentes equivalentes regulares para
 solapamientos mayores al 70\%.
 Este comportamiento era de esperarse, ya que un aumento en el solapamiento
 aumenta la cantidad de iteraciones en el proceso de potenciación del gradiente,
-sin reducir el tamaño de los problemas de mínimos cuadrados de forma tal que se
-compensen.
+sin reducir el tamaño de los problemas de mínimos cuadrados.
 
 
 \subsection{
@@ -1201,7 +1201,8 @@ compensen.
 Finalmente, hemos aplicado las fuentes equivalentes potenciadas por gradiente
 para interpolar la muestra sintética aérea (Fig.~\ref{fig:synthetic-layouts}).
 Tal y como hemos realizado anteriormente, utilizamos las fuentes promediadas
-por bloque con un tamaño de bloque de \EqlBoostAirborneSpacing{}.
+por bloque con un tamaño de bloque de
+\EqlBoostAirborneSpacing{}$\times$\EqlBoostAirborneSpacing{}.
 Basado en los resultados de la Sección \ref{sec:window_size_and_overlap},
 adoptamos un solapamiento entre ventanas contiguas de 50\% y un tamaño de
 ventanas de \EqlBoostAirborneWindowSize{}.
@@ -1231,10 +1232,10 @@ las ventanas en orden secuencial (de Sur a Norte, de Oeste a Este).
     \centering
     \includegraphics[width=0.7\linewidth]{figs/eql-gradient-boosted/eql-boost-airborne.pdf}
     \caption{
-        Error de la interpolación obtenida a partir de fuentes equivalentes
+        Error de la interpolación obtenido a partir de fuentes equivalentes
         potenciadas por gradiente utilizando un (a) orden aleatorio y un (b)
         orden secuencial para recorrer las ventanas.
-        (a and b)~Mapas de las diferencias entre la \emph{grilla objetivo}
+        (a y b)~Mapas de las diferencias entre la \emph{grilla objetivo}
         y los resultados de la interpolación de la muestra sintética aérea.
         La escala de colores fue truncada al mismo rango de valores que la de
         la Figura~\ref{fig:airborne-survey-differences}.
@@ -1334,7 +1335,7 @@ objetivo de limitar la cantidad de memoria por debajo de los 16~Gigabytes.
         (a) Cantidad de memoria computacional necesaria para almacenar la mayor
         matriz Jacobiana en función del tamaño de las ventanas. Nuestra
         implementación de algoritmo almacena los elementos de la matriz como
-        puntos flotantes de doble precisión (64 bits).
+        reales de doble precisión (64~bits).
         (b) \acs{RMSE} entre los valores observados y los valores predichos
         sobre cada punto de observación luego de cada iteración del algoritmo
         de potenciación del gradiente.
@@ -1477,7 +1478,7 @@ por mínimos cuadrados.
 Al mismo tiempo, el proceso de ajuste se vuelve más rápido debido a la
 reducción en la cantidad de iteraciones.
 Nuestros resultados indican que es deseable maximizar el tamaño de las
-ventanas, lo cual puede hacerse mientra las matrices Jacobianas involucradas
+ventanas, lo cual puede hacerse mientras las matrices Jacobianas involucradas
 puedan ser almacenadas en la memoria disponible.
 
 Los resultados mostrados en las Figuras~\ref{fig:gradient-boosted-comparison}b
@@ -1524,7 +1525,7 @@ Una posible causa de estos artefactos es la inhabilidad de las fuentes
 equivalentes dentro de ventanas particulares de ajustar adecuadamente
 las componentes de largas longitudes de onda.
 Vale notar, sin embargo, que estos residuos de larga longitud de onda poseen
-amplitudes menores a 1\mGal{} y no representan una fuente de errores
+amplitudes menores a 1\mGal{} y no representan una fuente de error
 significativa.
 
 Los valles alargados alrededor del valor mínimo de la \ac{RMSE} obtenida
@@ -1753,7 +1754,7 @@ y~\ref{fig:airborne-survey-differences}.
                 & \\
         \midrule
 
-        \multirow{11}{*}{Promed. por bloque}
+        \multirow{11}{*}{Prom. por bloque}
             & \multirow{3}{*}{Constante}
                 & Profundidad (m)
                 & \GroundBlockAveragedSourcesConstantDepthDepth
