@@ -43,13 +43,13 @@ de derivadas, continuación ascendente, deconvolución de Euler).
 
 Existen muchos métodos en la literatura que permiten realizar interpolaciones
 bidimensionales, por ejemplo \emph{splines} de curvatura continua en tensión
-\citep{smith1990}, \emph{splines} biharmónicas \citep{sandwell1987}, y kriging
+\citep{smith1990}, \emph{splines} biarmónicas \citep{sandwell1987}, y kriging
 \citep{hansen1993}.
 Estos métodos de propósito general poseen limitaciones a la hora de interpolar
 datos provenientes de campos potenciales:
 (i)~no son capaces de tomar en cuenta las altitudes de los puntos de
 observación,
-(ii)~las funciones interpoladoras no son necesariamente harmónicas, siendo esta
+(ii)~las funciones interpoladoras no son necesariamente armónicas, siendo esta
 la principal presuposición de muchas técnicas de procesado (por ejemplo,
 continuación ascendente y derivadas verticales).
 
@@ -195,7 +195,7 @@ superficie de Australia.
 
 De aquí en más seguiremos las \emph{fuentes equivalentes generalizadas}
 propuestas por \citet{cordell1992}
-y asumiremos que cualquier función harmónica $d(\mathbf{p})$
+y asumiremos que cualquier función armónica $d(\mathbf{p})$
 puede ser aproximada por la suma de los efectos de $M$ fuentes puntuales
 %
 \begin{equation}
@@ -213,7 +213,7 @@ en $\mathbf{q}_j$.
 En la Sección~\ref{sec:source_distribution} realizamos una discusión acerca de
 la distribución horizontal y vertical de las fuentes.
 
-En caso de que poseamos mediciones de nuestra función harmónica en $N$ puntos
+En caso de que poseamos mediciones de nuestra función armónica en $N$ puntos
 de observación
 $\{\mathbf{p}_1\ \mathbf{p}_2\ \ldots\ \mathbf{p}_N\}$,
 podemos escribir un sistema de $N$ ecuaciones de la forma:
@@ -251,7 +251,7 @@ solución de la ecuación~\ref{eq:linear-problem} mediante mínimos cuadrados y 
 esa manera obtener los valores de
 $\mathbf{c}$ que mejor ajustan a las observaciones.
 Estos coeficientes pueden ser, a su vez, utilizados para predecir los valores
-de la función harmónica en cualquier otro punto externo a las fuentes,
+de la función armónica en cualquier otro punto externo a las fuentes,
 evaluando la ecuación~\ref{eq:eql-forward}.
 El grillado o la continuación ascendente pueden entonces ser realizados
 mediante predicciones sobre puntos de una grilla regular o sobre puntos
@@ -1544,7 +1544,7 @@ interpolar disturbios de gravedad y anomalías magnéticas.
 Las dos razones principales que la hacen sobresalir por encima de otros
 interpoladores bidimensionales es el hecho que las fuentes equivalentes toman
 en cuenta la altitud de las observaciones y que los valores interpolados
-representan siempre funciones harmónicas.
+representan siempre funciones armónicas.
 El principal desafío a la hora de utilizar fuentes equivalentes en la práctica
 es el alto costo computacional que surge al estimar los coeficientes de las
 fuentes, especialmente los requerimientos en memoria para almacenar la matriz
