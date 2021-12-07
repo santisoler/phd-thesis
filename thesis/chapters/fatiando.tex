@@ -332,12 +332,12 @@ Un ejemplo de un algoritmo que entra en esta categoría son las \emph{splines}
 biharmónicas \citep{sandwell1987}.
 Estos métodos asumen que podemos representar los datos observados por una
 combinación lineal de funciones de Green, es decir:
-
+%
 \begin{equation}
     d_i = \sum_{j=1}^M c_j G(\mathbf{p}_i, \mathbf{q}_j),
 \end{equation}
-
-\noindent donde $d_i$ es el dato $i$-ésimo, $\mathbf{p}_i$ es la ubicación de
+%
+donde $d_i$ es el dato $i$-ésimo, $\mathbf{p}_i$ es la ubicación de
 ese mismo punto, $c_j$ es un coeficiente escalar, $G$ es una función de Green y
 $\mathbf{q}_j$ es la ubicación del punto que define la función de Green en el
 término $j$-ésimo.
@@ -345,12 +345,12 @@ El proceso de interpolación consiste en ajustar los valores de los
 coeficientes $c_j$ mediante mínimos cuadrados de forma tal que se recuperen los
 datos observados, y luego utilizarlos para predecir valores sobre los puntos de
 la grilla:
-
+%
 \begin{equation}
     d(\mathbf{p}) = \sum_{j=1}^M c_j G(\mathbf{p}, \mathbf{q}_j),
 \end{equation}
-
-\noindent donde $\mathbf{p}$ es la ubicación de cualquier punto de la grilla.
+%
+donde $\mathbf{p}$ es la ubicación de cualquier punto de la grilla.
 
 Dentro de Verde hallamos implementaciones de algoritmos de interpolación de
 este tipo siguiendo un diseño similar a los modelos de aprendizaje automático
@@ -402,7 +402,7 @@ referencia puede definirse mediante los semiejes mayor $a$ y menor $b$, su masa
 total $M$ y su velocidad angular $\omega$.
 De forma alternativa pero equivalente, es posible definirlo mediante los
 siguientes parámetros:
-
+%
 \begin{itemize}
     \item el semieje mayor $a$,
     \item el achatamiento $f = (a - b) / a$,
@@ -461,15 +461,15 @@ generada por el elipsoide en cualquier punto dado por sus coordenadas
 geodésicas.
 En el caso de la clase \texttt{Sphere}, su método \texttt{normal\_gravity()}
 hace uso de una ecuación más sencilla \citep{heiskanen1967}:
-
+%
 \begin{equation}
     \gamma(\phi, h) =
         \sqrt{\left( \frac{GM}{(R + h)^2} \right)^2
         + \left(\omega^2 (R + h) - 2\frac{GM}{(R + h)^2} \right)
         \omega^2 (R + h) \cos^2 \phi},
 \end{equation}
-
-\noindent donde $R$ es el radio de la esfera, $\phi$ la coordenada latitudinal
+%
+donde $R$ es el radio de la esfera, $\phi$ la coordenada latitudinal
 y $h$ la altitud sobre la superficie de la esfera correspondientes al punto de
 observación.
 
@@ -1016,7 +1016,7 @@ información acerca de posibles fallos que se hayan encontrado.
 
 A la hora de incorporar un código nuevo a la \emph{rama} principal de cualquier
 librería del proyecto, se requiere que:
-
+%
 \begin{itemize}
     \item las comprobaciones de estilos escritura pasen correctamente,
     \item las pruebas de software no presenten errores en ninguna plataforma, y
@@ -1053,8 +1053,8 @@ hacerlo ejecutando:
 \begin{lstlisting}[language=bash,frame=]
 pip install boule
 \end{lstlisting}
-
-\noindent Y si deseamos instalar Harmonica con el gestor \texttt{conda} podemos
+%
+Y si deseamos instalar Harmonica con el gestor \texttt{conda} podemos
 hacerlo con:
 
 \begin{lstlisting}[language=bash,frame=]

@@ -147,7 +147,7 @@ utilizados.
 
 En el presente trabajo, proponemos dos estrategias para reducir el costo
 computacional de la técnica de fuentes equivalentes:
-
+%
 \begin{enumerate}
     \item Reducir el número de fuentes equivalentes para conjuntos de datos con
         sobremuestreo mediante una estrategia de \emph{promedio en bloques}
@@ -197,7 +197,7 @@ De aquí en más seguiremos las \emph{fuentes equivalentes generalizadas}
 propuestas por \citet{cordell1992}
 y asumiremos que cualquier función harmónica $d(\mathbf{p})$
 puede ser aproximada por la suma de los efectos de $M$ fuentes puntuales
-
+%
 \begin{equation}
     d(\mathbf{p})
     =
@@ -205,8 +205,8 @@ puede ser aproximada por la suma de los efectos de $M$ fuentes puntuales
     |} \ ,
     \label{eq:eql-forward}
 \end{equation}
-
-\noindent donde $\mathbf{p}$ y $\mathbf{q}_j$ son, respectivamente, los
+%
+donde $\mathbf{p}$ y $\mathbf{q}_j$ son, respectivamente, los
 vectores posición de datos y fuentes en un espacio Cartesiano tridimensional,
 y $c_j$ es un coeficiente escalar correspondiente a la masa puntual localizada
 en $\mathbf{q}_j$.
@@ -217,7 +217,7 @@ En caso de que poseamos mediciones de nuestra función harmónica en $N$ puntos
 de observación
 $\{\mathbf{p}_1\ \mathbf{p}_2\ \ldots\ \mathbf{p}_N\}$,
 podemos escribir un sistema de $N$ ecuaciones de la forma:
-
+%
 \begin{equation}
     d_i
     =
@@ -227,21 +227,21 @@ podemos escribir un sistema de $N$ ecuaciones de la forma:
     \ ,
     \label{eq:forward-sum}
 \end{equation}
-
-\noindent donde $d_i$ es el efecto de las fuentes sobre el punto
+%
+donde $d_i$ es el efecto de las fuentes sobre el punto
 $\mathbf{p}_i$.
 Estas ecuaciones pueden ser expresadas de forma matricial como:
-
+%
 \begin{equation}
     \mathbf{d} = \mathbf{A} \mathbf{c} \ ,
     \label{eq:linear-problem}
 \end{equation}
-
-\noindent donde $\mathbf{d}$ es un vector columna que contiene los valores
+%
+donde $\mathbf{d}$ es un vector columna que contiene los valores
 medidos sobre cada uno de los $N$ puntos de observación, $\mathbf{c}$ es un
 vector columna formado por los $M$ coeficientes $c_j$ y $\mathbf{A}$ es la
 matriz Jacobiana de $N \times M$ elementos, los cuales se definen como:
-
+%
 \begin{equation}
     a_{ij} = \frac{1}{|\mathbf{p}_i - \mathbf{q}_j|}
 \end{equation}
@@ -263,7 +263,7 @@ a diferentes altitudes, respectivamente.
 
 Es posible obtener los valores de los coeficientes $\mathbf{c}$ que mejor
 ajustan a los valores observados $\mathbf{d}^o$ minimizando la función objetivo
-
+%
 \begin{equation}
     \phi(\mathbf{c}) =
     \left[\mathbf{d}^o - \mathbf{A}\mathbf{c}\right]\trans
@@ -273,8 +273,8 @@ ajustan a los valores observados $\mathbf{d}^o$ minimizando la función objetivo
     \ ,
     \label{eq:misfit-unscaled}
 \end{equation}
-
-\noindent donde $\mathbf{W}$ es una matriz diagonal de $N \times N$ elementos
+%
+donde $\mathbf{W}$ es una matriz diagonal de $N \times N$ elementos
 que contiene los pesos ponderados de los datos observados, y $\lambda_d$ es el
 parámetro de \emph{amortiguamiento} (\emph{damping} en inglés), el cual es un
 valor positivo y posee las mismas unidades que los elementos de la matriz
@@ -302,7 +302,7 @@ Para resolver esta problema, primero escalaremos la matriz Jacobiana de forma
 tal que sus elementos sean adimensionales y que cada columna posea varianza
 unitaria.
 Definimos la matriz diagonal $\mathbf{S}$ como:
-
+%
 \begin{equation}
     \mathbf{S} =
     \begin{bmatrix}
@@ -313,12 +313,12 @@ Definimos la matriz diagonal $\mathbf{S}$ como:
     \end{bmatrix}_{M \times M}
     ,
 \end{equation}
-
-\noindent donde $\sigma_j$ es la desviación estándar de la columna $j$-ésima
+%
+donde $\sigma_j$ es la desviación estándar de la columna $j$-ésima
 de la matriz $\mathbf{A}$.
 Luego reescribimos el problema directo de la ecuación~\ref{eq:linear-problem}
 como:
-
+%
 \begin{equation}
     \mathbf{d}
     =
@@ -333,15 +333,15 @@ como:
     =
     \mathbf{B} \mathbf{m}
 \end{equation}
-
-\noindent donde $\mathbf{B} = \mathbf{A} \mathbf{S}\inv$ es la matriz Jacobiana
+%
+donde $\mathbf{B} = \mathbf{A} \mathbf{S}\inv$ es la matriz Jacobiana
 escalda y adimensional, y
 $\mathbf{m} = \mathbf{S} \mathbf{c}$ es el vector que contiene los coeficientes
 escalados cuyas unidades son las mismas que la de los datos.
 
 La función objetivo definida en la ecuación~\ref{eq:misfit-unscaled} puede ser
 reescrita como:
-
+%
 \begin{equation}
     \phi(\mathbf{m}) =
     \left[\mathbf{d}^o - \mathbf{B}\mathbf{m}\right]\trans
@@ -351,8 +351,8 @@ reescrita como:
     \ ,
     \label{eq:misfit}
 \end{equation}
-
-\noindent donde $\lambda$ es un parámetro de \emph{amortiguamiento
+%
+donde $\lambda$ es un parámetro de \emph{amortiguamiento
 adimensional} y la regularización es aplicada a los coeficientes escalados
 $\mathbf{m}$ en vez de al vector $\mathbf{c}$.
 Utilizando un parámetro de amortiguamiento adimensional limitamos el rango de
@@ -367,7 +367,7 @@ como la validación cruzada.
 El vector de coeficientes escalados $\hat{\mathbf{m}}$ que minimiza la función
 objetivo puede hallarse resolviendo el \emph{sistema de ecuaciones normales}
 \citep{menke1989}:
-
+%
 \begin{equation}
     \left[
       \mathbf{B}\trans \mathbf{W} \mathbf{B} + \lambda \mathbf{I}
@@ -381,12 +381,12 @@ objetivo puede hallarse resolviendo el \emph{sistema de ecuaciones normales}
 Una vez que los coeficientes escalados son obtenidos, los coeficientes sin
 escalar
 $\hat{\mathbf{c}}$ pueden ser calculados quitando el factor de escalado:
-
+%
 \begin{equation}
     \hat{\mathbf{c}} = \mathbf{S}\inv \hat{\mathbf{m}} \ .
 \end{equation}
-
-\noindent Las operaciones relacionadas al modelado directo que se utilizan para
+%
+Las operaciones relacionadas al modelado directo que se utilizan para
 realizar predicciones (por ejemplo, interpolaciones seguidas de continuaciones
 ascendentes) permanecen sin variaciones al utilizar el vector
 $\hat{\mathbf{c}}$ en vez de $\hat{\mathbf{m}}$.
@@ -397,29 +397,29 @@ $\hat{\mathbf{c}}$ en vez de $\hat{\mathbf{m}}$.
 La potenciación del gradiente fue inicialmente introducida por
 \citet{friedman2001, friedman2002} como un método para ajustar modelos
 paramétricos de manera aditiva de la siguiente forma:
-
+%
 \begin{equation}
     d = \sum_{k=1}^K \alpha_k f(\mathbf{c}_k),
 \end{equation}
-
-\noindent donde $\alpha_k$ es un coeficiente llamado \emph{tamaño de paso}
+%
+donde $\alpha_k$ es un coeficiente llamado \emph{tamaño de paso}
 y $f$ es una función del vector de parámetros $\mathbf{c}_k$.
 Para problemas lineales, estos modelos aditivos pueden expresarse según la
 siguiente ecuación matricial:
-
+%
 \begin{equation}
     \mathbf{d} = \sum_{k=1}^K \mathbf{A}_k \mathbf{c}_k \ .
     \label{eq:gb-linear-model}
 \end{equation}
-
-\noindent Dada la linealidad de la funciones $f(\mathbf{c}_k)$, los parámetros
+%
+Dada la linealidad de la funciones $f(\mathbf{c}_k)$, los parámetros
 de tamaño de paso $\alpha_k$ pueden ser incluidos en el vector de parámetros
 $\mathbf{c}_k$.
 
 Aplicando esta técnica al problema de fuentes equivalentes, podemos transformar
 la ecuación~\ref{eq:linear-problem} en un modelo aditivo siguiendo estos
 pasos:
-
+%
 \begin{enumerate}
   \item Definir un conjunto de $M$ fuentes equivalentes distribuidas a lo
       largo de la zona de estudio (ver Sección~\ref{sec:source_distribution}
@@ -497,7 +497,7 @@ mediante mínimos cuadrados amortiguados.
 Luego de que todos los vectores de coeficientes $\mathbf{c}_k$ fueron
 estimados, podemos predecir el efecto del modelo aditivo de fuentes
 equivalentes mediante la suma
-
+%
 \begin{equation}
     d(\mathbf{p}) =
     \sum\limits_{k=1}^K \sum\limits_{j=1}^{M_k}
@@ -505,8 +505,8 @@ equivalentes mediante la suma
     \ ,
     \label{eq:eql-forward-gb}
 \end{equation}
-
-\noindent donde ${c_k}_j$ es el $j$-ésimo elemento del vector $\mathbf{c}_k$
+%
+donde ${c_k}_j$ es el $j$-ésimo elemento del vector $\mathbf{c}_k$
 y ${\mathbf{q}_k}_j$ es el vector posición de la $j$-ésima fuente de la
 $k$-ésima ventana.
 
@@ -530,7 +530,7 @@ necesario, dependiendo de la cantidad de fuentes en el modelo y de la memoria
 disponible.
 
 Podemos mejorar la eficiencia del algoritmo aún más mediante:
-
+%
 \begin{enumerate}
   \item La utilización de solo los $N_k$ puntos de datos que caen dentro de la
       ventana $k$-ésima a la hora de ajustar los coeficientes de las fuentes
@@ -727,7 +727,7 @@ Esto genera un sesgo en el muestreo, lo cual puede producir artefactos de
 
 Las distribuciones más utilizadas para localizar las fuentes equivalentes
 horizontalmente son:
-
+%
 \begin{enumerate}
   \item
     \emph{Fuentes debajo de datos}: una única fuente equivalente es ubicada en
@@ -767,7 +767,7 @@ En la distribución de \emph{fuentes promediadas por bloque}
 posición media de los puntos de datos que caen dentro de un determinado bloque
 espacial (Fig.~\ref{fig:source_layouts}d).
 Esto se realiza de la siguiente forma:
-
+%
 \begin{enumerate}
     \item Dividir la región de estudio en bloques rectangulares de mismo
         tamaño.
@@ -833,7 +833,7 @@ equivalentes.
 En la literatura podemos encontrar múltiples estrategias diferentes para
 asignar profundidad de las fuentes.
 Aquí destacaremos las siguientes (Fig.~\ref{fig:depth_types}):
-
+%
 \begin{enumerate}
   \item
     \emph{Profundidad constante}:
@@ -867,7 +867,7 @@ Aquí destacaremos las siguientes (Fig.~\ref{fig:depth_types}):
 \end{enumerate}
 
 Nuestro enfoque sobre la estrategia de \emph{profundidad variable} será:
-
+%
 \begin{equation}
   z = z_{obs} + \Delta z + \alpha h,
   \label{eq:variable_depth}
