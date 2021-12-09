@@ -258,14 +258,14 @@ Una manera de mitigar este comportamiento sería aumentar el orden de la
 cuadratura.
 Al hacer esto, incrementaríamos uniformemente la cantidad de masas puntuales
 utilizadas para aproximar el tesseroide.
-Sin embargo, sólo es necesario incrementar la concentración de masas puntuales
+Sin embargo, solo es necesario incrementar la concentración de masas puntuales
 en cercanías del punto de cómputo \citep{uieda2016}.
 Alternativamente,  \citet{li2011} han propuesto un algoritmo de discretización
 adaptativa que mantiene fijo el orden de la cuadratura y divide el tesseroide
 según una relación entre la distancia al punto de cómputo y las dimensiones
 del mismo.
 Este algoritmo involucra un cómputo más eficiente, ya que produce un aumento en
-la concentración de masas puntuales sólo en las regiones donde es necesario.
+la concentración de masas puntuales solo en las regiones donde es necesario.
 \citet{uieda2016} han desarrollado una versión modificada de este
 algoritmo junto con una implementación computacional eficiente.
 Ambas versiones del algoritmo subdividen el tesseroide en las direcciones
