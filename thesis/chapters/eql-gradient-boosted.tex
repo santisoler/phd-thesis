@@ -440,7 +440,7 @@ algoritmo de potenciación del gradiente para hallar las soluciones  de los $K$
 vectores de parámetros $\mathbf{c}_k$ de la ec.~\ref{eq:gb-linear-model}
 mediante mínimos cuadrados amortiguados.
 
-\begin{algorithm}[!h]
+\begin{Ualgorithm}[!h]
   \DontPrintSemicolon
   \linespread{1.5}\selectfont
   Definir el vector residual $\mathbf{r}_{0} = \mathbf{d}^o$ \;
@@ -474,14 +474,13 @@ mediante mínimos cuadrados amortiguados.
       \nllabel{alg:residual}
       \;
   }
-  \BlankLine
   \linespread{1}\selectfont
   \caption{
       Solución mediante potenciación del gradiente de una regresión por mínimos
       cuadrados amortiguados.
   }
   \label{alg:gradient_boosting}
-\end{algorithm}
+\end{Ualgorithm}
 
 Luego de que todos los vectores de coeficientes $\mathbf{c}_k$ fueron
 estimados, podemos predecir el efecto del modelo aditivo de fuentes
@@ -545,7 +544,7 @@ La Figura~\ref{fig:gradient-boosting-schematics} muestra un bosquejo de los
 pasos del algoritmo aplicado a un conjunto de puntos de observación que simulan
 una muestra sobre el terreno y ubicando una fuente debajo de cada uno de ellos.
 
-\begin{algorithm}[!h]
+\begin{Ualgorithm}[!h]
   \DontPrintSemicolon
   \linespread{1.5}\selectfont
   Definir el vector residual $\mathbf{r}_{0} = \mathbf{d}^o$ \;
@@ -591,11 +590,10 @@ una muestra sobre el terreno y ubicando una fuente debajo de cada uno de ellos.
       $\mathbf{r}_k = \mathbf{r}_{k - 1} - \mathbf{d}_k$
       \;
   }
-  \BlankLine
   \linespread{1}\selectfont
   \caption{Algoritmo de fuentes equivalentes potenciadas por gradiente.}
   \label{alg:gradient_boosting_window}
-\end{algorithm}
+\end{Ualgorithm}
 
 \begin{figure}[tb]
     \centering

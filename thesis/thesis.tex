@@ -30,6 +30,17 @@
 % Import package to generate algorithms
 \usepackage[longend,linesnumbered,ruled,spanish,onelanguage]{algorithm2e}
 
+% Define a Ualgorithm environment to put captions in the bottom while using the
+% "ruled" style.
+\makeatletter
+\newenvironment{Ualgorithm}[1][htpb]{
+    \def\@algocf@post@ruled{\kern\interspacealgoruled\hrule  height\algoheightrule\kern3pt\relax}%
+    \def\@algocf@capt@ruled{under}
+    \setlength\algotitleheightrule{0pt}
+    \begin{algorithm}[#1]}
+  {\end{algorithm}}
+\makeatother
+
 % Import acronym style for creating hyperref acronym and a list of acronyms
 \usepackage{acronym}
 
