@@ -411,13 +411,11 @@ siguientes parámetros:
 \end{itemize}
 
 Las funcionalidades principales de Boule vienen dadas dentro de las clases
-\texttt{Ellipsoids} y \texttt{Sphere}, las cuales nos permiten definir
+\texttt{Ellipsoid} y \texttt{Sphere}, las cuales nos permiten definir
 cualquier elipsoide referencia a partir de los parámetros mencionados.
 La clase \texttt{Sphere} está orientada a representar esferas, las cuales
 poseen achatamiento nulo y en vez de especificar su semieje mayor, se define su
 radio.
-A modo de ejemplo, uno podría definir el elipsoide WGS84 como se muestra en el
-Código~\ref{lst:boule-wgs84}.
 Sin embargo, Boule ya ofrece algunos de los elipsoides de referencia más
 ampliamente usados en Geodesia y Geofísica, tales como el WGS84
 (\texttt{boule.WGS84}), el GRS80: Geodetic Reference System
@@ -428,17 +426,7 @@ Además podemos hallar elipsoides esféricos para la Luna (\texttt{boule.MOON}),
 Venus (\texttt{boule.VENUS}) y Mercurio (\texttt{boule.MERCURY}) definidos
 según \citet{wieczorek2015}.
 
-\lstinputlisting[
-    float,
-    language=Python,
-    caption={%
-        Ejemplo de definición de elipsoide de referencia con Boule
-        (\BouleVersion{})
-    },
-    label=lst:boule-wgs84
-]{fatiando-examples/boule-wgs84.py}
-
-A su vez, la clase \texttt{Ellipsoids} posee una serie de propiedades que se
+A su vez, la clase \texttt{Ellipsoid} posee una serie de propiedades que se
 calculan a partir de los parámetros que definen cada elipsoide, entre ellos: el
 semieje menor $b$, la primera y segunda excentricidad, la excentricidad lineal,
 el radio medio del elipsoide (medido desde un sistema geocéntrico), el módulo
@@ -471,6 +459,21 @@ hace uso de una ecuación más sencilla \citep{heiskanen1967}:
 donde $R$ es el radio de la esfera, $\phi$ la coordenada latitudinal
 y $h$ la altitud sobre la superficie de la esfera correspondientes al punto de
 observación.
+
+\lstinputlisting[
+    float,
+    language=Python,
+    caption={%
+        Ejemplo de cálculo de gravedad normal y conversión de unidades con
+        elipsoide de referencia WGS84 mediante Boule (\BouleVersion{})
+    },
+    label=lst:boule-wgs84
+]{fatiando-examples/boule-wgs84.py}
+
+En el Código~\ref{lst:boule-wgs84} se ejemplifica cómo se puede utilizar BOule para
+instanciar el elipsoide WGS84, generar una grilla regular de puntos en
+coordenadas geodésicas elevadas por sobre la superficie del mismo y realizar
+tareas como el cálculo de gravedad normal o de conversión de unidades.
 
 Si bien Boule es una librería que se encuentra en un estado funcional
 y puede ser utilizada en investigaciones científicas al día de la fecha, aún no
