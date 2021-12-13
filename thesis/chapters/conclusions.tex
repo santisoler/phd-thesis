@@ -17,7 +17,7 @@ como una función continua dependiente de la coordenada radial.
 Este nuevo método resuelve numéricamente las integrales involucradas mediante
 una \acl{GLQ} de segundo orden aplicada en conjunto con dos algoritmos de
 discretización:
-
+%
 \begin{itemize}
     \item un algoritmo de discretización adaptativa bidimensional que divide al
         tesseroide en las direcciones longitudinales y latitudinales en función
@@ -30,7 +30,7 @@ discretización:
 Estos algoritmos cuentan con dos parámetros que controlan de manera indirecta
 la cantidad de subdivisiones que se llevan a cabo: el \emph{ratio}
 distancia-tamaño $D$ y el \emph{ratio delta} $\delta$, respectivamente.
-Los valores que estos asumen poseen un impacto sobre el tiempo de cómputo
+Los valores que éstos asumen poseen un impacto sobre el tiempo de cómputo
 necesario para llevar a cabo los cálculos y sobre la precisión de los
 resultados.
 
@@ -41,12 +41,12 @@ analíticas para cascarones esféricos con densidades lineales, exponenciales
 y sinusoidales.
 Como resultado, hallamos que al utilizar valores de $D$ de 1 y 2.5 para el
 potencial gravitatorio y para su gradiente, respectivamente, la integración
-numérica alcanza precisiones por debajo del 0.1\% para cascarones de diferentes
+numérica alcanza errores por debajo del 0.1\% para cascarones de diferentes
 espesores y sobre puntos de observación situados en diversas localizaciones.
-De manera análoga, la elección de un \emph{ratio} $\delta$ de 0.1 alcanza la
-misma precisión para diferentes funciones de densidad, a excepción de funciones
-sinusoidales con altas frecuencias, en cuyo caso alcanza una precisión de 1\%
-con respecto a las soluciones analíticas.
+De manera análoga, la elección de un \emph{ratio} $\delta$ de 0.1 permite
+alcanzar la misma precisión para diferentes funciones de densidad, a excepción
+de funciones sinusoidales con altas frecuencias, en cuyo caso resulta en
+errores por debajo del 1\% con respecto a las soluciones analíticas.
 Además, concluimos que las elecciones de $D$ y $\delta$ no poseen una relación
 significativa entre sí y por ende la elección de sus valores puede realizarse
 de forma independiente.
@@ -115,12 +115,11 @@ datos.
 
 Hemos observado que las diferentes estrategias para asignar la profundidad de
 las fuentes no modifican significativamente la precisión de las
-interpolaciones.
-A excepción de las \emph{profundidades variables}, que producen resultados
-ligeramente más precisos.
+interpolaciones, a excepción de las \emph{profundidades variables} que
+producen resultados ligeramente más precisos.
 Sin embargo, dado que involucran mayor cantidad de hiperparámetros, su uso
 puede conllevar un aumento en el costo computacional durante la determinación
-de estos parámetros mediante métodos como la validación cruzada.
+de los mismos mediante métodos como la validación cruzada.
 Por esta razón, recomendamos la utilización de \emph{profundidades constantes}
 o \emph{profundidades relativas} en la mayoría de los casos.
 
@@ -138,6 +137,12 @@ Las predicciones se realizaron sobre una grilla regular a altitud constante con
 una resolución de 1 minuto de arco, aproximadamente.
 El proceso fue llevado a cabo en una computadora personal modesta, utilizando
 menos de 16~Gigabytes de memoria computacional.
+Esto ha demostrado la capacidad de las \emph{fuentes equivalentes potenciadas
+por gradiente} a la hora de interpolar grandes cantidades de datos manteniendo
+todos los beneficios de las técnica de fuentes equivalentes: toma en
+consideración la altitud de las observaciones, permite realizar predicciones en
+cualquier punto del espacio, y garantiza que las mismas representen un campo
+armónico.
 
 \vspace{1em}
 

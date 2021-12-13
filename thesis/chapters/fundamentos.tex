@@ -4,24 +4,28 @@
 \section{Campo potencial gravitatorio}
 
 Según la Ley de Gravitación Universal de Newton, una masa puntual $m_p$ situada
-en la posición $\mathbf{p}$ siente una fuerza gravitatoria $\mathbf{F}$ debido
-a la presencia de otra masa $m$ situada en la posición $\mathbf{q}$. Esta
-fuerza puede expresarse como:
-
+en la posición $\mathbf{p}$ se ve sometida una fuerza gravitatoria $\mathbf{F}$
+debido a la presencia de otra masa $m$ situada en la posición $\mathbf{q}$.
+Esta fuerza puede expresarse como:
+%
 \begin{equation}
     \mathbf{F} =
-        - G \frac{m_p m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}),
+        - G
+        \frac{m_p m}{\left\lVert \mathbf{p} - \mathbf{q}\right\rVert^3}
+        (\mathbf{p} - \mathbf{q}),
 \end{equation}
-
-\noindent donde $G = 6.67430 \times 10^{-11} \text{m}^3 \text{kg}^{-1}
+%
+donde $G = 6.67430 \times 10^{-11} \text{m}^3 \text{kg}^{-1}
 \text{s}^{-2}$ es la constante de gravitación universal
-(Fig.~\ref{fig:potencial-gravitatorio}a).
-Aplicando la segunda Ley de Newton, se deduce que la masa $m_p$ siente una
+(Fig.~\ref{fig:potencial-gravitatorio}a) y $\left\lVert \cdot \right\rVert$
+representa la norma L$_2$.
+Aplicando la segunda Ley de Newton, se deduce que la masa $m_p$ experimenta una
 aceleración gravitatoria $\mathbf{g}$:
-
+%
 \begin{equation}
     \mathbf{g} =
-        - \frac{G m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}).
+        - \frac{G m}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        (\mathbf{p} - \mathbf{q}).
     \label{eq:aceleracion-newton}
 \end{equation}
 
@@ -30,35 +34,37 @@ podemos reescribir la ecuación \ref{eq:aceleracion-newton}, pero ahora
 resignificándola como la aceleración gravitatoria que sentiría cualquier
 partícula localizada en un punto $\mathbf{p}$ debido a la presencia de la
 partícula $m$:
-
+%
 \begin{equation}
     \mathbf{g}(\mathbf{p}) =
-        - \frac{G m}{|\mathbf{p} - \mathbf{q}|^3} (\mathbf{p} - \mathbf{q}).
+        - \frac{G m}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        (\mathbf{p} - \mathbf{q}).
 \end{equation}
 
 Se puede demostrar que la atracción gravitatoria $\mathbf{g}$ define un campo
 irrotacional, es decir:
-
+%
 \begin{equation}
     \nabla \times \mathbf{g} = 0.
 \end{equation}
-
-\noindent Por ende es posible definir un potencial escalar $V$ al que
+%
+Por ende es posible definir un potencial escalar $V$ al que
 denominaremos \emph{potencial gravitatorio}:
-
+%
 \begin{equation}
     \mathbf{g}(\mathbf{p}) = + \nabla V(\mathbf{p}),
     \label{eq:potencial-gravitatorio-definicion}
 \end{equation}
-
-\noindent donde
-
+%
+donde
+%
 \begin{equation}
-    V(\mathbf{p}) = G \frac{m}{|\mathbf{p} - \mathbf{q}|}.
+    V(\mathbf{p}) =
+      G \frac{m}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}.
     \label{eq:potencial-gravitatorio-particula}
 \end{equation}
-
-\noindent Vale la pena notar que en la ecuación
+%
+Vale la pena notar que en la ecuación
 \ref{eq:potencial-gravitatorio-definicion} se ha aplicado la convención de
 signo positivo para definir el potencial $V$, mayormente utilizada en la
 literatura sobre Geofísica y Geodesia
@@ -82,33 +88,36 @@ literatura sobre Geofísica y Geodesia
 Partiendo de que un diferencial de masa $\diff m$ ubicado en $\mathbf{q}$
 genera un potencial gravitatorio $\diff V$ en cualquier punto $\mathbf{p}$
 (Fig.~\ref{fig:potencial-gravitatorio}b):
-
+%
 \begin{equation}
-    \diff V(\mathbf{p}) = \frac{G}{|\mathbf{p} - \mathbf{q}|} \diff m,
+    \diff V(\mathbf{p}) = \frac{G}{\left\lVert \mathbf{p} - \mathbf{q}
+        \right\rVert} \diff m,
 \end{equation}
-
-\noindent el potencial gravitatorio generado por una distribución de masa
+%
+el potencial gravitatorio generado por una distribución de masa
 $\Omega$ puede calcularse integrando los diferenciales de masa que lo componen:
-
+%
 \begin{equation}
     V(\mathbf{p}) =
-        G \int\limits_\Omega \frac{\diff m}{|\mathbf{p} - \mathbf{q}|} .
+        G \int\limits_\Omega \frac{\diff m}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert} .
 \end{equation}
 
 Si reescribimos los diferenciales de masa como
-
+%
 \begin{equation}
     \diff m = \rho(\mathbf{q}) \diff v,
 \end{equation}
-
-\noindent donde $\rho(\mathbf{q})$ es la densidad de masa de la distribución
+%
+donde $\rho(\mathbf{q})$ es la densidad de masa de la distribución
 $\Omega$ en el punto $\mathbf{q}$ y $\diff v$ es el diferencial de volumen,
 el potencial se puede expresar como:
-
+%
 \begin{equation}
     V(\mathbf{p}) =
         G \int\limits_\Omega
-        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|} \diff v.
+        \frac{\rho(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert} \diff v.
     \label{eq:potencial-gravitatorio-integral}
 \end{equation}
 
@@ -124,7 +133,7 @@ Si definimos un sistema de ejes Cartesianos en el cual el punto $\mathbf{p}
 = (x, y, z)$, las componentes de la aceleración en cada una de las direcciones
 del sistema quedan expresadas
 como:
-
+%
 \begin{equation}
     g_i(\mathbf{p}) = \frac{\partial V(\mathbf{p})}{\partial i}, \,\,
         \forall i \in \{x, y, z\}.
@@ -139,29 +148,32 @@ referirse al mismo como el \emph{gradiente gravitatorio}.
 Reemplazando la ecuación~\ref{eq:potencial-gravitatorio-integral}
 en~\ref{eq:componentes-aceleracion-gravitatoria}, las componentes del gradiente
 gravitatorio pueden expresarse como:
-
+%
 \begin{align}
     g_x(\mathbf{p}) &=
         - G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{(x - x')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
+        \frac{(x - x')}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        \diff v,
     \label{eq:gx-integral}
     \\
     g_y(\mathbf{p}) &=
         - G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{(y - y')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
+        \frac{(y - y')}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        \diff v,
     \label{eq:gy-integral}
     \\
     g_z(\mathbf{p}) &=
         - G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{(z - z')}{|\mathbf{p} - \mathbf{q}|^3} \diff v,
+        \frac{(z - z')}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
+        \diff v,
     \label{eq:gz-integral}
 \end{align}
-
-\noindent donde $\mathbf{q} = (x', y', z')$.
+%
+donde $\mathbf{q} = (x', y', z')$.
 
 Las segundas derivadas del potencial gravitatorio definen el \emph{tensor del
 gradiente gravitatorio}, y sus componentes pueden expresarse como:
-
+%
 \begin{equation}
     g_{ij}(\mathbf{p}) =
         \frac{\partial^2 V(\mathbf{p})}{\partial i \partial j}, \,\,
@@ -172,13 +184,13 @@ gradiente gravitatorio}, y sus componentes pueden expresarse como:
 Reemplazando la ecuación \ref{eq:potencial-gravitatorio-integral}, podemos
 expresar las componentes diagonales del tensor de la siguiente manera
 \citep{grombein2013}:
-
+%
 \begin{align}
     g_{xx}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
         \left[
-        \frac{3(x - x')^2}{|\mathbf{p} - \mathbf{q}|^5}
-        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{3(x - x')^2}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5}
+        - \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \right]
         \diff v,
     \label{eq:gxx-integral}
@@ -186,8 +198,8 @@ expresar las componentes diagonales del tensor de la siguiente manera
     g_{yy}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
         \left[
-        \frac{3(y - y')^2}{|\mathbf{p} - \mathbf{q}|^5}
-        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{3(y - y')^2}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5}
+        - \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \right]
         \diff v,
     \label{eq:gyy-integral}
@@ -195,70 +207,82 @@ expresar las componentes diagonales del tensor de la siguiente manera
     g_{zz}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
         \left[
-        \frac{3(z - z')^2}{|\mathbf{p} - \mathbf{q}|^5}
-        - \frac{1}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{3(z - z')^2}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5}
+        - \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \right]
         \diff v,
     \label{eq:gzz-integral}
 \end{align}
-
-\noindent mientras que las componentes no diagonales pueden expresarse como:
-
+%
+mientras que las componentes no diagonales pueden expresarse como:
+%
 \begin{align}
     g_{xy}(\mathbf{p}) =
     g_{yx}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{3(x - x')(y - y')}{|\mathbf{p} - \mathbf{q}|^5}
+        \frac{
+            3(x - x')(y - y')
+        }{
+            \left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5
+        }
         \diff v,
     \label{eq:gxy-integral}
     \\
     g_{xz}(\mathbf{p}) =
     g_{zx}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{3(x - x')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
+        \frac{
+            3(x - x')(z - z')
+        }{
+            \left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5
+        }
         \diff v,
     \label{eq:gxz-integral}
     \\
     g_{yz}(\mathbf{p}) =
     g_{zy}(\mathbf{p}) &=
         G \int\limits_\Omega \rho(\mathbf{q})
-        \frac{3(y - y')(z - z')}{|\mathbf{p} - \mathbf{q}|^5}
+        \frac{
+            3(y - y')(z - z')
+        }{
+            \left\lVert \mathbf{p} - \mathbf{q} \right\rVert^5
+        }
         \diff v.
     \label{eq:gyz-integral}
 \end{align}
 
 A partir de las ecuaciones~\ref{eq:gxx-integral}--\ref{eq:gzz-integral} podemos
 calcular el Laplaciano del potencial gravitatorio:
-
+%
 \begin{equation}
     \nabla^2 V(\mathbf{p}) =
         \frac{\partial^2 V}{\partial x^2}
         + \frac{\partial^2 V}{\partial y^2}
         + \frac{\partial^2 V}{\partial z^2},
 \end{equation}
-
-\noindent Dado que las tres expresiones se cancelan mutuamente
+%
+Dado que las tres expresiones se cancelan mutuamente
 \citep{blakely1995}, podemos concluir que cualquier potencial gravitatorio es
-un \emph{campo harmónico}
-
+un \emph{campo armónico}
+%
 \begin{equation}
     \nabla^2 V(\mathbf{p}) = 0
     \label{eq:potencial-laplace}
 \end{equation}
-
-\noindent para cualquier punto de observación $\mathbf{p}$ fuera de la
+%
+para cualquier punto de observación $\mathbf{p}$ fuera de la
 distribución de masa $\Omega$.
 
 Vale notar que la ecuación de Laplace \ref{eq:potencial-laplace} es válida
 solo para regiones libres de masas, y representa un caso particular de la
 ecuación de Poisson \citep{blakely1995}:
-
+%
 \begin{equation}
     \nabla^2 V(\mathbf{p}) = -4\pi G \, \rho(\mathbf{p}),
     \label{eq:potencial-poisson}
 \end{equation}
-
-\noindent válida para cualquier punto de observación $\mathbf{p}$.
+%
+válida para cualquier punto de observación $\mathbf{p}$.
 
 % =============================================================================
 
@@ -285,47 +309,48 @@ esféricos o \emph{tesseroides}.
 
 La distribución de densidades de una masa puntual puede expresarse
 sencillamente mediante una Delta de Dirac \citep{vladimirov1979}:
-
+%
 \begin{equation}
     \rho(\mathbf{q}) = m \, \delta(\mathbf{q} - \mathbf{q'}),
 \end{equation}
-
-\noindent donde $\mathbf{q}$ y $m$ son la posición y la masa de la partícula,
+%
+donde $\mathbf{q}$ y $m$ son la posición y la masa de la partícula,
 respectivamente.
 Reemplazando esta expresión en la
 ecuación~\ref{eq:potencial-gravitatorio-integral}, obtenemos el potencial
 gravitatorio generado por una partícula:
-
+%
 \begin{equation}
     V(\mathbf{p}) =
         G \int\limits_\Omega
-        m \frac{\delta(\mathbf{q} - \mathbf{q'})}{|\mathbf{p} - \mathbf{q'}|}
+        m \frac{\delta(\mathbf{q} - \mathbf{q'})}{\left\lVert \mathbf{p}
+            - \mathbf{q'} \right\rVert}
         \diff v =
-        \frac{G m}{|\mathbf{p} - \mathbf{q}|},
+        \frac{G m}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert},
     \label{eq:potencial-masa-puntual}
 \end{equation}
-
-\noindent de acuerdo con la expresión del potencial de la
+%
+de acuerdo con la expresión del potencial de la
 ecuación~\ref{eq:potencial-gravitatorio-particula}.
 
 Realizando el mismo reemplazo en las ecuaciones correspondientes a las
 componentes del gradiente (ecs.~\ref{eq:gx-integral}--\ref{eq:gz-integral})
 arribamos a las siguientes expresiones:
-
+%
 \begin{align}
     g_x(\mathbf{p}) &=
         - G m
-        \frac{x - x'}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{x - x'}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gx-particula}
     \\
     g_y(\mathbf{p}) &=
         - G m
-        \frac{y - y'}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{y - y'}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gy-particula}
     \\
     g_z(\mathbf{p}) &=
         - G m
-        \frac{z - z'}{|\mathbf{p} - \mathbf{q}|^3}.
+        \frac{z - z'}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}.
     \label{eq:gz-particula}
 \end{align}
 
@@ -346,9 +371,9 @@ $\mathbf{q} = (x', y', z')$ y el punto de observación por el vector
 $\mathbf{p} = (x, y, z)$ definidos en el mismo sistema de ejes Cartesianos, el
 módulo de
 $\mathbf{p} - \mathbf{q}$ se calcula sencillamente bajo la norma L$_2$:
-
+%
 \begin{equation}
-    | \mathbf{p} - \mathbf{q} | = \sqrt{
+    \left\lVert  \mathbf{p} - \mathbf{q}  \right\rVert = \sqrt{
         (x - x')^2 + (y - y')^2 + (z - z')^2
     }.
 \end{equation}
@@ -369,7 +394,7 @@ posición \emph{latitudinal} (Fig.~\ref{fig:spherical-coordinates}).
 Cualquier punto dado por las coordenadas esféricas $(r, \lambda, \phi)$ se
 puede expresar en coordenadas Cartesianas geocéntricas bajo las siguientes
 relaciones:
-
+%
 \begin{equation}
     \begin{cases}
         X = r \cos\lambda \cos{\phi} \\
@@ -377,8 +402,8 @@ relaciones:
         Z = r \sin{\phi},
     \end{cases}
 \end{equation}
-
-\noindent donde $r \in [0, \infty)$, $\lambda \in (-\pi, \pi]$ y
+%
+donde $r \in [0, \infty)$, $\lambda \in (-\pi, \pi]$ y
 $\phi \in [-\pi/2, \pi/2]$.
 
 \begin{figure}[t]
@@ -409,17 +434,17 @@ Considerando que los vectores $\mathbf{p}$ y $\mathbf{q}$ vienen definidos por
 las coordenadas esféricas $(r, \lambda, \phi)$ y $(r', \lambda', \phi')$,
 respectivamente, la distancia Euclidiana entre ellos puede expresarse como
 \citep{grombein2013}:
-
+%
 \begin{equation}
-    |\mathbf{p} - \mathbf{q}| = \sqrt{
+    \left\lVert \mathbf{p} - \mathbf{q} \right\rVert = \sqrt{
         r^2 + r'^2 - 2rr'\cos\psi
     },
     \label{eq:distance-spherical}
 \end{equation}
-
-\noindent donde $\psi$ es el ángulo que describen los vectores $\mathbf{p}$
+%
+donde $\psi$ es el ángulo que describen los vectores $\mathbf{p}$
 y $\mathbf{q}$:
-
+%
 \begin{equation}
     \cos \psi =
         \sin \phi \sin \phi' + \cos \phi \cos \phi' \cos(\lambda - \lambda').
@@ -436,7 +461,7 @@ se orienta en la dirección longitudinal (Este), $y$ en la dirección latitudina
 
 Los numeradores de las ecuaciones~\ref{eq:gx-particula}--\ref{eq:gz-particula}
 pueden expresarse en términos de las coordenadas esféricas como:
-
+%
 \begin{align}
     \Delta x &= - (x - x') = r' \sin\psi \cos\alpha
     \label{eq:delta-x-raw}
@@ -447,22 +472,22 @@ pueden expresarse en términos de las coordenadas esféricas como:
     \Delta z &= - (z - z') = r'\cos\psi - r,
     \label{eq:delta-z-raw}
 \end{align}
-
-\noindent donde $\alpha$ es el ángulo azimutal del vector
+%
+donde $\alpha$ es el ángulo azimutal del vector
 $\mathbf{q} - \mathbf{p}$ sobre el sistema de coordenadas \emph{locales}.
 Haciendo uso de las siguientes relaciones de trigonometría esférica
 \citep[][p.~113]{heiskanen1967}:
-
+%
 \begin{align}
     \sin\psi \cos\alpha &=
         \cos\phi \sin\phi' - \sin\phi \cos\phi' \cos(\lambda - \lambda') \\
     \sin\psi \sin\alpha &=
         \cos\phi' \sin(\lambda - \lambda'),
 \end{align}
-
-\noindent podemos expresar las ecuaciones~\ref{eq:delta-x-raw},
+%
+podemos expresar las ecuaciones~\ref{eq:delta-x-raw},
 \ref{eq:delta-y-raw} y \ref{eq:delta-z-raw} como \citep{grombein2013}:
-
+%
 \begin{align}
     \Delta x &= r' \sin\psi \left[
         \cos\phi \sin\phi' - \sin\phi \cos\phi' \cos(\lambda - \lambda')
@@ -478,25 +503,25 @@ Haciendo uso de las siguientes relaciones de trigonometría esférica
 
 Las componentes del gradiente del potencial gravitatorio generado por una masa
 puntual en coordenadas esféricas quedan determinadas de la siguiente manera:
-
+%
 \begin{align}
     g_x(\mathbf{p}) &=
         G m
-        \frac{\Delta x}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{\Delta x}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gx-particula-spherical}
     \\
     g_y(\mathbf{p}) &=
         G m
-        \frac{\Delta y}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{\Delta y}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gy-particula-spherical}
     \\
     g_z(\mathbf{p}) &=
         G m
-        \frac{\Delta z}{|\mathbf{p} - \mathbf{q}|^3},
+        \frac{\Delta z}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3},
     \label{eq:gz-particula-spherical}
 \end{align}
-
-\noindent haciendo uso de las ecuaciones~\ref{eq:distance-spherical},
+%
+haciendo uso de las ecuaciones~\ref{eq:distance-spherical},
 \ref{eq:cosphi}, \ref{eq:delta-x}, \ref{eq:delta-y} y \ref{eq:delta-z}.
 
 
@@ -520,20 +545,21 @@ El potencial gravitatorio que genera el prisma sobre un punto de observación
 $\mathbf{p} = (X, Y, Z)$ definido en el sistema ${X, Y, Z}$ se puede
 calcular mediante la ecuación~\ref{eq:potencial-gravitatorio-integral},
 reemplazando el dominio de integración:
-
+%
 \begin{equation}
     V(\mathbf{p}) =
     G \rho
     \int\limits_{X_1}^{X_2}
     \int\limits_{Y_1}^{Y_2}
     \int\limits_{Z_1}^{Z_2}
-    \frac{\diff X' \diff Y' \diff Z'}{|\mathbf{p} - \mathbf{q}|},
+    \frac{\diff X' \diff Y' \diff Z'}{\left\lVert \mathbf{p} - \mathbf{q}
+        \right\rVert},
 \end{equation}
-
-\noindent donde
-
+%
+donde
+%
 \begin{equation}
-    |\mathbf{p} - \mathbf{q}| = \sqrt{
+    \left\lVert \mathbf{p} - \mathbf{q} \right\rVert = \sqrt{
         (X - X')^2 + (Y - Y')^2 + (Z - Z')^2
     }.
 \end{equation}
@@ -557,7 +583,7 @@ observación $\mathbf{p}$ y sus ejes son paralelos a los del sistema $\{X, Y,
 Z\}$, respectivamente (Fig.~\ref{fig:rectangular-prism}).
 Los vértices del prisma vendrán dados por las coordenadas
 $x_1, x_2, y_1, y_2, z_1, z_2$ en el nuevo sistema de referencia, es decir:
-
+%
 \begin{equation}
     \begin{aligned}
         x_1 &= X_1 - X, & x_2 &= X_2 - X, \\
@@ -568,7 +594,7 @@ $x_1, x_2, y_1, y_2, z_1, z_2$ en el nuevo sistema de referencia, es decir:
 
 Bajo este nuevo sistema de referencia, el potencial gravitatorio se puede
 expresar como:
-
+%
 \begin{equation}
     V(\mathbf{p}) =
     G \rho
@@ -580,7 +606,7 @@ expresar como:
 
 El resultado de esta integración posee la siguiente forma
 \citep{nagy2000,nagy2002}:
-
+%
 \begin{equation}
     \begin{split}
         V(\mathbf{p}) =
@@ -598,9 +624,9 @@ El resultado de esta integración posee la siguiente forma
     \end{split}
     \label{eq:potencial-prismas-analitico}
 \end{equation}
-
-\noindent donde
-
+%
+donde
+%
 \begin{equation}
     l = \sqrt{x^2 + y^2 + z^2}.
 \end{equation}
@@ -617,14 +643,14 @@ Para solucionar esto, es necesario reemplazar aquellos términos que no pueden
 ser evaluados por sus límites cuando $(x, y, z) \rightarrow (0, 0, 0)$
 \citep{nagy2000}.
 Por ejemplo:
-
+%
 \begin{equation}
     \lim_{(x, y, z)\rightarrow (0, 0, 0)} xz \ln(z + r) = 0.
 \end{equation}
 
 Una solución alternativa es reemplazar la función $\ln$ por una nueva función
 $\safelog(x)$ definida de la siguiente manera:
-
+%
 \begin{equation}
     \safelog(x) =
     \begin{cases}
@@ -633,8 +659,8 @@ $\safelog(x)$ definida de la siguiente manera:
     \end{cases}
     \label{eq:safe_log}
 \end{equation}
-
-\noindent donde $x_\text{umbral}$ es un valor muy pequeño del argumento de
+%
+donde $x_\text{umbral}$ es un valor muy pequeño del argumento de
 $\safelog$ a partir del cual consideramos que la función debe ser evaluada en
 su límite en cero.
 La elección de este valor dependerá de las dimensiones del problema que estamos
@@ -647,7 +673,7 @@ Por otro lado, la evaluación de la función $\arctan$ requiere ciertos cuidados
 Para que el potencial $V(\mathbf{p})$ satisfaga la ecuación de Poisson
 (ec.~\ref{eq:potencial-poisson}), es necesario utilizar la siguiente forma de
 la función $\safearctan(y, x)$ \citep{fukushima2020}:
-
+%
 \begin{equation}
     \safearctan(y, x) =
     \begin{cases}
@@ -663,7 +689,7 @@ Haciendo uso de las funciones $\safelog$ y $\safearctan$ definidas en las
 ecuaciones~\ref{eq:safe_log} y \ref{eq:safe_arctan}, respectivamente, el
 potencial gravitatorio generado por un prisma rectangular en cualquier punto de
 observación $\mathbf{p}$ puede ser numéricamente calculado mediante:
-
+%
 \begin{equation}
     \begin{split}
         V(\mathbf{p}) =
@@ -687,7 +713,7 @@ observación $\mathbf{p}$ puede ser numéricamente calculado mediante:
 De manera análoga, podemos calcular las componentes del gradiente del potencial
 gravitatorio generado por un prisma rectangular haciendo uso de las siguientes
 expresiones \citep{nagy2000,nagy2002}:
-
+%
 \begin{align}
     g_x(\mathbf{p}) =&
         \Big[
@@ -746,42 +772,42 @@ coordenadas esféricas $r$, $\lambda$ y $\phi$, se puede obtener aplicando estos
 límites de integración a la ecuación~\ref{eq:potencial-gravitatorio-integral},
 quedando expresado como la siguiente integral volumétrica
 \citep{grombein2013,uieda2016}:
-
+%
 \begin{equation}
     V(\mathbf{p}) = G \rho
         \int\limits_{r_1}^{r_2}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
-        \frac{\kappa}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\kappa}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
         \diff r' \diff \lambda' \diff \phi',
     \label{eq:potencial-tesseroide}
 \end{equation}
-
-\noindent donde
-
+%
+donde
+%
 \begin{equation}
     \kappa = {r'}^2 \cos \phi',
     \label{eq:kappa}
 \end{equation}
-
-\noindent la distancia $|\mathbf{p} - \mathbf{q}|$ viene dada por la
-ecuación~\ref{eq:distance-spherical} y las coordenadas de integración $r'$,
-$\lambda'$ y $\phi'$ representan la posición $\mathbf{q}$ de cada volumen
-infinitesimal del tesseroide.
+%
+la distancia $\left\lVert \mathbf{p} - \mathbf{q} \right\rVert$ viene
+dada por la ecuación~\ref{eq:distance-spherical} y las coordenadas de
+integración $r'$, $\lambda'$ y $\phi'$ representan la posición $\mathbf{q}$ de
+cada volumen infinitesimal del tesseroide.
 
 Reemplazando los límites de integración de las ecuaciones \ref{eq:gx-integral},
 \ref{eq:gy-integral} y \ref{eq:gz-integral} por los del tesseroide, podemos
 obtener las componentes del gradiente del potencial gravitatorio generado por
 el tesseroide en el punto de observación $\mathbf{p}$ con respecto al
 sistema de coordenadas \emph{local}:
-
+%
 \begin{align}
     g_x(\mathbf{p}) &=
         G \rho
         \int\limits_{r_1}^{r_2}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
-        \frac{\Delta x}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{\Delta x}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \kappa
         \diff r' \diff \lambda' \diff \phi',
     \label{eq:gx-tesseroide}
@@ -791,7 +817,7 @@ sistema de coordenadas \emph{local}:
         \int\limits_{r_1}^{r_2}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
-        \frac{\Delta y}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{\Delta y}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \kappa
         \diff r' \diff \lambda' \diff \phi',
     \label{eq:gy-tesseroide}
@@ -801,13 +827,13 @@ sistema de coordenadas \emph{local}:
         \int\limits_{r_1}^{r_2}
         \int\limits_{\lambda_1}^{\lambda_2}
         \int\limits_{\phi_1}^{\phi_2}
-        \frac{\Delta z}{|\mathbf{p} - \mathbf{q}|^3}
+        \frac{\Delta z}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert^3}
         \kappa
         \diff r' \diff \lambda' \diff \phi',
     \label{eq:gz-tesseroide}
 \end{align}
-
-\noindent donde $\Delta x$, $\Delta y$ y $\Delta z$ vienen dadas por las
+%
+donde $\Delta x$, $\Delta y$ y $\Delta z$ vienen dadas por las
 ecuaciones~\ref{eq:delta-x}, \ref{eq:delta-y} y \ref{eq:delta-z},
 respectivamente.
 
@@ -823,29 +849,39 @@ por las cuales a lo largo de esta Tesis abordaremos la estrategia de la
 \ac{GLQ}.
 
 La \Ac{GLQ} consiste en la aproximación de una integral por una suma ponderada
-del integrando \citep[][p.~390]{hildebrand1987}:
-
+del integrando evaluado en determinadas abscisas
+\citep[][p.~390]{hildebrand1987}:
+%
 \begin{equation}
     \int\limits_{-1}^1 f(x) \diff x \approx
         \sum\limits_{i=1}^{N} W_i f(x_i),
 \end{equation}
-
-\noindent donde $N$ es el orden de la cuadratura,
+%
+donde $N$ es el orden de la cuadratura,
 $x_i$ corresponden a las raíces del polinomio de Legendre $P_N(x)$ de grado
 $N$, y $W_i$ son los pesos ponderados de cada término:
-
+%
 \begin{equation}
     W_i = \frac{2}{(1 - x_i^2) \Big[ P'_N(x_i) \Big]^2}.
 \end{equation}
-
-\noindent El polinomio de Legendre $P_N(x)$ y su primera derivada $P'_N(x)$ se
-pueden obtener mediante relaciones de recurrencia \citep[][p.~330]{hildebrand1987}:
-
+%
+El polinomio de Legendre $P_N(x)$ se puede obtener mediante
+relaciones de recurrencia \citep[][p.~330]{hildebrand1987}:
+%
 \begin{align}
     &P_0(x) = 1 \\
     &P_1(x) = x \\
-    &P_{m + 1}(x) = \frac{2m + 1}{m + 1} x P_m(x) - \frac{m}{m + 1}P_{m-1}(x).
+    &P_{N + 1}(x) = \frac{2N + 1}{N + 1} x P_N(x) - \frac{N}{N + 1}P_{N-1}(x).
 \end{align}
+
+\noindent
+Mientras que los valores que asume su primera derivada $P'_N(x)$ en las raíces
+$x_i$ se pueden obtener gracias a la siguiente relación
+\citep[][p.~391]{hildebrand1987}:
+%
+\begin{equation}
+    P'_N(x_i) = \frac{N}{(1 - x_i^2)} P_{N - 1}(x_i).
+\end{equation}
 
 La Tabla~\ref{tab:legendre-roots} muestra las raíces de los primeros polinomios
 de Legendre y sus respectivos pesos ponderados.
@@ -872,17 +908,17 @@ de Legendre y sus respectivos pesos ponderados.
 \end{table}
 
 En el caso de que la integral posea límites de integración distintos a
-$[-1, 1]$, podemos escalar los nodos y aplicar la \ac{GLQ} de la siguiente
+$(-1, 1)$, podemos escalar los nodos y aplicar la \ac{GLQ} de la siguiente
 forma:
-
+%
 \begin{equation}
     \int\limits_a^b f(x) \diff x \approx
         \frac{b - a}{2} \sum\limits_{i=1}^{N}
         W_i f(x_i^s),
 \end{equation}
-
-\noindent donde
-
+%
+donde
+%
 \begin{equation}
     x_i^s = \frac{b - a}{2} x_i + \frac{b + a}{2}.
 \end{equation}
@@ -891,7 +927,7 @@ Haciendo uso de la \ac{GLQ}, podemos aproximar las integrales volumétricas de
 las ecuaciones~\ref{eq:potencial-tesseroide}, \ref{eq:gx-tesseroide},
 \ref{eq:gy-tesseroide}, \ref{eq:gz-tesseroide} de la siguiente manera
 \citep{asgharzadeh2007,uieda2016}:
-
+%
 \begin{equation}
     \int\limits_{r_1}^{r_2}
     \int\limits_{\lambda_1}^{\lambda_2}
@@ -908,43 +944,42 @@ las ecuaciones~\ref{eq:potencial-tesseroide}, \ref{eq:gx-tesseroide},
     f(r_i, \lambda_j, \phi_j),
     \label{eq:glq-integral-volumetrica}
 \end{equation}
-
-\noindent donde
-
+%
+donde
+%
 \begin{equation}
     A = \frac{
         (r_2 - r_1) (\lambda_2 - \lambda_1) (\phi_2 - \phi_1)
     }{8},
     \label{eq:glq-resize-factor}
 \end{equation}
-
-\noindent $N_r$, $N_\lambda$ y $N_\phi$ son los ordenes de la cuadratura en
+%
+$N_r$, $N_\lambda$ y $N_\phi$ son los órdenes de la cuadratura en
 cada dirección; $r_i$, $\lambda_j$ y $\phi_k$ representan los nodos escalados
 de las cuadraturas para cada dirección; y $W_i^r$, $W_j^\lambda$, $W_k^\phi$
 sus respectivos pesos ponderados.
 
 Como se puede observar en la ecuación~\ref{eq:glq-integral-volumetrica}, la
-\ac{GLQ} aproxima los campos gravitatorios de un tesseroide por los que genera
+\ac{GLQ} aproxima el campo gravitatorio de un tesseroide por el que genera
 un conjunto de masas puntuales situadas en los nodos escalados de los
 polinomios de Legendre.
 La precisión de la aproximación dependerá entonces de la cantidad de nodos
-utilizados en las sumatorias, es decir, de los ordenes de las cuadraturas.
+utilizados en las sumatorias, es decir, de los órdenes de las cuadraturas.
 Es posible entonces aumentar la precisión de la \ac{GLQ} incrementando los
-ordenes de las cuadraturas.
-Sin embargo, el aumento de los ordenes de la cuadratura incrementa la cantidad
+órdenes de las cuadraturas.
+Sin embargo, el aumento de los órdenes de la cuadratura incrementa la cantidad
 de nodos según $O(n^3)$, haciendo de esta estrategia un método muy ineficiente.
 
 \citet{ku1977} demostró que la precisión de la aproximación también depende del
 cociente entre la distancia al punto de observación y la distancia entre nodos
 adyacentes.
-Haciendo uso de esto, \citet{li2011} han propuesto un método más eficiente para
-aumentar la precisión de la aproximación manteniendo: la \emph{discretización
-adaptativa}.
-Esta consiste en mantener el orden de las cuadraturas constantes e ir
-dividiendo el tesseroide en otros tesseroides de menor tamaño según la
-distancia entre ellos y el punto de observación.
+Haciendo uso de este conocimiento, \citet{li2011} han propuesto un método más
+eficiente para aumentar la precisión de la aproximación manteniendo el orden de
+la \ac{GLQ} constante: la \emph{discretización adaptativa}.
+Esta consiste en ir dividiendo el tesseroide en otros tesseroides de menor
+tamaño según la distancia entre ellos y el punto de observación.
 De esta forma, se incrementa la cantidad de nodos en las regiones que mayor
-afectan a la precisión, obteniendo un número considerablemente menor de nodos
+afectan a la precisión, obteniéndose un número considerablemente menor de nodos
 pero manteniendo una buena precisión.
 En el Capítulo \ref{cha:tesseroids-variable-density} describiremos en detalle
 la \emph{discretización adaptativa}.
@@ -955,58 +990,61 @@ la \emph{discretización adaptativa}.
 \section{Gravedad terrestre}
 \label{sec:gravedad-terrestre}
 
-Un cuerpo en reposo situado sobre la superficie de la Tierra siente una fuerza
-resultante de la suma de la fuerza de atracción gravitatoria (debida a la masa
-del planeta) y la fuerza centrífuga, debida a la rotación del planeta sobre su
-eje y al sistema de referencia no inercial donde se encuentra dicho
-cuerpo.
-Esta fuerza genera sobre el cuerpo una aceleración $\mathbf{g}$ que
-llamaremos \emph{gravedad}, a partir de la cual podemos definir un
-\emph{campo de gravedad} $W$:
-
+Un cuerpo en reposo situado sobre la superficie de la Tierra experimenta una
+fuerza de atracción gravitatoria debida a la masa del planeta.
+Las observaciones que se realizan sobre dicho cuerpo suelen situarse sobre un
+sistema de referencia no inercial, en reposo sobre la superficie terrestre
+y rotando junto con ella.
+Esto hace necesario que debamos considerar la aceleración centrífuga que
+experimenta dicho cuerpo siendo observado desde este sistema de referencia.
+Llamaremos \emph{gravedad} al vector $\mathbf{g}$ definido como la suma
+entre la aceleración provocada por la atracción gravitatoria y la aceleración
+centrífuga.
+A partir de ella podemos definir un \emph{campo de gravedad} $W$:
+%
 \begin{equation}
     \nabla W(\mathbf{p}) = +\mathbf{g}(\mathbf{p}).
     \label{eq:campo-gravedad-terrestre}
 \end{equation}
 
 El \emph{campo de gravedad} $W$ puede ser expresado como:
-
+%
 \begin{equation}
     W(\mathbf{p}) = V(\mathbf{p}) + \Phi(\mathbf{p}),
 \end{equation}
-
-\noindent donde $V(\mathbf{p})$ es el \emph{potencial gravitatorio} que genera
+%
+donde $V(\mathbf{p})$ es el \emph{potencial gravitatorio} que genera
 la Tierra sobre el punto $\mathbf{p}$
 (ecuación~\ref{eq:potencial-gravitatorio-integral}), y $\Phi(\mathbf{p})$ el
-\emph{potencial centrífugo} que siente el cuerpo situado en el punto
+\emph{potencial centrífugo} al cual se ve sometido el cuerpo situado en
 $\mathbf{p}$ debido a la rotación del planeta.
 Este último puede expresarse como:
-
+%
 \begin{equation}
     \Phi(\mathbf{p}) = \frac{1}{2} \omega^2 (X^2 + Y^2),
     \label{eq:potencial-centrifugo}
 \end{equation}
-
-\noindent donde $\omega$ es el módulo de la velocidad angular de rotación de la
+%
+donde $\omega$ es el módulo de la velocidad angular de rotación de la
 Tierra y $X$ e $Y$ son las coordenadas horizontales del punto $\mathbf{p}$ en
 un sistema de referencia Cartesiano geocéntrico
 (Fig.~\ref{fig:spherical-coordinates}).
 
-Vale notar que el potencial $W$ no es un campo harmónico, ya que no satisface
+Vale notar que el potencial $W$ no es un campo armónico, ya que no satisface
 la ecuación de Poisson (ec.~\ref{eq:potencial-poisson}). En cambio, se rige
 acorde a una \emph{ecuación de Poisson generalizada}:
-
+%
 \begin{equation}
     \nabla^2 W(\mathbf{p}) = - 4\pi G \rho(\mathbf{p}) + 2 \omega^2.
 \end{equation}
 
 Las superficies
-
+%
 \begin{equation}
     W(\mathbf{p}) = \text{const},
 \end{equation}
-
-\noindent se definen como \emph{superficies equipotenciales}.
+%
+se definen como \emph{superficies equipotenciales}.
 
 A partir de la definición del vector de \emph{gravedad}
 (ec.~\ref{eq:campo-gravedad-terrestre}), es posible deducir que
@@ -1018,27 +1056,29 @@ se definen como \emph{líneas de fuerza} o \emph{líneas de campo}
 
 La superficie equipotencial que coincide con el nivel medio del mar se define
 como el \emph{geoide}:
-
+%
 \begin{equation}
     W(\mathbf{p}) = W_0.
 \end{equation}
-
-\noindent El geoide nos permite definir la \emph{altitud ortométrica} $H$ de
+%
+El geoide nos permite definir la \emph{altitud ortométrica} $H$ de
 cualquier punto $\mathbf{p}$ como la distancia entre la superficie del geoide
-y el punto $\mathbf{p}$ medida a lo largo de la línea de fuerza que pasa por el
-mismo punto $\mathbf{p}$ (Fig.~\ref{fig:superficies-equipotenciales}).
+y $\mathbf{p}$ medida a lo largo de la línea de fuerza que pasa por dicho
+punto (Fig.~\ref{fig:superficies-equipotenciales}).
 
 
 \subsection{Gravedad normal}
 
-Las mediciones del campo gravitatorio terrestre nos permite obtener información
-acerca de las masas que componen nuestro planeta. Los valores de este campo
-presentan ligeras variaciones a lo largo de la Tierra, originadas por la
-diferentes densidades de las masas del interior del planeta. Debido a que estas
-variaciones suelen ser lo suficientemente pequeñas, es posible asociarlas a la
-presencia de \emph{cuerpos anómalos} bajo la superficie terrestre. Para poder
-identificarlos es necesario definir primero el concepto de \emph{Tierra
-normal}.
+Las mediciones del campo gravitatorio terrestre nos permiten obtener
+información acerca de las masas que componen nuestro planeta.
+Los valores de este campo presentan ligeras variaciones a lo largo de la
+Tierra, originadas por la diferentes densidades de las masas del interior del
+planeta.
+Debido a que estas variaciones suelen ser lo suficientemente pequeñas, es
+posible asociarlas a la presencia de \emph{cuerpos anómalos} bajo la superficie
+terrestre.
+Para poder identificarlos es necesario definir primero el concepto de
+\emph{Tierra normal}.
 
 En una primera aproximación podemos considerar la geometría de la Tierra como
 un elipsoide de revolución. Si bien esta aproximación no es lo suficientemente
@@ -1050,38 +1090,41 @@ equipotencial del campo de gravedad que este genera. Llamaremos $U(\mathbf{p})$
 al \emph{campo de gravedad normal}, es decir, el potencial de gravedad generado
 por el elipsoide de referencia y definimos al elipsoide de referencia como la
 siguiente superficie equipotencial:
-
+%
 \begin{equation}
     U(\mathbf{p}) = U_0 = \text{cte}.
 \end{equation}
 
 El campo de gravedad normal puede ser escrito como
-
+%
 \begin{equation}
     U(\mathbf{p}) = V_\text{el}(\mathbf{p}) + \Phi(\mathbf{p}),
 \end{equation}
-
-\noindent donde $\Phi(\mathbf{p})$ es el potencial centrífugo debido a la
+%
+donde $\Phi(\mathbf{p})$ es el potencial centrífugo debido a la
 rotación del elipsoide de revolución (ec.~\ref{eq:potencial-centrifugo})
 y $V_\text{el}(\mathbf{p})$ es el potencial gravitatorio que produce el mismo
 elipsoide.
 
 El elipsoide de referencia vendrá definido mediante los siguientes parámetros:
-
+%
 \begin{enumerate}
     \item{la forma del elipsoide, dada por los dos semiejes $a$ y $b$,}
     \item{la masa total $M$ del elipsoide, y}
     \item{la velocidad angular $\omega$.}
 \end{enumerate}
-
-\noindent A partir de ellos podemos describir la superficie del elipsoide como:
-
+%
+A partir de los dos semiejes podemos describir la superficie del
+elipsoide como:
+%
 \begin{equation}
     \frac{X^2 + Y^2}{a^2} + \frac{Z^2}{b^2} = 1
 \end{equation}
+%
+donde $X$, $Y$ y $Z$ son coordenadas Cartesianas geocéntricas.
 
-\noindent donde $X$, $Y$ y $Z$ son coordenadas Cartesianas geocéntricas.
-
+Tanto la masa del elipsoide como su velocidad angular resultarán útiles para
+definir cantidades como la gravedad normal.
 Vale notar que no resulta indispensable definir la distribución de densidad del
 elipsoide \citep[][p.~64]{heiskanen1967}.
 
@@ -1133,7 +1176,7 @@ que pasa por el punto $\mathbf{p}$ (Fig.~\ref{fig:coordenadas-geodesicas}).
 
 Definiremos el \emph{vector gravedad normal} $\boldsymbol\gamma$ como el
 gradiente del campo de gravedad normal:
-
+%
 \begin{equation}
     \boldsymbol\gamma(\mathbf{p}) = \nabla U(\mathbf{p}).
 \end{equation}
@@ -1142,19 +1185,19 @@ Vale notar que el gradiente de un campo en un punto $\mathbf{p}$ consiste en un
 vector normal a la superficie equipotencial a la cual pertenece el punto
 $\mathbf{p}$.
 De esta manera, al calcular el gradiente del campo de gravedad normal desde el
-sistema de coordenadas geodésicas podemos deducir que sólo la componente
+sistema de coordenadas geodésicas podemos deducir que solo la componente
 normal es no nula \citep[][p.~68]{heiskanen1967}, es decir:
-
-\begin{equation}
-    \gamma_\lambda =
-        \frac{\partial U}{\partial \lambda} = 0  \quad
-    \gamma_\varphi =
+%
+\begin{align}
+    \gamma_\lambda &=
+        \frac{\partial U}{\partial \lambda} = 0,  \\
+    \gamma_\varphi &=
         \frac{\partial U}{\partial \varphi} = 0.
-\end{equation}
+\end{align}
 
 Definimos la \emph{gravedad normal} como el módulo del vector de gravedad
 normal:
-
+%
 \begin{equation}
     \gamma(\mathbf{p}) = | \gamma_h(\mathbf{p}) | =
         \frac{\partial U(\mathbf{p})}{\partial h}.
@@ -1171,8 +1214,7 @@ $\mathbf{p}$.
 Existe una expresión analítica para la gravedad normal en cualquier punto
 externo al elipsoide de referencia dada por la \emph{fórmula cerrada} (del
 inglés \emph{closed-form formula}) de \citet{li2001a}:
-
-
+%
 \begin{equation}
     \gamma(\varphi, h) =
     \frac{1}{\Omega}
@@ -1187,9 +1229,9 @@ inglés \emph{closed-form formula}) de \citet{li2001a}:
     \Bigg\},
     \label{eq:normal-gravity-closed-form}
 \end{equation}
-
-\noindent donde
-
+%
+donde
+%
 \begin{align}
     E &= \sqrt{a^2 - b^2}
         \quad \text{es la \emph{excentricidad lineal}}, \\
@@ -1214,9 +1256,9 @@ inglés \emph{closed-form formula}) de \citet{li2001a}:
         }
     },
 \end{align}
-
-\noindent y
-
+%
+y
+%
 \begin{align}
     R &= \frac{{r''}^2}{E^2}, \\
     D &= \frac{{d''}^2}{E^2}, \\
@@ -1237,27 +1279,27 @@ cualquier punto exterior al mismo.
 Como caso particular, la gravedad normal en cualquier punto situado sobre la
 superficie del elipsoide de referencia ($h=0$) se puede calcular de manera
 sencilla a través de la ecuación de Somigliana \citep{heiskanen1967}:
-
+%
 \begin{equation}
     \gamma(\varphi, h=0) =
         \gamma_e
         \frac{1 + k \sin^2\varphi}{\sqrt{1 - e^2 \sin^2\varphi}};
     \label{eq:somigliana}
 \end{equation}
-
-\noindent donde
-
+%
+donde
+%
 \begin{equation}
     k = \frac{b}{a} \frac{\gamma_p}{\gamma_e} - 1;
 \end{equation}
-
-\noindent $e$ es la \emph{primera excentricidad}
-
+%
+$e$ es la \emph{primera excentricidad}
+%
 \begin{equation}
     e = \sqrt{\frac{a^2 - b^2}{a^2}};
 \end{equation}
-
-\noindent y $\gamma_e$ y $\gamma_p$ son los valores de la gravedad normal en
+%
+y $\gamma_e$ y $\gamma_p$ son los valores de la gravedad normal en
 cualquier punto del ecuador y en los polos, respectivamente
 (ver~\citealp[][p.~68--69,]{heiskanen1967} para más detalles).
 
@@ -1269,10 +1311,10 @@ anómalas en el interior de la Tierra, es necesario remover la \emph{gravedad
 normal} de la gravedad terrestre.
 Definiremos entonces al \emph{vector del disturbio de gravedad}
 $\boldsymbol\delta \mathbf{g}$ (\emph{gravity disturbance vector} en inglés)
-como la diferencia entre el vector \emph{gravedad} en el punto $\mathbf{p}$
-y el vector \emph{gravedad normal} calculado en el mismo punto $\mathbf{p}$
+como la diferencia entre el vector \emph{gravedad} y el vector \emph{gravedad
+normal} calculados en el punto $\mathbf{p}$
 (Fig.~\ref{fig:superficies-equipotenciales}):
-
+%
 \begin{equation}
     \boldsymbol\delta \mathbf{g}(\mathbf{p}) =
         \mathbf{g}(\mathbf{p}) - \boldsymbol\gamma(\mathbf{p}).
@@ -1317,7 +1359,7 @@ $\delta g$ (\emph{gravity disturbance} en inglés), definido como la diferencia
 entre el módulo del vector gravedad y el módulo del vector gravedad normal en
 el mismo punto $\mathbf{p}$
 \citep{heiskanen1967,hofmannwellenhof2005,oliveira2018}:
-
+%
 \begin{equation}
     \delta g(\mathbf{p}) =
         g(\mathbf{p}) - \gamma(\mathbf{p}).
@@ -1350,14 +1392,16 @@ Vamos a asumir que el potencial $V$ toma un valor constante $V_S$ en
 $\partial S$.
 Aplicando la segunda identidad de Green \citep[][p.~23]{blakely1995} podemos
 obtener:
-
+%
 \begin{equation}
     \begin{split}
     \int\limits_S
         \Bigg[
             V(\mathbf{q}) \,
-            \nabla^2 \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
-            - \frac{1}{|\mathbf{p} - \mathbf{q}|}  \nabla^2 V(\mathbf{q})
+            \nabla^2 \left( \frac{1}{\left\lVert \mathbf{p} - \mathbf{q}
+                \right\rVert} \right)
+            - \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
+            \nabla^2 V(\mathbf{q})
         \Bigg]
     \diff v
     = \\
@@ -1365,74 +1409,82 @@ obtener:
         \Bigg[
             V(\mathbf{q}) \,
             \frac{\partial}{\partial n}
-            \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
+            \left(
+                \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
+            \right)
             -
-            \frac{1}{|\mathbf{p} - \mathbf{q}|}
+            \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
             &\frac{\partial V}{\partial n}
         \Bigg]
     \diff s,
     \end{split}
 \end{equation}
-
-\noindent donde $\mathbf{q}$ es la variable de integración en ambos miembros
+%
+donde $\mathbf{q}$ es la variable de integración en ambos miembros
 y $n$ indica la dirección normal a la superficie $\partial S$.
 
 El primer término de la integral volumétrica es nulo, ya que la inversa de
-$|\mathbf{p} - \mathbf{q}|$ es un campo harmónico.
+$\left\lVert \mathbf{p} - \mathbf{q} \right\rVert$ es un campo armónico.
 Por otro lado, el valor de $V(\mathbf{q})$ en el primer término de la integral
 de superficie es constante, ya que el dominio de integración $\partial S$ es
 una superficie equipotencial de $V$.
 Por lo tanto, la ecuación anterior puede expresarse de forma más sencilla como:
-
+%
 \begin{equation}
     - \int\limits_S
-        \frac{\nabla^2 V(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\nabla^2 V(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff v
     =
     V_S
     \oint\limits_{\partial S}
         \frac{\partial}{\partial n}
-        \left( \frac{1}{|\mathbf{p} - \mathbf{q}|} \right)
+        \left(
+            \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
+        \right)
     \diff s
     - \oint\limits_{\partial S}
-        \frac{1}{|\mathbf{p} - \mathbf{q}|}
+        \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
         \frac{\partial V}{\partial n}
     \diff s.
 \end{equation}
 
 Uno de los corolarios de la primera identidad de Green establece que la
-integral de la derivada normal de una función harmónica  sobre una superficie
+integral de la derivada normal de una función armónica  sobre una superficie
 cerrada es nula \citep[][p.~20]{blakely1995}. Por ende podemos anular la
 primera integral de superficie de la ecuación anterior:
-
+%
 \begin{equation}
     - \int\limits_S
-        \frac{\nabla^2 V(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\nabla^2 V(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff v
     =
     - \oint\limits_{\partial S}
-        \frac{1}{|\mathbf{p} - \mathbf{q}|}
+        \frac{1}{\left\lVert \mathbf{p} - \mathbf{q} \right\rVert}
         \frac{\partial V}{\partial n}
     \diff s,
 \end{equation}
 
 Si aplicamos la ecuación de Poisson (ec.~\ref{eq:potencial-poisson})
 y definimos una densidad superficial $\sigma$:
-
+%
 \begin{equation}
     \sigma(\mathbf{q}) =
     \frac{-1}{4\pi G} \frac{\partial V}{\partial n},
 \end{equation}
-
-\noindent podemos expresar la ecuación anterior como:
-
+%
+podemos expresar la ecuación anterior como:
+%
 \begin{equation}
     G \int\limits_S
-        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\rho(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff v
     =
     G \oint\limits_{\partial S}
-        \frac{\sigma(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\sigma(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff s.
 \end{equation}
 
@@ -1452,15 +1504,17 @@ Considerando que la densidad $\rho$ es nula fuera de la región $\Omega$,
 podemos simplificar el dominio de integración de la integral volumétrica.
 De esta manera, ambos términos equivalen al valor que asume el potencial $V$ en
 el punto $\mathbf{p}$ (ec.~\ref{eq:potencial-gravitatorio-integral}):
-
+%
 \begin{equation}
     V(\mathbf{p}) =
     G \int\limits_\Omega
-        \frac{\rho(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\rho(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff v
     =
     G \oint\limits_{\partial S}
-        \frac{\sigma(\mathbf{q})}{|\mathbf{p} - \mathbf{q}|}
+        \frac{\sigma(\mathbf{q})}{\left\lVert \mathbf{p} - \mathbf{q}
+            \right\rVert}
     \diff s.
 \end{equation}
 
@@ -1471,7 +1525,7 @@ indistinguible del que genera una masa superficial (o una capa delgada)
 distribuida sobre una superficie equipotencial \citep[][p.~62]{blakely1995}.
 
 Esta propiedad de los campos gravitatorios nos permite desarrollar metodologías
-de interpolación de campos harmónicos basados en el modelado de distribuciones
+de interpolación de campos armónicos basados en el modelado de distribuciones
 de masas arbitrarias, sin necesidad de que guarden relación con las geometrías
 y densidades de los cuerpos que generan los campos observados.
 Además, las fuentes equivalentes de Green dejan en evidencia la no unicidad de

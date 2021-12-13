@@ -48,7 +48,7 @@ fundamentales, así como para desarrollar herramientas que faciliten la
 resolución de estos problemas.
 
 Los movimientos de Software Libre y de código abierto que comenzaron
-a proliferarse durante las décadas de los 80 y 90 tuvieron una fuerte raíz en
+a proliferar durante las décadas de los 80 y 90 tuvieron una fuerte raíz en
 el ámbito científico.
 Muchos científicos y científicas comenzaron a desarrollar herramientas
 computacionales a partir de necesidades propias de sus investigaciones que
@@ -157,18 +157,17 @@ reimplementaría en Python.
 En paralelo, y como proyecto final de su Bachillerato, Leonardo Uieda realiza
 una implementación en Python del algoritmo para el cálculo de campos
 gravitacionales de tesseroides mediante la \ac{GLQ}.
-Luego de reescribirlo en C, este proyecto deriva en el lanzamiento del software
-Tesseroids \citep{uieda2016} que ha sido ampliamente utilizado por la comunidad
-geocientista.
+Luego de ser reescrito en C, este proyecto deriva en el lanzamiento del
+software Tesseroids \citep{uieda2016} que ha sido ampliamente utilizado por la
+comunidad geocientista.
 
-El éxito de estos proyectos los llevó a aspirar a una idea mucho más
-ambiciosa: desarrollar un software de código abierto para modelar el planeta
-Tierra de
-forma completa.
+El éxito de estos proyectos llevó a estos estudiantes a aspirar a una idea
+mucho más ambiciosa: desarrollar un software de código abierto para modelar el
+planeta Tierra de forma completa.
 En ese entonces surge un nombre para el proyecto: \emph{Fatiando a Terra}, que
 puede traducirse como \emph{rebanando la Tierra}.
 
-Durante su Master en Geofisica en el Observatório Nacional, Rio de Janeiro,
+Durante su Master en Geofísica en el Observatório Nacional, Rio de Janeiro,
 Leonardo comienza el desarrollo de Fatiando a Terra, transformándolo en el
 hogar de las implementaciones que realiza a lo largo de sus investigaciones,
 todas mediante el lenguaje Python.
@@ -275,7 +274,7 @@ para el proyecto, así como también repensar su diseño y sustentabilidad
 a futuro.
 Por esto se tomó la decisión de dividir el proyecto en varios paquetes que
 posean objetivos claros y concisos.
-Esto permitiría no sólo una fácil adopción por parte de usuarios y usuarias,
+Esto permitiría no solo una fácil adopción por parte de usuarios y usuarias,
 sino también que otros proyectos los utilicen como dependencias en caso de
 desearlo.
 Además, manteniendo los campos de acción de cada paquete aislados del resto,
@@ -329,15 +328,15 @@ Dentro de los algoritmos de grillado existe una categoría que se conoce como
 \emph{interpolaciones con funciones de base radial} (\emph{radial basis
 function interpolation} en inglés) \citep{franke1982}.
 Un ejemplo de un algoritmo que entra en esta categoría son las \emph{splines}
-biharmónicas \citep{sandwell1987}.
+biarmónicas \citep{sandwell1987}.
 Estos métodos asumen que podemos representar los datos observados por una
 combinación lineal de funciones de Green, es decir:
-
+%
 \begin{equation}
     d_i = \sum_{j=1}^M c_j G(\mathbf{p}_i, \mathbf{q}_j),
 \end{equation}
-
-\noindent donde $d_i$ es el dato $i$-ésimo, $\mathbf{p}_i$ es la ubicación de
+%
+donde $d_i$ es el dato $i$-ésimo, $\mathbf{p}_i$ es la ubicación de
 ese mismo punto, $c_j$ es un coeficiente escalar, $G$ es una función de Green y
 $\mathbf{q}_j$ es la ubicación del punto que define la función de Green en el
 término $j$-ésimo.
@@ -345,12 +344,12 @@ El proceso de interpolación consiste en ajustar los valores de los
 coeficientes $c_j$ mediante mínimos cuadrados de forma tal que se recuperen los
 datos observados, y luego utilizarlos para predecir valores sobre los puntos de
 la grilla:
-
+%
 \begin{equation}
     d(\mathbf{p}) = \sum_{j=1}^M c_j G(\mathbf{p}, \mathbf{q}_j),
 \end{equation}
-
-\noindent donde $\mathbf{p}$ es la ubicación de cualquier punto de la grilla.
+%
+donde $\mathbf{p}$ es la ubicación de cualquier punto de la grilla.
 
 Dentro de Verde hallamos implementaciones de algoritmos de interpolación de
 este tipo siguiendo un diseño similar a los modelos de aprendizaje automático
@@ -359,7 +358,7 @@ Esto permite que quienes estén familiarizados con la aplicación de métodos de
 aprendizaje automático en Python puedan fácilmente entender cómo utilizar la
 \ac{API} de Verde.
 Entre los algoritmos de interpolación que se encuentran implementados están las
-\emph{splines} biharmónicas, así como métodos más complejos como la
+\emph{splines} biarmónicas, así como métodos más complejos como la
 interpolación de vectores 2D con funciones de Green \citep{sandwell2016}.
 
 Las clases de interpoladores en Verde poseen un método \texttt{fit()} que se
@@ -402,7 +401,7 @@ referencia puede definirse mediante los semiejes mayor $a$ y menor $b$, su masa
 total $M$ y su velocidad angular $\omega$.
 De forma alternativa pero equivalente, es posible definirlo mediante los
 siguientes parámetros:
-
+%
 \begin{itemize}
     \item el semieje mayor $a$,
     \item el achatamiento $f = (a - b) / a$,
@@ -412,13 +411,11 @@ siguientes parámetros:
 \end{itemize}
 
 Las funcionalidades principales de Boule vienen dadas dentro de las clases
-\texttt{Ellipsoids} y \texttt{Sphere}, las cuales nos permiten definir
+\texttt{Ellipsoid} y \texttt{Sphere}, las cuales nos permiten definir
 cualquier elipsoide referencia a partir de los parámetros mencionados.
 La clase \texttt{Sphere} está orientada a representar esferas, las cuales
 poseen achatamiento nulo y en vez de especificar su semieje mayor, se define su
 radio.
-A modo de ejemplo, uno podría definir el elipsoide WGS84 como se muestra en el
-Código~\ref{lst:boule-wgs84}.
 Sin embargo, Boule ya ofrece algunos de los elipsoides de referencia más
 ampliamente usados en Geodesia y Geofísica, tales como el WGS84
 (\texttt{boule.WGS84}), el GRS80: Geodetic Reference System
@@ -429,17 +426,7 @@ Además podemos hallar elipsoides esféricos para la Luna (\texttt{boule.MOON}),
 Venus (\texttt{boule.VENUS}) y Mercurio (\texttt{boule.MERCURY}) definidos
 según \citet{wieczorek2015}.
 
-\lstinputlisting[
-    float,
-    language=Python,
-    caption={%
-        Ejemplo de definición de elipsoide de referencia con Boule
-        (\BouleVersion{})
-    },
-    label=lst:boule-wgs84
-]{fatiando-examples/boule-wgs84.py}
-
-A su vez, la clase \texttt{Ellipsoids} posee una serie de propiedades que se
+A su vez, la clase \texttt{Ellipsoid} posee una serie de propiedades que se
 calculan a partir de los parámetros que definen cada elipsoide, entre ellos: el
 semieje menor $b$, la primera y segunda excentricidad, la excentricidad lineal,
 el radio medio del elipsoide (medido desde un sistema geocéntrico), el módulo
@@ -461,17 +448,32 @@ generada por el elipsoide en cualquier punto dado por sus coordenadas
 geodésicas.
 En el caso de la clase \texttt{Sphere}, su método \texttt{normal\_gravity()}
 hace uso de una ecuación más sencilla \citep{heiskanen1967}:
-
+%
 \begin{equation}
     \gamma(\phi, h) =
         \sqrt{\left( \frac{GM}{(R + h)^2} \right)^2
         + \left(\omega^2 (R + h) - 2\frac{GM}{(R + h)^2} \right)
         \omega^2 (R + h) \cos^2 \phi},
 \end{equation}
-
-\noindent donde $R$ es el radio de la esfera, $\phi$ la coordenada latitudinal
+%
+donde $R$ es el radio de la esfera, $\phi$ la coordenada latitudinal
 y $h$ la altitud sobre la superficie de la esfera correspondientes al punto de
 observación.
+
+\lstinputlisting[
+    float,
+    language=Python,
+    caption={%
+        Ejemplo de cálculo de gravedad normal y conversión de unidades con
+        elipsoide de referencia WGS84 mediante Boule (\BouleVersion{})
+    },
+    label=lst:boule-wgs84
+]{fatiando-examples/boule-wgs84.py}
+
+En el Código~\ref{lst:boule-wgs84} se ejemplifica cómo se puede utilizar BOule para
+instanciar el elipsoide WGS84, generar una grilla regular de puntos en
+coordenadas geodésicas elevadas por sobre la superficie del mismo y realizar
+tareas como el cálculo de gravedad normal o de conversión de unidades.
 
 Si bien Boule es una librería que se encuentra en un estado funcional
 y puede ser utilizada en investigaciones científicas al día de la fecha, aún no
@@ -565,16 +567,16 @@ Sudáfrica sobre una grilla regular a 4000\m{} de altitud.
 ]{fatiando-examples/harmonica-prism-layer.py}
 
 La mayoría de los métodos de modelado directo involucran cómputos moderadamente
-complejos, los cuales pueden conllevar a un alto costo computacional,
-especialmente a la hora de modelar grandes cantidades de geometrías sobre
-muchos puntos de observación.
+complejos que suelen requerir un alto costo computacional, especialmente a la
+hora de modelar grandes cantidades de geometrías sobre muchos puntos de
+observación.
 Escribir estas funciones en Python puro resultaría en implementaciones que no
 harían un uso eficiente de los recursos computacionales debido a la misma
-naturaleza del interprete de Python.
+naturaleza del intérprete de Python.
 Las alternativas más viables son recurrir a código precompilado (escribiendo
 las implementaciones en lenguajes como C o FORTRAN y luego añadir
 \emph{wrappers} de Python) o bien a compilaciones en tiempo de ejecución.
-En los orígenes de de Harmonica, hemos optado por realizar nuestras
+En los orígenes de Harmonica, hemos optado por realizar nuestras
 implementaciones mediante Numba \citep{numba2015}: un compilador de Python de
 alto desempeño.
 Numba se encarga de precompilar el código que implementa cada uno de estos
@@ -678,7 +680,7 @@ Luego podemos solicitar la descarga de uno de los archivos mediante el método
 \texttt{fetch()}, el cual devuelve la ruta al archivo descargado y almacenado
 localmente.
 
-Pooch no sólo nos permite descargar archivos desde el protocolo HTTPS,
+Pooch no solo nos permite descargar archivos desde el protocolo HTTPS,
 sino también desde FTP y SFTP con autenticación.
 Incluso es posible descargar archivos almacenados en repositorios de acceso
 abierto como Zenodo\footnote{\url{https://zenodo.org/}}
@@ -948,7 +950,7 @@ porcentaje de qué cantidad de la base del código es sometida a prueba y
 detalla cuáles son las líneas que no.
 
 La gran mayoría del código fuente que podemos encontrar en las librerías del
-proyecto son fácilmente probables, especialmente las que tienen que ver con
+proyecto es fácilmente probable, especialmente las que tienen que ver con
 estructuras de datos y comportamientos particulares frente a diferentes
 parámetros.
 Sin embargo, en algunas de nuestras librerías incluimos implementaciones de
@@ -1016,7 +1018,7 @@ información acerca de posibles fallos que se hayan encontrado.
 
 A la hora de incorporar un código nuevo a la \emph{rama} principal de cualquier
 librería del proyecto, se requiere que:
-
+%
 \begin{itemize}
     \item las comprobaciones de estilos escritura pasen correctamente,
     \item las pruebas de software no presenten errores en ninguna plataforma, y
@@ -1053,8 +1055,8 @@ hacerlo ejecutando:
 \begin{lstlisting}[language=bash,frame=]
 pip install boule
 \end{lstlisting}
-
-\noindent Y si deseamos instalar Harmonica con el gestor \texttt{conda} podemos
+%
+Y si deseamos instalar Harmonica con el gestor \texttt{conda} podemos
 hacerlo con:
 
 \begin{lstlisting}[language=bash,frame=]
@@ -1188,7 +1190,7 @@ La Figura~\ref{fig:fatiando-users-history} muestra la cantidad de visitas
 diarias que recibió el sitio desde Abril del 2017 a Septiembre de 2021
 promediadas por ventana móvil de
 28 días.
-Mientras que la Figura~\ref{fig:fatiando-users-map} expone la cantidad de
+Por su parte, la Figura~\ref{fig:fatiando-users-map} expone la cantidad de
 visitas en el mismo intervalo según su ubicación geográfica.
 
 Estos datos ilustran que la cantidad de visitas experimenta una tendencia
