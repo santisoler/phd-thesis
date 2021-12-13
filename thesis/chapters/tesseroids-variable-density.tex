@@ -633,6 +633,15 @@ y $\delta$ que garantizan errores numéricos menores a 0.1\% en comparación con
 las soluciones analíticas del cascarón esférico en la mayoría de los casos.
 
 \begin{table}
+\centering
+\begin{tabular}{rccccc}
+    Espesor & Tamaño de cada tesseroide  & Cantidad de tesseroides \\ \hline
+    0.1 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+    1 km    & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+    10 km   & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+    100 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+    1000 km & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+\end{tabular}
 \caption{
     Descripción de los modelos de tesseroides utilizados para construir
     cascarones esféricos y caracterizar la precisión de las integraciones
@@ -646,26 +655,9 @@ las soluciones analíticas del cascarón esférico en la mayoría de los casos.
     \newline
 }
 \label{tab:shell-models}
-\centering
-\begin{tabular}{rccccc}
-    Espesor & Tamaño de cada tesseroide  & Cantidad de tesseroides \\ \hline
-    0.1 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-    1 km    & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-    10 km   & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-    100 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-    1000 km & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-\end{tabular}
 \end{table}
 
 \begin{table}
-\caption{
-    Descripción de las grillas de putos de cómputo utilizadas para caracterizar
-    la precisión de las integraciones numéricas.
-    La altitud de las grillas es definida por encima del radio medio de la
-    Tierra.
-    \newline
-}
-\label{tab:grids}
 \centering
 \begin{tabular}{lccc}
     Nombre & Espaciado de la grilla & Región (grados) & Altitud (km)
@@ -675,6 +667,14 @@ las soluciones analíticas del cascarón esférico en la mayoría de los casos.
     Global    & $ 10^\circ$ & 180W / 180E / 90S / 90N & 0   \\
     Satélite  & $ 10^\circ$ & 180W / 180E / 90S / 90N & 260 \\
 \end{tabular}
+\caption{
+    Descripción de las grillas de putos de cómputo utilizadas para caracterizar
+    la precisión de las integraciones numéricas.
+    La altitud de las grillas es definida por encima del radio medio de la
+    Tierra.
+    \newline
+}
+\label{tab:grids}
 \end{table}
 
 
