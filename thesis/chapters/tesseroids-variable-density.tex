@@ -802,7 +802,7 @@ y $b$ es una constante adimensional que determina el grado de
 variabilidad de la función. Un valor mayor de $b$ aumenta la máxima pendiente
 de la función densidad (Fig.~\ref{fig:exp-densities}).
 
-\begin{figure}
+\begin{figure}[!b]
 \centering
 \includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/exponential-densities.pdf}
 \caption{
@@ -829,6 +829,29 @@ Con el objeto de obtener un óptimo desempeño del algoritmo, buscamos el par
 manteniendo el error numérico por debajo del umbral de 0.1\%.
 Este requisito se traduce en minimizar el valor de $D$ y maximizar el valor de
 $\delta$.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/grid-search.pdf}
+\caption{
+    Exploración del error numérico en el espacio $D$-$\delta$.
+    Los valores porcentuales de diferencia fueron obtenidos a partir de la
+    comparación entre las soluciones analíticas y las aproximaciones numéricas
+    de los campos gravitatorios ($V$ y $g_z$) generados por un cascarón
+    esférico con una densidad exponencial
+    (ec.~\ref{eq:density-exp}) con $b=30$.
+    Estas comparaciones fueron realizadas sobre la grilla de cómputo
+    \emph{Global} (Tabla~\ref{tab:grids}), con los modelos de cascarón
+    esféricos detallados en la Tabla~\ref{tab:shell-models}.
+    Los valores de diferencias porcentuales fueron obtenidos como la máxima
+    diferencia de entre todos los modelos de cascarón.
+    Los puntos interiores a la región delimitada por las lineas de a trazos son
+    los que presentan un error por debajo del umbral de 0.1\%.
+    Los valores de $D$ obtenidos para el caso de densidad lineal para cada
+    campo gravitatorio se encuentran identificados con $D_\text{lineal}$.
+    }
+\label{fig:grid-search}
+\end{figure}
 
 Dado que la búsqueda en grilla es un proceso computacionalmente costoso,
 limitamos el análisis a un valor alto de $b=30$ (Fig.\ref{fig:exp-densities})
@@ -858,29 +881,6 @@ Dado que la búsqueda en grilla fue limitada a una grilla de cómputo específic
 y a un único valor de $b$, en los próximos párrafos realizaremos un análisis
 más detallado para determinar un valor óptimo de $\delta$ para el caso de
 densidad exponencial.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/grid-search.pdf}
-\caption{
-    Exploración del error numérico en el espacio $D$-$\delta$.
-    Los valores porcentuales de diferencia fueron obtenidos a partir de la
-    comparación entre las soluciones analíticas y las aproximaciones numéricas
-    de los campos gravitatorios ($V$ y $g_z$) generados por un cascarón
-    esférico con una densidad exponencial
-    (ec.~\ref{eq:density-exp}) con $b=30$.
-    Estas comparaciones fueron realizadas sobre la grilla de cómputo
-    \emph{Global} (Tabla~\ref{tab:grids}), con los modelos de cascarón
-    esféricos detallados en la Tabla~\ref{tab:shell-models}.
-    Los valores de diferencias porcentuales fueron obtenidos como la máxima
-    diferencia de entre todos los modelos de cascarón.
-    Los puntos interiores a la región delimitada por las lineas de a trazos son
-    los que presentan un error por debajo del umbral de 0.1\%.
-    Los valores de $D$ obtenidos para el caso de densidad lineal para cada
-    campo gravitatorio se encuentran identificados con $D_\text{lineal}$.
-    }
-\label{fig:grid-search}
-\end{figure}
 
 
 \subsubsection{Determinación del \emph{ratio delta}}
