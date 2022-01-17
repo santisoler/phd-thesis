@@ -978,11 +978,13 @@ eficiente para aumentar la precisión de la aproximación manteniendo el orden d
 la \ac{GLQ} constante: la \emph{discretización adaptativa}.
 Esta consiste en ir dividiendo el teseroide en otros teseroides de menor
 tamaño según la distancia entre ellos y el punto de observación.
-De esta forma, se incrementa la cantidad de nodos en las regiones que mayor
-afectan a la precisión, obteniéndose un número considerablemente menor de nodos
-pero manteniendo una buena precisión.
+De esta forma, se incrementa la cantidad de nodos en las regiones más próximas
+al punto de cómputo, es decir, donde más afecta a la precisión.
+Al compararlo con un aumento del orden de la cuadratura, la
+\emph{discretización adaptativa} permite hacer uso de una cantidad
+considerablemente menor de nodos, pero alcanzando el mismo nivel de precisión.
 En el Capítulo \ref{cha:tesseroids-variable-density} describiremos en detalle
-la \emph{discretización adaptativa}.
+este método.
 
 
 % =============================================================================
