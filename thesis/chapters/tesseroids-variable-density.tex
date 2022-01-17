@@ -1,15 +1,6 @@
 \chapter{Teseroides de densidad variable}
 \label{cha:tesseroids-variable-density}
 
-Este Capítulo es una traducción al español del artículo titulado
-\emph{Gravitational field calculation in spherical coordinates using variable
-densities in depth} escrito por Santiago R. Soler, Agustina Pesce, Mario E.
-Gimenez y Leonardo Uieda, y publicado en \emph{Geophysical Journal
-International} en Junio de 2019 \citep{soler2019}.
-Una preimpresión del artículo se encuentra disponible bajo licencia Creative
-Commons Atribución 4.0 Internacional en
-\href{https://eartharxiv.org/}{EarthArXiv}:
-\url{https://doi.org/10.31223/osf.io/3548g}.
 
 \section{Resumen}
 
@@ -642,6 +633,15 @@ y $\delta$ que garantizan errores numéricos menores a 0.1\% en comparación con
 las soluciones analíticas del cascarón esférico en la mayoría de los casos.
 
 \begin{table}
+\centering
+\begin{tabular}{rccccc}
+    Espesor & Tamaño de cada teseroide  & Cantidad de teseroides \\ \hline
+    0.1 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+    1 km    & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+    10 km   & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+    100 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+    1000 km & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
+\end{tabular}
 \caption{
     Descripción de los modelos de teseroides utilizados para construir
     cascarones esféricos y caracterizar la precisión de las integraciones
@@ -655,26 +655,9 @@ las soluciones analíticas del cascarón esférico en la mayoría de los casos.
     \newline
 }
 \label{tab:shell-models}
-\centering
-\begin{tabular}{rccccc}
-    Espesor & Tamaño de cada teseroide  & Cantidad de teseroides \\ \hline
-    0.1 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-    1 km    & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-    10 km   & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-    100 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-    1000 km & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
-\end{tabular}
 \end{table}
 
 \begin{table}
-\caption{
-    Descripción de las grillas de putos de cómputo utilizadas para caracterizar
-    la precisión de las integraciones numéricas.
-    La altitud de las grillas es definida por encima del radio medio de la
-    Tierra.
-    \newline
-}
-\label{tab:grids}
 \centering
 \begin{tabular}{lccc}
     Nombre & Espaciado de la grilla & Región (grados) & Altitud (km)
@@ -684,6 +667,14 @@ las soluciones analíticas del cascarón esférico en la mayoría de los casos.
     Global    & $ 10^\circ$ & 180W / 180E / 90S / 90N & 0   \\
     Satélite  & $ 10^\circ$ & 180W / 180E / 90S / 90N & 260 \\
 \end{tabular}
+\caption{
+    Descripción de las grillas de putos de cómputo utilizadas para caracterizar
+    la precisión de las integraciones numéricas.
+    La altitud de las grillas es definida por encima del radio medio de la
+    Tierra.
+    \newline
+}
+\label{tab:grids}
 \end{table}
 
 
@@ -811,7 +802,7 @@ y $b$ es una constante adimensional que determina el grado de
 variabilidad de la función. Un valor mayor de $b$ aumenta la máxima pendiente
 de la función densidad (Fig.~\ref{fig:exp-densities}).
 
-\begin{figure}
+\begin{figure}[!b]
 \centering
 \includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/exponential-densities.pdf}
 \caption{
@@ -839,36 +830,7 @@ manteniendo el error numérico por debajo del umbral de 0.1\%.
 Este requisito se traduce en minimizar el valor de $D$ y maximizar el valor de
 $\delta$.
 
-Dado que la búsqueda en grilla es un proceso computacionalmente costoso,
-limitamos el análisis a un valor alto de $b=30$ (Fig.\ref{fig:exp-densities})
-y la grilla de cómputo \emph{Global} definida en la Tabla~\ref{tab:grids}.
-Calculamos la diferencia relativa entre el resultado numérico y la solución
-analítica del potencial gravitatorio ($V$) y su derivada vertical ($g_z$) para
-cada modelo de cascarón definido en la Tabla~\ref{tab:shell-models}.
-La Figura~\ref{fig:grid-search} muestra la máxima diferencia obtenida para
-todos los modelos de cascarón.
-Las líneas de a trazos representan un contorno correspondiente al 0.1\% de
-error relativo, por ende los puntos interiores a ella son los que caen debajo
-de dicho umbral.
-Además, la figura destaca los valores de $D$ obtenidos en la Sección anterior
-para el caso de densidad lineal ($D_\text{linear}$).
-
-Los valores más pequeños de $D$ que se encuentran debajo del umbral de 0.1\%
-coinciden con los valores $D_\text{linear}$ tanto para $V$ como para $g_z$.
-Estos resultados indican que los valores de $D_\text{linear}$ obtenidos pueden
-ser extrapolados a los casos de densidades no lineales.
-Esto no es una sorpresa, ya que la discretización adaptativa bidimensional y la
-discretización basada en densidad son independientes una de la otra: la primera
-divide al teseroide en las direcciones horizontales, mientras que la otra lo
-hace solo en la dirección radial.
-Por ende, es de esperar que el valor óptimo de $\delta$ sea independiente del
-valor óptimo de $D$.
-Dado que la búsqueda en grilla fue limitada a una grilla de cómputo específica
-y a un único valor de $b$, en los próximos párrafos realizaremos un análisis
-más detallado para determinar un valor óptimo de $\delta$ para el caso de
-densidad exponencial.
-
-\begin{figure}
+\begin{figure}[!t]
 \centering
 \includegraphics[width=0.5\linewidth]{figs/tesseroids-variable-density/grid-search.pdf}
 \caption{
@@ -886,10 +848,39 @@ densidad exponencial.
     Los puntos interiores a la región delimitada por las lineas de a trazos son
     los que presentan un error por debajo del umbral de 0.1\%.
     Los valores de $D$ obtenidos para el caso de densidad lineal para cada
-    campo gravitatorio se encuentran identificados con $D_\text{linear}$.
+    campo gravitatorio se encuentran identificados con $D_\text{lineal}$.
     }
 \label{fig:grid-search}
 \end{figure}
+
+Dado que la búsqueda en grilla es un proceso computacionalmente costoso,
+limitamos el análisis a un valor alto de $b=30$ (Fig.\ref{fig:exp-densities})
+y la grilla de cómputo \emph{Global} definida en la Tabla~\ref{tab:grids}.
+Calculamos la diferencia relativa entre el resultado numérico y la solución
+analítica del potencial gravitatorio ($V$) y su derivada vertical ($g_z$) para
+cada modelo de cascarón definido en la Tabla~\ref{tab:shell-models}.
+La Figura~\ref{fig:grid-search} muestra la máxima diferencia obtenida para
+todos los modelos de cascarón.
+Las líneas de a trazos representan un contorno correspondiente al 0.1\% de
+error relativo, por ende los puntos interiores a ella son los que caen debajo
+de dicho umbral.
+Además, la figura destaca los valores de $D$ obtenidos en la Sección anterior
+para el caso de densidad lineal ($D_\text{lineal}$).
+
+Los valores más pequeños de $D$ que se encuentran debajo del umbral de 0.1\%
+coinciden con los valores $D_\text{lineal}$ tanto para $V$ como para $g_z$.
+Estos resultados indican que los valores de $D_\text{lineal}$ obtenidos pueden
+ser extrapolados a los casos de densidades no lineales.
+Esto no es una sorpresa, ya que la discretización adaptativa bidimensional y la
+discretización basada en densidad son independientes una de la otra: la primera
+divide al teseroide en las direcciones horizontales, mientras que la otra lo
+hace solo en la dirección radial.
+Por ende, es de esperar que el valor óptimo de $\delta$ sea independiente del
+valor óptimo de $D$.
+Dado que la búsqueda en grilla fue limitada a una grilla de cómputo específica
+y a un único valor de $b$, en los próximos párrafos realizaremos un análisis
+más detallado para determinar un valor óptimo de $\delta$ para el caso de
+densidad exponencial.
 
 
 \subsubsection{Determinación del \emph{ratio delta}}
@@ -1198,14 +1189,14 @@ Al incluir la función densidad dentro de la \ac{GLQ}, el método aquí descript
 puede ser aplicado sin ninguna modificación a cualquier teseroide cuya
 densidad puede representarse por una función continua en la dirección radial.
 El algoritmo de discretización basado en la densidad divide el teseroide a lo
-largo de la dirección radial con el objetivo de garantizar una precisa
-integración.
+largo de la dirección radial con el objetivo de garantizar una integración
+precisa.
 Este algoritmo es independiente de la integración \ac{GLQ} y puede
-potencialmente ser aplicado para determinar una óptima discretización a la hora
+potencialmente ser aplicado para determinar una discretización óptima a la hora
 de aproximar una función mediante funciones lineales de a pasos \citep{lin2019}
 o funciones polinomiales de a pasos \citep{fukushima2018}.
 
-Nuestros resultados experimentales muestran que la discretización adaptativa
+Los resultados experimentales muestran que la discretización adaptativa
 bidimensional es suficiente para alcanzar errores debajo del 0.1\% en conjunto
 con una \ac{GLQ} de segundo orden en caso de densidades lineales
 (Fig.~\ref{fig:D-linear}).
