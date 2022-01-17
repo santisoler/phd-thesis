@@ -492,8 +492,8 @@ La geometría más sencilla que hallamos son masas puntuales en coordenadas
 esféricas geocéntricas o en coordenadas Cartesianas, implementando las
 ecuaciones~\ref{eq:potencial-masa-puntual} y \ref{eq:gz-particula}.
 Podemos calcular los campos gravitacionales producidos por masas puntuales
-mediante la función \texttt{point\_mass\_gravity()}.
-El Código~\ref{lst:harmonica-point-mass} ejemplifica cómo podemos utilizar esta
+mediante la función \texttt{point\_gravity()}.
+El Código~\ref{lst:harmonica-point} ejemplifica cómo podemos utilizar esta
 función para calcular la aceleración de la gravedad producida por dos masas
 puntuales dadas en coordenadas Cartesianas.
 
@@ -516,8 +516,8 @@ acceder mediante la función \texttt{tesseroid\_gravity()}.
         masas puntuales dadas en coordenadas Cartesianas mediante
         Harmonica (\HarmonicaVersion{}).
     },
-    label=lst:harmonica-point-mass
-]{fatiando-examples/harmonica-point-mass.py}
+    label=lst:harmonica-point
+]{fatiando-examples/harmonica-point.py}
 
 Cada una de estas funciones admiten una cantidad arbitraria de geometrías
 y puntos de observación que pueden venir dadas por estructuras de datos muy
