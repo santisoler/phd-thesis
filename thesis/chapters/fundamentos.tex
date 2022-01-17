@@ -1,7 +1,7 @@
 \chapter{Fundamentos Geofísicos}
 \label{cha:fundamentos}
 
-\section{Campo potencial gravitatorio}
+\section{Potencial gravitatorio}
 
 Según la Ley de Gravitación Universal de Newton, una masa puntual $m_p$ situada
 en la posición $\mathbf{p}$ se ve sometida una fuerza gravitatoria $\mathbf{F}$
@@ -15,10 +15,9 @@ Esta fuerza puede expresarse como:
         (\mathbf{p} - \mathbf{q}),
 \end{equation}
 %
-donde $G = 6.67430 \times 10^{-11} \text{m}^3 \text{kg}^{-1}
-\text{s}^{-2}$ es la constante de gravitación universal
-(Fig.~\ref{fig:potencial-gravitatorio}a) y $\left\lVert \cdot \right\rVert$
-representa la norma L$_2$.
+donde $G = 6.67430 \times 10^{-11} \text{m}^3 \text{kg}^{-1} \text{s}^{-2}$ es
+la constante de gravitación universal y $\left\lVert \cdot \right\rVert$
+representa la norma L$_2$ (Fig.~\ref{fig:potencial-gravitatorio}a).
 Aplicando la segunda Ley de Newton, se deduce que la masa $m_p$ experimenta una
 aceleración gravitatoria $\mathbf{g}$:
 %
@@ -129,10 +128,9 @@ ecuación~\ref{eq:potencial-gravitatorio-definicion}, es posible calcular la
 aceleración de la gravedad producida por una distribución de masa arbitraria
 en cualquier punto $\mathbf{p}$ como el gradiente del potencial
 $V(\mathbf{p})$.
-Si definimos un sistema de ejes Cartesianos en el cual el punto $\mathbf{p}
-= (x, y, z)$, las componentes de la aceleración en cada una de las direcciones
-del sistema quedan expresadas
-como:
+Si definimos un sistema de ejes Cartesianos en el cual el punto
+$\mathbf{p} = (x, y, z)$, las componentes de la aceleración en cada una de las
+direcciones del sistema quedan expresadas como:
 %
 \begin{equation}
     g_i(\mathbf{p}) = \frac{\partial V(\mathbf{p})}{\partial i}, \,\,
@@ -314,7 +312,7 @@ sencillamente mediante una Delta de Dirac \citep{vladimirov1979}:
     \rho(\mathbf{q}) = m \, \delta(\mathbf{q} - \mathbf{q'}),
 \end{equation}
 %
-donde $\mathbf{q}$ y $m$ son la posición y la masa de la partícula,
+donde $\mpotencial{q}$ y $m$ son la posición y la masa de la partícula,
 respectivamente.
 Reemplazando esta expresión en la
 ecuación~\ref{eq:potencial-gravitatorio-integral}, obtenemos el potencial
@@ -1002,14 +1000,14 @@ experimenta dicho cuerpo siendo observado desde este sistema de referencia.
 Llamaremos \emph{gravedad} al vector $\mathbf{g}$ definido como la suma
 entre la aceleración provocada por la atracción gravitatoria y la aceleración
 centrífuga.
-A partir de ella podemos definir un \emph{campo de gravedad} $W$:
+A partir de ella podemos definir un \emph{potencial de gravedad} $W$:
 %
 \begin{equation}
     \nabla W(\mathbf{p}) = +\mathbf{g}(\mathbf{p}).
-    \label{eq:campo-gravedad-terrestre}
+    \label{eq:potencial-gravedad-terrestre}
 \end{equation}
 
-El \emph{campo de gravedad} $W$ puede ser expresado como:
+El \emph{potencial de gravedad} $W$ puede ser expresado como:
 %
 \begin{equation}
     W(\mathbf{p}) = V(\mathbf{p}) + \Phi(\mathbf{p}),
@@ -1049,7 +1047,7 @@ Las superficies
 se definen como \emph{superficies equipotenciales}.
 
 A partir de la definición del vector de \emph{gravedad}
-(ec.~\ref{eq:campo-gravedad-terrestre}), es posible deducir que
+(ec.~\ref{eq:potencial-gravedad-terrestre}), es posible deducir que
 $\mathbf{g}(\mathbf{p})$ es un vector normal a la superficie equipotencial que
 pasa por el mismo punto $\mathbf{p}$.
 Cada una de las curvas que cortan normalmente a las superficies equipotenciales
@@ -1088,16 +1086,16 @@ apropiada para muchas aplicaciones, nos provee de una descripción matemática
 sencilla, cuyas derivaciones poseen soluciones analíticas.
 De esta manera definiremos a la \emph{Tierra normal} como un \emph{elipsoide de
 referencia}, es decir, un elipsoide de revolución que representa una superficie
-equipotencial del campo de gravedad que este genera. Llamaremos $U(\mathbf{p})$
-al \emph{campo de gravedad normal}, es decir, el potencial de gravedad generado
-por el elipsoide de referencia y definimos al elipsoide de referencia como la
-siguiente superficie equipotencial:
+equipotencial del potencial de gravedad que este genera.
+Llamaremos $U(\mathbf{p})$ al \emph{potencial de gravedad normal}, es decir, el
+potencial de gravedad generado por el elipsoide de referencia y definimos al
+elipsoide de referencia como la siguiente superficie equipotencial:
 %
 \begin{equation}
     U(\mathbf{p}) = U_0 = \text{cte}.
 \end{equation}
 
-El campo de gravedad normal puede ser escrito como
+El potencial de gravedad normal puede ser escrito como
 %
 \begin{equation}
     U(\mathbf{p}) = V_\text{el}(\mathbf{p}) + \Phi(\mathbf{p}),
@@ -1177,7 +1175,7 @@ que pasa por el punto $\mathbf{p}$ (Fig.~\ref{fig:coordenadas-geodesicas}).
 \end{figure}
 
 Definiremos el \emph{vector gravedad normal} $\boldsymbol\gamma$ como el
-gradiente del campo de gravedad normal:
+gradiente del potencial de gravedad normal:
 %
 \begin{equation}
     \boldsymbol\gamma(\mathbf{p}) = \nabla U(\mathbf{p}).
@@ -1186,8 +1184,8 @@ gradiente del campo de gravedad normal:
 Vale notar que el gradiente de un campo en un punto $\mathbf{p}$ consiste en un
 vector normal a la superficie equipotencial a la cual pertenece el punto
 $\mathbf{p}$.
-De esta manera, al calcular el gradiente del campo de gravedad normal desde el
-sistema de coordenadas geodésicas podemos deducir que solo la componente
+De esta manera, al calcular el gradiente del potencial de gravedad normal desde
+el sistema de coordenadas geodésicas podemos deducir que solo la componente
 normal es no nula \citep[][p.~68]{heiskanen1967}, es decir:
 %
 \begin{align}
@@ -1332,8 +1330,8 @@ normal} calculados en el punto $\mathbf{p}$
         $h$ indicada por el segmento de recta que une el punto $\mathbf{q}$
         sobre el elipsoide de referencia.
         Se observa el vector de gravedad $\mathbf{g}(\mathbf{p})$ sobre el
-        punto $\mathbf{p}$ normal a la superficie equipotencial del campo de
-        gravedad $W$ que pasa por el mismo punto $\mathbf{p}$.
+        punto $\mathbf{p}$ normal a la superficie equipotencial del potencial
+        de gravedad $W$ que pasa por el mismo punto $\mathbf{p}$.
         Se identifica además el vector de gravedad normal
         $\boldsymbol\gamma(\mathbf{p})$ y el vector de disturbio de gravedad
         $\boldsymbol\delta \mathbf{g}(\mathbf{p})$.
@@ -1351,7 +1349,7 @@ normal} calculados en el punto $\mathbf{p}$
 
 La mayoría de las metodologías que nos permiten realizar mediciones del campo
 gravitatorio terrestre consiguen estimar el valor de la componente del vector
-$\mathbf{g}$ a lo largo de la línea de fuerza del campo de gravedad $W$, la
+$\mathbf{g}$ a lo largo de la línea de fuerza del potencial de gravedad $W$, la
 cual coincide con el módulo de $\mathbf{g}$.
 Medir la dirección del vector $\mathbf{g}$ resulta un problema de mayor
 complejidad, dificultando el cálculo del \emph{vector del disturbio de
@@ -1496,7 +1494,7 @@ podemos expresar la ecuación anterior como:
     \caption{
         Distribución de masa tridimensional con densidad $\rho$ dentro de una
         región $\Omega$, junto con superficie equipotencial $\partial S$ del
-        campo gravitatorio generado por la misma y un punto de observación
+        potencial gravitatorio generado por la misma y un punto de observación
         $\mathbf{p}$ exterior a la región $S$ interior a $\partial S$.
     }
     \label{fig:fuentes-equivalentes}
