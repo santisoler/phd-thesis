@@ -145,7 +145,7 @@ reimplementaría en Python.
 
 En paralelo, y como proyecto final de su Bachillerato, Leonardo Uieda realiza
 una implementación en Python del algoritmo para el cálculo de campos
-gravitacionales de tesseroides mediante la \ac{GLQ}.
+gravitatorios de tesseroides mediante la \ac{GLQ}.
 Luego de ser reescrito en C, este proyecto deriva en el lanzamiento del
 software Tesseroids \citep{uieda2016} que ha sido ampliamente utilizado por la
 comunidad geocientista.
@@ -491,20 +491,20 @@ sistemas de coordenadas.
 La geometría más sencilla que hallamos son masas puntuales en coordenadas
 esféricas geocéntricas o en coordenadas Cartesianas, implementando las
 ecuaciones~\ref{eq:potencial-masa-puntual} y \ref{eq:gz-particula}.
-Podemos calcular los campos gravitacionales producidos por masas puntuales
+Podemos calcular los campos gravitatorios producidos por masas puntuales
 mediante la función \texttt{point\_mass\_gravity()}.
 El Código~\ref{lst:harmonica-point-mass} ejemplifica cómo podemos utilizar esta
 función para calcular la aceleración de la gravedad producida por dos masas
 puntuales dadas en coordenadas Cartesianas.
 
 Harmonica cuenta con una implementación del método de \citet{nagy2000} para
-calcular los campos gravitacionales de prismas rectangulares mediante la
+calcular los campos gravitatorios de prismas rectangulares mediante la
 función \texttt{prism\_gravtiy()}, haciendo uso de las correcciones de
 \citet{fukushima2020} descriptas en la Sección~\ref{sec:prismas-rectangulares}.
 
 La librería también cuenta con una implementación en Python de los algoritmos
 de discretización adaptativa y \ac{GLQ} para calcular los campos
-gravitacionales de tesseroides con densidad constante, a los cuales podemos
+gravitatorios de tesseroides con densidad constante, a los cuales podemos
 acceder mediante la función \texttt{tesseroid\_gravity()}.
 
 \lstinputlisting[
@@ -1240,7 +1240,7 @@ y unificar la inicialización de cualquier tipo de elipsoide (esfera, elipsoide
 de revolución o triaxial) combinando todos en una sola clase o proveyendo una
 función particular que decide qué clase debe utilizar en función de los
 parámetros que recibe.
-Además, deseamos incluir cálculos de campos gravitacionales generados por los
+Además, deseamos incluir cálculos de campos gravitatorios generados por los
 elipsoides, es decir, aceleración de la gravedad que no contenga las
 componentes de la aceleración centrífuga.
 

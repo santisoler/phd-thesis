@@ -15,7 +15,7 @@ coordinates = vd.grid_coordinates(
     region=(0, 2000, 0, 2000), shape=(100, 100), extra_coords=50
 )
 
-# Calculamos la componente vertical (hacia abajo) de la aceleracion gravitacional
+# Calculamos la componente vertical (hacia abajo) de la aceleracion gravitatoria
 gravity = hm.point_mass_gravity(
     coordinates, points, masses, field="g_z", coordinate_system="cartesian"
 )
