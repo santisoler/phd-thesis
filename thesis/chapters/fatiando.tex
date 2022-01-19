@@ -196,7 +196,6 @@ reconocimiento. Empieza a ser utilizado en publicaciones científicas
     hidalgogato2017,
     siqueira2017%
 },
-% fill in more papers if you know about some others
 dictado de clases
 (Tópicos de inversão em
 Geofísica\footnote{%
@@ -1190,6 +1189,63 @@ Además, podemos ver que países como Estados Unidos de América, Brasil y China
 acaparan la mayor cantidad de consultas al sitio web del proyecto,
 aunque el interés sobre el mismo parece estar distribuido entre muchos
 países del globo.
+
+\section{Contribuciones del autor al proyecto}
+
+Los primeros aportes que he realizado a Fatiando a Terra fueron a la antigua
+librería \texttt{fatiando}. Entre ellos podemos encontrar: una función para el
+cálculo del promedio radial del espectro de potencias de una grilla, una
+función para leer archivos \texttt{.gdf} que provee el servicio de
+ICGEM\footnote{\url{http://icgem.gfz-potsdam.de/home}}, un agregado a la
+galería de ejemplos y arreglos a algunos errores de software.
+
+Una vez que el proyecto se volcó en el desarrollo de las librerías descriptas
+en las secciones anteriores, mi rol en el proyecto cobró cada vez más
+relevancia.
+
+Dentro de Harmonica he rediseñado los modelos directos de masas
+puntuales, tesseroides y prismas rectangulares, portándolos a Python
+3, habilitando su paralelización mediante Numba y aplicando optimizaciones
+adicionales.
+He creado las clases \texttt{EquivalentSources} y \texttt{EquivalentSourcesSph}
+para aplicar la técnica de fuentes equivalentes, las cuales fueron también
+paralelizadas mediante Numba.
+He creado la función \texttt{harmonica.prism\_layer} para la construcción de
+capas de prismas, resultando útiles para el modelado directo de topografía.
+Además, he incorporado las metodologías desarrolladas en esta Tesis a la
+librería, permitiendo el modelado directo de tesseroides con densidad variable
+y la utilización de fuentes equivalentes promediadas por bloque y fuentes
+equivalentes potenciadas por gradiente.
+Actualmente, me encuentro liderando el desarrollo de Harmonica, siendo el
+principal autor y responsable de toma de decisiones.
+
+Además, he realizado múltiples contribuciones a las otras librerías del
+proyecto. Dentro de Boule he implementado los métodos para la transformación de
+coordenadas y para el cálculo de gravedad normal mediante la fórmula cerrada de
+\citet{ligotze2001}; además he agregado varias propiedades a la clase
+\texttt{Ellipsoid} y he escrito la nueva clase \texttt{Sphere}.
+Dentro de Pooch he escrito un método para corroborar la disponibilidad de los
+archivos remotos y he contribuido a la construcción de la función
+\texttt{pooch.retrieve}.
+En Verde he mejorado el manejo de proyecciones dentro de las clases de
+interpoladores y he creado la función \texttt{verde.make\_xarray\_grid} para la
+construcción de \texttt{xarray.Dataset}s a partir de las grillas generadas por
+la librería.
+
+Mis contribuciones al proyecto no se limitan únicamente al agregado de nuevas
+características, sino que una gran parte de ellas involucran tareas de
+mantenimiento: desde la resolución de errores de software, asegurar soporte
+para cada nueva versión de las dependencias, adopción de nuevas herramientas
+que ayudan al desarrollo, agregado de pruebas de software, revisión del código
+de terceros, hasta la realización de modificaciones al sitio web del proyecto
+y a las páginas de documentación de cada librería.
+Tengo además una participación activa en la comunidad, respondiendo preguntas
+de los usuarios y las usuarias, resolviendo problemas que les puedan surgir,
+generando nuevas características frente a nuevas necesidades que ellos y ellas
+puedan presentar.
+Incluso he desarrollado y dictado un tutorial sobre el uso de nuestras
+librerías \citep{soler2021c} y participado en charlas dictadas en reuniones
+científicas \citep{uieda2021,uieda2021b,uieda2021c}.
 
 
 \section{Retroalimentación con investigaciones científicas}
