@@ -26,7 +26,7 @@ de la
 En esta Tesis presentamos dos nuevas metodologías para el modelado
 y procesamiento de datos gravimétricos.
 La primera consiste en un método para el modelado directo de los campos
-gravitatorios generados por tesseroides de densidades que varían de manera
+gravitatorios generados por teseroides de densidades que varían de manera
 continua en la dirección radial.
 Este resuelve las integrales volumétricas involucradas mediante una Cuadratura
 de Gauss-Legendre junto a un algoritmo de discretización adaptativa
@@ -37,15 +37,14 @@ ascendentes de grandes cantidades de datos gravimétricos mediante la técnica d
 fuentes equivalentes en conjunto con un algoritmo de potenciación del
 gradiente.
 Ambas metodologías fueron aplicadas sobre datos reales: se utilizó el nuevo
-modelo directo de tesseroides para modelar la Cuenca Neuquina (Argentina) con
-un perfil de densidad exponencial, y mediantes las fuentes equivalentes
+modelo directo de teseroides para modelar la Cuenca Neuquina (Argentina) con un
+perfil de densidad exponencial, y mediantes las fuentes equivalentes
 potenciadas por el gradiente conseguimos grillar un conjunto de más de 1.7
 millones de datos de gravedad sobre la superficie de Australia.
 Por último, presentamos un recorrido sobre el desarrollo del proyecto de
 software de código abierto para Geofísica: Fatiando a Terra.
-Recorremos su historia, describimos los paquetes que forman parte del
-proyecto y enumeramos las mejores prácticas que se aplican para poder
-desarrollarlas.
+Recorremos su historia, describimos los paquetes que forman parte del proyecto
+y enumeramos las mejores prácticas que se aplican para poder desarrollarlas.
 Además intentamos evaluar qué impacto posee el proyecto sobre la comunidad
 geocientista internacional, cómo los y las integrantes de la comunidad de
 Fatiando a Terra interactúan entre sí y cómo lo hacen con las otras comunidades
