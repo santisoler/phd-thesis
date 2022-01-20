@@ -145,7 +145,7 @@ reimplementaría en Python.
 
 En paralelo, y como proyecto final de su Bachillerato, Leonardo Uieda realiza
 una implementación en Python del algoritmo para el cálculo de campos
-gravitacionales de teseroides mediante la \ac{GLQ}.
+gravitatorios de teseroides mediante la \ac{GLQ}.
 Luego de ser reescrito en C, este proyecto deriva en el lanzamiento del
 software Tesseroids \citep{uieda2016} que ha sido ampliamente utilizado por la
 comunidad geocientista.
@@ -490,20 +490,20 @@ sistemas de coordenadas.
 La geometría más sencilla que hallamos son masas puntuales en coordenadas
 esféricas geocéntricas o en coordenadas Cartesianas, implementando las
 ecuaciones~\ref{eq:potencial-masa-puntual} y \ref{eq:gz-particula}.
-Podemos calcular los campos gravitacionales producidos por masas puntuales
-mediante la función \texttt{point\_mass\_gravity()}.
-El Código~\ref{lst:harmonica-point-mass} ejemplifica cómo podemos utilizar esta
+Podemos calcular los campos gravitatorios producidos por masas puntuales
+mediante la función \texttt{point\_gravity()}.
+El Código~\ref{lst:harmonica-point} ejemplifica cómo podemos utilizar esta
 función para calcular la aceleración de la gravedad producida por dos masas
 puntuales dadas en coordenadas Cartesianas.
 
 Harmonica cuenta con una implementación del método de \citet{nagy2000} para
-calcular los campos gravitacionales de prismas rectangulares mediante la
+calcular los campos gravitatorios de prismas rectangulares mediante la
 función \texttt{prism\_gravtiy()}, haciendo uso de las correcciones de
 \citet{fukushima2020} descriptas en la Sección~\ref{sec:prismas-rectangulares}.
 
 La librería también cuenta con una implementación en Python de los algoritmos
 de discretización adaptativa y \ac{GLQ} para calcular los campos
-gravitacionales de teseroides con densidad constante, a los cuales podemos
+gravitatorios  de teseroides con densidad constante, a los cuales podemos
 acceder mediante la función \texttt{tesseroid\_gravity()}.
 
 \lstinputlisting[
@@ -515,8 +515,26 @@ acceder mediante la función \texttt{tesseroid\_gravity()}.
         masas puntuales dadas en coordenadas Cartesianas mediante
         Harmonica (\HarmonicaVersion{}).
     },
-    label=lst:harmonica-point-mass
-]{fatiando-examples/harmonica-point-mass.py}
+    label=lst:harmonica-point
+]{fatiando-examples/harmonica-point.py}
+
+Además, desde la versión
+\href{https://www.fatiando.org/harmonica/v0.4.0/}{v0.4.0} es posible calcular
+los campos gravitatorios de teseroides con densidad variable en la dirección
+radial, aplicando la metodología descripta en el Capítulo
+\ref{cha:tesseroids-variable-density}.
+
+\lstinputlisting[
+    float,
+    floatplacement=p,
+    language=Python,
+    caption={%
+        Ejemplo de cálculo de aceleración de la gravedad producida por un
+        teseroide con densidad lineal en la dirección radial utilizando
+        Harmonica (\HarmonicaVersion{}).
+    },
+    label=lst:harmonica-tesseroid-variable-density
+]{fatiando-examples/harmonica_tesseroid_variable_density.py}
 
 Cada una de estas funciones admiten una cantidad arbitraria de geometrías
 y puntos de observación que pueden venir dadas por estructuras de datos muy
@@ -605,6 +623,29 @@ las funciones centrales del modelado directo de masas puntuales, permitiendo no
 solo un ahorro en cantidad de código, sino también el reciclado de las
 oportunidades que estas proveen mediante el compilador Numba, como paralelizar
 la construcción de la matriz Jacobiana.
+
+Desde la versión
+\href{https://www.fatiando.org/harmonica/v0.4.0/}{v0.4.0}, la clase
+\texttt{EquivalentSources} cuenta con la opción de utilizar fuentes promediadas
+por bloques, definiendo el tamaño de cada bloque mediante el parámetro
+\texttt{block\_size}.
+Además, se agregó una nueva clase: \texttt{EquivalentSourcesGB} la cual
+implementa las fuentes equivalentes potenciadas por gradiente.
+El Código~\ref{lst:harmonica-gradient-boosted} muestra un ejemplo de uso de
+esta clase para grillar un conjunto de datos gravimétricos de Sudáfrica
+haciendo uso de fuentes promediadas por bloque en conjunto con la potenciación
+del gradiente.
+
+\lstinputlisting[
+    float,
+    floatplacement=p,
+    language=Python,
+    caption={%
+        Ejemplo de uso de las fuentes potenciadas por gradiente mediante la
+        clase \texttt{EquivalentSourcesGB} de Harmonica (\HarmonicaVersion{}).
+    },
+    label=lst:harmonica-gradient-boosted
+]{fatiando-examples/harmonica_gradient_boosted.py}
 
 Harmonica ofrece además algunas otras funcionalidades para procesar datos
 gravimétricos: aplicación de la corrección de Bouguer utilizando una
@@ -1250,7 +1291,7 @@ librerías \citep{soler2021c} y participado en charlas dictadas en reuniones
 científicas \citep{uieda2021,uieda2021b,uieda2021c}.
 
 
-\section{Retroalimentación con investigaciones científicas}
+\section{Relación con investigaciones científicas}
 
 Como se ha mencionado en los Capítulos~\ref{cha:tesseroids-variable-density}
 y~\ref{cha:eql-gradient-boosted}, las herramientas desarrolladas en Fatiando
@@ -1264,7 +1305,7 @@ de herramientas no solo se ve reflejada en los avances de esta Tesis, sino que
 se replica en todos los trabajos que han hecho uso de las mismas,
 particularmente los mencionados en la Sección~\ref{sec:fatiando-history}.
 
-Sin embargo, existe una relación de retroalimentación entre el proyecto y estas
+Existe además una relación de retroalimentación entre el proyecto y estas
 investigaciones científicas: muchos de los métodos publicados en artículos
 científicos son incorporados al mismo, generando una forma alternativa de
 acceder a sus implementaciones.
@@ -1273,6 +1314,9 @@ investigadoras: no es necesario recurrir a los materiales suplementarios de las
 publicaciones (en caso de que existan), sino que pueden ser accedidos gracias
 a paquetes de software propiamente distribuidos que además aplican mejores
 prácticas para su desarrollo y mantenimiento.
+Un ejemplo de esto son los algoritmos desarrollados a lo largo de esta Tesis
+y descriptos en los Capítulos~\ref{cha:tesseroids-variable-density}
+y \ref{cha:eql-gradient-boosted}, los cuales fueron incorporados a Harmonica.
 
 
 \section{Planes a futuro}
@@ -1298,16 +1342,20 @@ y unificar la inicialización de cualquier tipo de elipsoide (esfera, elipsoide
 de revolución o triaxial) combinando todos en una sola clase o proveyendo una
 función particular que decide qué clase debe utilizar en función de los
 parámetros que recibe.
-Además, deseamos incluir cálculos de campos gravitacionales generados por los
+Además, deseamos incluir cálculos de campos gravitatorios generados por los
 elipsoides, es decir, aceleración de la gravedad que no contenga las
 componentes de la aceleración centrífuga.
 
 Por su parte, en Harmonica deseo incorporar las metodologías desarrolladas
 en esta Tesis: modelado directo de teseroides con densidades variables y las
 fuentes equivalentes potenciadas por gradiente.
-Además planificamos añadir implementaciones para la deconvolución de Euler,
-cálculos de derivadas espaciales de grillas regulares y comenzar a diagramar un
-\emph{framework} de inversión similar al que existía en \texttt{fatiando} v0.5.
+Por su parte, en Harmonica deseamos implementar algunas de las metodologías
+basadas en Transformadas de Fourier, tales como continuación ascendente,
+derivadas direccionales, reducción al polo de datos magnéticos o deconvolución
+de Euler.
+A largo plazo poseemos el objetivo de diseñar un \emph{framework} de inversión
+similar al que existía en \texttt{fatiando} v0.5, pero haciendo uso a las
+últimas herramientas disponibles.
 
 De forma más global se encuentra el objetivo de incrementar la
 interoperabilidad de nuestros paquetes con los desarrollados por las otras
@@ -1315,20 +1363,3 @@ comunidades de software de código abierto mencionadas en
 \ref{sec:fatiando-community}.
 En esta tarea, comunidades como \emph{software underground} juegan un papel
 fundamental como punto de reunión entre todas las personas involucradas.
-
-
-% Stable release of every package
-
-% Mayor interoperabilidad con el resto de paquetes geofísicos (SimPEG, pyGIMLi, etc)
-
-% Implementar elipsoides traixiales en boule.
-% Unificar las clases de elipsoides para todo tipo.
-% Planes a futuro:
-
-% incluir gradient-boosted eqls y variable density tesseroids
-
-% derivadas espaciales de grillas (verticales con FFT)
-
-% Euler deconvolution
-
-% inversion: nuevo framework de inversion

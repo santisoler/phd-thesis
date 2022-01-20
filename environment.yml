@@ -17,5 +17,5 @@ dependencies:
   # Fatiando packages used in the thesis/fatiando-examples scripts
   - verde=1.6.1
   - pooch=1.5.2
-  - harmonica=0.3.3
+  - harmonica=0.4.0
   - boule=0.3.1
