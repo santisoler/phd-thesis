@@ -1,18 +1,18 @@
-\chapter{Tesseroides de densidad variable}
+\chapter{Teseroides de densidad variable}
 \label{cha:tesseroids-variable-density}
 
 
 \section{Resumen}
 
 Presentamos una nueva metodología para calcular los campos gravitatorios
-generados por tesseroides (prismas esféricos) cuya densidad varía en
+generados por teseroides (prismas esféricos) cuya densidad varía en
 profundidad según una función continua arbitraria.
 Esta metodología aproxima los campos gravitatorios mediante una \ac{GLQ} junto
 con la aplicación de dos algoritmos de discretización que controlan
 automáticamente la precisión de la aproximación dividiendo adaptativamente el
-tesseroide original en otros más pequeños.
+teseroide original en otros más pequeños.
 El primero es un algoritmo preexistente de discretización adaptativa
-bidimensional que reduce el error debido a la distancia entre el tesseroide
+bidimensional que reduce el error debido a la distancia entre el teseroide
 y el punto de cómputo.
 El segundo es un nuevo algoritmo de discretización basado en la densidad que
 reduce los errores debido a la variación de la densidad con la profundidad.
@@ -67,10 +67,10 @@ anomalías de gravedad para esas escalas resulta muy importante.
 Con el objetivo de tomar en consideración la curvatura de la Tierra, muchos
 modelos directos globales se definen en coordenadas esféricas geocéntricas
 (ver Capítulo~\ref{cha:fundamentos}).
-Un abordaje común es discretizar la Tierra en tesseroides (prismas esféricos)
+Un abordaje común es discretizar la Tierra en teseroides (prismas esféricos)
 \citep{anderson1976}, los cuales son definidos por el volumen que delimitan
 pares de latitud, longitud y radios (Fig.~\ref{fig:tesseroid}).
-Los campos gravitatorios generados por un tesseroide en cualquier punto
+Los campos gravitatorios generados por un teseroide en cualquier punto
 exterior vienen dados por integrales de volumen que deben ser aproximadas
 numéricamente.
 La literatura ofrece dos abordajes principales: uno involucra expansiones en
@@ -86,13 +86,13 @@ Es por esta razón que haremos foco en los métodos basados en la \ac{GLQ} de
 aquí en adelante.
 
 La principal dificultad que presenta la integración por \ac{GLQ} es la pérdida
-de precisión que ocurre cuando el punto de cómputo se acerca al tesseroide
+de precisión que ocurre cuando el punto de cómputo se acerca al teseroide
 \citep{ku1977}.
 \citet{uieda2016} desarrollaron un método a partir del algoritmo de
 discretización adaptativa tridimensional de \citet{li2011} para obtener de
-manera automática campos gravitatorios de tesseroides con densidad uniforme
+manera automática campos gravitatorios de teseroides con densidad uniforme
 con una precisión de 0.1\%.
-El algoritmo divide recursivamente un tesseroide en otros más pequeños cuando
+El algoritmo divide recursivamente un teseroide en otros más pequeños cuando
 un determinado umbral es excedido, esto es cuando la distancia normalizada
 al punto de cómputo es mayor que un parámetro denominado \emph{ratio
 distancia-tamaño} ($D$).
@@ -102,28 +102,28 @@ gradiente comparando los resultados de la integración numérica con los campos
 generados por un cascarón esférico.
 
 Dos publicaciones recientes presentan abordajes alternativos para calcular los
-campos gravitatorios de tesseroides homogéneos e incorporan metodologías para
-el caso de tesseroides con densidades variables en profundidad.
+campos gravitatorios de teseroides homogéneos e incorporan metodologías para
+el caso de teseroides con densidades variables en profundidad.
 \citet{fukushima2018} ha resuelto analíticamente la integral correspondiente al
 potencial gravitatorio en la dirección radial, obteniendo una integral de
 superficie, la cual es numéricamente resuelta dividiendo condicionalmente el
-tesseroide y aplicando la cuadratura exponencial doble.
+teseroide y aplicando la cuadratura exponencial doble.
 El gradiente del potencial y las componentes del tensor del gradiente son
 calculadas posteriormente por diferencias finitas.
-\citet{fukushima2018} además generaliza el método para tesseroides con una
+\citet{fukushima2018} además generaliza el método para teseroides con una
 densidad que varía con el radio según una función polinomial de grado
 arbitrario.
 \citet{lin2019} han comparado las diferentes metodologías de integración
-y discretización para tesseroides homogéneos.
+y discretización para teseroides homogéneos.
 A partir de este análisis han desarrollado un método combinado:
-para puntos de cómputo cercanos al tesseroide, utilizan una integración
+para puntos de cómputo cercanos al teseroide, utilizan una integración
 \ac{GLQ} junto con una discretización adaptativa basada en \citet{uieda2016},
 pero solo aplicada a las dimensiones horizontales.
 Si el punto de cómputo se encuentra más allá de una cierta distancia de
 truncamiento, aplican una aproximación en serie de Taylor de segundo orden,
 junto con la subdivisión desarrollada por \citet{grombein2013}.
 \citet{lin2019} además presentan una variación de su método combinado que
-permite calcular los campos gravitatorios generados por tesseroides con
+permite calcular los campos gravitatorios generados por teseroides con
 densidades lineales en la dirección radial.
 
 Los desarrollos de \citet{lin2019} y \citet{fukushima2018} se limitan
@@ -136,7 +136,7 @@ automatizan este proceso \citep{ketkov1969, vandewalle1975, imamoto2008,
 ahmadi2013}, estos requieren un número fijo de intervalos de discretización
 o bien están diseñados para ser utilizados solo en funciones convexas.
 El uso de estos algoritmos limitaría el dominio de funciones de densidades que
-pueden ser asignadas a tesseroides y no garantizarían un proceso completamente
+pueden ser asignadas a teseroides y no garantizarían un proceso completamente
 automático.
 Además, es bien conocido que el uso de polinomios de alto grado para aproximar
 una función altamente variable produce resultados inestables cuando se
@@ -147,7 +147,7 @@ inversiones de gravedad no lineales \citep[e.g.][]{uieda2017}, especialmente si
 la función densidad es altamente variable en profundidad.
 
 Presentamos un nuevo algoritmo para el cálculo del potencial gravitatorio y su
-gradiente generado por un tesseroide con una función continua de densidad que
+gradiente generado por un teseroide con una función continua de densidad que
 varía según la coordenada radial.
 Esta metodología está basada en una integración \ac{GLQ} tridimensional, una
 versión bidimensional del algoritmo de discretización adaptativa de
@@ -158,24 +158,24 @@ empíricamente valores óptimos para los parámetros que controlan las
 discretizaciones, comparando los resultados numéricos con las soluciones
 analíticas de cascarones esféricos.
 Finalmente, hemos aplicado la nueva metodología para modelar la Cuenca
-Neuquina (Argentina) utilizando tesseroides con densidades lineales
+Neuquina (Argentina) utilizando teseroides con densidades lineales
 y exponenciales en profundidad.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Metodología}
 
-Consideremos un tesseroide en un sistema de coordenadas esféricas geocéntricas
+Consideremos un teseroide en un sistema de coordenadas esféricas geocéntricas
 definido por pares de latitudes ($\phi_1$, $\phi_2$), longitudes ($\lambda_1$,
 $\lambda_2$) y radios ($r_1$, $r_2$).
 Definimos un punto de computo externo $\mathbf{p}$ localizado en un radio $r$,
 una latitud $\phi$ y una longitud $\lambda$.
 \citet{grombein2013} proveen formulaciones eficientes para las integrales de
-volumen del potencial gravitatorio generado por un tesseroide de densidad
+volumen del potencial gravitatorio generado por un teseroide de densidad
 homogénea, junto con las componentes de su gradiente
-(ecs.~\ref{eq:potencial-tesseroide}, \ref{eq:gx-tesseroide},
-\ref{eq:gy-tesseroide}, \ref{eq:gz-tesseroide}).
-Aquí vamos a considerar los casos en los cuales el tesseroide posee una
+(ecs.~\ref{eq:potencial-teseroide}, \ref{eq:gx-teseroide},
+\ref{eq:gy-teseroide}, \ref{eq:gz-teseroide}).
+Aquí vamos a considerar los casos en los cuales el teseroide posee una
 densidad variable con respecto a la coordenada radial $r$ según una función
 continua arbitraria $\rho(r)$.
 Por lo tanto, las integrales del potencial gravitatorio y las componentes de su
@@ -210,7 +210,7 @@ por las ecuaciones~\ref{eq:tesseroid-pot} y~\ref{eq:tesseroid-grav} por una
 suma ponderada de los núcleos de integración evaluados en las raíces de un
 polinomio de orden $N$ \citep[p.~390]{hildebrand1987}, conocidos como los nodos
 de la cuadratura.
-A diferencia de los tesseroides con densidad constante, la función de densidad
+A diferencia de los teseroides con densidad constante, la función de densidad
 $\rho(r)$ debe ser incluida dentro del integrando y evaluada en los nodos de la
 cuadratura:
 %
@@ -231,35 +231,35 @@ cuadratura:
 %
 donde $A$ es una constante definida en la
 ecuación~\ref{eq:glq-resize-factor}, $f(r', \phi', \lambda')$ es el núcleo
-correspondiente a un tesseroide con densidad homogénea \citep{grombein2013},
+correspondiente a un teseroide con densidad homogénea \citep{grombein2013},
 $(r_i, \phi_j, \lambda_k)$ son las coordenadas de los nodos de la cuadratura,
 $N^r$, $N^\phi$, $N^\lambda$ son los órdenes de la cuadratura y $W_i^r$,
 $W_j^\phi$, $W_k^\lambda$ son los pesos ponderados en la dirección radial,
 latitudinal y longitudinal, respectivamente.
 Vale la pena notar que aplicar la \ac{GLQ} es equivalente a aproximar el
-tesseroide por $N^r \times N^\phi \times N^\lambda$ masas puntuales localizadas
+teseroide por $N^r \times N^\phi \times N^\lambda$ masas puntuales localizadas
 en los nodos de la cuadratura \citep{ku1977, asgharzadeh2007}.
 
 
 \subsection{Discretización adaptativa bidimensional}
 
 \citet{ku1977} dio cuenta de que la integración por \ac{GLQ} se vuelve menos
-precisa a medida que el punto de cómputo se acerca al tesseroide.
+precisa a medida que el punto de cómputo se acerca al teseroide.
 Una manera de mitigar este comportamiento sería aumentar el orden de la
 cuadratura.
 Al hacer esto, incrementaríamos uniformemente la cantidad de masas puntuales
-utilizadas para aproximar el tesseroide.
+utilizadas para aproximar el teseroide.
 Sin embargo, solo es necesario incrementar la concentración de masas puntuales
 en cercanías del punto de cómputo \citep{uieda2016}.
 Alternativamente,  \citet{li2011} han propuesto un algoritmo de discretización
-adaptativa que mantiene fijo el orden de la cuadratura y divide el tesseroide
+adaptativa que mantiene fijo el orden de la cuadratura y divide el teseroide
 según una relación entre la distancia al punto de cómputo y las dimensiones
 del mismo.
 Este algoritmo involucra un cómputo más eficiente, ya que produce un aumento en
 la concentración de masas puntuales solo en las regiones donde es necesario.
 \citet{uieda2016} han desarrollado una versión modificada de este
 algoritmo junto con una implementación computacional eficiente.
-Ambas versiones del algoritmo subdividen el tesseroide en las direcciones
+Ambas versiones del algoritmo subdividen el teseroide en las direcciones
 latitudinal, longitudinal y radial, por ende podemos definirlos como
 \emph{algoritmos de discretización adaptativa tridimensionales}.
 Por otro lado, \citet{lin2019} han propuesto un \emph{algoritmo de
@@ -275,7 +275,7 @@ adaptativa de \citet{uieda2016}.
 Lo que sigue a continuación es un resumen del algoritmo. El lector o la lectora
 puede referirse a \citet{uieda2016} para una descripción más detallada.
 
-\textit{Paso 1}: Corroboramos que el tesseroide satisface la
+\textit{Paso 1}: Corroboramos que el teseroide satisface la
 desigualdad
 %
 \begin{equation}
@@ -287,7 +287,7 @@ para sus dimensiones longitudinales y latitudinales
 $L_i\ (i \in \{\lambda, \phi\})$,
 donde $D$ es un escalar positivo denominado \emph{ratio de distancia-tamaño},
 $d$ es la distancia entre el punto de cómputo y el centro geométrico del
-tesseroide:
+teseroide:
 %
 \begin{equation}
     d = \left[
@@ -308,7 +308,7 @@ tesseroide:
 \end{equation}
 
 \noindent
-y las dimensiones del tesseroide se definen como:
+y las dimensiones del teseroide se definen como:
 %
 \begin{equation}
     L_\lambda = r_2 \arccos(\sin^2\phi_t +
@@ -323,25 +323,25 @@ y
 \end{equation}
 
 \textit{Paso 2}:
-Si todas de las dimensiones del tesseroide satisfacen la
+Si todas de las dimensiones del teseroide satisfacen la
 desigualdad~\ref{eq:condition}, entonces calculamos su efecto gravitatorio
 usando una \ac{GLQ} de segundo orden (ec.~\ref{eq:glq-var-dens}).
 Agregamos el efecto a un total acumulado.
 
 \textit{Paso 3}:
 Si la desigualdad~\ref{eq:condition} no es satisfecha por una o ambas
-dimensiones (longitudinal o latitudinal), dividimos el tesseroide por la mitad
+dimensiones (longitudinal o latitudinal), dividimos el teseroide por la mitad
 a lo largo de esa dimensión o dimensiones.
-Repetimos los pasos 1~a~3 para todos los tesseroides más pequeños hasta que
+Repetimos los pasos 1~a~3 para todos los teseroides más pequeños hasta que
 ninguno de ellos viole la desigualdad~\ref{eq:condition}.
 
 \textit{Último paso}:
 Al finalizar el algoritmo, una \ac{GLQ} de segundo orden habrá sido aplicada
-a todos los tesseroides pequeños que satisfacen la desigualdad
+a todos los teseroides pequeños que satisfacen la desigualdad
 \ref{eq:condition}, y por lo tanto el total acumulado del paso 2 será
-equivalente al efecto gravitatorio del tesseroide original.
+equivalente al efecto gravitatorio del teseroide original.
 
-El \emph{ratio} densidad-tamaño $D$ determina cuántas veces el tesseroide será
+El \emph{ratio} densidad-tamaño $D$ determina cuántas veces el teseroide será
 dividido.
 Por lo tanto, su valor regula tanto la precisión del algoritmo como su tiempo
 de cómputo.
@@ -350,7 +350,7 @@ de precisión deseado.
 En cambio, es posible determinarlo empíricamente comparando los resultados
 numéricos con la solución analítica para un cascarón esférico.
 \citet{uieda2016} han utilizado un cascarón de densidad homogénea para
-determinar los valores óptimos de $D$ para su algoritmo aplicado a tesseroides
+determinar los valores óptimos de $D$ para su algoritmo aplicado a teseroides
 de densidad constante.
 Aquí repetiremos dicho experimento numérico utilizando las expresiones
 analíticas de los campos gravitatorios generados por cascarones con densidad
@@ -365,24 +365,24 @@ algoritmo de discretización adaptativa bidimensional.
 La integración numérica considerando una función continua de densidad introduce
 un nuevo tipo de problema: el error de integración que surge de utilizar solo
 unos pocos nodos de cuadratura para evaluar la variación de la densidad del
-tesseroide.
+teseroide.
 El algoritmo de discretización adaptativa tridimensional puede ayudar a reducir
 este tipo de error agregando más masas puntuales en la dirección radial.
 Sin embargo, este algoritmo no considera la función de densidad en sí misma
-a la hora de decidir cómo subdividir al tesseroide, y por lo tanto no es el
+a la hora de decidir cómo subdividir al teseroide, y por lo tanto no es el
 método más adecuado para realizar esta tarea.
 
 En este trabajo hemos desarrollado un algoritmo de discretización
-complementario que subdivide al tesseroide en la dirección radial tomando en
+complementario que subdivide al teseroide en la dirección radial tomando en
 consideración las variaciones de la función densidad.
 Este \emph{algoritmo de discretización basado en la densidad} se aplica antes
 del \emph{algoritmo de discretización adaptativa bidimensional} descripto en la
 Sección anterior.
-En resumen, el algoritmo divide al tesseroide a lo largo de la dirección radial
+En resumen, el algoritmo divide al teseroide a lo largo de la dirección radial
 en las profundidades a las cuales ocurre la \emph{máxima variación de
 densidad}.
 
-Consideremos un tesseroide, que llamaremos \emph{original}, con una función de
+Consideremos un teseroide, que llamaremos \emph{original}, con una función de
 densidad dada por $\rho(r')$.
 Antes de comenzar a aplicar el algoritmo de discretización basado en la
 densidad, normalizamos la función $\rho(r')$ al intervalo $[0, 1]$ de la
@@ -394,7 +394,7 @@ siguiente manera:
 \end{equation}
 %
 donde $\rho_\text{min}$ y $\rho_\text{max}$ son el mínimo y el máximo
-valor de densidad dentro de los límites de tesseroide.
+valor de densidad dentro de los límites de teseroide.
 Hacemos hincapié en que esta función densidad normalizada no se verá modificada
 a lo largo del algoritmo.
 En caso de que la función densidad sea constante, los mínimos y máximos serán
@@ -408,17 +408,17 @@ aplicado.
     Ejemplo de la aplicación del algoritmo de discretización basado en densidad
     a una función densidad no lineal.
     (a)~La función densidad normalizada $\rho_n(r')$ (azul), los límites
-    actuales del tesseroide (puntos naranja), y la \emph{línea recta}
+    actuales del teseroide (puntos naranja), y la \emph{línea recta}
     $\rho_l(r')$ (línea naranja).
     Las líneas de a trazos rojas representan la máxima diferencia de densidad
-    $\Delta \rho (r')$ a la cual el tesseroide será subdividido (asumiendo que
+    $\Delta \rho (r')$ a la cual el teseroide será subdividido (asumiendo que
     la desigualdad~\ref{eq:delta-density} no se satisface).
     (b)~Segunda iteración del algoritmo con una nueva \emph{línea recta}
-    y máxima diferencia de densidad. El tesseroide será dividido a la
+    y máxima diferencia de densidad. El teseroide será dividido a la
     profundidad indicada por la linea roja de a trazos.
     (c)~Tercera iteración del algoritmo.
     (d)~ Salida final del algoritmo de discretización basado en densidad,
-    asumiendo que los cuatro tesseroides nuevos satisfacen la
+    asumiendo que los cuatro teseroides nuevos satisfacen la
     desigualdad~\ref{eq:delta-density}.
 }
 \label{fig:density-discretization-algorithm}
@@ -430,7 +430,7 @@ El algoritmo puede comprenderse a través de los siguientes pasos
 
 \textit{Paso 1}:
 Definimos una \emph{línea recta} $\rho_l(r')$ que toma los mismos valores que
-la función densidad normalizada $\rho_n(r')$ en los extremos del tesseroide
+la función densidad normalizada $\rho_n(r')$ en los extremos del teseroide
 ($r_1$ y $r_2$):
 %
 \begin{equation}
@@ -454,50 +454,50 @@ y la función densidad normalizada:
 \end{equation}
 
 \textit{Paso 4}:
-Si la siguiente desigualdad se satisface, el tesseroide no será subdividido:
+Si la siguiente desigualdad se satisface, el teseroide no será subdividido:
 %
 \begin{equation}
     \text{max}\{ \Delta \rho(r') \} \frac{L_r}{L_r^\text{orig}} \le \delta,
     \label{eq:delta-density}
 \end{equation}
 %
-donde $L_r$ es la dimensión radial del tesseroide en consideración
-(no confundir con el tesseroide \emph{original}),
+donde $L_r$ es la dimensión radial del teseroide en consideración
+(no confundir con el teseroide \emph{original}),
 %
 \begin{equation}
     L_r = r_2 - r_1,
 \end{equation}
 %
-$L_r^\text{orig}$ es la dimensión radial del tesseroide
+$L_r^\text{orig}$ es la dimensión radial del teseroide
 \emph{original}, y $\delta$ es una constante positiva que denominaremos
 \emph{ratio delta}.
 
 \textit{Paso 5}:
 Si la desigualdad~\ref{eq:delta-density} no se satisface, entonces dividimos el
-tesseroide en dos a una profundidad dada por el radio $r_\text{max}$ a la cual
+teseroide en dos a una profundidad dada por el radio $r_\text{max}$ a la cual
 la máxima diferencia absoluta (ec.~\ref{eq:density-abs-diff}) tiene lugar.
-Repetimos los pasos 1~a~5 para cada tesseroide pequeño producido por este paso.
+Repetimos los pasos 1~a~5 para cada teseroide pequeño producido por este paso.
 
 \textit{Paso final}:
-Una vez que todos los pequeños tesseroides satisfacen la
+Una vez que todos los pequeños teseroides satisfacen la
 desigualdad~\ref{eq:delta-density}, cada uno es sometido al algoritmo de
 discretización adaptativa bidimensional con el objeto de calcular sus efectos
 gravitatorios.
 
 En la primer iteración, la relación $L_r/L_r^\text{orig}$ es igual a 1, ya que
-el tesseroide que se considera para subdividir corresponde al \emph{original}.
+el teseroide que se considera para subdividir corresponde al \emph{original}.
 En las subsiguientes iteraciones, esta relación será progresivamente menor que
-1 a medida que los tesseroides sean cada vez más pequeños.
+1 a medida que los teseroides sean cada vez más pequeños.
 La intención de incluir este factor en la desigualdad \ref{eq:delta-density} es
 limitar la cantidad de divisiones a un número que reduzca significativamente el
-error numérico: dividir un tesseroide grande con un $\text{max}\{ \Delta
+error numérico: dividir un teseroide grande con un $\text{max}\{ \Delta
 \rho(r') \}$ bajo mejoraría la precisión de la integración en mayor medida que
-dividiendo un tesseroide pequeño con un $\text{max}\{ \Delta \rho(r') \}$
+dividiendo un teseroide pequeño con un $\text{max}\{ \Delta \rho(r') \}$
 mayor.
 
 A mayor valor de $\delta$, se llevarán a cabo menor cantidad de divisiones,
 y viceversa.
-Por ende, el valor de $\delta$ controla cuántas veces los tesseroides serán
+Por ende, el valor de $\delta$ controla cuántas veces los teseroides serán
 divididos basados en la función densidad, e indirectamente, determina la
 precisión y el tiempo de cómputo de la integración numérica.
 Surge entonces la necesidad de determinar un valor máximo de $\delta$ que
@@ -506,29 +506,29 @@ garantice una precisión aceptable mientras minimiza el tiempo de cómputo.
 
 \subsection{Resumen del algoritmo}
 
-En resumen, dado un tesseroide con densidad variable en profundidad según una
+En resumen, dado un teseroide con densidad variable en profundidad según una
 función continua arbitraria, proponemos seguir los siguientes pasos para
 calcular numéricamente sus campos gravitatorios en cualquier punto exterior:
 
 \textit{Paso 1:}
 Aplicar el \emph{algoritmo de discretización basado en densidad} para
-subdividir al tesseroide a lo largo de la dirección radial, produciendo un
-conjunto de tesseroides con las mismas dimensiones longitudinales
+subdividir al teseroide a lo largo de la dirección radial, produciendo un
+conjunto de teseroides con las mismas dimensiones longitudinales
 y latitudinales que el original, pero con diferentes límites radiales.
 
 \textit{Paso 2:}
 Aplicar el \emph{algoritmo de discretización adaptativa bidimensional} a cada
-tesseroide obtenido en el paso anterior.
-Si es necesario, el algoritmo subdividirá cada tesseroide en las direcciones
-longitudinal y latitudinal, generando un conjunto de tesseroides más pequeños.
+teseroide obtenido en el paso anterior.
+Si es necesario, el algoritmo subdividirá cada teseroide en las direcciones
+longitudinal y latitudinal, generando un conjunto de teseroides más pequeños.
 
 \textit{Paso 3:}
 Aplicar una \ac{GLQ} de segundo orden para calcular numéricamente los campos
-gravitatorios (ec.~\ref{eq:glq-var-dens}) generados por cada tesseroide
+gravitatorios (ec.~\ref{eq:glq-var-dens}) generados por cada teseroide
 obtenido en el paso anterior. La integración numérica incluye la función
 densidad y puede ser aplicada sin modificaciones a cualquier función continua.
 La suma de todos estos resultados corresponde al campo gravitatorio generado
-por el tesseroide original.
+por el teseroide original.
 
 
 \subsection{Implementación por Software}
@@ -571,18 +571,18 @@ presentados en este Capítulo.
 
 El \emph{ratio} distancia-tamaño $D$ de la discretización adaptativa y el
 \emph{ratio delta} $\delta$ de la discretización basada en la densidad
-determinan cuántas veces cada tesseroide será dividido y por ende controlan
+determinan cuántas veces cada teseroide será dividido y por ende controlan
 indirectamente el error numérico de las integraciones.
 Debemos determinar valores óptimos para $D$ y $\delta$ si deseamos asegurar
 tanto una precisión numérica aceptable así como una eficiencia computacional de
 los algoritmos.
 
 \citet{uieda2016} compararon los resultados de las integraciones numéricas de
-tesseroides homogéneos con las soluciones analíticas de un cascarón esférico
+teseroides homogéneos con las soluciones analíticas de un cascarón esférico
 \citep{mikuska2006, grombein2013} con el objetivo de obtener valores
 predeterminados para el \emph{ratio} distancia-tamaño $D$.
 Seguiremos esta idea, pero en nuestro caso el cascarón esférico debe tener el
-mismo perfil de densidad que nuestro modelo de tesseroides. \citet{lin2019}
+mismo perfil de densidad que nuestro modelo de teseroides. \citet{lin2019}
 obtuvieron la solución analítica del potencial gravitatorio generado por un
 cascarón esférico con densidad lineal en la coordenada radial.
 Aplicando el Teorema del Cascarón de Newton \citep{chandrasekhar1995,
@@ -592,26 +592,26 @@ Apéndice~\ref{sec:shell}).
 
 Con el objetivo de comparar los resultados numéricos con las soluciones
 analíticas debemos construir modelos de un cascarón esférico a partir de
-tesseroides.
+teseroides.
 Dividimos entonces el cascaron esférico a lo largo de las direcciones
 longitudinales y latitudinales obteniendo un modelo de cascarón conformado por
-$6 \times 12 = 72$ tesseroides de un tamaño de $30^\circ \times 30^\circ$.
+$6 \times 12 = 72$ teseroides de un tamaño de $30^\circ \times 30^\circ$.
 Hemos definido varios modelos de cascarones con diferentes espesores
 (Tabla~\ref{tab:shell-models}) para poder evaluar la discretización basada en
 densidad en diferentes escenarios.
 Los valores de espesor fueron elegidos para cubrir un amplio rango de
 posibles aplicaciones: desde modelos topográficos a escalas litosféricas.
 Dado que la cantidad de subdivisiones en la discretización adaptativa será
-proporcional al tamaño de los tesseroides (ec.~\ref{eq:condition}),
+proporcional al tamaño de los teseroides (ec.~\ref{eq:condition}),
 algunas de estas configuraciones representan los peores casos.
-La mayoría de las aplicaciones prácticas usarían tesseroides más pequeños que
+La mayoría de las aplicaciones prácticas usarían teseroides más pequeños que
 $30^\circ \times 30^\circ \times 1000\ \text{km}$.
 
 Las diferencias entre la solución analítica y los resultados numéricos pueden
 ser calculados en un único punto de cómputo debido a la simetría rotacional del
 cascarón esférico.
 Sin embargo, los resultados numéricos dependen de la posición relativa entre el
-punto de cómputo y el tesseroide \citep{ku1977, asgharzadeh2007, uieda2016}.
+punto de cómputo y el teseroide \citep{ku1977, asgharzadeh2007, uieda2016}.
 Tendremos en cuenta este fenómeno calculando dichas diferencias sobre grillas
 regulares y almacenando únicamente la diferencia máxima absoluta.
 Estos cálculos serán realizados sobre cuatro grillas diferentes
@@ -627,7 +627,7 @@ serán llevadas a cabo utilizando funciones de densidades lineales,
 exponenciales y sinusoidales.
 La densidad sinusoidal es incluida con el objetivo de evaluar la aproximación
 numérica en sus límites de desempeño.
-Repetimos estas comparaciones para cada combinación de modelos de tesseroides
+Repetimos estas comparaciones para cada combinación de modelos de teseroides
 en la Tabla~\ref{tab:shell-models} y grillas de la Tabla~\ref{tab:grids}.
 A partir de estos resultados generalizaremos valores óptimos para $D$
 y $\delta$ que garantizan errores numéricos menores a 0.1\% en comparación con
@@ -636,7 +636,7 @@ las soluciones analíticas del cascarón esférico en la mayoría de los casos.
 \begin{table}
 \centering
 \begin{tabular}{rccccc}
-    Espesor & Tamaño de cada tesseroide  & Cantidad de tesseroides \\ \hline
+    Espesor & Tamaño de cada teseroide  & Cantidad de teseroides \\ \hline
     0.1 km  & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
     1 km    & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
     10 km   & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
@@ -644,13 +644,13 @@ las soluciones analíticas del cascarón esférico en la mayoría de los casos.
     1000 km & $30^\circ \times 30^\circ$ & $6 \times 12 = 72$ \\
 \end{tabular}
 \caption{
-    Descripción de los modelos de tesseroides utilizados para construir
+    Descripción de los modelos de teseroides utilizados para construir
     cascarones esféricos y caracterizar la precisión de las integraciones
     numéricas.
     El radio exterior ($R_2$) de cada modelo es igual al radio medio de la
     Tierra (6378.137 km), mientras que le radio interior ($R_1$) es determinado
     por el espesor del cascarón.
-    La cantidad total y las dimensiones horizontales de los tesseroides en cada
+    La cantidad total y las dimensiones horizontales de los teseroides en cada
     modelo de cascarón están detalladas según dimensiones latitudinales
     y longitudinales, respectivamente.
     \newline
@@ -716,7 +716,7 @@ respectivamente:
 \includegraphics[width=\linewidth]{figs/tesseroids-variable-density/linear-density-diffs.pdf}
 \caption{
     Diferencias entre los campos gravitatorios generados por cada modelo de
-    cascarón hecho con tesseroides y sus respectivas soluciones analíticas en
+    cascarón hecho con teseroides y sus respectivas soluciones analíticas en
     función del \emph{ratio} distancia-tamaño $D$.
     Cada modelo posee una densidad lineal (ec.~\ref{eq:density-linear}).
     Los cálculos fueron realizados sobre las cuatro grillas descriptas en la
@@ -736,7 +736,7 @@ respectivamente:
 Las diferencias absolutas definidas en la ecuación~\ref{eq:density-abs-diff}
 son siempre cero para cualquier tipo de densidad lineal.
 Como resultado, la desigualdad~\ref{eq:delta-density} será siempre satisfecha
-y no será necesario subdividir el tesseroide en la dirección radial durante la
+y no será necesario subdividir el teseroide en la dirección radial durante la
 discretización basada en densidad.
 Por lo tanto, solo la discretización adaptativa bidimensional es el único
 mecanismo que controla la precisión de la integración numérica para el caso de
@@ -826,7 +826,7 @@ inglés) y calculamos el error numérico para cada par ($D$, $\delta$)
 perteneciente a una grilla en el espacio $D$-$\delta$
 (Fig.~\ref{fig:grid-search}).
 Con el objeto de obtener un óptimo desempeño del algoritmo, buscamos el par
-($D$, $\delta$) que minimice el número de subdivisiones de tesseroides,
+($D$, $\delta$) que minimice el número de subdivisiones de teseroides,
 manteniendo el error numérico por debajo del umbral de 0.1\%.
 Este requisito se traduce en minimizar el valor de $D$ y maximizar el valor de
 $\delta$.
@@ -874,7 +874,7 @@ Estos resultados indican que los valores de $D_\text{lineal}$ obtenidos pueden
 ser extrapolados a los casos de densidades no lineales.
 Esto no es una sorpresa, ya que la discretización adaptativa bidimensional y la
 discretización basada en densidad son independientes una de la otra: la primera
-divide al tesseroide en las direcciones horizontales, mientras que la otra lo
+divide al teseroide en las direcciones horizontales, mientras que la otra lo
 hace solo en la dirección radial.
 Por ende, es de esperar que el valor óptimo de $\delta$ sea independiente del
 valor óptimo de $D$.
@@ -1033,7 +1033,7 @@ realizado de forma significativa, ya que dependería fuertemente en la
 implementación del algoritmo, la elección del lenguaje de programación y la
 función densidad en particular.
 Una forma indirecta de estimar cuánto aumenta el costo computacional es obtener
-la cantidad de subdivisiones realizadas sobre el tesseroide durante la
+la cantidad de subdivisiones realizadas sobre el teseroide durante la
 discretización basada en densidad.
 
 Analizamos densidades exponenciales (ec.~\ref{eq:density-exp}) con valores de
@@ -1055,7 +1055,7 @@ casi lineal entre el número de divisiones para el caso de densidad sinusoidal
 y los valores de $b$.
 Por lo tanto, el tiempo de cómputo en estos casos parece depender de la
 cantidad de períodos de la función sinusoidal contenidos dentro de los límites
-del tesseroide.
+del teseroide.
 
 \begin{figure}
 \centering
@@ -1069,7 +1069,7 @@ del tesseroide.
     presentes en la Fig.~\ref{fig:sine-densities}.
     En ambas figuras, las ubicaciones de las discretizaciones están marcadas
     con círculos naranja.
-    (c)~Cantidad de tesseroides obtenidos en el caso de densidad sinusoidal en
+    (c)~Cantidad de teseroides obtenidos en el caso de densidad sinusoidal en
     función de $b$.
 }
 \label{fig:number-of-tesseroids}
@@ -1092,7 +1092,7 @@ registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
 \centering
 \includegraphics[width=\linewidth]{figs/tesseroids-variable-density/neuquen-basin.pdf}
 \caption{
-    Efectos gravitatorios de la Cuenca Neuquina modelada utilizando tesseroides
+    Efectos gravitatorios de la Cuenca Neuquina modelada utilizando teseroides
     con una densidad exponencial como función de la profundidad.
     (a)~Topografía de la Cuenca Neuquina (en km) y su ubicación geográfica en
     Sudamérica,
@@ -1110,7 +1110,7 @@ registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
 \caption{
     Contrastes de densidad lineales y exponenciales utilizados para el cálculo
     de los campos gravitatorios generados por un modelo de la Cuenca Neuquina
-    compuesto por tesseroides.
+    compuesto por teseroides.
     La altitud se define por encima del radio medio de la Tierra, y sus eje se
     extiende entre el puntos más profundo hasta el punto más alto de la cuenca.
 }
@@ -1123,7 +1123,7 @@ registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
 \includegraphics[width=\linewidth]{figs/tesseroids-variable-density/neuquen-basin-diffs.pdf}
 \caption{
     Diferencias entre los campos gravitatorios generados por el modelo de
-    tesseroides de la Cuenca Neuquina con una densidad exponencial y con el
+    teseroides de la Cuenca Neuquina con una densidad exponencial y con el
     mismo modelo pero con densidades homogéneas y lineales.
     \mbox{(a)-(b)}~Diferencias de $V$ y $g_z$ entre el modelo con densidad
     exponencial y el modelo con densidad homogénea,
@@ -1137,15 +1137,15 @@ registro estratigráfico hasta 5000m de profundidad \citep{howell2005}.
 El espesor del paquete sedimentario fue digitalizado a partir de
 \citet{heine2007} sobre una grilla regular con una resolución de 0.05$^\circ$
 en las direcciones longitudinal y latitudinal (Fig.~\ref{fig:neuquen-basin}b).
-Creamos un modelo del paquete sedimentario a partir de tesseroides de
+Creamos un modelo del paquete sedimentario a partir de teseroides de
 $0.05^\circ \times 0.05^\circ$ ubicados sobre cada nodo de la grilla.
-El límite superior de cada tesseroide fue fijado a la altitud media de la
+El límite superior de cada teseroide fue fijado a la altitud media de la
 topografía de la cuenca (845\m{} sobre el radio medio de la Tierra) y el límite
-inferior es seleccionado de forma tal que cada tesseroide posea la misma
+inferior es seleccionado de forma tal que cada teseroide posea la misma
 dimensión que el espesor de la cuenca sobre el correspondiente punto de la
 grilla.
 
-Además debemos definir una función densidad para el modelo de tesseroides.
+Además debemos definir una función densidad para el modelo de teseroides.
 \citet{sigismondi2012} determinó valores mínimos y máximos para el contraste de
 densidad de la Cuenca Neuquina de -412\kgpercubicm{} y -275\kgpercubicm{},
 respectivamente.
@@ -1187,9 +1187,9 @@ de los relevamientos gravimétricos.
 \section{Discusión}
 
 Al incluir la función densidad dentro de la \ac{GLQ}, el método aquí descripto
-puede ser aplicado sin ninguna modificación a cualquier tesseroide cuya
+puede ser aplicado sin ninguna modificación a cualquier teseroide cuya
 densidad puede representarse por una función continua en la dirección radial.
-El algoritmo de discretización basado en la densidad divide el tesseroide a lo
+El algoritmo de discretización basado en la densidad divide el teseroide a lo
 largo de la dirección radial con el objetivo de garantizar una integración
 precisa.
 Este algoritmo es independiente de la integración \ac{GLQ} y puede
@@ -1205,7 +1205,7 @@ Los valores del \emph{ratio} distancia-tamaño determinados para el potencial
 gravitatorio ($D=1$) y para su derivada vertical ($D=2.5$) son compatibles por
 los valores determinados por \citet{uieda2016}.
 Estos resultados muestran además que no existe una relación significativa entre
-la precisión del método y el espesor del modelo de tesseroides.
+la precisión del método y el espesor del modelo de teseroides.
 
 La exploración del espacio $D$-$\delta$ para el caso de una densidad
 exponencial (Fig.~\ref{fig:grid-search}) muestra que los valores de $D$
@@ -1236,8 +1236,8 @@ Por lo tanto, solo podemos afirmar con certeza que estos valores producen
 resultados con errores por debajo de 0.1\% para los tipos de funciones
 nombradas.
 Sin embargo, todas las experiencias numéricas incluyen los escenarios menos
-favorables (puntos de cómputo sobre la superficie de los tesseroides,
-tesseroides de gran tamaño, funciones densidad altamente variables, etc.).
+favorables (puntos de cómputo sobre la superficie de los teseroides,
+teseroides de gran tamaño, funciones densidad altamente variables, etc.).
 Por esta razón, es plausible extrapolar los valores óptimos de $D$ y $\delta$
 a cualquier densidad continua que represente variaciones realistas de
 estructuras geológicas.
@@ -1264,7 +1264,7 @@ mundo real.
 \section{Conclusiones}
 
 Hemos desarrollado una nueva metodología para calcular el potencial
-gravitatorio y su gradiente generados por un tesseroide con una densidad dada
+gravitatorio y su gradiente generados por un teseroide con una densidad dada
 por una función continua de la coordenada radial.
 Este método resuelve numéricamente integrales volumétricas mediante la
 \ac{GLQ} incluyendo la función densidad dentro del integrando.
@@ -1276,17 +1276,17 @@ realizar modificaciones sobre el método o el software.
 La precisión de la integración numérica es controlada automáticamente por un
 algoritmo de discretización adaptativa bidimensional y un nuevo algoritmo de
 discretización basado en densidad.
-El primero subdivide iterativamente al tesseroide en caso de que las relaciones
+El primero subdivide iterativamente al teseroide en caso de que las relaciones
 entre la distancia al punto de cómputo y las dimensiones longitudinal
-y latitudinal del tesseroide sean menores que un \emph{ratio} distancia-tamaño
+y latitudinal del teseroide sean menores que un \emph{ratio} distancia-tamaño
 $D$ predefinido.
 Este algoritmo minimiza los errores de integración a cuando el punto de
-cómputo se encuentra cerca del tesseroide.
+cómputo se encuentra cerca del teseroide.
 Sin embargo, la discretización adaptativa por sí sola no es suficiente para
-garantizar una precisión aceptable en caso de tesseroides con densidades no
+garantizar una precisión aceptable en caso de teseroides con densidades no
 lineales.
 Para solucionar esto, el algoritmo de discretización basada en densidad divide
-al tesseroide a lo largo de la dirección radial en los lugares donde la
+al teseroide a lo largo de la dirección radial en los lugares donde la
 \emph{máxima variación} de la función densidad ocurre.
 La cantidad de subdivisiones a lo largo del radio, y por ende la precisión del
 cómputo, están controladas por el parámetro \emph{delta} $\delta$.
@@ -1297,7 +1297,7 @@ funciones de densidad con variaciones pronunciadas.
 Hemos determinado de manera empírica valores óptimos para los parámetros $D$
 y $\delta$ comparando los resultados numéricos con soluciones analíticas para
 cascarones esféricos.
-Nuestro análisis incluye un rango de modelos de tesseroides y grillas de
+Nuestro análisis incluye un rango de modelos de teseroides y grillas de
 cómputo así como funciones de densidades de las más utilizadas en problemas
 reales.
 Estos valores minimizan el tiempo de cómputo mientras mantienen el error
