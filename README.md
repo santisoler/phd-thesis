@@ -86,7 +86,7 @@ publicados en el [_Journal of Open Source Software_](https://joss.theoj.org/):
 
 Cita en texto:
 
-> Soler, S.R. (2021).
+> Soler, S.R. (2022).
 > Metodologías y herramientas computacionales para el procesamiento y modelado
 > de datos gravimétricos.
 > Tesis Doctoral, Universidad Nacional de San Juan, Argentina.
@@ -95,12 +95,12 @@ Cita en texto:
 Usando BibTeX:
 
 ```
-@phdthesis{soler2021,
+@phdthesis{soler2022,
   author  = {Santiago Rub{\'e}n Soler},
   title   = {Metodolog{\'i}as y herramientas computacionales para el
         procesamiento y modelado de datos gravim{\'e}tricos},
   school  = {Universidad Nacional de San Juan, Argentina},
-  year    = {2021},
+  year    = {2022},
   type    = {PhD Thesis},
   doi     = {10.6084/m9.figshare.16906909}
 }
