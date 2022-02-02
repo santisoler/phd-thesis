@@ -112,6 +112,14 @@
 }
 \urlstyle{same} % make urls use the same font as every other text
 
+% Define emptypage command
+\newcommand{\emptypage}{%
+    \newpage
+    \thispagestyle{empty}
+    \mbox{}
+    \newpage
+}
+
 
 % Configure headers and footers
 % -----------------------------
@@ -178,11 +186,15 @@
 \include{chapters/titlepage}
 
 \include{chapters/license}
-
-% \include{chapters/agradecimientos}
+\emptypage{}
 
 % Indice
 \tableofcontents
+
+% Agradecimientos
+\emptypage{}
+\include{chapters/agradecimientos}
+\emptypage{}
 
 \mainmatter
 \fancymain
