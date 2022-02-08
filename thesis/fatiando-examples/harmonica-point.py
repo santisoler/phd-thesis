@@ -17,6 +17,5 @@ coordinates = vd.grid_coordinates(
 
 # Calculamos la componente vertical (hacia abajo) de la aceleracion gravitatoria
 gravity = hm.point_gravity(
->>>>>>> main:thesis/fatiando-examples/harmonica-point-mass.py
     coordinates, points, masses, field="g_z", coordinate_system="cartesian"
 )
