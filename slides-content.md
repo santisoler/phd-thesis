@@ -1,6 +1,9 @@
 <!-- .slide: class="slide-title" -->
 
-# Metodologías y herramientas computacionales para el procesamiento y modelado de datos gravimétricos
+<h1>
+Metodologías y herramientas computacionales para el
+procesamiento y modelado de datos gravimétricos
+</h1>
 
 <hr>
 
@@ -41,13 +44,19 @@ Lic. Santiago Soler
 
 ---
 
-# Contenido
+## Contenido
 
 1. Introducción y motivación
 1. Tesseroides densidad variable
 1. Fuentes equivalentes potenciadas por gradiente
 1. Fatiando a Terra
 1. Conclusiones
+
+---
+
+# Math
+
+$$  \color{#bf0101}{f(x)}  = \int\limits_{0}^{1} g(x) dx $$
 
 ---
 
@@ -114,9 +123,9 @@ Second element
 ## Highlight current item on list
 
 <ol>
-<li class="fragment highlight-current-green">First element</li>
-<li class="fragment highlight-current-green">Second element</li>
-<li class="fragment highlight-current-green">Third element</li>
+<li class="fragment highlight-current-red">First element</li>
+<li class="fragment highlight-current-red">Second element</li>
+<li class="fragment highlight-current-red">Third element</li>
 </ol>
 
 ---
