@@ -68,7 +68,7 @@ Lic. Santiago Soler
 
 ---
 
-<img src="images/tesseroid-definition.svg" alt="Teseroide en un sistema de referencia con sus límites latitudinales, longitudinales y radiales" style="width: 50%" >
+<img src="images/tesseroids/tesseroid-definition.svg" alt="Teseroide en un sistema de referencia con sus límites latitudinales, longitudinales y radiales" style="width: 50%" >
 
 ---
 
@@ -113,7 +113,7 @@ $$
 </div>
 
 <div class="column">
-<img src="images/tesseroid-glq.svg" alt="Teseroide con cuatro masas puntuales en su interior, representando cómo la Cuadratura de Gauss-Legendre lo aproxima por ellas." style="width: 70%" >
+<img src="images/tesseroids/tesseroid-glq.svg" alt="Teseroide con cuatro masas puntuales en su interior, representando cómo la Cuadratura de Gauss-Legendre lo aproxima por ellas." style="width: 70%" >
 </div>
 
 </div>
@@ -133,7 +133,7 @@ Pero... $ \mathcal{O}(n^3) $ 😞
 
 ---
 
-<img src="images/tesseroid-computation-point.svg" alt="Teseroide y punto de
+<img src="images/tesseroids/tesseroid-computation-point.svg" alt="Teseroide y punto de
 cómputo, con una recta a trazos que ilustra la distancia que los separa"
 style="width: 40%;">
 
@@ -148,9 +148,9 @@ $ \Rightarrow $
 ---
 
 <div class="r-stack">
-<img class="fragment fade-out" data-fragment-index="0" src="images/adaptive-discretization-step0.svg" alt="Teseroide y punto de cómputo" style="width: 40%;">
-<img class="fragment current-visible" data-fragment-index="0" src="images/adaptive-discretization-step1.svg" alt="Teseroide subdividido en 4 teseroides por el algoritmo de discretización adaptativa" style="width: 40%;">
-<img class="fragment" src="images/adaptive-discretization-step2.svg" alt="Teseroide subdividido en 7 teseroides por el algoritmo de discretización adaptativa" style="width: 40%;">
+<img class="fragment fade-out" data-fragment-index="0" src="images/tesseroids/adaptive-discretization-step0.svg" alt="Teseroide y punto de cómputo" style="width: 40%;">
+<img class="fragment current-visible" data-fragment-index="0" src="images/tesseroids/adaptive-discretization-step1.svg" alt="Teseroide subdividido en 4 teseroides por el algoritmo de discretización adaptativa" style="width: 40%;">
+<img class="fragment" src="images/tesseroids/adaptive-discretization-step2.svg" alt="Teseroide subdividido en 7 teseroides por el algoritmo de discretización adaptativa" style="width: 40%;">
 </div>
 
 <p class="fragment fade-in">
@@ -201,13 +201,13 @@ Función densidad en la aproximación numérica
 ---
 
 <div class="r-stack">
-<img class="fragment fade-out" data-fragment-index="0" src="images/density-based-discretization-step0.svg" style="width: 60%;">
-<img class="fragment current-visible" data-fragment-index="0" src="images/density-based-discretization-step1.svg" style="width: 60%;">
-<img class="fragment current-visible" src="images/density-based-discretization-step2.svg" style="width: 60%;">
-<img class="fragment current-visible" src="images/density-based-discretization-step3.svg" style="width: 60%;">
-<img class="fragment current-visible" src="images/density-based-discretization-step4.svg" style="width: 60%;">
-<img class="fragment current-visible" src="images/density-based-discretization-step5.svg" style="width: 60%;">
-<img class="fragment" src="images/density-based-discretization-step6.svg" style="width: 60%;">
+<img class="fragment fade-out" data-fragment-index="0" src="images/tesseroids/density-based-discretization-step0.svg" style="width: 60%;">
+<img class="fragment current-visible" data-fragment-index="0" src="images/tesseroids/density-based-discretization-step1.svg" style="width: 60%;">
+<img class="fragment current-visible" src="images/tesseroids/density-based-discretization-step2.svg" style="width: 60%;">
+<img class="fragment current-visible" src="images/tesseroids/density-based-discretization-step3.svg" style="width: 60%;">
+<img class="fragment current-visible" src="images/tesseroids/density-based-discretization-step4.svg" style="width: 60%;">
+<img class="fragment current-visible" src="images/tesseroids/density-based-discretization-step5.svg" style="width: 60%;">
+<img class="fragment" src="images/tesseroids/density-based-discretization-step6.svg" style="width: 60%;">
 </div>
 
 ---
@@ -217,11 +217,11 @@ Función densidad en la aproximación numérica
 ---
 
 <div class="r-stack">
-<img class="fragment fade-out" data-fragment-index="0" src="images/density-based-plus-adaptive-discret-step0.svg" style="width: 40%;">
-<img class="fragment current-visible" data-fragment-index="0" src="images/density-based-plus-adaptive-discret-step1.svg" style="width: 40%;">
-<img class="fragment current-visible" src="images/density-based-plus-adaptive-discret-step2.svg" style="width: 40%;">
-<img class="fragment current-visible" src="images/density-based-plus-adaptive-discret-step3.svg" style="width: 40%;">
-<img class="fragment" src="images/density-based-plus-adaptive-discret-step4.svg" style="width: 40%;">
+<img class="fragment fade-out" data-fragment-index="0" src="images/tesseroids/density-based-plus-adaptive-discret-step0.svg" style="width: 40%;">
+<img class="fragment current-visible" data-fragment-index="0" src="images/tesseroids/density-based-plus-adaptive-discret-step1.svg" style="width: 40%;">
+<img class="fragment current-visible" src="images/tesseroids/density-based-plus-adaptive-discret-step2.svg" style="width: 40%;">
+<img class="fragment current-visible" src="images/tesseroids/density-based-plus-adaptive-discret-step3.svg" style="width: 40%;">
+<img class="fragment" src="images/tesseroids/density-based-plus-adaptive-discret-step4.svg" style="width: 40%;">
 </div>
 
 ---
@@ -246,7 +246,7 @@ $$
 </div>
 
 <div class="column">
-<img src="images/tesseroid-small-glq.svg" style="width: 70%" >
+<img src="images/tesseroids/tesseroid-small-glq.svg" style="width: 70%" >
 </div>
 
 </div>
@@ -327,7 +327,7 @@ $\Rightarrow$
 
 ### Comparaciones con soluciones analíticas <br>para cascarones esféricos
 
-<img src="images/d-delta-grid-search.svg" style="width: 90%;">
+<img src="images/tesseroids/d-delta-grid-search.svg" style="width: 90%;">
 
 ---
 
@@ -355,21 +355,21 @@ $\Rightarrow$
 ## Modelo de la cuenca Neuquina
 
 
-<img src="./images/cuenca-neuquina-espesor.svg" style="width: 70%;">
+<img src="./images/tesseroids/cuenca-neuquina-espesor.svg" style="width: 70%;">
 
 ---
 
 ## Campos gravitatorios del modelo
 
 
-<img src="./images/cuenca-neuquina-resultados.svg" style="width: 70%;">
+<img src="./images/tesseroids/cuenca-neuquina-resultados.svg" style="width: 70%;">
 
 ---
 
 ## Diferencias con densidad constante
 
 
-<img src="./images/cuenca-neuquina-diff.svg" style="width: 70%;">
+<img src="./images/tesseroids/cuenca-neuquina-diff.svg" style="width: 70%;">
 
 ---
 
@@ -378,6 +378,17 @@ $\Rightarrow$
 # Fuentes equivalentes <br> potenciadas por gradiente
 
 ---
+
+## ¿Qué son las fuentes equivalentes?
+
+---
+
+
+##
+
+---
+
+<!-- .slide: data-background-color="#2b2b2b" -->
 
 # Fatiando a Terra
 
