@@ -3,7 +3,7 @@
 @fontsizeheading1: 1.9em;
 @fontsizeheading2: 1.5em;
 @fontsizeheading3: 1.1em;
-@fontsizeheading4: 1.0em;
+@fontsizeheading4: 1em;
 
 // Define colors
 @white: #ffffff;
@@ -21,6 +21,16 @@
   /* strong { */
   /*   color: @green; */
   /* } */
+
+  .small-font {
+    font-size: @basefontsize * 0.7;
+  }
+
+  .project-icons {
+    li {
+      font-size: @basefontsize * 0.7;
+    }
+  }
 
   /* Set list-style-type to none on fa-ul */
   .fa-ul {
@@ -49,6 +59,25 @@
       text-align: left;
       align-self: flex-end;
       margin: 0;
+    }
+  }
+
+  .footnote {
+    position: absolute;
+    bottom: -100px;
+    font-size: @basefontsize * 0.4 !important;
+    text-align: left;
+    margin: 0 auto;
+    border: 1px black;
+    border-style: solid;
+    /* width: 80%; */
+    background-color: #2b2b2b;
+    color: #eee;
+    p {
+      margin: 0.6rem 1rem;
+    }
+    a {
+      color: @blue;
     }
   }
 

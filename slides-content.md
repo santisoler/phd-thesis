@@ -720,6 +720,161 @@ Grillados con fuentes equivalentes potenciadas con gradiente
 
 ---
 
+## Complejización del problema científico
+
+---
+
+<div class="r-stack">
+<img class="fragment fade-out" data-fragment-index="0" src="./images/fatiando/scientific-problem-step0.svg" style="width: 70%">
+<img class="fragment" data-fragment-index="0" src="./images/fatiando/scientific-problem.svg" style="width: 70%">
+</div>
+
+
+<div class="footnote">
+
+Figura modificada de
+[Open Source](https://storage.googleapis.com/simpeg/lapis2019/9-open-source.pdf)
+por D. Oldenburg, S. Kang & L. Heagy ([GeoSci.xyz](https://geosci.xyz/))
+bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+</div>
+
+---
+
+<!-- .slide: data-auto-animate -->
+
+## Soluciones comunitarias
+
+<img src="./images/fatiando/users-solid.svg" style="width: 20%">
+
+---
+
+<!-- .slide: data-auto-animate -->
+
+## Soluciones comunitarias
+
+<div class="container container-70">
+<div class="column">
+<img src="./images/fatiando/users-solid.svg" style="width: 60%">
+</div>
+<div class="column">
+<img src="./images/fatiando/open-source.svg" style="width: 40%">
+</div>
+</div>
+
+---
+
+<!-- .slide: data-background-image="images/fatiando/fatiando-background.svg" -->
+
+<a href="https://www.fatiando.org">
+<img src="./images/fatiando/fatiando-banner.svg" alt="">
+</a>
+
+---
+
+<div class="container container-70">
+
+<div class="column">
+<img src="./images/fatiando/pooch-logo.svg" width="80%">
+<p class="small-font">
+    <strong>Descarga y almacena</strong> <br> datos científicos
+</p>
+<ul class="fa-ul project-icons">
+<li><i class="fa-li fab fa-github fa-fw" title="Github repository"></i>
+   <a href="https://github.com/fatiando/pooch">fatiando/pooch</a>
+</li>
+<li><i class="fa-li fas fa-bookmark fa-fw" title="Publication"></i>
+   doi: <a href="https://doi.org/10.21105/joss.01943">10.21105/joss.01943</a>
+</li>
+</ul>
+</div>
+
+<div class="column">
+<img src="./images/fatiando/verde-logo.svg" width="80%">
+<p class="small-font">
+    Procesado y <strong>grillado</strong> <br>
+    de datos espaciales
+</p>
+<ul class="fa-ul project-icons">
+<li><i class="fa-li fab fa-github fa-fw" title="Github repository"></i>
+   <a href="https://github.com/fatiando/verde">fatiando/verde</a>
+</li>
+<li><i class="fa-li fas fa-bookmark fa-fw" title="Publication"></i>
+   doi: <a href="https://doi.org/10.21105/joss.00957">10.21105/joss.00957</a>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div class="container container-70" style="margin-top: 10rem;">
+
+<div class="column">
+<img src="./images/fatiando/boule-logo.svg" width="80%">
+<p class="small-font">
+    <strong>Elipsoide de referencia</strong> y <br>
+    <strong>gravedad normal</strong>
+</p>
+<ul class="fa-ul project-icons">
+<li><i class="fa-li fab fa-github fa-fw" title="Github repository"></i>
+   <a href="https://github.com/fatiando/boule">fatiando/boule</a>
+</li>
+</ul>
+</div>
+
+<div class="column">
+<img src="./images/fatiando/harmonica-logo.svg" width="80%">
+<p class="small-font"> Procesado y modelado de datos <strong>gravimétricos y magnéticos</strong></p>
+<ul class="fa-ul project-icons">
+<li><i class="fa-li fab fa-github fa-fw" title="Github repository"></i>
+   <a href="https://github.com/fatiando/harmonica">fatiando/harmonica</a>
+</li>
+</ul>
+</div>
+
+</div>
+
+---
+
+## Ejemplos sencillos?
+
+---
+
+## Implementacion de nuevos métodos
+
+- Ejemplos de los dos?
+
+---
+
+## Mejores prácticas?
+
+- Documentación
+- Testeo
+- Revisión por pares
+
+---
+
+## Retroalimentación con investigaciones científicas
+
+---
+
+## Adopción por parte de la comunidad científica
+
+- Gráfica de visitas al sitio
+- Mapa de visitas al sitio
+
+---
+
+## Ecosistema open-source en geociencias
+
+- simpeg
+- gempy
+- obspy
+
+---
+
+<!-- .slide: data-background-color="#2b2b2b" -->
+
 # Conclusiones
 
 ---
