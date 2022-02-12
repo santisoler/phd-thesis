@@ -679,27 +679,39 @@ $M$ fuentes > $N$ datos $\Rightarrow$ problema <strong>subdeterminado</strong>
 
 ## Resultados
 
+---
+
+### Fuentes promediadas por bloque
+
+<ul >
+    <li class="fragment">Precisión equivalente</li>
+    <li class="fragment">Menor cantidad de fuentes: reduce uso de memoria</li>
+</ul>
+
+---
+
+### Profundidad de las fuentes
+
 <ul>
-    <li class="fragment" style="margin-top: 3rem;"><strong>Fuentes promediadas por bloque</strong></li>
-    <ul class="fragment" style="margin-left: 100px">
-        <li>Precisión equivalente a métodos clásicos</li>
-        <li>Menor cantidad de fuentes: reduce uso de memoria</li>
-    </ul>
-    <li class="fragment" style="margin-top: 3rem;"><strong>Profundidad de las fuentes</strong></li>
-    <ul class="fragment" style="margin-left: 100px">
-        <li>Las tres estrategias producen resultados similares</li>
-        <li>Recomendamos <strong>profundidad constante</strong> o <strong>profundidad relativa</strong></li>
-    </ul>
-    <li class="fragment" style="margin-top: 3rem;"><strong>Fuentes equivalentes potenciadas por gradiente</strong></li>
-    <ul class="fragment" style="margin-left: 100px">
-        <li>Precisión ligeramente menor que fuentes equivalentes regulares</li>
-        <li>Menor tiempo de cómputo</li>
-        <li>
-            <i class='fas fa-arrow-circle-up'></i> Tamaño de ventana
-            <i class='fas fa-arrow-circle-up'></i> Precisión
-        </li>
-        <li>Ventanas en orden aleatorio: mejores predicciones</li>
-    </ul>
+    <li class="fragment">Estrategias con resultados similares</li>
+    <li class="fragment">
+        Recomendamos <strong>profundidad constante</strong> o <strong>profundidad relativa</strong>
+    </li>
+</ul>
+
+---
+
+
+### Fuentes equivalentes potenciadas por gradiente
+
+<ul>
+    <li class="fragment">Menor precisión</li>
+    <li class="fragment">Menor tiempo de cómputo</li>
+    <li class="fragment">
+        <i class='fas fa-arrow-circle-up'></i> Tamaño de ventana
+        <i class='fas fa-arrow-circle-up'></i> Precisión
+    </li>
+    <li class="fragment">Ventanas aleatorias: mejores predicciones</li>
 </ul>
 
 ---
