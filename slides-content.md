@@ -639,7 +639,7 @@ $M$ fuentes > $N$ datos $\Rightarrow$ problema <strong>subdeterminado</strong>
 
 <ul>
     <li>Evita <strong>anisotropías</strong></li>
-    <li>$N$ datos < $M$ fuentes</li>
+    <li>$N$ datos > $M$ fuentes</li>
     <ul style="margin-left: 100px">
         <li>Problema <strong>sobredeterminado</strong></li>
         <li>Reduce uso de memoria</li>
