@@ -649,28 +649,6 @@ $M$ fuentes > $N$ datos $\Rightarrow$ problema <strong>subdeterminado</strong>
 
 ---
 
-# Profundidad de las fuentes
-
----
-
-## Profundidad constante
-
-<img src="./images/equivalent-sources/constant_depth.svg" style="width: 50%">
-
----
-
-## Profundidad relativa
-
-<img src="./images/equivalent-sources/relative_depth.svg" style="width: 50%">
-
----
-
-## Profundidad variable
-
-<img src="./images/equivalent-sources/variable_depth.svg" style="width: 50%">
-
----
-
 # Prueba con datos sintéticos
 
 <img src="./images/equivalent-sources/synthetic-surveys.svg" style="width: 80%">
@@ -689,18 +667,6 @@ $M$ fuentes > $N$ datos $\Rightarrow$ problema <strong>subdeterminado</strong>
 </ul>
 
 ---
-
-### Profundidad de las fuentes
-
-<ul>
-    <li class="fragment">Estrategias con resultados similares</li>
-    <li class="fragment">
-        Recomendamos <strong>profundidad constante</strong> o <strong>profundidad relativa</strong>
-    </li>
-</ul>
-
----
-
 
 ### Fuentes equivalentes potenciadas por gradiente
 
