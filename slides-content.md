@@ -97,7 +97,7 @@ No poseen solución analítica
 
 ### Cuadratura de Gauss-Legendre
 
-<div class="container" style="align-items: center; justify-content: center; width: 70%; margin: auto">
+<div class="container container-70">
 
 <div class="column">
 $$
@@ -229,7 +229,7 @@ Función densidad en la aproximación numérica
 ### Cuadratura de Gauss-Legendre
 
 
-<div class="container" style="align-items: center; justify-content: center; width: 70%; margin: auto">
+<div class="container container-70">
 
 <div class="column">
 $$
@@ -267,7 +267,7 @@ Aplicada sobre cada teseroide pequeño
 
 ---
 
-<div class="container" style="align-items: center; justify-content: center; width: 70%; margin: auto">
+<div class="container container-70">
 
 <div class="column">
 
@@ -299,7 +299,7 @@ $D$ y $\delta$ controlan la **cantidad de subdivisiones**
 
 ---
 
-<div class="container" style="justify-content: center; align-items: center;">
+<div class="container container-70">
 
 <div class="col-3" style="text-align: right">
 <i class='fas fa-arrow-circle-up'></i> Subdivisiones
@@ -384,7 +384,355 @@ $\Rightarrow$
 ---
 
 
-##
+### Datos gravimétricos
+
+<img src="./images/equivalent-sources/surveys-cartoon.svg" style="width: 70%">
+
+---
+
+<div class="container">
+
+<div class="column">
+
+Muestras sobre terreno
+
+<img src="./images/equivalent-sources/ground_survey.svg" style="width: 50%;
+height: auto;">
+</div>
+
+<div class="column">
+
+Muestras aéreas
+
+<img src="./images/equivalent-sources/airborne_survey.svg" style="width: 50%;
+height: auto;">
+
+</div>
+
+</div>
+
+---
+
+### Interpolación
+
+<img src="./images/equivalent-sources/simple-gridding.svg" style="width: 50%;
+height: auto;">
+
+---
+
+
+### Interpoladores 2D de propósito general
+
+
+<div class="container container-70" style="margin-top: 3rem;">
+
+<div class="column fragment">
+<img src="./images/equivalent-sources/not-function-of-height.svg" style="width: 40%;">
+</div>
+
+<div class="column fragment">
+<img src="./images/equivalent-sources/not-harmonic.svg" style="width: 40%;">
+</div>
+
+</div>
+
+---
+
+### Fuentes equivalentes
+
+---
+
+<div class="r-stack">
+<img class="fragment fade-out" data-fragment-index="0" src="./images/equivalent-sources/equivalent-sources-step0.svg" style="width: 60%">
+<img class="fragment current-visible" data-fragment-index="0" src="./images/equivalent-sources/equivalent-sources-step1.svg" style="width: 60%">
+<img class="fragment" src="./images/equivalent-sources/equivalent-sources-step2.svg" style="width: 60%">
+</div>
+
+---
+
+### Ventajas
+
+<div class="container container-70" style="margin-top: 3rem;">
+
+<div class="column fragment">
+<img src="./images/equivalent-sources/function-of-height.svg" style="width: 40%;">
+</div>
+
+<div class="column fragment">
+<img src="./images/equivalent-sources/harmonic-field.svg" style="width: 40%;">
+</div>
+
+</div>
+
+---
+
+### Problema
+
+<div class="r-stack">
+<img class="fragment fade-out" data-fragment-index="0" src="./images/equivalent-sources/equivalent-sources-out-of-memory-0.svg" style="width: 60%">
+<img class="fragment" data-fragment-index="0" src="./images/equivalent-sources/equivalent-sources-out-of-memory-1.svg" style="width: 60%">
+</div>
+
+---
+
+### Solución
+
+---
+
+# Fuentes equivalentes <br> potenciadas por gradiente
+
+---
+
+## Potenciación del gradiente
+
+
+<div class="container container-60" style="margin-top: 5rem;">
+
+<div class="col-3" >
+
+$$ \mathbf{d} = \mathbf{A} \mathbf{c} $$
+
+</div>
+
+<div class="column fragment" data-fragment-index="1">
+<i class='fas fa-arrow-right'></i>
+</div>
+
+<div class="col-3 fragment" data-fragment-index="1">
+
+$$ \mathbf{d} = \sum\limits_{k=1}^K \mathbf{A}_k \mathbf{c}_k $$
+
+</div>
+
+</div>
+
+---
+
+## Fuentes equivalentes <br> potenciadas por gradiente
+
+---
+
+<div class="r-stack">
+
+<div class="fragment fade-out" data-fragment-index="0" style="width: 100%">
+<p>Datos observados</p>
+<img src="./images/equivalent-sources/eql-gradient-boosted-step0.svg"
+style="width: 60%">
+</div>
+
+<div class="fragment current-visible" data-fragment-index="0" style="width: 100%">
+<p>Defino fuentes</p>
+<img src="./images/equivalent-sources/eql-gradient-boosted-step1.svg"
+style="width: 60%">
+</div>
+
+</div>
+
+---
+
+#### Ventanas solapadas
+
+<div class="r-stack">
+
+<img class="fragment fade-out" data-fragment-index="0" src="./images/equivalent-sources/gradient-boosting-blocks/blocks0.svg" style="width: 30%">
+<img class="fragment current-visible" data-fragment-index="0" src="./images/equivalent-sources/gradient-boosting-blocks/blocks1.svg" style="width: 30%">
+<img class="fragment current-visible" src="./images/equivalent-sources/gradient-boosting-blocks/blocks2.svg" style="width: 30%">
+<img class="fragment current-visible" src="./images/equivalent-sources/gradient-boosting-blocks/blocks3.svg" style="width: 30%">
+<img class="fragment current-visible" src="./images/equivalent-sources/gradient-boosting-blocks/blocks4.svg" style="width: 30%">
+<img class="fragment current-visible" src="./images/equivalent-sources/gradient-boosting-blocks/blocks5.svg" style="width: 30%">
+<img class="fragment current-visible" src="./images/equivalent-sources/gradient-boosting-blocks/blocks6.svg" style="width: 30%">
+<img class="fragment current-visible" src="./images/equivalent-sources/gradient-boosting-blocks/blocks7.svg" style="width: 30%">
+<img class="fragment" src="./images/equivalent-sources/gradient-boosting-blocks/blocks8.svg" style="width: 30%">
+
+</div>
+
+---
+
+### Ajustamos fuentes equivalentes iterativamente
+
+---
+
+<div class="r-stack">
+
+<div class="fragment fade-out" data-fragment-index="0" style="width: 100%">
+<p>Ajuste de <strong>fuentes</strong> de la primer ventana</p>
+<img src="./images/equivalent-sources/eql-gradient-boosted-step2.svg"
+style="width: 60%">
+</div>
+
+<div class="fragment current-visible" data-fragment-index="0" style="width: 100%">
+<p>Cálculo del efecto de las <strong>fuentes</strong> y definición de
+<strong>residuos</strong></p>
+<img src="./images/equivalent-sources/eql-gradient-boosted-step3.svg"
+style="width: 60%">
+</div>
+
+<div class="fragment current-visible" style="width: 100%">
+<p>Ajuste de <strong>fuentes</strong> de la segunda ventana</p>
+<img src="./images/equivalent-sources/eql-gradient-boosted-step4.svg"
+style="width: 60%">
+</div>
+
+<div class="fragment" style="width: 100%">
+<p>Cálculo del efecto de las <strong>fuentes</strong> y actualización de
+<strong>residuos</strong></p>
+<img src="./images/equivalent-sources/eql-gradient-boosted-step5.svg"
+style="width: 60%">
+</div>
+
+</div>
+
+---
+
+### Repetimos para todas las ventanas
+
+---
+
+## Características
+
+<ul>
+<li class="fragment">Superposición de ventanas: <strong>autocorrección</strong></li>
+<li class="fragment">Ajuste sobre <strong>datos en ventana</strong></li>
+<li class="fragment"><strong>Predicciones libres</strong></li>
+</ul>
+
+---
+
+# Ubicación de las fuentes
+
+---
+
+## Fuentes debajo de datos
+
+<img src="./images/equivalent-sources/sources-below-data.svg" style="width: 60%">
+
+<p class="fragment">
+Posible anisotropía $\Rightarrow$ <strong>aliasing</strong>
+</p>
+
+---
+
+## Fuentes en grilla regular
+
+<img src="./images/equivalent-sources/grid-sources.svg" style="width: 60%">
+
+<p class="fragment">
+$M$ fuentes > $N$ datos $\Rightarrow$ problema <strong>subdeterminado</strong>
+</p>
+
+---
+
+# Fuentes promediadas por bloque
+
+---
+
+<div class="r-stack">
+<img class="fragment fade-out" data-fragment-index="0" src="./images/equivalent-sources/block-averaged-sources-0.svg" style="width: 60%">
+<img class="fragment current-visible" data-fragment-index="0" src="./images/equivalent-sources/block-averaged-sources-1.svg" style="width: 60%">
+<img class="fragment current-visible" src="./images/equivalent-sources/block-averaged-sources-2.svg" style="width: 60%">
+<img class="fragment" src="./images/equivalent-sources/block-averaged-sources-3.svg" style="width: 60%">
+</div>
+
+---
+
+## Características
+
+<ul>
+    <li>Evita <strong>anisotropías</strong></li>
+    <li>$N$ datos < $M$ fuentes</li>
+    <ul style="margin-left: 100px">
+        <li>Problema <strong>sobredeterminado</strong></li>
+        <li>Reduce uso de memoria</li>
+    </ul>
+    <li><strong>Tamaño de bloques</strong> controla <strong>cantidad de fuentes</strong></li>
+</ul>
+
+---
+
+# Profundidad de las fuentes
+
+---
+
+## Profundidad constante
+
+<img src="./images/equivalent-sources/constant_depth.svg" style="width: 50%">
+
+---
+
+## Profundidad relativa
+
+<img src="./images/equivalent-sources/relative_depth.svg" style="width: 50%">
+
+---
+
+## Profundidad variable
+
+<img src="./images/equivalent-sources/variable_depth.svg" style="width: 50%">
+
+---
+
+# Prueba con datos sintéticos
+
+<img src="./images/equivalent-sources/synthetic-surveys.svg" style="width: 80%">
+
+---
+
+## Resultados
+
+<ul>
+    <li class="fragment" style="margin-top: 3rem;"><strong>Fuentes promediadas por bloque</strong></li>
+    <ul class="fragment" style="margin-left: 100px">
+        <li>Precisión equivalente a métodos clásicos</li>
+        <li>Menor cantidad de fuentes: reduce uso de memoria</li>
+    </ul>
+    <li class="fragment" style="margin-top: 3rem;"><strong>Profundidad de las fuentes</strong></li>
+    <ul class="fragment" style="margin-left: 100px">
+        <li>Las tres estrategias producen resultados similares</li>
+        <li>Recomendamos <strong>profundidad constante</strong> o <strong>profundidad relativa</strong></li>
+    </ul>
+    <li class="fragment" style="margin-top: 3rem;"><strong>Fuentes equivalentes potenciadas por gradiente</strong></li>
+    <ul class="fragment" style="margin-left: 100px">
+        <li>Precisión ligeramente menor que fuentes equivalentes regulares</li>
+        <li>Menor tiempo de cómputo</li>
+        <li>
+            <i class='fas fa-arrow-circle-up'></i> Tamaño de ventana
+            <i class='fas fa-arrow-circle-up'></i> Precisión
+        </li>
+        <li>Ventanas en orden aleatorio: mejores predicciones</li>
+    </ul>
+</ul>
+
+---
+
+# Grillado de datos <br> gravimétricos de Australia
+
+---
+
++1.7 millones de puntos
+
+<div class="container" style="align-items: center;">
+<div class="column">
+<img src="./images/equivalent-sources/australia-data.jpg" style="width: 100%; height: auto;">
+</div>
+<div class="column">
+<img src="./images/equivalent-sources/australia-data-zoom.jpg" style="width: 100%; height: auto;">
+</div>
+</div>
+
+
+---
+
+Grillados con fuentes equivalentes potenciadas con gradiente
+
+<div class="container" style="align-items: center;">
+<div class="column">
+<img src="./images/equivalent-sources/australia-grid.jpg" style="width: 100%; height: auto;">
+</div>
+<div class="column">
+<img src="./images/equivalent-sources/australia-grid-zoom.jpg" style="width: 100%; height: auto;">
+</div>
+</div>
+
 
 ---
 

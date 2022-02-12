@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="37.775547mm"
+   height="37.900124mm"
+   viewBox="0 0 37.775547 37.900124"
+   version="1.1"
+   id="svg41219"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="harmonic-field.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview41221"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.50511364"
+     inkscape:cx="-459.30259"
+     inkscape:cy="128.68391"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs41216" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-226.25509,-114.62137)">
+    <g
+       transform="translate(196.01699,54.234484)"
+       id="g91363"
+       inkscape:export-xdpi="268.95999"
+       inkscape:export-ydpi="268.95999">
+      <ellipse
+         ry="18.950062"
+         rx="18.887774"
+         cy="79.336945"
+         cx="49.12587"
+         id="path91304"
+         style="opacity:1;vector-effect:none;fill:#fabd4a;fill-opacity:1;stroke:none;stroke-width:0.529167;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke" />
+      <g
+         transform="matrix(1.1264078,0,0,1.1264078,-62.932406,-79.244795)"
+         style="fill:#2a576a;fill-opacity:1"
+         id="g91320">
+        <path
+           id="path91222"
+           d="m 101.44585,137.21559 0.003,-0.003 0.003,-0.006 0.003,-0.003 0.003,-0.006 0.003,-0.006 0.003,-0.006 0.003,-0.006 0.003,-0.006 0.003,-0.006 0.003,-0.006 0.003,-0.006 0.003,-0.009 0.006,-0.012 0.006,-0.015 0.006,-0.015 0.003,-0.015 0.003,-0.009 0.003,-0.006 0.003,-0.006 v -0.009 l 0.003,-0.006 v -0.006 l 0.003,-0.009 v -0.006 l 0.003,-0.006 v -0.006 -0.006 -0.003 c 0,-0.108 -0.015,-0.123 -0.357,-0.123 H 90.846847 c -0.342,0 -0.357,0.015 -0.357,0.123 0,0.054 0.042,0.162 0.075,0.204 l 5.034,10.092 c 0.108,0.192 0.15,0.282 0.405,0.282 0.258,0 0.3,-0.09 0.408,-0.282 l 0.042,-1.125 -4.11,-8.217 h 8.205003 l -4.095003,8.217 -0.042,1.125 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#2a576a;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.433;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           inkscape:connector-curvature="0" />
+        <path
+           id="path91224"
+           d="m 106.46253,137.67892 h -0.354 c -0.03,0.228 -0.138,0.849 -0.273,0.951 -0.081,0.06 -0.885,0.06 -1.032,0.06 h -1.92601 c 1.098,-0.969 1.46101,-1.26 2.09101,-1.752 0.774,-0.618 1.494,-1.266 1.494,-2.259 0,-1.266 -1.104,-2.04 -2.44501,-2.04 -1.296,0 -2.17501,0.909 -2.17501,1.869 0,0.537 0.45,0.588 0.558,0.588 0.24601,0 0.55201,-0.18 0.55201,-0.555 0,-0.186 -0.075,-0.552 -0.61801,-0.552 0.32401,-0.741 1.03501,-0.969 1.52701,-0.969 1.04701,0 1.59001,0.81 1.59001,1.659 0,0.909 -0.648,1.629 -0.984,2.004 l -2.51702,2.49 c -0.108,0.093 -0.108,0.117 -0.108,0.408 h 4.30802 z"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;letter-spacing:normal;word-spacing:normal;text-anchor:start;fill:#2a576a;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10.433;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="112.80592mm"
+   height="39.675148mm"
+   viewBox="0 0 112.80592 39.675148"
+   version="1.1"
+   id="svg3483"
+   sodipodi:docname="equivalent-sources-out-of-memory-0.svg"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3485"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.684102"
+     inkscape:cx="-107.44012"
+     inkscape:cy="-141.06084"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs3480">
+    <rect
+       x="121.66698"
+       y="17.233942"
+       width="328.4335"
+       height="111.52599"
+       id="rect3000" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-96.201059,-96.940133)">
+    <text
+       xml:space="preserve"
+       id="text2998"
+       style="font-style:normal;font-weight:normal;font-size:6.35px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect3000);fill:#222222;fill-opacity:1;stroke:none"
+       x="128.42845"
+       y="0"
+       transform="translate(-14.48253,83.676086)"><tspan
+         x="121.66602"
+         y="22.852637"
+         id="tspan24701"><tspan
+           style="font-family:palatino;-inkscape-font-specification:palatino"
+           id="tspan24699">200 000 datos</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.35px;line-height:1.25;font-family:sans-serif;fill:#222222;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="107.18349"
+       y="116.93077"
+       id="text3004"><tspan
+         sodipodi:role="line"
+         id="tspan3002"
+         x="107.18349"
+         y="116.93077"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:palatino;-inkscape-font-specification:palatino;fill:#222222;fill-opacity:1;stroke-width:0.264583">200 000 fuentes</tspan></text>
+    <path
+       style="fill:#222222;fill-opacity:1;stroke:#222222;stroke-width:0.380537;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 96.201059,122.45829 H 163.13975"
+       id="path3034"
+       sodipodi:nodetypes="cc" />
+    <g
+       id="g24115"
+       transform="matrix(1.0098483,0,0,0.59726943,3.1518331,43.003145)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 96.307284,111.37198 -3.893883,6.7444"
+         id="path23940" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 92.413401,111.37198 3.893883,6.7444"
+         id="path24102" />
+    </g>
+  </g>
+</svg>
