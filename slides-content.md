@@ -60,6 +60,29 @@ Lic. Santiago Soler
 
 ---
 
+## Gravedad terrestre
+
+<img src="" alt="">
+
+Información sobre el interior de la Tierra
+
+---
+
+## Problemas
+
+- Modelado de grandes estructuras: <strong>curvatura de la Tierra</strong>
+- Procesamiento de <strong>grandes cantidades de datos</strong>
+- Software disponible
+
+---
+
+## Objetivos
+
+- Desarrollo de nuevas metodologías
+- Implementaciones mediante software de código abierto
+
+---
+
 <!-- .slide: data-background-color="#2b2b2b" -->
 
 # Teseroides de densidad variable
@@ -343,7 +366,7 @@ $\Rightarrow$
 
 ---
 
-# Aplicación a la Cuenca Neuquina
+# Posibles aplicaciones
 
 ---
 
@@ -354,10 +377,23 @@ $\Rightarrow$
 
 ---
 
-## Modelo de la cuenca Neuquina
+# Modelo directo de la cuenca Neuquina
 
+---
 
-<img src="./images/tesseroids/cuenca-neuquina-espesor.svg" style="width: 70%;">
+## Modelo de la cuenca
+
+<img src="./images/tesseroids/cuenca-neuquina-espesor.svg" style="width: 75%;">
+
+<div class="footnote">
+
+Heine, C. (2007). Formation and evolution of intracontinental basins.
+School of Geosciences, The University of Sydney, Australia.
+
+Sigismondi, M. E. (2012). Estudio de la deformación litosférica de la cuenca Neuquina:
+estructura termal, datos de gravedad y sísmica de reflexión. FCEN, UBA.
+
+</div>
 
 ---
 
@@ -488,7 +524,7 @@ height: auto;">
 ## Potenciación del gradiente
 
 
-<div class="container container-60" style="margin-top: 5rem;">
+<div class="container container-60" style="margin-top: 3rem;">
 
 <div class="col-3" >
 
@@ -505,6 +541,12 @@ $$ \mathbf{d} = \mathbf{A} \mathbf{c} $$
 $$ \mathbf{d} = \sum\limits_{k=1}^K \mathbf{A}_k \mathbf{c}_k $$
 
 </div>
+
+</div>
+
+<div class="fragment">
+
+Resolver ensambles de _predictores débiles_ de forma aditiva
 
 </div>
 
@@ -692,13 +734,19 @@ $M$ fuentes > $N$ datos $\Rightarrow$ problema <strong>subdeterminado</strong>
 
 <div class="container" style="align-items: center;">
 <div class="column">
-<img src="./images/equivalent-sources/australia-data.jpg" style="width: 100%; height: auto;">
+<img src="./images/equivalent-sources/australia-data.jpg" style="width: 90%; height: auto;">
 </div>
 <div class="column">
-<img src="./images/equivalent-sources/australia-data-zoom.jpg" style="width: 100%; height: auto;">
+<img src="./images/equivalent-sources/australia-data-zoom.jpg" style="width: 90%; height: auto;">
 </div>
 </div>
 
+<div class="footnote">
+
+Wynne, P. (2018). NetCDF Ground Gravity Point Surveys Collection.
+doi:[10.26186/5C1987FA17078](https://doi.org/10.26186/5C1987FA17078)
+
+</div>
 
 ---
 
@@ -706,10 +754,10 @@ Grillados con fuentes equivalentes potenciadas con gradiente
 
 <div class="container" style="align-items: center;">
 <div class="column">
-<img src="./images/equivalent-sources/australia-grid.jpg" style="width: 100%; height: auto;">
+<img src="./images/equivalent-sources/australia-grid.jpg" style="width: 90%; height: auto;">
 </div>
 <div class="column">
-<img src="./images/equivalent-sources/australia-grid-zoom.jpg" style="width: 100%; height: auto;">
+<img src="./images/equivalent-sources/australia-grid-zoom.jpg" style="width: 90%; height: auto;">
 </div>
 </div>
 
@@ -844,8 +892,12 @@ En portugués significa <emph>cortando la Tierra</emph>
 
 <img src="./images/fatiando/harmonica-logo.svg" width="60%">
 
-- Teseroides de densidad variable
-- Fuentes equivalentes potenciadas por gradiente
+<ul>
+<li class="fragment">Liderando del proyecto</li>
+<li class="fragment">Herramientas necesarias para el desarrollo de la Tesis</li>
+<li class="fragment">Teseroides de densidad variable</li>
+<li class="fragment">Fuentes equivalentes potenciadas por gradiente</li>
+</ul>
 
 ---
 
@@ -926,6 +978,10 @@ grilla = fuentes_eq.grid(upward=1e3, spacing=2e3)
 
 ---
 
+## Comunidad
+
+---
+
 ## Ecosistema open-source en Geociencias
 
 - simpeg
@@ -942,39 +998,53 @@ grilla = fuentes_eq.grid(upward=1e3, spacing=2e3)
 
 ## Teseroides con densidad variable
 
-- Metodología de modelado directo
-- Función de densidad arbitrarias
-- Parámetros $D$ y $\delta$: errores <span>&#60;</span>  1%.
-- Aplicación: modelado directo de la cuenca Neuquina
+<ul>
+<li class="fragment">Metodología de modelado directo</li>
+<li class="fragment">Función de densidad arbitrarias</li>
+<li class="fragment">Parámetros $D$ y $\delta$: errores <span>&#60;</span> 1%</li>
+<li class="fragment">Aplicación: modelado directo de la cuenca Neuquina</li>
+</ul>
 
 ---
 
 ## Fuentes equivalentes potenciadas por gradiente
 
-- Metodología para interpolación de grandes cantidades de datos
-- Disminuye significativamente uso de memoria
-- Alcanza mejores tiempos de cómputo
-- Fuentes promediadas por bloque:
-    - Previenen anisotropías
-    - Requieren menor uso de memoria
-- Aplicación: grillado de +1.7M de datos sobre Australia
+<ul>
+<li class="fragment">Metodología para interpolación de grandes cantidades de datos</li>
+<li class="fragment">Disminuye significativamente uso de memoria</li>
+<li class="fragment">Alcanza mejores tiempos de cómputo</li>
+<li class="fragment">Fuentes promediadas por bloque:</li>
+    <ul class="fragment" style="margin-left: 5rem;">
+        <li> Previenen anisotropías</li>
+        <li> Requieren menor uso de memoria</li>
+    </ul>
+<li class="fragment">Aplicación: grillado de +1.7M de datos sobre Australia</li>
+</ul>
 
 ---
 
 ## Software
 
-- Fatiando a Terra: proyecto open-source para geofísica
-- Implementaciones de las nuevas metodologías
-- Mejores prácticas: alta calidad
-- Retroalimentación con investigaciones científicas
-- Integración ecosistema open-source en Geociencias
+<ul>
+<li class="fragment">Fatiando a Terra: proyecto open-source para geofísica</li>
+<li class="fragment">Implementaciones de las nuevas metodologías</li>
+<li class="fragment">Mejores prácticas: alta calidad</li>
+<li class="fragment">Retroalimentación con investigaciones científicas</li>
+<li class="fragment">Integración al ecosistema open-source en Geociencias</li>
+</ul>
 
 ---
 
+<!-- .slide: data-background-color="#2b2b2b" -->
 
+## En síntesis
+
+- Modelado de grandes estructuras con densidades variables
+- Procesamiento de grandes cantidades de datos
+- Herramientas de código abierto
 
 ---
 
-<!-- .slide: class="slide-title" -->
+<!-- .slide: data-background-color="#2b2b2b" -->
 
 # Muchas gracias
