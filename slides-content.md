@@ -54,6 +54,8 @@ Lic. Santiago Soler
 
 ---
 
+<!-- .slide: data-background-color="#2b2b2b" -->
+
 # Introducción
 
 ---
@@ -770,6 +772,10 @@ bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 <img src="./images/fatiando/fatiando-banner.svg" alt="">
 </a>
 
+<p style="color: #f9f9f9; font-size: 2rem;">
+En portugués significa <emph>cortando la Tierra</emph>
+</p>
+
 ---
 
 <div class="container container-70">
@@ -840,32 +846,138 @@ bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 
-## Implementacion de nuevos métodos
 
-- Ejemplos de los dos?
+<img src="./images/fatiando/pooch-logo.svg" height="100rem">
+
+<div class="container container-80">
+
+```python
+url = "https://github.com/fatiando/pooch/raw/v1.0.0/data/tiny-data.txt"
+file_hash="md5:70e2afd3fd7e336ae478b1e740a5f08e"
+
+import pooch
+
+file_path = pooch.retrieve(url, known_hash=file_hash)
+```
+
+</div>
 
 ---
 
-## Mejores prácticas?
+<img src="./images/fatiando/boule-logo.svg" height="100rem">
+
+<div class="container container-80">
+
+```python
+import boule as bl
+
+elipsoide = bl.WGS84
+gravedad_normal = elipsoide.normal_gravity(latitud, altitud)
+```
+
+</div>
+
+---
+
+<img src="./images/fatiando/harmonica-logo.svg" height="100rem">
+
+<div class="container container-80">
+
+```python
+import harmonica as hm
+
+gravedad = hm.prism_gravity(coordenadas, prismas, densidad, field="g_z")
+```
+
+</div>
+
+---
+
+## Nuevos métodos
+
+- Teseroides de densidad variable
+- Fuentes equivalentes potenciadas por gradiente
+
+---
+
+### Teseroides de densidad variable
+
+<div class="container container-80">
+
+<pre style="height: 35rem"><code data-trim data-noescape>
+import boule as bl
+import harmonica as hm
+
+radio_medio = bl.WGS84.mean_radius
+
+teseroide = [-70, -60, -40, -30, radio_medio - 10e3, radio_medio]
+
+# Definimos una densidad lineal para este teseroide.
+@njit
+def densidad_lineal(radio):
+    """Funcion de densidad lineal"""
+    return a * radio + b
+
+gravedad = hm.tesseroid_gravity(
+    coordenadas, teseroide, densidad_lineal, field="g_z"
+)
+</code></pre>
+
+</div>
+
+
+---
+
+### Fuentes equivalentes potenciadas por gradiente
+
+<div class="container container-80">
+
+<pre style="height: 26rem;"><code data-trim data-noescape class="python hljs">
+import harmonica as hm
+
+fuentes_eq = hm.EquivalentSourcesGB(
+    depth=9e3,
+    damping=10,
+    window_size=100e3,
+    block_size=2e3,
+)
+
+fuentes_eq.fit(coordenadas, datos)
+
+grilla = fuentes_eq.grid(upward=1e3, spacing=2e3)
+</code></pre>
+
+</div>
+
+
+---
+
+## Mejores prácticas
 
 - Documentación
-- Testeo
+- Pruebas de software
 - Revisión por pares
 
 ---
 
-## Retroalimentación con investigaciones científicas
+## Retroalimentación
+
+<img src="./images/fatiando/science-oss-feedback.svg" style="width: 35%">
 
 ---
 
-## Adopción por parte de la comunidad científica
-
-- Gráfica de visitas al sitio
-- Mapa de visitas al sitio
+## ¿Quiénes lo usan?
 
 ---
 
-## Ecosistema open-source en geociencias
+<div class="r-stack">
+<img class="fragment fade-out" data-fragment-index="0" src="images/fatiando/users_map.svg" style="width: 80%; height: auto">
+<img class="fragment" data-fragment-index="0" src="images/fatiando/users_history.svg" style="width: 60%; height: auto">
+</div>
+
+---
+
+## Ecosistema open-source en Geociencias
 
 - simpeg
 - gempy
@@ -879,155 +991,34 @@ bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 ---
 
+## Teseroides con densidad variable
 
-# Math
-
-$$  \color{#bf0101}{f(x)}  = \int\limits_{0}^{1} g(x) dx $$
-
----
-
-# Regular slide
-
-## With subtitles
+- Metodología de modelado directo
+- Función de densidad arbitrarias
+- Parámetros $D$ y $\delta$: errores <span>&#60;</span>  1%.
+- Aplicación: modelado directo de la cuenca Neuquina
 
 ---
 
-# Do you want columns?
+## Fuentes equivalentes potenciadas por gradiente
 
-<div class="container">
-
-<div class="column">
-<img src="images/about.jpg" style="margin-top: 5%; border-radius: 50%; width: 80%;">
-</div>
-
-<div class="col-2">
-<div class="centered">
-
-* Licenciado en Física (UNR)
-* Estudiante de Doctorado en Geofísica (UNSJ)
-* Becario Doctoral de CONICET
-* Desarrollador de [Fatiando a Terra](https://www.fatiando.org)
-* Miembro de [Computer-Oriented Geoscience Lab](https://www.compgeolab.org)
-
-</div>
-</div>
-
-</div>
+- Metodología para interpolación de grandes cantidades de datos
+- Disminuye significativamente uso de memoria
+- Alcanza mejores tiempos de cómputo
+- Fuentes promediadas por bloque:
+    - Previenen anisotropías
+    - Requieren menor uso de memoria
+- Aplicación: grillado de +1.7M de datos sobre Australia
 
 ---
 
-# You can add fade-in animations
+## Software
 
-<div class="container">
-
-<div class="column fragment fade-in">
-
-First element
-
-</div>
-
-<div class="column fragment fade-in">
-
-Second element
-
-</div>
-
-</div>
-
----
-
-## Even on lists
-
-<ul>
-<li class="fragment fade-in">First element</li>
-<li class="fragment fade-in">Second element</li>
-<li class="fragment fade-in">Third element</li>
-</ul>
-
----
-
-## Highlight current item on list
-
-<ol>
-<li class="fragment highlight-current-red">First element</li>
-<li class="fragment highlight-current-red">Second element</li>
-<li class="fragment highlight-current-red">Third element</li>
-</ol>
-
----
-
-# You can put footnotes
-
-<div class="bottom">
-
-https://www.blog.pythonlibrary.org/2019/04/11/python-used-to-take-photo-of-black-hole/
-
-</div>
-
----
-
-<!-- .slide: data-background-color="#eceff4" -->
-
-## You can change the background color
-
----
-
-## Add quotes
-
-<blockquote>
-This is a quote
-</blockquote>
-
----
-
-## Add code
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-
-a = np.linspace(0, 10, 11)
-
-plt.plot(a, a ** 2)
-plt.show()
-```
-
----
-
-# Contacto
-
-<div>
-
-<ul class="fa-ul">
-<li><i class="fa-li fa fa-envelope"></i>
-
-[santiago.r.soler@gmail.com](mailto:santiago.r.soler@gmail.com)
-
-</li>
-<li><i class="fa-li fab fa-twitter"></i>
-
-[@santirsoler](https://twitter.com/santirsoler)
-
-</li>
-<li><i class="fa-li fa fa-globe-americas"></i>
-
-[www.santisoler.com](https://www.santisoler.com)
-
-</li>
-</ul>
-
-</div>
-
----
-
-<!-- .slide: class="slide-license" -->
-
-<p class="license-icons">
-<i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i>
-</p>
-
-El contenido de esta presentación está disponible bajo <br>
-[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
+- Fatiando a Terra: proyecto open-source para geofísica
+- Implementaciones de las nuevas metodologías
+- Mejores prácticas: alta calidad
+- Retroalimentación con investigaciones científicas
+- Integración ecosistema open-source en Geociencias
 
 ---
 
