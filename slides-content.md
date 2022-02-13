@@ -842,58 +842,7 @@ En portugués significa <emph>cortando la Tierra</emph>
 
 ---
 
-## Ejemplos sencillos?
-
----
-
-
-<img src="./images/fatiando/pooch-logo.svg" height="100rem">
-
-<div class="container container-80">
-
-```python
-url = "https://github.com/fatiando/pooch/raw/v1.0.0/data/tiny-data.txt"
-file_hash="md5:70e2afd3fd7e336ae478b1e740a5f08e"
-
-import pooch
-
-file_path = pooch.retrieve(url, known_hash=file_hash)
-```
-
-</div>
-
----
-
-<img src="./images/fatiando/boule-logo.svg" height="100rem">
-
-<div class="container container-80">
-
-```python
-import boule as bl
-
-elipsoide = bl.WGS84
-gravedad_normal = elipsoide.normal_gravity(latitud, altitud)
-```
-
-</div>
-
----
-
-<img src="./images/fatiando/harmonica-logo.svg" height="100rem">
-
-<div class="container container-80">
-
-```python
-import harmonica as hm
-
-gravedad = hm.prism_gravity(coordenadas, prismas, densidad, field="g_z")
-```
-
-</div>
-
----
-
-## Nuevos métodos
+<img src="./images/fatiando/harmonica-logo.svg" width="60%">
 
 - Teseroides de densidad variable
 - Fuentes equivalentes potenciadas por gradiente
@@ -1019,6 +968,10 @@ grilla = fuentes_eq.grid(upward=1e3, spacing=2e3)
 - Mejores prácticas: alta calidad
 - Retroalimentación con investigaciones científicas
 - Integración ecosistema open-source en Geociencias
+
+---
+
+
 
 ---
 
