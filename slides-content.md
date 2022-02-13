@@ -62,7 +62,7 @@ Lic. Santiago Soler
 
 ## Gravedad terrestre
 
-<img src="" alt="">
+<img src="./images/earth_gravity_disturbance.svg" style="width: 70%">
 
 Información sobre el interior de la Tierra
 
