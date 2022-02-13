@@ -984,9 +984,7 @@ grilla = fuentes_eq.grid(upward=1e3, spacing=2e3)
 
 ## Ecosistema open-source en Geociencias
 
-- simpeg
-- gempy
-- obspy
+<img src="images/fatiando/ecosystem.svg" style="width: 60%">
 
 ---
 
