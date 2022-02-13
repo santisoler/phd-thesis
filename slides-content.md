@@ -693,6 +693,10 @@ $M$ fuentes > $N$ datos $\Rightarrow$ problema <strong>subdeterminado</strong>
 
 ---
 
+# Desempeño de los nuevos métodos
+
+---
+
 # Prueba con datos sintéticos
 
 <img src="./images/equivalent-sources/synthetic-surveys.svg" style="width: 80%">
@@ -715,7 +719,8 @@ $M$ fuentes > $N$ datos $\Rightarrow$ problema <strong>subdeterminado</strong>
 ### Fuentes equivalentes potenciadas por gradiente
 
 <ul>
-    <li class="fragment">Menor precisión</li>
+    <li class="fragment">Redución significativa de uso de memoria</li>
+    <li class="fragment">Ligera menor precisión</li>
     <li class="fragment">Menor tiempo de cómputo</li>
     <li class="fragment">
         <i class='fas fa-arrow-circle-up'></i> Tamaño de ventana
