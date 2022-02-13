@@ -958,11 +958,26 @@ grilla = fuentes_eq.grid(upward=1e3, spacing=2e3)
 
 ---
 
+
 ## Mejores prácticas
 
-- Documentación
-- Pruebas de software
-- Revisión por pares
+---
+
+### Documentación
+
+<img src="./images/fatiando/pooch-docs.png">
+
+---
+
+### Pruebas de software
+
+<img src="./images/fatiando/tests.png">
+
+---
+
+### Revisión por pares
+
+<img src="./images/fatiando/review.png">
 
 ---
 
