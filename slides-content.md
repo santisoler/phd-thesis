@@ -62,7 +62,7 @@ Lic. Santiago Soler
 
 ## Gravedad terrestre
 
-<img src="./images/earth_gravity_disturbance.svg" style="width: 70%">
+<img src="./images/earth_gravity_disturbance.png" style="width: 70%; height: auto;">
 
 Información sobre el interior de la Tierra
 
@@ -898,7 +898,7 @@ En portugués significa <emph>cortando la Tierra</emph>
 <img src="./images/fatiando/harmonica-logo.svg" width="60%">
 
 <ul>
-<li class="fragment">Liderando del proyecto</li>
+<li class="fragment">Lidero el proyecto</li>
 <li class="fragment">Herramientas necesarias para el desarrollo de la Tesis</li>
 <li class="fragment">Teseroides de densidad variable</li>
 <li class="fragment">Fuentes equivalentes potenciadas por gradiente</li>
@@ -980,10 +980,6 @@ grilla = fuentes_eq.grid(upward=1e3, spacing=2e3)
 <img class="fragment fade-out" data-fragment-index="0" src="images/fatiando/users_map.svg" style="width: 80%; height: auto">
 <img class="fragment" data-fragment-index="0" src="images/fatiando/users_history.svg" style="width: 60%; height: auto">
 </div>
-
----
-
-## Comunidad
 
 ---
 
