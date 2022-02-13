@@ -910,12 +910,11 @@ En portugués significa <emph>cortando la Tierra</emph>
 
 <div class="container container-80">
 
-<pre style="height: 35rem"><code data-trim data-noescape>
+<pre style="height: 35rem"><code data-line-numbers="*|4-5|7-11|13-15" data-trim data-noescape>
 import boule as bl
 import harmonica as hm
 
 radio_medio = bl.WGS84.mean_radius
-
 teseroide = [-70, -60, -40, -30, radio_medio - 10e3, radio_medio]
 
 # Definimos una densidad lineal para este teseroide.
@@ -938,7 +937,7 @@ gravedad = hm.tesseroid_gravity(
 
 <div class="container container-80">
 
-<pre style="height: 26rem;"><code data-trim data-noescape class="python hljs">
+<pre style="height: 28rem;"><code data-line-numbers="*|3-8|4|6|7|10|12" data-trim data-noescape class="python hljs">
 import harmonica as hm
 
 fuentes_eq = hm.EquivalentSourcesGB(
