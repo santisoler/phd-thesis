@@ -109,7 +109,6 @@ Usando BibTeX:
 
 ## Versiones
 
-- [PDF de la versión en desarrollo en rama `main`](https://github.com/santisoler/phd-thesis/raw/pdf/thesis.pdf)
 - [`v1.1.1`](https://github.com/santisoler/phd-thesis/releases/tag/v1.1.1): Versión corregida luego de la revisión por parte del Jurado, con una correción menor.
 - [`v1.0.0`](https://github.com/santisoler/phd-thesis/releases/tag/v1.0.0): Versión enviada para su evaluación ([descargar el PDF](https://github.com/santisoler/phd-thesis/releases/download/v1.0.0/thesis.pdf))
 - [`v1.1.0`](https://github.com/santisoler/phd-thesis/releases/tag/v1.1.0): Versión corregida luego de la revisión por parte del Jurado
