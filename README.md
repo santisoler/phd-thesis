@@ -13,6 +13,7 @@ de la
 | Co-Director | [Leonardo Uieda](https://www.leouieda.com)<sup>3</sup> |
 | DOI      | [10.6084/m9.figshare.16906909](https://doi.org/10.6084/m9.figshare.16906909) |
 | Licencia | [Creative Commons Atribución 4.0 Internacional][cc-by] |
+| Diapositivas | [Web](https://santisoler.github.io/phd-thesis) - [PDF](https://www.santisoler.com/phd-thesis/slides.pdf) |
 |          | [**Descargar el PDF**](https://doi.org/10.6084/m9.figshare.16906909) |
 
 > <sup>1</sup> CONICET, Argentina<br/>
