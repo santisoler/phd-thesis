@@ -58,7 +58,7 @@ jobs:
           persist-credentials: false
 
       - name: Download the built PDF
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: thesis
           path: thesis/_output
